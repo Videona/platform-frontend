@@ -6,7 +6,8 @@
 	function apiService($http) {
 
 		var api = {
-			url: 'https://nemsummit.viday.co',
+			url: 'http://localhost:3000',
+			// url: 'https://nemsummit.viday.co',
 			token: '',
 			get: get,
 			post: post,
@@ -17,65 +18,48 @@
 		return api;
 
 		function post(url, data, callback) {
-
-			$http({
-				method: 'POST',
-				url: url,
-				headers: {'Content-Type': 'application/x-www-form-urlencoded', 'authorization': 'Bearer ' + api.token},
-				transformRequest: function(obj) {
-					var str = [];
-					for(var p in obj) {
-						str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
-					}
-					return str.join('&');
-				},
-				// dataType: 'jsonp',
-				data: data
-			}).then(function(r) {
-				onSuccess(r, callback);
-			}).catch(function(r) {
-				onError(r, callback);
-			});
+			return request('POST', url, data, callback);
 		}
 
 		function get(url, callback) {
-			$http({
-				method: 'GET',
-				url: url,
-				headers: {'authorization': 'Bearer ' + api.token}
-			}).then(function(r) {
-				onSuccess(r, callback);
-			}).catch(function(r) {
-				onError(r, callback);
-			});
+			return request('GET', url, null, callback);
 		}
 
 		function del(url, data, callback) {
-
-			$http({
-				method: 'DELETE',
-				url: url,
-				headers: {'Content-Type': 'application/x-www-form-urlencoded', 'authorization': 'Bearer ' + api.token},
-				transformRequest: function(obj) {
-					var str = [];
-					for(var p in obj) {
-						str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));	
-					}
-					return str.join('&');
-				},
-				// dataType: 'jsonp',
-				data: data
-			}).then(function(r) {
-				onSuccess(r, callback);
-			}).catch(function(r) {
-				onError(r, callback);
-			});
+			return request('DELETE', url, data, callback);
 		}
 
-		function setToken (token) {
-			if(typeof(token) !== 'undefined') {
-				api.token = token;
+		function request(type, url, data, callback) {
+			var req = {
+				method: type,
+				headers: {},
+				url: url
+			};
+
+			if(api.token !== '') {
+				req.headers.authorization = 'Bearer ' + api.token;
 			}
+
+			if(type === 'POST' || type === 'DELETE' || type === 'PUT' || type === 'PATCH') {
+				req.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+				req.transformRequest = transformRequest;
+				req.data = data;
+			}
+
+			return $http(req)
+				.then(function(r) {
+					onSuccess(r, callback);
+				}).catch(function(r) {
+					onError(r, callback);
+				});
+		}
+
+		function transformRequest(obj) {
+			var str = [];
+			for(var p in obj) {
+				str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));	
+			}
+			return str.join('&');
 		}
 
 		function onSuccess(response, callback) {
@@ -104,6 +88,13 @@
 				callback(data, status, headers, config);
 			}
 		}
+
+		function setToken (token) {
+			if(typeof(token) !== 'undefined') {
+				api.token = token;
+			}
+		}
+
 
 	}
 
