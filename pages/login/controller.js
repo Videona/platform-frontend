@@ -1,8 +1,8 @@
 (function() {
 
-	angular.module('app').controller('LoginController', ['login', 'session', '$state', '$stateParams', LoginController]);
+	angular.module('app').controller('LoginController', ['login', 'session', '$state', '$stateParams', '$translate', LoginController]);
 
-	function LoginController(login, session, $state, $stateParams) {
+	function LoginController(login, session, $state, $stateParams, $translate) {
 		var self = this;
 
 		// Service binding
@@ -40,7 +40,8 @@
 				$state.go($stateParams.redirect || 'home');
 			} else {
 				console.log('Bad username or password...');
-				self.error = 'Wrong login data. Check it out...';
+				self.error = $translate.instant('WRONG_LOGIN');
+				// self.error = 'Wrong login data. Check it out...';
 			}
 		}
 	}

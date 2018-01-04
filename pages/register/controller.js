@@ -1,8 +1,8 @@
 (function() {
 
-	angular.module('app').controller('RegisterController', ['register', 'login', 'session', '$state', '$stateParams', RegisterController]);
+	angular.module('app').controller('RegisterController', ['register', 'login', 'session', '$state', '$stateParams', '$translate', RegisterController]);
 
-	function RegisterController(register, login, session, $state, $stateParams) {
+	function RegisterController(register, login, session, $state, $stateParams, $translate) {
 		var self = this;
 
 		// Service binding
@@ -51,7 +51,7 @@
 				});
 			} else {
 				console.log('Bad username, email or password...');
-				self.error = 'Your username, email or password are not good. Check it out again';
+				self.error = $translate.instant('WRONG_REGISTER');
 			}
 		}
 	}
