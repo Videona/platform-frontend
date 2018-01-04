@@ -35,10 +35,11 @@
 			}
 
 			// save(newSession);
-			save(session);
+			save();
 		}
 
-		function setToken(token, newSession) {
+		// function setToken(token, newSession) {
+		function setToken(token) {
 			session.token = token;
 			api.setToken(token);
 
