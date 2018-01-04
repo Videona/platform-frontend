@@ -17,7 +17,7 @@
 				lang = 'en_us';
 				break;
 			}
-			
+
 			$translateProvider.useSanitizeValueStrategy('escape');
 			$translateProvider.preferredLanguage(lang);
 
@@ -30,7 +30,7 @@
 					templateUrl: 'pages/home/view.html'
 				})
 				.state('login', {
-					url: '/login',
+					url: '/login?:redirect',
 					templateUrl: 'pages/login/view.html'
 				})
 				.state('register', {

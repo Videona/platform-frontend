@@ -1,1 +1,12 @@
-<h1>Login</h1>
+<div ng-controller="LoginController as Login">
+	<h1>Login</h1>
+
+	<div ng-show="Login.loading">Loading...</div>
+	<div ng-show="Login.error">{{Login.error}}</div>
+
+	<form ng-submit="Login.submit()">
+		<input type="text" placeholder="Username" ng-model="Login.username">
+		<input type="password" placeholder="Password" ng-model="Login.password">
+		<input type="submit" value="Login!">
+	</form>
+</div>
