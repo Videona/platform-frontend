@@ -2,40 +2,42 @@
 
 	// App
 	angular.module('app', ['ui.router', 'pascalprecht.translate'])
-		.config(function($stateProvider, $urlRouterProvider, $translateProvider) {
+		.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', conf]);
 
-			// Get browser lang and set this var
-			var lang = 'es_es';
-			var shortLang = navigator.language.split('-')[0];
+	function conf($stateProvider, $urlRouterProvider, $translateProvider) {
 
-			switch(shortLang){
-				case 'es':
-				lang = 'es_es';
-				break;
+		// Get browser lang and set this var
+		var lang = 'es_es';
+		var shortLang = navigator.language.split('-')[0];
 
-				case 'en':
-				lang = 'en_us';
-				break;
-			}
+		switch(shortLang){
+			case 'es':
+			lang = 'es_es';
+			break;
 
-			$translateProvider.useSanitizeValueStrategy('escape');
-			$translateProvider.preferredLanguage(lang);
+			case 'en':
+			lang = 'en_us';
+			break;
+		}
 
-			// Router configuration
-			$urlRouterProvider.otherwise('/')
-			
-			$stateProvider
-				.state('home', {
-					url: '/',
-					templateUrl: 'pages/home/view.html'
-				})
-				.state('login', {
-					url: '/login?:redirect',
-					templateUrl: 'pages/login/view.html'
-				})
-				.state('register', {
-					url: '/register',
-					templateUrl: 'pages/register/view.html'
-				});
-		});
+		$translateProvider.useSanitizeValueStrategy('escape');
+		$translateProvider.preferredLanguage(lang);
+
+		// Router configuration
+		$urlRouterProvider.otherwise('/');
+		
+		$stateProvider
+			.state('home', {
+				url: '/',
+				templateUrl: 'pages/home/view.html'
+			})
+			.state('login', {
+				url: '/login?:redirect',
+				templateUrl: 'pages/login/view.html'
+			})
+			.state('register', {
+				url: '/register',
+				templateUrl: 'pages/register/view.html'
+			});
+	}
 })();

@@ -1,6 +1,8 @@
-// English
-angular.module('app')
-	.config(function ($translateProvider) {
+(function() {
+	// English
+	angular.module('app').config(['$translateProvider', translate]);
+
+	function translate($translateProvider) {
 		$translateProvider.translations('en_us', 
 			{
 				HELLO: 'Hello',
@@ -19,4 +21,5 @@ angular.module('app')
 				WRONG_REGISTER: 'Wrong register data. Check it out, and try again, please.'
 			}
 		);
-	});
+	}
+})();

@@ -1,0 +1,13 @@
+<div ng-controller="RegisterController as Register">
+	<h1>{{'REGISTER' | translate}}</h1>
+
+	<div ng-show="Register.loading">{{'LOADING' | translate}}</div>
+	<div ng-show="Register.error">{{Register.error}}</div>
+
+	<form ng-submit="Register.submit()">
+		<input type="text" placeholder="{{'USERNAME' | translate }}" ng-model="Register.username">
+		<input type="text" placeholder="{{'EMAIL' | translate }}" ng-model="Register.email">
+		<input type="password" placeholder="{{'PASSWORD' | translate }}" ng-model="Register.password">
+		<input type="submit" value="{{'REGISTER_ACTION' | translate }}">
+	</form>
+</div>

@@ -1,6 +1,8 @@
-// English
-angular.module('app')
-	.config(function ($translateProvider) {
+(function() {
+	// English
+	angular.module('app').config(['$translateProvider', translate]);
+
+	function translate($translateProvider) {
 		$translateProvider.translations('es_es', 
 			{
 				HELLO: 'Hola',
@@ -19,4 +21,5 @@ angular.module('app')
 				WRONG_REGISTER: 'Los datos de registro son incorrectos. Revísalos, e inténtalo de nuevo, por favor.'
 			}
 		);
-	});
+	}
+})();
