@@ -7,7 +7,6 @@
 
 		var api = {
 			url: 'http://localhost:3000',
-			// url: 'https://nemsummit.viday.co',
 			token: '',
 			get: get,
 			post: post,
