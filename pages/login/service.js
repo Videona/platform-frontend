@@ -24,7 +24,7 @@
 			};
 
 			login.pending = true;
-			api.post(api.url + '/login', body, function(data, status) {
+			return api.post(api.url + '/login', body, function(data, status) {
 				login.pending = false;
 				var success = false;
 
@@ -36,7 +36,11 @@
 					session.set(data);
 				}
 
-				cb(success, data);
+				if(typeof(cb) === 'function') {
+					cb(success, data);
+				} else {
+					console.warn('No callback specified for login.');
+				}
 			});
 		}
 

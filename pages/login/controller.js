@@ -27,10 +27,14 @@
 
 		// Internal functions
 		function submit() {
-			self.loading = true;
-			self.error = null;
-			console.log('Submiting...');
-			self.service.login(self.username, self.password, success);
+			if(self.username !== '' && self.password !== '') {
+				self.loading = true;
+				self.error = null;
+				console.log('Submiting...');
+				self.service.login(self.username, self.password, success);
+			} else {
+				self.error = $translate.instant('WRONG_LOGIN');
+			}
 		}
 
 		function success(result, data) {

@@ -8,12 +8,21 @@
   },
   "author": "",
   "license": "GPLv3",
-  "dependencies": {
+  "devDependencies": {
+    "@uirouter/angularjs": "1.0.0",
+    "angular": "1.6.5",
+    "angular-mocks": "1.6.5",
+    "angular-translate": "2.17.0",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-debug": "^3.1.0",
     "gulp-minify": "^1.0.0",
     "gulp-watch": "^4.3.11",
-    "gulp-webserver": "^0.9.1"
+    "gulp-webserver": "^0.9.1",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-jasmine": "^1.0.2",
+    "karma-spec-reporter": "0.0.26"
   }
 }
