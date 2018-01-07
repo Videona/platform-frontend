@@ -20,16 +20,25 @@ gulp.task('serve', function() {
 // ADD TASK FOR BUID DEPENDENCIES
 // --------
 
+// --------
+// TO_DO: 'styles'
+// ADD TASK FOR PREPROCCESS SASS TO CSS
+// --------
+
+// Build app js
+var source_js = [
+	'./js/**/**.js', 
+	'./languages/**/**.js', 
+	'./services/**/**.js', 
+	'./components/**/**.js', 
+	'./pages/**/**.js', 
+	'!./gulpfile.js', 
+	'!./**/**.spec.js',
+	'!./node_modules/**',
+	'!./dist/**'
+];
 gulp.task('js', function() {
-	gulp.src([
-		'./js/**/**.js', 
-		'./languages/**/**.js', 
-		'./services/**/**.js', 
-		'./components/**/**.js', 
-		'./pages/**/**.js', 
-		'!./gulpfile.js', 
-		'!./**/**.spec.js'
-	])
+	gulp.src(source_js)
 	.pipe(debug({title: 'Join JS:'}))
 	.pipe(concat('app.js'))
 	.pipe(minify({
@@ -41,27 +50,45 @@ gulp.task('js', function() {
 	.pipe(gulp.dest('./dist/js'));
 });
 
+// Build app tests
+var source_test = [
+	'./test-globals.js', 
+	'./**/**.spec.js',
+	'!./node_modules/**',
+	'!./dist/**'
+];
+gulp.task('tests', function() {
+	gulp.src(source_test)
+	.pipe(debug({title: 'Join tests:'}))
+	.pipe(concat('test.js'))
+	.pipe(gulp.dest('./dist/js'));
+});
+
+// Move app HTML files
+var source_html = [
+	'./**/**.html',
+	'!./index.html',
+	'!./_**/**',
+	'!./node_modules/**',
+	'!./dist/**'
+];
 gulp.task('html', function() {
-	gulp.src([
-		'./**/**.html',
-		'!./index.html',
-		'!./_**/**',
-		'!./node_modules/**',
-		'!./dist/**'
-	])
+	gulp.src(source_html)
 	.pipe(debug({title: 'Move HTML:'}))
 	.pipe(gulp.dest('./dist'));
 });
 
-gulp.task('build', ['js', 'html']);
+// Perform a complete build
+gulp.task('build', ['js', 'html', 'tests']);
 
 
+// Watch and build on change
 gulp.task('watch', function() {  
-	gulp.watch('./*/**.js', ['js']);
-	gulp.watch('./*/**.html', ['html']);
+	gulp.watch(source_js, ['js']);
+	gulp.watch(source_test, ['tests']);
+	gulp.watch(source_html, ['html']);
 	// gulp.watch(['./src/**/*.css', './src/**/*.css'], ['styles']);
 });
-
 
 
 gulp.task('default', ['watch']);

@@ -1,10 +1,11 @@
 {
   "name": "vimojo-platform-frontend",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.0.2",
+  "description": "Frontend for Vimojo Platform",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "gulp serve",
+    "test": "karma start"
   },
   "author": "",
   "license": "GPLv3",

@@ -19,14 +19,10 @@ module.exports = function(config) {
       './node_modules/@uirouter/angularjs/release/angular-ui-router.js',
       './node_modules/angular-translate/dist/angular-translate.js',
       './node_modules/angular-mocks/angular-mocks.js',
-      // // Your angular files
+      // Angular app
       './dist/js/app.min.js',
-      // './js/app.js',
-      // './pages/login/controller.js',
       // Tests
-      './test-globals.js',
-      './pages/login/controller.spec.js',
-      './pages/login/service.spec.js'
+      './dist/js/test.js'
     ],
 
 
