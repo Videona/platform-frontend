@@ -1,4 +1,4 @@
-(function(){
+(function () {
 
 	angular.module('app')
 		.factory('register', ['api', registerService]);
@@ -24,11 +24,11 @@
 			};
 
 			register.pending = true;
-			api.post(api.url + '/user', body, function(data, status) {
+			api.post(api.url + '/user', body, function (data, status) {
 				register.pending = false;
 				var success = true;
 
-				if(status >= 400) {
+				if (status >= 400) {
 					console.error('Error while registering');
 					success = false;
 				}
@@ -39,4 +39,4 @@
 
 	}
 
-})();
+}());

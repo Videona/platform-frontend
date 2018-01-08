@@ -1,4 +1,4 @@
-(function(){
+(function () {
 
 	angular.module('app')
 		.factory('api', ['$http', apiService]);
@@ -35,27 +35,27 @@
 				url: url
 			};
 
-			if(api.token !== '') {
+			if (api.token !== '') {
 				req.headers.authorization = 'Bearer ' + api.token;
 			}
 
-			if(type === 'POST' || type === 'DELETE' || type === 'PUT' || type === 'PATCH') {
+			if (type === 'POST' || type === 'DELETE' || type === 'PUT' || type === 'PATCH') {
 				req.headers['Content-Type'] = 'application/x-www-form-urlencoded';
 				req.transformRequest = transformRequest;
 				req.data = data;
 			}
 
 			return $http(req)
-				.then(function(r) {
+				.then(function (r) {
 					onSuccess(r, callback);
-				}).catch(function(r) {
+				}).catch(function (r) {
 					onError(r, callback);
 				});
 		}
 
 		function transformRequest(obj) {
 			var str = [];
-			for(var p in obj) {
+			for (var p in obj) {
 				str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));	
 			}
 			return str.join('&');
@@ -88,14 +88,11 @@
 			}
 		}
 
-		function setToken (token) {
+		function setToken(token) {
 			if(typeof(token) !== 'undefined') {
 				api.token = token;
 			}
 		}
-
-
+		
 	}
-
-	
-})();
+}());

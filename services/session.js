@@ -1,4 +1,4 @@
-(function(){
+(function () {
 
 	angular.module('app')
 		.factory('session', ['api', sessionService]);
@@ -30,7 +30,7 @@
 			session.role = newSession.role || '';
 			session.verified = newSession.verified || false;
 
-			if(newSession.token) {
+			if (newSession.token) {
 				setToken(newSession.token, newSession);
 			}
 
@@ -76,9 +76,9 @@
 		}
 
 		function getSession() {
-			var localSession = JSON.parse( localStorage.getItem('session') );
+			var localSession = JSON.parse(localStorage.getItem('session'));
 
-			if(localSession !== null) {
+			if (localSession !== null) {
 				setSession(localSession);
 			} else {
 				console.warn('There was no session stored. Logout forzed.');
@@ -103,4 +103,4 @@
 	}
 
 	
-})();
+}());

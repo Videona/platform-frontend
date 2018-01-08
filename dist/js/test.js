@@ -6,7 +6,7 @@
 // Jasmine clock
 jasmine.clock().install();
 
-describe('LoginController', function() {
+describe('LoginController', function () {
 	beforeEach(module('app'));
 
 	var $controller;
@@ -15,9 +15,9 @@ describe('LoginController', function() {
 	var _PASS = 'pass'; // Expected pass
 
 	var LoginServiceMock = {
-		login: function(user, pass, cb) {
-			setTimeout(function() {
-				if(user === _USER && pass === _PASS) {
+		login: function (user, pass, cb) {
+			setTimeout(function () {
+				if (user === _USER && pass === _PASS) {
 					cb(true);
 				} else {
 					cb(false);
@@ -31,24 +31,24 @@ describe('LoginController', function() {
 	};
 
 
-	beforeEach(inject(function(_$controller_){
+	beforeEach(inject(function (_$controller_) {
 		// The injector unwraps the underscores (_) from around the parameter names when matching
 		$controller = _$controller_;
 	}));
 
-	describe('.submit()', function() {
+	describe('.submit()', function () {
 		var controller;
 
-		beforeEach(function() {
+		beforeEach(function () {
 			// LoginController(login, session, $state, $stateParams, $translate)
 			controller = $controller('LoginController', {});
 		});
 
-		it('Shall not be loading on init', function() {
+		it('Shall not be loading on init', function () {
 			expect(controller.loading).toEqual(false);
 		});
 
-		it('Shall start loading on submit', function() {
+		it('Shall start loading on submit', function () {
 			controller.username = _USER;
 			controller.password = _PASS;
 			controller.submit();
@@ -56,7 +56,7 @@ describe('LoginController', function() {
 			expect(controller.loading).toEqual(true);
 		});
 
-		it('Shall reset errors on submit', function() {
+		it('Shall reset errors on submit', function () {
 			controller.username = _USER;
 			controller.password = _PASS;
 			controller.submit();
@@ -64,29 +64,29 @@ describe('LoginController', function() {
 			expect(controller.error).toEqual(null);
 		});
 
-		it('Shall not start loading if user or pass are not defined', function() {
+		it('Shall not start loading if user or pass are not defined', function () {
 			controller.submit();
 			
 			expect(controller.loading).toEqual(false);
 		});
 
-		it('Shall show an error if user or pass are not defined', function() {
+		it('Shall show an error if user or pass are not defined', function () {
 			controller.submit();
 			
 			expect(controller.error).not.toEqual(null);
 		});
 	});
 
-	describe('[internal] done()', function() {
+	describe('[internal] done()', function () {
 		var controller;
 
-		beforeEach(function() {
+		beforeEach(function () {
 			// LoginController(login, session, $state, $stateParams, $translate)
 			controller = $controller('LoginController', {login: LoginServiceMock, $state: $state});
 			$state.go = jasmine.createSpy('$state.go');
 		});
 
-		it('Shall stop loading on success (or fail)', function() {
+		it('Shall stop loading on success (or fail)', function () {
 			controller.username = _USER;
 			controller.password = _PASS;
 			controller.submit();
@@ -99,7 +99,7 @@ describe('LoginController', function() {
 			expect(controller.loading).toEqual(false);
 		});
 
-		it('Shall fire $state.go() on successfull login', function() {
+		it('Shall fire $state.go() on successfull login', function () {
 			controller.username = _USER;
 			controller.password = _PASS;
 			controller.submit();
@@ -112,7 +112,7 @@ describe('LoginController', function() {
 			expect($state.go).toHaveBeenCalled();
 		});
 
-		it('Shall NOT fire $state.go() on worg login', function() {
+		it('Shall NOT fire $state.go() on worg login', function () {
 			controller.username = _USER + 'wrong';
 			controller.password = _PASS + 'wrong';
 			controller.submit();
@@ -125,7 +125,7 @@ describe('LoginController', function() {
 			expect($state.go).not.toHaveBeenCalled();
 		});
 
-		it('Shall show an error on worg login', function() {
+		it('Shall show an error on worg login', function () {
 			controller.username = _USER + 'wrong';
 			controller.password = _PASS + 'wrong';
 			controller.submit();
@@ -141,17 +141,17 @@ describe('LoginController', function() {
 	});
 
 });
-describe('login service', function() {
+describe('login service', function () {
 	beforeEach(angular.mock.module('app'));
 	
 	var mockApi = null;
 	var callback = null;
 
 	// Mock API service
-	beforeEach(function() {
+	beforeEach(function () {
 		mockApi = {
 			post: function (uri, data, cb) {
-				setTimeout(function() {
+				setTimeout(function () {
 					cb(true, {});
 				}, 100);
 				return true;
@@ -164,25 +164,25 @@ describe('login service', function() {
 	});
 
 	// Prepare the callback spy
-	beforeEach(function() {
+	beforeEach(function () {
 		callback = jasmine.createSpy('callback');
 	});
 
-	beforeEach(inject(function(_login_) {
+	beforeEach(inject(function (_login_) {
 		login = _login_;
 	}));
 
-	it('should exist', function() {
+	it('should exist', function () {
 		expect(login).toBeDefined();
 	});
 
-	describe('.login()', function() {
+	describe('.login()', function () {
 
-		it('should exist', function() {
+		it('should exist', function () {
 			expect(login.login).toBeDefined();
 		});
 
-		it('should execute callback when login finish', function() {
+		it('should execute callback when login finish', function () {
 			login.login(undefined, undefined, callback);
 			expect(callback).not.toHaveBeenCalled();
 			// wait for it...
@@ -191,21 +191,21 @@ describe('login service', function() {
 		});
 	});
 
-	describe('.pending', function() {
-		it('should exist', function() {
+	describe('.pending', function () {
+		it('should exist', function () {
 			expect(login.pending).toBeDefined();
 		});
 
-		it('should be false on start', function() {
+		it('should be false on start', function () {
 			expect(login.pending).toEqual(false);
 		});
 
-		it('should turn true on login() send', function() {
+		it('should turn true on login() send', function () {
 			login.login(undefined, undefined, callback);
 			expect(login.pending).toEqual(true);
 		});
 
-		it('should go back to false on response recieved', function() {
+		it('should go back to false on response recieved', function () {
 			login.login(undefined, undefined, callback);
 			expect(callback).not.toHaveBeenCalled();
 			// wait for it...
