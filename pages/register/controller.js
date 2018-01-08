@@ -1,4 +1,4 @@
-(function() {
+(function () {
 
 	angular.module('app').controller('RegisterController', ['register', 'login', 'session', '$state', '$stateParams', '$translate', RegisterController]);
 
@@ -20,7 +20,7 @@
 
 
 		// On Run...
-		if(session._id > 0) {
+		if (session._id > 0) {
 			console.log('Found a session! Redirecting...');
 			$state.go($stateParams.redirect || 'home');
 		}
@@ -37,12 +37,12 @@
 		function success(result, data) {
 			console.log(data);
 			self.loading = false;
-			if(result) {
+			if (result) {
 				self.loading = true;
 				console.log('Registered! Logging in...');
-				login.login(self.username, self.password, function(success) {
+				login.login(self.username, self.password, function (success) {
 					self.loading = false;
-					if(success) {
+					if (success) {
 						$state.go($stateParams.redirect || 'home');
 					} else {
 						self.error = 'Login error. Please, try again...';
@@ -56,4 +56,4 @@
 		}
 	}
 
-})();
+}());

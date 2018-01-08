@@ -1,4 +1,4 @@
-(function() {
+(function () {
 
 	// App
 	angular.module('app', ['ui.router', 'pascalprecht.translate'])
@@ -7,16 +7,16 @@
 	function conf($stateProvider, $urlRouterProvider, $translateProvider) {
 
 		// Get browser lang and set this var
-		var lang = 'es_es';
+		var lang;
 		var shortLang = navigator.language.split('-')[0];
 
-		switch(shortLang){
-			case 'es':
-			lang = 'es_es';
+		switch (shortLang) {
+		case 'en':
+			lang = 'en_us';
 			break;
 
-			case 'en':
-			lang = 'en_us';
+		default:
+			lang = 'es_es';
 			break;
 		}
 
@@ -40,4 +40,4 @@
 				templateUrl: 'pages/register/view.html'
 			});
 	}
-})();
+}());

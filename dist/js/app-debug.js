@@ -1,4 +1,4 @@
-(function() {
+(function () {
 
 	// App
 	angular.module('app', ['ui.router', 'pascalprecht.translate'])
@@ -7,16 +7,16 @@
 	function conf($stateProvider, $urlRouterProvider, $translateProvider) {
 
 		// Get browser lang and set this var
-		var lang = 'es_es';
+		var lang;
 		var shortLang = navigator.language.split('-')[0];
 
-		switch(shortLang){
-			case 'es':
-			lang = 'es_es';
+		switch (shortLang) {
+		case 'en':
+			lang = 'en_us';
 			break;
 
-			case 'en':
-			lang = 'en_us';
+		default:
+			lang = 'es_es';
 			break;
 		}
 
@@ -40,61 +40,57 @@
 				templateUrl: 'pages/register/view.html'
 			});
 	}
-})();
+}());
 
-(function() {
+(function () {
 	// English
 	angular.module('app').config(['$translateProvider', translate]);
 
 	function translate($translateProvider) {
-		$translateProvider.translations('en_us', 
-			{
-				HELLO: 'Hello',
-				WORLD: 'world',
+		$translateProvider.translations('en_us', {
+			HELLO: 'Hello',
+			WORLD: 'world',
 
-				LOADING: 'loading...',
+			LOADING: 'loading...',
 
-				LOGIN: 'Login',
-				REGISTER: 'Register',
-				USERNAME: 'username',
-				PASSWORD: 'password',
-				EMAIL: 'email',
-				LOGIN_ACTION: 'Log in',
-				REGISTER_ACTION: 'Create account',
-				WRONG_LOGIN: 'Wrong user or password. Please, try again.',
-				WRONG_REGISTER: 'Wrong register data. Check it out, and try again, please.'
-			}
-		);
+			LOGIN: 'Login',
+			REGISTER: 'Register',
+			USERNAME: 'username',
+			PASSWORD: 'password',
+			EMAIL: 'email',
+			LOGIN_ACTION: 'Log in',
+			REGISTER_ACTION: 'Create account',
+			WRONG_LOGIN: 'Wrong user or password. Please, try again.',
+			WRONG_REGISTER: 'Wrong register data. Check it out, and try again, please.'
+		});
 	}
-})();
+}());
 
-(function() {
+(function () {
 	// English
 	angular.module('app').config(['$translateProvider', translate]);
 
 	function translate($translateProvider) {
-		$translateProvider.translations('es_es', 
-			{
-				HELLO: 'Hola',
-				WORLD: 'mundo',
+		$translateProvider.translations('es_es', {
+			HELLO: 'Hola',
+			WORLD: 'mundo',
 
-				LOADING: 'cargando...',
+			LOADING: 'cargando...',
 
-				LOGIN: 'Acceder',
-				REGISTER: 'Registro',
-				USERNAME: 'usuario',
-				PASSWORD: 'contraseña',
-				EMAIL: 'email',
-				LOGIN_ACTION: 'Entrar',
-				REGISTER_ACTION: 'Crear cuenta',
-				WRONG_LOGIN: 'Usuario o contraseña incorrectos. Inténtalo de nuevo, por favor.',
-				WRONG_REGISTER: 'Los datos de registro son incorrectos. Revísalos, e inténtalo de nuevo, por favor.'
-			}
-		);
+			LOGIN: 'Acceder',
+			REGISTER: 'Registro',
+			USERNAME: 'usuario',
+			PASSWORD: 'contraseña',
+			EMAIL: 'email',
+			LOGIN_ACTION: 'Entrar',
+			REGISTER_ACTION: 'Crear cuenta',
+			WRONG_LOGIN: 'Usuario o contraseña incorrectos. Inténtalo de nuevo, por favor.',
+			WRONG_REGISTER: 'Los datos de registro son incorrectos. Revísalos, e inténtalo de nuevo, por favor.'
+		});
 	}
-})();
+}());
 
-(function(){
+(function () {
 
 	angular.module('app')
 		.factory('api', ['$http', apiService]);
@@ -131,27 +127,27 @@
 				url: url
 			};
 
-			if(api.token !== '') {
+			if (api.token !== '') {
 				req.headers.authorization = 'Bearer ' + api.token;
 			}
 
-			if(type === 'POST' || type === 'DELETE' || type === 'PUT' || type === 'PATCH') {
+			if (type === 'POST' || type === 'DELETE' || type === 'PUT' || type === 'PATCH') {
 				req.headers['Content-Type'] = 'application/x-www-form-urlencoded';
 				req.transformRequest = transformRequest;
 				req.data = data;
 			}
 
 			return $http(req)
-				.then(function(r) {
+				.then(function (r) {
 					onSuccess(r, callback);
-				}).catch(function(r) {
+				}).catch(function (r) {
 					onError(r, callback);
 				});
 		}
 
 		function transformRequest(obj) {
 			var str = [];
-			for(var p in obj) {
+			for (var p in obj) {
 				str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));	
 			}
 			return str.join('&');
@@ -184,19 +180,16 @@
 			}
 		}
 
-		function setToken (token) {
+		function setToken(token) {
 			if(typeof(token) !== 'undefined') {
 				api.token = token;
 			}
 		}
-
-
+		
 	}
+}());
 
-	
-})();
-
-(function(){
+(function () {
 
 	angular.module('app')
 		.factory('session', ['api', sessionService]);
@@ -228,7 +221,7 @@
 			session.role = newSession.role || '';
 			session.verified = newSession.verified || false;
 
-			if(newSession.token) {
+			if (newSession.token) {
 				setToken(newSession.token, newSession);
 			}
 
@@ -274,9 +267,9 @@
 		}
 
 		function getSession() {
-			var localSession = JSON.parse( localStorage.getItem('session') );
+			var localSession = JSON.parse(localStorage.getItem('session'));
 
-			if(localSession !== null) {
+			if (localSession !== null) {
 				setSession(localSession);
 			} else {
 				console.warn('There was no session stored. Logout forzed.');
@@ -301,9 +294,9 @@
 	}
 
 	
-})();
+}());
 
-(function() {
+(function () {
 
 	angular.module('app').controller('LoginController', ['login', 'session', '$state', '$stateParams', '$translate', LoginController]);
 
@@ -324,7 +317,7 @@
 
 
 		// On Run...
-		if(session._id > 0) {
+		if (session._id > 0) {
 			console.log('Found a session! Redirecting...');
 			$state.go($stateParams.redirect || 'home');
 		}
@@ -332,7 +325,7 @@
 
 		// Internal functions
 		function submit() {
-			if(self.username !== '' && self.password !== '') {
+			if (self.username !== '' && self.password !== '') {
 				self.loading = true;
 				self.error = null;
 				console.log('Submiting...');
@@ -344,7 +337,7 @@
 
 		function success(result, data) {
 			self.loading = false;
-			if(result) {
+			if (result) {
 				console.log('Logged in! Redirecting...');
 				$state.go($stateParams.redirect || 'home');
 			} else {
@@ -355,9 +348,9 @@
 		}
 	}
 
-})();
+}());
 
-(function(){
+(function () {
 
 	angular.module('app')
 		.factory('login', ['api', 'session', loginService]);
@@ -383,11 +376,11 @@
 			};
 
 			login.pending = true;
-			return api.post(api.url + '/login', body, function(data, status) {
+			return api.post(api.url + '/login', body, function (data, status) {
 				login.pending = false;
 				var success = false;
 
-				if(status >= 400) {
+				if (status >= 400) {
 					console.error('Error while logging in');
 					success = false;
 				} else {
@@ -395,7 +388,7 @@
 					session.set(data);
 				}
 
-				if(typeof(cb) === 'function') {
+				if (typeof (cb) === 'function') {
 					cb(success, data);
 				} else {
 					console.warn('No callback specified for login.');
@@ -405,8 +398,8 @@
 
 	}
 
-})();
-(function() {
+}());
+(function () {
 
 	angular.module('app').controller('RegisterController', ['register', 'login', 'session', '$state', '$stateParams', '$translate', RegisterController]);
 
@@ -428,7 +421,7 @@
 
 
 		// On Run...
-		if(session._id > 0) {
+		if (session._id > 0) {
 			console.log('Found a session! Redirecting...');
 			$state.go($stateParams.redirect || 'home');
 		}
@@ -445,12 +438,12 @@
 		function success(result, data) {
 			console.log(data);
 			self.loading = false;
-			if(result) {
+			if (result) {
 				self.loading = true;
 				console.log('Registered! Logging in...');
-				login.login(self.username, self.password, function(success) {
+				login.login(self.username, self.password, function (success) {
 					self.loading = false;
-					if(success) {
+					if (success) {
 						$state.go($stateParams.redirect || 'home');
 					} else {
 						self.error = 'Login error. Please, try again...';
@@ -464,9 +457,9 @@
 		}
 	}
 
-})();
+}());
 
-(function(){
+(function () {
 
 	angular.module('app')
 		.factory('register', ['api', registerService]);
@@ -492,11 +485,11 @@
 			};
 
 			register.pending = true;
-			api.post(api.url + '/user', body, function(data, status) {
+			api.post(api.url + '/user', body, function (data, status) {
 				register.pending = false;
 				var success = true;
 
-				if(status >= 400) {
+				if (status >= 400) {
 					console.error('Error while registering');
 					success = false;
 				}
@@ -507,4 +500,4 @@
 
 	}
 
-})();
+}());
