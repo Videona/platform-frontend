@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var cleanCSS = require('gulp-clean-css');
 var webserver = require('gulp-webserver');
 var debug = require('gulp-debug');
 var concat = require('gulp-concat');
@@ -95,8 +96,11 @@ var source_sass = [
 gulp.task('sass', function () {
 	gulp.src(source_sass)
 		.pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
-//		.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-//		.pipe(sass().on('error', sass.logError))
 		.pipe(debug({title: 'Move SCSS:'}))
-		.pipe(gulp.dest('./dist/css/'));
+		.pipe(gulp.dest('./css/'));
+	
+	gulp.src('./css/**/**/**.css')
+    .pipe(cleanCSS({compatibility: 'ie8'}))
+    .pipe(concat('style.min.css'))
+    .pipe(gulp.dest('./dist/css'));
 });
