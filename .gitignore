@@ -64,3 +64,4 @@ typings/
 *ignore_*
 *gitignore_*
 *gi_*
+package-lock.json
