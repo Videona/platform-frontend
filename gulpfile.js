@@ -95,17 +95,25 @@ gulp.task('sass', function () {
 		.pipe(gulp.dest('./dist/css'));
 });
 
+/**
+ * 	Execute eslint code checker.
+ *	Autofix everyting eslint is able to. This can be prevented with --nofix
+ */
 gulp.task('lint', function () {
-	// ESLint ignores files with "node_modules" paths.
-	// So, it's best to have gulp ignore the directory as well.
-	// Also, Be sure to return the stream from the task;
-	// Otherwise, the task may end before the stream has finished.
+	var shallFix = process.argv.indexOf('--nofix') === -1;
+
 	return gulp.src(['./**/**.js', '!node_modules/**', '!./_**/**', '!./dist/**'])
-	// .pipe(eslint())
-		.pipe(eslint({ fix: true }))
+		// .pipe(eslint())
+		.pipe(eslint({ fix: shallFix }))
 		.pipe(eslint.format())
-		.pipe(gulp.dest('.'))	// <-- update original files
+		.pipe(gulp.dest('.'))	// Apply fixes to original files
 		.pipe(eslint.failAfterError());
+});
+
+gulp.task('aaa', function () {
+	console.log(process.argv);
+	var shallFix = process.argv.indexOf('--nofix') === -1;
+	console.log('fix: ', shallFix);
 });
 
 // Watch and build on change
