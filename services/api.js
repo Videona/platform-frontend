@@ -1,17 +1,15 @@
-(function(){
-
+(function () {
 	angular.module('app')
 		.factory('api', ['$http', apiService]);
 
 	function apiService($http) {
-
 		var api = {
 			url: 'http://localhost:3000',
 			token: '',
 			get: get,
 			post: post,
 			del: del,
-			setToken: setToken
+			setToken: setToken,
 		};
 
 		return api;
@@ -32,32 +30,36 @@
 			var req = {
 				method: type,
 				headers: {},
-				url: url
+				url: url,
 			};
 
-			if(api.token !== '') {
+			if (api.token !== '') {
 				req.headers.authorization = 'Bearer ' + api.token;
 			}
 
-			if(type === 'POST' || type === 'DELETE' || type === 'PUT' || type === 'PATCH') {
+			if (type === 'POST' || type === 'DELETE' || type === 'PUT' || type === 'PATCH') {
 				req.headers['Content-Type'] = 'application/x-www-form-urlencoded';
 				req.transformRequest = transformRequest;
 				req.data = data;
 			}
 
 			return $http(req)
-				.then(function(r) {
+				.then(function (r) {
 					onSuccess(r, callback);
-				}).catch(function(r) {
+				}).catch(function (r) {
 					onError(r, callback);
 				});
 		}
 
 		function transformRequest(obj) {
 			var str = [];
-			for(var p in obj) {
-				str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));	
+			var keys = Object.keys(obj);
+			var values = Object.values(obj);
+
+			for (let i = 0; i <= keys.length; i += 1) {
+				str.push(encodeURIComponent(keys[i]) + '=' + encodeURIComponent(values[i]));
 			}
+
 			return str.join('&');
 		}
 
@@ -68,7 +70,7 @@
 			var headers = response.headers;
 			var config = response.config;
 
-			if(typeof(callback) === 'function') {
+			if (typeof (callback) === 'function') {
 				callback(data, status, headers, config);
 			}
 		}
@@ -83,19 +85,15 @@
 
 			console.error('Error ' + status + ' in HTTP request');
 
-			if(typeof(callback) === 'function') {
+			if (typeof (callback) === 'function') {
 				callback(data, status, headers, config);
 			}
 		}
 
-		function setToken (token) {
-			if(typeof(token) !== 'undefined') {
+		function setToken(token) {
+			if (typeof (token) !== 'undefined') {
 				api.token = token;
 			}
 		}
-
-
 	}
-
-	
-})();
+}());
