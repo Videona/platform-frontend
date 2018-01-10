@@ -1,0 +1,43 @@
+/* eslint-env browser */
+
+{
+    "extends": "airbnb-base",
+    "parserOptions": {
+        "ecmaVersion": 5
+    },
+    "rules": {
+        "prefer-const": 2,
+        "space-before-function-paren": ["error", {
+            "anonymous": "always",
+            "named": "never",
+            "asyncArrow": "always"
+        }],
+        "prefer-spread": 0,
+        "prefer-template": 0,
+        "prefer-arrow-callback": 0,
+        "prefer-rest-params": 0,
+        "object-shorthand": 0,
+        "no-var": 0,
+        "template-curly-spacing": 0,
+        "no-console": 0,
+        "vars-on-top": 0,
+        "prefer-destructuring": 0,
+        "no-use-before-define": 0,
+        "func-names": 0,
+        "no-tabs": 0,
+        "indent": ["error", "tab"]
+    },
+    "env": {
+        "browser": true
+    },
+    "globals": {
+        "angular": false,
+        "jasmine": false,
+        "expect": false,
+        "register": false,
+        "inject": false,
+        "describe": false,
+        "it": false,
+        "beforeEach": false
+    }
+}
