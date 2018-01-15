@@ -1,5 +1,4 @@
-(function() {
-
+(function () {
 	angular.module('app').controller('LoginController', ['login', 'session', '$state', '$stateParams', '$translate', LoginController]);
 
 	function LoginController(login, session, $state, $stateParams, $translate) {
@@ -7,7 +6,7 @@
 
 		// Service binding
 		self.service = login;
-		
+
 		// Properties
 		self.username = '';
 		self.password = '';
@@ -19,7 +18,7 @@
 
 
 		// On Run...
-		if(session._id > 0) {
+		if (session.id > 0) {
 			console.log('Found a session! Redirecting...');
 			$state.go($stateParams.redirect || 'home');
 		}
@@ -27,7 +26,7 @@
 
 		// Internal functions
 		function submit() {
-			if(self.username !== '' && self.password !== '') {
+			if (self.username !== '' && self.password !== '') {
 				self.loading = true;
 				self.error = null;
 				console.log('Submiting...');
@@ -37,9 +36,9 @@
 			}
 		}
 
-		function success(result, data) {
+		function success(result) {	// , data) {
 			self.loading = false;
-			if(result) {
+			if (result) {
 				console.log('Logged in! Redirecting...');
 				$state.go($stateParams.redirect || 'home');
 			} else {
@@ -49,5 +48,4 @@
 			}
 		}
 	}
-
-})();
+}());
