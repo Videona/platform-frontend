@@ -81,15 +81,17 @@ gulp.task('build', ['js', 'html', 'tests', 'sass']);
 
 
 var sourceSass = [
+	'./**.scss',
 	'./pages/**/**.scss',
+	'./components/**/**.scss',
 ];
 gulp.task('sass', function () {
 	gulp.src(sourceSass)
 		.pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
 		.pipe(debug({ title: 'Move SCSS:' }))
-		.pipe(gulp.dest('./css/'));
+		.pipe(gulp.dest('./css'));
 
-	gulp.src('./css/**/**/**.css')
+	gulp.src('./css/**/**.css')
 		.pipe(cleanCSS({ compatibility: 'ie8' }))
 		.pipe(concat('style.min.css'))
 		.pipe(gulp.dest('./dist/css'));

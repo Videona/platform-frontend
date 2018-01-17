@@ -1,0 +1,101 @@
+html body {
+  font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+  font-size: 16px/1.4;
+  min-height: 100vh;
+  min-width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+.full-sized-bg-img {
+  background-color: #F14b51;
+  background-image: url("../../img/login-bg.jpg");
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+  height: 100%;
+  width: 100%;
+  display: table;
+}
+
+.vertical-middle {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.small-center-container {
+  width: 30vw;
+  min-width: 264px;
+  margin: auto;
+  margin-bottom: 64px;
+}
+
+#login img.header-logo {
+  margin: 64px 0;
+  width: 100%;
+}
+
+#login form {
+  text-align: center;
+}
+
+#login .input-group-two {
+  background-color: #fff;
+  border-radius: 5px;
+  display: inline-block;
+  max-width: 264px;
+  position: relative;
+}
+
+#login .input-group-two:before {
+  background-color: #B6B6B6;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  width: 90%;
+  position: absolute;
+  top: 39px;
+  left: 5%;
+}
+
+#login input {
+  border: inherit;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0;
+  padding: 11px 10px 11px 13px;
+  width: 100%;
+}
+
+#login input[type="submit"] {
+  border: auto;
+  margin-top: 16px;
+  max-width: 264px;
+}
+
+#login input.button-border {
+  border: 2px solid #fff;
+}
+
+.button-border {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button-border:hover {
+  background-color: #fff;
+  color: #F14b51;
+}
+
+.block-link {
+  display: inline-block;
+}
+
+#login .block-link {
+  margin: 32px 0;
+}

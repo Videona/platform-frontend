@@ -10,13 +10,12 @@
 
 		return login;
 
-
 		// Internal functions
 
 		function send(name, pass, cb) {
 			var body = {
-				name: name,
-				// email: name,
+				// name: name,
+				email: name,
 				password: pass,
 			};
 

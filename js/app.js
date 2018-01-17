@@ -34,7 +34,7 @@
 			})
 			.state('login', {
 				url: '/login?:redirect',
-				templateUrl: 'pages/login/view.html',
+				templateUrl: 'pages/login/login.view.html',
 			})
 			.state('register', {
 				url: '/register',
