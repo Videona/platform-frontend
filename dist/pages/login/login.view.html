@@ -9,13 +9,13 @@
 			<div ng-show="Login.error">{{Login.error}}</div>
 
 			<div class="input-group-two">
-				<input type="text" placeholder="{{'EMAIL' | translate }}" ng-model="Login.email">
+				<input type="text" placeholder="{{'EMAIL' | translate }}" ng-model="Login.username">
 				<input type="password" placeholder="{{'PASSWORD' | translate }}" ng-model="Login.password">
 			</div>
 
 			<input type="submit" value="{{'LOGIN_ACTION' | translate }}" class="button-border">
 
-			<a class="block-link">¿Has olvidado tu contraseña?</a>
+			<a class="block-link">{{'FORGOTTEN_PASSWORD' | translate }}</a>
 		</form>
 	</div>
 </div>
