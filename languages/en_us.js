@@ -11,9 +11,10 @@
 
 			LOGIN: 'Login',
 			REGISTER: 'Register',
-			USERNAME: 'username',
-			PASSWORD: 'password',
-			EMAIL: 'email',
+			USERNAME: 'Username',
+			PASSWORD: 'Password',
+			EMAIL: 'Email',
+			FORGOTTEN_PASSWORD: 'Forgotten password?',
 			LOGIN_ACTION: 'Log in',
 			REGISTER_ACTION: 'Create account',
 			WRONG_LOGIN: 'Wrong user or password. Please, try again.',
