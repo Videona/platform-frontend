@@ -436,10 +436,14 @@
 
 		// Internal functions
 		function submit() {
-			self.loading = true;
-			self.error = null;
-			console.log('Submiting...');
-			self.service.register(self.username, self.email, self.password, success);
+			if(self.username !== '' && self.password !== '') {
+				self.loading = true;
+				self.error = null;
+				console.log('Submiting...');
+				self.service.register(self.username, self.email, self.password, success);
+			} else {
+				self.error = $translate.instant('WRONG_REGISTER');
+			}
 		}
 
 		function success(result, data) {
