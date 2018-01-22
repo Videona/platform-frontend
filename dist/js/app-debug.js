@@ -1,6 +1,6 @@
 (function () {
 	// App
-	angular.module('app', ['ui.router', 'pascalprecht.translate'])
+	angular.module('app', ['ui.router', 'pascalprecht.translate', 'vcRecaptcha'])
 		.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', conf]);
 
 	function conf($stateProvider, $urlRouterProvider, $translateProvider) {
@@ -38,7 +38,11 @@
 			})
 			.state('register', {
 				url: '/register',
-				templateUrl: 'pages/register/view.html',
+				templateUrl: 'pages/register/register.view.html',
+			})
+			.state('terms', {
+				url: '/terms',
+				templateUrl: 'pages/terms/terms.view.html',
 			});
 	}
 }());
@@ -61,9 +65,16 @@
 			EMAIL: 'Email',
 			FORGOTTEN_PASSWORD: 'Forgotten password?',
 			LOGIN_ACTION: 'Log in',
-			REGISTER_ACTION: 'Create account',
+			REGISTER_ACTION: 'Register',
+			NEXT_ACTION: 'Next',
 			WRONG_LOGIN: 'Wrong user or password. Please, try again.',
 			WRONG_REGISTER: 'Wrong register data. Check it out, and try again, please.',
+			REGISTER_SLOGAN: 'Mobile Journalism app for Breaking\n the video editing barrier on mobile',
+			QUESTION_AGE: 'How old are you?',
+			ACCEPT_CONDITIONS_1: 'I\'ve read and I accept ',
+			CONDITIONS: 'the terms of service',
+			ACCEPT_CONDITIONS_2: ' of Vimojo',
+			COMPLETED: 'Ready!',
 		});
 	}
 }());
@@ -86,9 +97,16 @@
 			EMAIL: 'Correo electrónico',
 			FORGOTTEN_PASSWORD: '¿Has olvidado tu contraseña?',
 			LOGIN_ACTION: 'Inicia sesión',
-			REGISTER_ACTION: 'Crear cuenta',
+			REGISTER_ACTION: 'Regístrate',
+			NEXT_ACTION: 'Siguiente',
 			WRONG_LOGIN: 'Usuario o contraseña incorrectos. Inténtalo de nuevo, por favor.',
 			WRONG_REGISTER: 'Los datos de registro son incorrectos. Revísalos, e inténtalo de nuevo, por favor.',
+			REGISTER_SLOGAN: 'Mobile Journalism app for Breaking\n the video editing barrier on mobile',
+			QUESTION_AGE: '¿Cuántos años tienes?',
+			ACCEPT_CONDITIONS_1: 'He leído, entiendo y acepto ',
+			CONDITIONS: 'las condiciones del servicio',
+			ACCEPT_CONDITIONS_2: ' de Vimojo',
+			COMPLETED: '¡Listo!',
 		});
 	}
 }());
@@ -405,8 +423,15 @@
 		self.username = '';
 		self.email = '';
 		self.password = '';
+		self.age = '';
+		self.terms = false;
 		self.error = '';
 		self.loading = false;
+		self.status = {
+			register: true,
+			terms: false,
+			captcha: false,
+		};
 
 		// Methods
 		self.submit = submit;
@@ -421,7 +446,7 @@
 
 		// Internal functions
 		function submit() {
-			if(self.username !== '' && self.password !== '') {
+			if (self.username !== '' && self.password !== '') {
 				self.loading = true;
 				self.error = null;
 				console.log('Submiting...');

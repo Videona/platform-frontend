@@ -86,7 +86,7 @@ var sourceSass = [
 	'./components/**/**.scss',
 ];
 gulp.task('sass', function () {
-	gulp.src(sourceSass)
+	gulp.src('./sass/style.scss')
 		.pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
 		.pipe(debug({ title: 'Move SCSS:' }))
 		.pipe(gulp.dest('./css'));

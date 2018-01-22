@@ -1,0 +1,47 @@
+<div ng-controller="RegisterController as Register" class="register-page">
+	
+<!--	<div ng-show="Register.loading">{{'LOADING' | translate}}</div>-->
+	
+	<article>
+		<div class="register-logo">
+			<img src="../../img/brand/vimojo.svg" alt="vimojo_logo" />
+			<h2 ng-if="!Register.error"><pre>{{'REGISTER_SLOGAN' | translate}}</pre></h2>	
+		</div>
+
+		<section class="register-form">
+			<form>
+				<div ng-if="Register.status.register">
+					<input type="text" placeholder="{{'USERNAME' | translate }}" ng-model="Register.username">
+					<input type="text" placeholder="{{'EMAIL' | translate }}" ng-model="Register.email">
+					<input type="password" placeholder="{{'PASSWORD' | translate }}" ng-model="Register.password">
+				</div>
+				<div ng-if="Register.status.terms">
+					<input type="text" placeholder="{{'QUESTION_AGE' | translate }}" ng-model="Register.age">
+					<span>
+						<input type="checkbox" id="signup" ng-model="Register.terms">
+						<label for="signup">{{'ACCEPT_CONDITIONS_1' | translate}}<span>
+							<a ui-sref="terms" target="_blank">{{'CONDITIONS' | translate}}</a>
+						</span>{{'ACCEPT_CONDITIONS_2' | translate}}</label>
+					</span>
+				</div>
+				<div ng-if="Register.status.captcha" vc-recaptcha	key="6LednEEUAAAAAJFz43U2WKFWanBzymJoYyhu3t6X"></div>
+			</form>
+			<pre class="credentials-errors" ng-if="Register.error">{{Register.error}}</pre>
+			<button>
+				<span ng-if="Register.status.register">{{'REGISTER_ACTION' | translate }}</span>
+				<span ng-if="Register.status.terms">{{'NEXT_ACTION' | translate }}</span>
+				<span ng-if="Register.status.captcha">{{'COMPLETED' | translate }}</span>
+			</button>
+		</section>
+
+		<section class="mobile-apps">
+			<a href='https://play.google.com/store/apps/details?id=com.videonasocialmedia.vimojo.main' target="_blank">
+				<img alt='Get it on Google Play' src='../../img/googlePlay-bg.svg' />
+			</a>
+			<a href='https://itunes.apple.com/es/app/videona-editor-de-v%C3%ADdeo/id1127225544?mt=8' target="_blank">
+				<img alt="itunes_logo" src="../../img/iTunes-bg.png" />
+			</a>
+		</section>
+	</article>
+
+</div>

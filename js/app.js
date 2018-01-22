@@ -1,6 +1,6 @@
 (function () {
 	// App
-	angular.module('app', ['ui.router', 'pascalprecht.translate'])
+	angular.module('app', ['ui.router', 'pascalprecht.translate', 'vcRecaptcha'])
 		.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', conf]);
 
 	function conf($stateProvider, $urlRouterProvider, $translateProvider) {
@@ -38,7 +38,11 @@
 			})
 			.state('register', {
 				url: '/register',
-				templateUrl: 'pages/register/view.html',
+				templateUrl: 'pages/register/register.view.html',
+			})
+			.state('terms', {
+				url: '/terms',
+				templateUrl: 'pages/terms/terms.view.html',
 			});
 	}
 }());

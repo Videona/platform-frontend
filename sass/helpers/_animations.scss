@@ -1,0 +1,14 @@
+@-webkit-keyframes imageTranslation {
+	from { background-position-x: 35%; }
+	to { background-position-x: 78%; }
+}
+
+@-moz-keyframes imageTranslation {
+	from { background-position-x: 35%; }
+	to { background-position-x: 78%; }
+}
+
+@keyframes imageTranslation {
+	from { background-position-x: 35%; }
+	to { background-position-x: 78%; }
+}

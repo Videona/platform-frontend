@@ -11,8 +11,15 @@
 		self.username = '';
 		self.email = '';
 		self.password = '';
+		self.age = '';
+		self.terms = false;
 		self.error = '';
 		self.loading = false;
+		self.status = {
+			register: true,
+			terms: false,
+			captcha: false,
+		};
 
 		// Methods
 		self.submit = submit;
@@ -27,7 +34,7 @@
 
 		// Internal functions
 		function submit() {
-			if(self.username !== '' && self.password !== '') {
+			if (self.username !== '' && self.password !== '') {
 				self.loading = true;
 				self.error = null;
 				console.log('Submiting...');
