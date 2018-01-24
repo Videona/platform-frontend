@@ -20,7 +20,7 @@
 			NEXT_ACTION: 'Siguiente',
 			WRONG_LOGIN: 'Usuario o contraseña incorrectos. Inténtalo de nuevo, por favor.',
 			WRONG_REGISTER: 'Los datos de registro son incorrectos. Revísalos, e inténtalo de nuevo, por favor.',
-			REGISTER_SLOGAN: 'Mobile Journalism app for Breaking\n the video editing barrier on mobile',
+			REGISTER_SLOGAN: 'Aplicación de periodismo móvil\nRompiendo la barrera de edición en móvil.',
 			QUESTION_AGE: '¿Cuántos años tienes?',
 			ACCEPT_CONDITIONS_1: 'He leído, entiendo y acepto ',
 			CONDITIONS: 'las condiciones del servicio',
