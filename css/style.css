@@ -41,7 +41,7 @@
   }
 }
 
-.register-page, .register-page article, .register-form, .register-form form div, .mobile-apps, .home-buttons {
+.register-page, .register-page article, .register-form, .register-form form div, .register-form button span, .mobile-apps, .home-buttons {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -55,7 +55,7 @@
   flex-direction: column;
 }
 
-.register-page, .register-page article, .register-form form div {
+.register-page, .register-page article, .register-form form div, .register-form button span {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -moz-box-align: center;
@@ -63,7 +63,7 @@
   align-items: center;
 }
 
-.register-page, .register-page article {
+.register-page, .register-page article, .register-form button span {
   -webkit-justify-content: center;
   -webkit-box-pack: center;
   -moz-box-pack: center;
@@ -347,6 +347,12 @@ html body {
   overflow: hidden;
 }
 
+.register-form button span {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
 .credentials-errors {
   background-color: rgba(0, 0, 0, 0.7);
   -webkit-border-radius: 10px;
@@ -391,7 +397,7 @@ html body {
 }
 
 .home-buttons button:hover {
-  background-color: #d83030;
+  background-color: #f14b51;
   color: white;
 }
 

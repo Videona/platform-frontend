@@ -1,6 +1,6 @@
 <div ng-controller="RegisterController as Register" class="register-page">
 	
-<!--	<div ng-show="Register.loading">{{'LOADING' | translate}}</div>-->
+	<div ng-if="Register.loading">{{'LOADING' | translate}}</div>
 	
 	<article>
 		<div class="register-logo">
@@ -9,7 +9,7 @@
 		</div>
 
 		<section class="register-form">
-			<form>
+			<form name="form" novalidate>
 				<div ng-if="Register.status.register">
 					<input type="text" placeholder="{{'USERNAME' | translate }}" ng-model="Register.username">
 					<input type="text" placeholder="{{'EMAIL' | translate }}" ng-model="Register.email">
@@ -24,13 +24,13 @@
 						</span>{{'ACCEPT_CONDITIONS_2' | translate}}</label>
 					</span>
 				</div>
-				<div ng-if="Register.status.captcha" vc-recaptcha	key="6LednEEUAAAAAJFz43U2WKFWanBzymJoYyhu3t6X"></div>
+				<div ng-if="Register.status.captcha" class="g-recaptcha" data-sitekey="6LeELkIUAAAAACXrqJCDeOlCvvio78mgG2wj22ou"></div>
 			</form>
-			<pre class="credentials-errors" ng-if="Register.error">{{Register.error}}</pre>
+			<ul class="credentials-errors" ng-if="Register.error" ng-bind-html="Register.error | renderHTMLCorrectly"></ul>
 			<button>
-				<span ng-if="Register.status.register">{{'REGISTER_ACTION' | translate }}</span>
-				<span ng-if="Register.status.terms">{{'NEXT_ACTION' | translate }}</span>
-				<span ng-if="Register.status.captcha">{{'COMPLETED' | translate }}</span>
+				<span ng-if="Register.status.register" ng-click="Register.list1()">{{'REGISTER_ACTION' | translate }}</span>
+				<span ng-if="Register.status.terms" ng-click="Register.list2()">{{'NEXT_ACTION' | translate }}</span>
+				<span ng-if="Register.status.captcha" ng-click="Register.submit()">{{'COMPLETED' | translate }}</span>
 			</button>
 		</section>
 

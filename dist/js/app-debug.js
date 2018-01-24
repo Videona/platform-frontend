@@ -1,6 +1,6 @@
 (function () {
 	// App
-	angular.module('app', ['ui.router', 'pascalprecht.translate', 'vcRecaptcha'])
+	angular.module('app', ['ui.router', 'pascalprecht.translate'])
 		.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', conf]);
 
 	function conf($stateProvider, $urlRouterProvider, $translateProvider) {
@@ -75,6 +75,21 @@
 			CONDITIONS: 'the terms of service',
 			ACCEPT_CONDITIONS_2: ' of Vimojo',
 			COMPLETED: 'Ready!',
+			ERROR_USERNAME_EMPTY: 'The field username is empty.',
+			ERROR_USERNAME_MIN_LENGTH: 'The username is less than 5 characters long.',
+			ERROR_USERNAME_MAX_LENGTH: 'The username is longer than 30 characters long',
+			ERROR_USERNAME_ALREADY_IN_USE: 'The username is already in use. Try a new one.',
+			ERROR_PASSWORD_EMPTY: 'The field password is empty.',
+			ERROR_PASSWORD_MIN_LENGTH: 'The password is less than 5 characters long.',
+			ERROR_PASSWORD_MAX_LENGTH: 'The password is longer than 30 characters long',
+			ERROR_EMAIL_EMPTY: 'The field email is empty.',
+			ERROR_EMAIL_MIN_LENGTH: 'The email is less than 5 characters long.',
+			ERROR_EMAIL_MAX_LENGTH: 'The email is longer than 30 characters long',
+			ERROR_EMAIL_NOT_VALID: 'The email is not valid.',
+			ERROR_EMAIL_ALREADY_IN_USE: 'The email is already in use. Try a new one',
+			ERROR_AGE_EMPTY: 'The field age is empty',
+			ERROR_AGE_WRONG: 'The age must be valid',
+			ERROR_TERMS_EMPTY: 'You must accept the terms and conditions of the service',
 		});
 	}
 }());
@@ -107,6 +122,21 @@
 			CONDITIONS: 'las condiciones del servicio',
 			ACCEPT_CONDITIONS_2: ' de Vimojo',
 			COMPLETED: '¡Listo!',
+			ERROR_USERNAME_EMPTY: 'El nombre de usuario no puede estar vacío.',
+			ERROR_USERNAME_MIN_LENGTH: 'El nombre de usuario necesita ser mas largo.',
+			ERROR_USERNAME_MAX_LENGTH: 'El nombre de usuario necesita ser menos largo',
+			ERROR_USERNAME_ALREADY_IN_USE: 'El nombre de usuario ya está en uso. Prueba con uno nuevo.',
+			ERROR_PASSWORD_EMPTY: 'La contraseña no puede estar vacía.',
+			ERROR_PASSWORD_MIN_LENGTH: 'La contraseña necesita ser mas larga.',
+			ERROR_PASSWORD_MAX_LENGTH: 'La contraseña necesita ser menos larga.',
+			ERROR_EMAIL_EMPTY: 'El email no puede estar vacío.',
+			ERROR_EMAIL_MIN_LENGTH: 'El email necesita ser mas largo.',
+			ERROR_EMAIL_MAX_LENGTH: 'El email necesita ser menos largo.',
+			ERROR_EMAIL_NOT_VALID: 'El email no es válido.',
+			ERROR_EMAIL_ALREADY_IN_USE: 'El email ya está en uso. Prueba con uno nuevo.',
+			ERROR_AGE_EMPTY: 'La edad no puede estar vacía.',
+			ERROR_AGE_WRONG: 'La edad tiene que ser válida.',
+			ERROR_TERMS_EMPTY: 'Tienes que aceptar los términos y condiciones de uso.',
 		});
 	}
 }());
@@ -434,8 +464,9 @@
 		};
 
 		// Methods
+		self.list1 = list1;
+		self.list2 = list2;
 		self.submit = submit;
-
 
 		// On Run...
 		if (session.id > 0) {
@@ -443,17 +474,56 @@
 			$state.go($stateParams.redirect || 'home');
 		}
 
-
 		// Internal functions
+		function list1() {
+			self.loading = true;
+			self.error = null;
+			console.log('Verifying...');
+			validateSlide1(function (error, message) {
+				if (!error) {
+					self.service.validateUsernameAndEmail(self.username, self.email, pushList2);
+				} else {
+					self.error = message;
+					self.loading = false;
+				}
+			});
+		}
+
+		function list2() {
+			self.loading = true;
+			self.error = null;
+			console.log('Verifying...');
+			validateSlide2(function (error, message) {
+				if (!error) {
+					self.status.terms = false;
+					self.status.captcha = true;
+				} else {
+					self.error = message;
+				}
+				self.loading = false;
+			});
+		}
+
 		function submit() {
 			if (self.username !== '' && self.password !== '') {
 				self.loading = true;
 				self.error = null;
 				console.log('Submiting...');
-				self.service.register(self.username, self.email, self.password, success);
+				self.service.register(self.username, self.email, self.password, self.age, success);
 			} else {
 				self.error = $translate.instant('WRONG_REGISTER');
 			}
+		}
+
+		function pushList2(response, message) {
+			if (response) {
+				self.status.register = false;
+				self.error = null;
+				self.status.terms = true;
+			} else {
+				self.error = message;
+			}
+			self.loading = false;
 		}
 
 		function success(result) { // , data) {
@@ -475,6 +545,63 @@
 				self.error = $translate.instant('WRONG_REGISTER');
 			}
 		}
+
+		function validateSlide1(callback) {
+			var errors = '';
+			var EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+
+			if (self.username === '') {
+				errors += '<li>' + $translate.instant('ERROR_USERNAME_EMPTY') + '</li>';
+			} else if (self.username.length < 5) {
+				errors += '<li>' + $translate.instant('ERROR_USERNAME_MIN_LENGTH') + '</li>';
+			} else if (self.username.length > 30) {
+				errors += '<li>' + $translate.instant('ERROR_USERNAME_MAX_LENGTH') + '</li>';
+			}
+
+			if (self.password === '') {
+				errors += '<li>' + $translate.instant('ERROR_PASSWORD_EMPTY') + '</li>';
+			} else if (self.password.length < 5) {
+				errors += '<li>' + $translate.instant('ERROR_PASSWORD_MIN_LENGTH') + '</li>';
+			} else if (self.password.length > 30) {
+				errors += '<li>' + $translate.instant('ERROR_PASSWORD_MAX_LENGTH') + '</li>';
+			}
+
+			if (self.email === '') {
+				errors += '<li>' + $translate.instant('ERROR_EMAIL_EMPTY') + '</li>';
+			} else if (self.email.length < 5) {
+				errors += '<li>' + $translate.instant('ERROR_EMAIL_MIN_LENGTH') + '</li>';
+			} else if (self.email.length > 30) {
+				errors += '<li>' + $translate.instant('ERROR_EMAIL_MAX_LENGTH') + '</li>';
+			} else if (EMAIL_REGEXP.test(self.email) === false) {
+				errors += '<li>' + $translate.instant('ERROR_EMAIL_NOT_VALID') + '</li>';
+			}
+
+			if (errors === '') {
+				callback(false);
+			} else {
+				callback(true, errors);
+			}
+		}
+
+		function validateSlide2(callback) {
+			var errors = '';
+
+			if (self.age === '') {
+				errors += '<li>' + $translate.instant('ERROR_AGE_EMPTY') + '</li>';
+			} else if (isNaN(parseInt(self.age, 10)) || parseInt(self.age, 10) <= 0) {
+				errors += '<li>' + $translate.instant('ERROR_AGE_WRONG') + '</li>';
+			}
+
+			if (self.terms === false) {
+				errors += '<li>' + $translate.instant('ERROR_TERMS_EMPTY') + '</li>';
+			}
+
+			if (errors === '') {
+				callback(false);
+			} else {
+				callback(true, errors);
+			}
+		}
 	}
 }());
 
@@ -484,6 +611,7 @@
 
 	function registerService(api) {
 		var register = {
+			validateUsernameAndEmail: validateUsernameAndEmail,
 			register: send,
 			pending: false,
 		};
@@ -493,11 +621,12 @@
 
 		// Internal functions
 
-		function send(name, email, pass, cb) {
+		function send(name, email, pass, age, cb) {
 			var body = {
 				name: name,
 				email: email,
 				password: pass,
+				age: age,
 			};
 
 			register.pending = true;
@@ -511,6 +640,20 @@
 				}
 
 				cb(success, data);
+			});
+		}
+
+		function validateUsernameAndEmail(nickname, email, callback) {
+			api.get(api.url + '/user/exist?name=' + nickname + '&email=' + email, function (data, status) {
+				var success = true;
+
+				if (status >= 400) {
+					console.error('Error while registering');
+					success = false;
+				}
+
+				console.log(data, status);
+				callback(success, data);
 			});
 		}
 	}
