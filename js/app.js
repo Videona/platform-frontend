@@ -30,7 +30,7 @@
 		$stateProvider
 			.state('home', {
 				url: '/',
-				templateUrl: 'pages/home/view.html',
+				templateUrl: 'pages/home/home.view.html',
 			})
 			.state('login', {
 				url: '/login?:redirect',
