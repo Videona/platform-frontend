@@ -1,23 +1,24 @@
-(function() {
-
+(function () {
 	// App
 	angular.module('app', ['ui.router', 'pascalprecht.translate'])
 		.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', conf]);
 
 	function conf($stateProvider, $urlRouterProvider, $translateProvider) {
-
 		// Get browser lang and set this var
-		var lang = 'es_es';
 		var shortLang = navigator.language.split('-')[0];
+		var lang;
 
-		switch(shortLang){
-			case 'es':
+		switch (shortLang) {
+		case 'es':
 			lang = 'es_es';
 			break;
 
-			case 'en':
+		case 'en':
 			lang = 'en_us';
 			break;
+
+		default:
+			lang = 'es_es';
 		}
 
 		$translateProvider.useSanitizeValueStrategy('escape');
@@ -25,89 +26,133 @@
 
 		// Router configuration
 		$urlRouterProvider.otherwise('/');
-		
+
 		$stateProvider
 			.state('home', {
 				url: '/',
-				templateUrl: 'pages/home/view.html'
+				templateUrl: 'pages/home/view.html',
 			})
 			.state('login', {
 				url: '/login?:redirect',
-				templateUrl: 'pages/login/view.html'
+				templateUrl: 'pages/login/login.view.html',
 			})
 			.state('register', {
 				url: '/register',
-				templateUrl: 'pages/register/view.html'
+				templateUrl: 'pages/register/register.view.html',
+			})
+			.state('terms', {
+				url: '/terms',
+				templateUrl: 'pages/terms/terms.view.html',
 			});
 	}
-})();
+}());
 
-(function() {
+(function () {
 	// English
 	angular.module('app').config(['$translateProvider', translate]);
 
 	function translate($translateProvider) {
-		$translateProvider.translations('en_us', 
-			{
-				HELLO: 'Hello',
-				WORLD: 'world',
+		$translateProvider.translations('en_us', {
+			HELLO: 'Hello',
+			WORLD: 'world',
 
-				LOADING: 'loading...',
+			LOADING: 'loading...',
 
-				LOGIN: 'Login',
-				REGISTER: 'Register',
-				USERNAME: 'username',
-				PASSWORD: 'password',
-				EMAIL: 'email',
-				LOGIN_ACTION: 'Log in',
-				REGISTER_ACTION: 'Create account',
-				WRONG_LOGIN: 'Wrong user or password. Please, try again.',
-				WRONG_REGISTER: 'Wrong register data. Check it out, and try again, please.'
-			}
-		);
+			LOGIN: 'Login',
+			REGISTER: 'Register',
+			USERNAME: 'Username',
+			PASSWORD: 'Password',
+			EMAIL: 'Email',
+			FORGOTTEN_PASSWORD: 'Forgotten password?',
+			LOGIN_ACTION: 'Log in',
+			REGISTER_ACTION: 'Register',
+			NEXT_ACTION: 'Next',
+			WRONG_LOGIN: 'Wrong user or password. Please, try again.',
+			WRONG_REGISTER: 'Wrong register data. Check it out, and try again, please.',
+			REGISTER_SLOGAN: 'Mobile Journalism app for Breaking\n the video editing barrier on mobile',
+			QUESTION_AGE: 'How old are you?',
+			ACCEPT_CONDITIONS_1: 'I\'ve read and I accept ',
+			CONDITIONS: 'the terms of service',
+			ACCEPT_CONDITIONS_2: ' of Vimojo',
+			COMPLETED: 'Ready!',
+			ERROR_USERNAME_EMPTY: 'The field username is empty.',
+			ERROR_USERNAME_MIN_LENGTH: 'The username is less than 5 characters long.',
+			ERROR_USERNAME_MAX_LENGTH: 'The username is longer than 30 characters long',
+			ERROR_USERNAME_ALREADY_IN_USE: 'The username is already in use. Try a new one.',
+			ERROR_PASSWORD_EMPTY: 'The field password is empty.',
+			ERROR_PASSWORD_MIN_LENGTH: 'The password is less than 5 characters long.',
+			ERROR_PASSWORD_MAX_LENGTH: 'The password is longer than 30 characters long',
+			ERROR_EMAIL_EMPTY: 'The field email is empty.',
+			ERROR_EMAIL_MIN_LENGTH: 'The email is less than 5 characters long.',
+			ERROR_EMAIL_MAX_LENGTH: 'The email is longer than 30 characters long',
+			ERROR_EMAIL_NOT_VALID: 'The email is not valid.',
+			ERROR_EMAIL_ALREADY_IN_USE: 'The email is already in use. Try a new one',
+			ERROR_AGE_EMPTY: 'The field age is empty',
+			ERROR_AGE_WRONG: 'The age must be valid',
+			ERROR_TERMS_EMPTY: 'You must accept the terms and conditions of the service',
+		});
 	}
-})();
+}());
 
-(function() {
+(function () {
 	// English
 	angular.module('app').config(['$translateProvider', translate]);
 
 	function translate($translateProvider) {
-		$translateProvider.translations('es_es', 
-			{
-				HELLO: 'Hola',
-				WORLD: 'mundo',
+		$translateProvider.translations('es_es', {
+			HELLO: 'Hola',
+			WORLD: 'mundo',
 
-				LOADING: 'cargando...',
+			LOADING: 'cargando...',
 
-				LOGIN: 'Acceder',
-				REGISTER: 'Registro',
-				USERNAME: 'usuario',
-				PASSWORD: 'contraseña',
-				EMAIL: 'email',
-				LOGIN_ACTION: 'Entrar',
-				REGISTER_ACTION: 'Crear cuenta',
-				WRONG_LOGIN: 'Usuario o contraseña incorrectos. Inténtalo de nuevo, por favor.',
-				WRONG_REGISTER: 'Los datos de registro son incorrectos. Revísalos, e inténtalo de nuevo, por favor.'
-			}
-		);
+			LOGIN: 'Acceder',
+			REGISTER: 'Registro',
+			USERNAME: 'Usuario',
+			PASSWORD: 'Contraseña',
+			EMAIL: 'Correo electrónico',
+			FORGOTTEN_PASSWORD: '¿Has olvidado tu contraseña?',
+			LOGIN_ACTION: 'Inicia sesión',
+			REGISTER_ACTION: 'Regístrate',
+			NEXT_ACTION: 'Siguiente',
+			WRONG_LOGIN: 'Usuario o contraseña incorrectos. Inténtalo de nuevo, por favor.',
+			WRONG_REGISTER: 'Los datos de registro son incorrectos. Revísalos, e inténtalo de nuevo, por favor.',
+			REGISTER_SLOGAN: 'Aplicación de periodismo móvil\nRompiendo la barrera de edición en móvil.',
+			QUESTION_AGE: '¿Cuántos años tienes?',
+			ACCEPT_CONDITIONS_1: 'He leído, entiendo y acepto ',
+			CONDITIONS: 'las condiciones del servicio',
+			ACCEPT_CONDITIONS_2: ' de Vimojo',
+			COMPLETED: '¡Listo!',
+			ERROR_USERNAME_EMPTY: 'El nombre de usuario no puede estar vacío.',
+			ERROR_USERNAME_MIN_LENGTH: 'El nombre de usuario necesita ser mas largo.',
+			ERROR_USERNAME_MAX_LENGTH: 'El nombre de usuario necesita ser menos largo',
+			ERROR_USERNAME_ALREADY_IN_USE: 'El nombre de usuario ya está en uso. Prueba con uno nuevo.',
+			ERROR_PASSWORD_EMPTY: 'La contraseña no puede estar vacía.',
+			ERROR_PASSWORD_MIN_LENGTH: 'La contraseña necesita ser mas larga.',
+			ERROR_PASSWORD_MAX_LENGTH: 'La contraseña necesita ser menos larga.',
+			ERROR_EMAIL_EMPTY: 'El email no puede estar vacío.',
+			ERROR_EMAIL_MIN_LENGTH: 'El email necesita ser mas largo.',
+			ERROR_EMAIL_MAX_LENGTH: 'El email necesita ser menos largo.',
+			ERROR_EMAIL_NOT_VALID: 'El email no es válido.',
+			ERROR_EMAIL_ALREADY_IN_USE: 'El email ya está en uso. Prueba con uno nuevo.',
+			ERROR_AGE_EMPTY: 'La edad no puede estar vacía.',
+			ERROR_AGE_WRONG: 'La edad tiene que ser válida.',
+			ERROR_TERMS_EMPTY: 'Tienes que aceptar los términos y condiciones de uso.',
+		});
 	}
-})();
+}());
 
-(function(){
-
+(function () {
 	angular.module('app')
 		.factory('api', ['$http', apiService]);
 
 	function apiService($http) {
-
 		var api = {
 			url: 'http://localhost:3000',
 			token: '',
 			get: get,
 			post: post,
 			del: del,
-			setToken: setToken
+			setToken: setToken,
 		};
 
 		return api;
@@ -128,32 +173,36 @@
 			var req = {
 				method: type,
 				headers: {},
-				url: url
+				url: url,
 			};
 
-			if(api.token !== '') {
+			if (api.token !== '') {
 				req.headers.authorization = 'Bearer ' + api.token;
 			}
 
-			if(type === 'POST' || type === 'DELETE' || type === 'PUT' || type === 'PATCH') {
+			if (type === 'POST' || type === 'DELETE' || type === 'PUT' || type === 'PATCH') {
 				req.headers['Content-Type'] = 'application/x-www-form-urlencoded';
 				req.transformRequest = transformRequest;
 				req.data = data;
 			}
 
 			return $http(req)
-				.then(function(r) {
+				.then(function (r) {
 					onSuccess(r, callback);
-				}).catch(function(r) {
+				}).catch(function (r) {
 					onError(r, callback);
 				});
 		}
 
 		function transformRequest(obj) {
 			var str = [];
-			for(var p in obj) {
-				str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));	
+			var keys = Object.keys(obj);
+			var values = Object.values(obj);
+
+			for (let i = 0; i <= keys.length; i += 1) {
+				str.push(encodeURIComponent(keys[i]) + '=' + encodeURIComponent(values[i]));
 			}
+
 			return str.join('&');
 		}
 
@@ -164,7 +213,7 @@
 			var headers = response.headers;
 			var config = response.config;
 
-			if(typeof(callback) === 'function') {
+			if (typeof (callback) === 'function') {
 				callback(data, status, headers, config);
 			}
 		}
@@ -179,32 +228,26 @@
 
 			console.error('Error ' + status + ' in HTTP request');
 
-			if(typeof(callback) === 'function') {
+			if (typeof (callback) === 'function') {
 				callback(data, status, headers, config);
 			}
 		}
 
-		function setToken (token) {
-			if(typeof(token) !== 'undefined') {
+		function setToken(token) {
+			if (typeof (token) !== 'undefined') {
 				api.token = token;
 			}
 		}
-
-
 	}
+}());
 
-	
-})();
-
-(function(){
-
+(function () {
 	angular.module('app')
 		.factory('session', ['api', sessionService]);
 
 	function sessionService(api) {
-
 		var session = {
-			_id: -1,
+			id: -1,
 			name: '',
 			email: '',
 			role: '',
@@ -213,7 +256,7 @@
 			set: setSession,
 			get: getSession,
 			logout: logout,
-			save: save
+			save: save,
 		};
 
 		getSession();
@@ -222,13 +265,13 @@
 
 
 		function setSession(newSession) {
-			session._id = newSession._id || -1;
+			session.id = newSession.id || -1;
 			session.name = newSession.name || '';
 			session.email = newSession.email || '';
 			session.role = newSession.role || '';
 			session.verified = newSession.verified || false;
 
-			if(newSession.token) {
+			if (newSession.token) {
 				setToken(newSession.token, newSession);
 			}
 
@@ -249,17 +292,19 @@
 			// 	} else {
 			// 		savedSession = {};
 			// 	}
-			// } 
-			
+			// }
+
 			// savedSession.token = token;
 
 			// save(savedSession);
 			save();
 		}
 
-		function save(saveSession) {
+		function save(newSession) {
+			var saveSession = newSession;
+
 			// If not session param recieved, save the actual session service.
-			if(typeof(saveSession) === 'undefined') {
+			if (typeof (saveSession) === 'undefined') {
 				// Do both stringify and parse to clone instead of reference object.
 				saveSession = JSON.parse(JSON.stringify(session));
 
@@ -269,14 +314,14 @@
 				delete saveSession.logout;
 				delete saveSession.save;
 			}
-			
-			localStorage.setItem('session',  JSON.stringify(saveSession));
+
+			localStorage.setItem('session', JSON.stringify(saveSession));
 		}
 
 		function getSession() {
-			var localSession = JSON.parse( localStorage.getItem('session') );
+			var localSession = JSON.parse(localStorage.getItem('session'));
 
-			if(localSession !== null) {
+			if (localSession !== null) {
 				setSession(localSession);
 			} else {
 				console.warn('There was no session stored. Logout forzed.');
@@ -285,11 +330,10 @@
 		}
 
 		function logout() {
-
 			console.warn('Clossing session...');
-			
+
 			// Reset the session data
-			session._id = -1;
+			session.id = -1;
 			session.name = '';
 			session.email = '';
 			session.role = '';
@@ -297,14 +341,10 @@
 
 			localStorage.removeItem('session');
 		}
-
 	}
+}());
 
-	
-})();
-
-(function() {
-
+(function () {
 	angular.module('app').controller('LoginController', ['login', 'session', '$state', '$stateParams', '$translate', LoginController]);
 
 	function LoginController(login, session, $state, $stateParams, $translate) {
@@ -312,7 +352,7 @@
 
 		// Service binding
 		self.service = login;
-		
+
 		// Properties
 		self.username = '';
 		self.password = '';
@@ -324,7 +364,7 @@
 
 
 		// On Run...
-		if(session._id > 0) {
+		if (session.id > 0) {
 			console.log('Found a session! Redirecting...');
 			$state.go($stateParams.redirect || 'home');
 		}
@@ -332,7 +372,7 @@
 
 		// Internal functions
 		function submit() {
-			if(self.username !== '' && self.password !== '') {
+			if (self.username !== '' && self.password !== '') {
 				self.loading = true;
 				self.error = null;
 				console.log('Submiting...');
@@ -342,9 +382,9 @@
 			}
 		}
 
-		function success(result, data) {
+		function success(result) {	// , data) {
 			self.loading = false;
-			if(result) {
+			if (result) {
 				console.log('Logged in! Redirecting...');
 				$state.go($stateParams.redirect || 'home');
 			} else {
@@ -354,40 +394,35 @@
 			}
 		}
 	}
+}());
 
-})();
-
-(function(){
-
+(function () {
 	angular.module('app')
 		.factory('login', ['api', 'session', loginService]);
 
 	function loginService(api, session) {
-
 		var login = {
 			login: send,
-			pending: false
+			pending: false,
 		};
 
 		return login;
 
-
 		// Internal functions
 
 		function send(name, pass, cb) {
-			
 			var body = {
-				name: name,
-				// email: name,
-				password: pass
+				// name: name,
+				email: name,
+				password: pass,
 			};
 
 			login.pending = true;
-			return api.post(api.url + '/login', body, function(data, status) {
+			return api.post(api.url + '/login', body, function (data, status) {
 				login.pending = false;
 				var success = false;
 
-				if(status >= 400) {
+				if (status >= 400) {
 					console.error('Error while logging in');
 					success = false;
 				} else {
@@ -395,19 +430,17 @@
 					session.set(data);
 				}
 
-				if(typeof(cb) === 'function') {
+				if (typeof (cb) === 'function') {
 					cb(success, data);
 				} else {
 					console.warn('No callback specified for login.');
 				}
 			});
 		}
-
 	}
+}());
 
-})();
-(function() {
-
+(function () {
 	angular.module('app').controller('RegisterController', ['register', 'login', 'session', '$state', '$stateParams', '$translate', RegisterController]);
 
 	function RegisterController(register, login, session, $state, $stateParams, $translate) {
@@ -415,46 +448,92 @@
 
 		// Service binding
 		self.service = register;
-		
+
 		// Properties
 		self.username = '';
 		self.email = '';
 		self.password = '';
+		self.age = '';
+		self.terms = false;
 		self.error = '';
 		self.loading = false;
+		self.status = {
+			register: true,
+			terms: false,
+			captcha: false,
+		};
 
 		// Methods
+		self.list1 = list1;
+		self.list2 = list2;
 		self.submit = submit;
 
-
 		// On Run...
-		if(session._id > 0) {
+		if (session.id > 0) {
 			console.log('Found a session! Redirecting...');
 			$state.go($stateParams.redirect || 'home');
 		}
 
-
 		// Internal functions
+		function list1() {
+			self.loading = true;
+			self.error = null;
+			console.log('Verifying...');
+			validateSlide1(function (error, message) {
+				if (!error) {
+					self.service.validateUsernameAndEmail(self.username, self.email, pushList2);
+				} else {
+					self.error = message;
+					self.loading = false;
+				}
+			});
+		}
+
+		function list2() {
+			self.loading = true;
+			self.error = null;
+			console.log('Verifying...');
+			validateSlide2(function (error, message) {
+				if (!error) {
+					self.status.terms = false;
+					self.status.captcha = true;
+				} else {
+					self.error = message;
+				}
+				self.loading = false;
+			});
+		}
+
 		function submit() {
-			if(self.username !== '' && self.password !== '') {
+			if (self.username !== '' && self.password !== '') {
 				self.loading = true;
 				self.error = null;
 				console.log('Submiting...');
-				self.service.register(self.username, self.email, self.password, success);
+				self.service.register(self.username, self.email, self.password, self.age, success);
 			} else {
 				self.error = $translate.instant('WRONG_REGISTER');
 			}
 		}
 
-		function success(result, data) {
-			console.log(data);
+		function pushList2(response, message) {
+			if (response) {
+				self.status.register = false;
+				self.error = null;
+				self.status.terms = true;
+			} else {
+				self.error = message;
+			}
 			self.loading = false;
-			if(result) {
+		}
+
+		function success(result) { // , data) {
+			self.loading = false;
+			if (result) {
 				self.loading = true;
 				console.log('Registered! Logging in...');
-				login.login(self.username, self.password, function(success) {
+				login.login(self.username, self.password, function (loginResult) {
 					self.loading = false;
-					if(success) {
+					if (loginResult) {
 						$state.go($stateParams.redirect || 'home');
 					} else {
 						self.error = 'Login error. Please, try again...';
@@ -466,20 +545,75 @@
 				self.error = $translate.instant('WRONG_REGISTER');
 			}
 		}
+
+		function validateSlide1(callback) {
+			var errors = '';
+			var EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+
+			if (self.username === '') {
+				errors += '<li>' + $translate.instant('ERROR_USERNAME_EMPTY') + '</li>';
+			} else if (self.username.length < 5) {
+				errors += '<li>' + $translate.instant('ERROR_USERNAME_MIN_LENGTH') + '</li>';
+			} else if (self.username.length > 30) {
+				errors += '<li>' + $translate.instant('ERROR_USERNAME_MAX_LENGTH') + '</li>';
+			}
+
+			if (self.password === '') {
+				errors += '<li>' + $translate.instant('ERROR_PASSWORD_EMPTY') + '</li>';
+			} else if (self.password.length < 5) {
+				errors += '<li>' + $translate.instant('ERROR_PASSWORD_MIN_LENGTH') + '</li>';
+			} else if (self.password.length > 30) {
+				errors += '<li>' + $translate.instant('ERROR_PASSWORD_MAX_LENGTH') + '</li>';
+			}
+
+			if (self.email === '') {
+				errors += '<li>' + $translate.instant('ERROR_EMAIL_EMPTY') + '</li>';
+			} else if (self.email.length < 5) {
+				errors += '<li>' + $translate.instant('ERROR_EMAIL_MIN_LENGTH') + '</li>';
+			} else if (self.email.length > 30) {
+				errors += '<li>' + $translate.instant('ERROR_EMAIL_MAX_LENGTH') + '</li>';
+			} else if (EMAIL_REGEXP.test(self.email) === false) {
+				errors += '<li>' + $translate.instant('ERROR_EMAIL_NOT_VALID') + '</li>';
+			}
+
+			if (errors === '') {
+				callback(false);
+			} else {
+				callback(true, errors);
+			}
+		}
+
+		function validateSlide2(callback) {
+			var errors = '';
+
+			if (self.age === '') {
+				errors += '<li>' + $translate.instant('ERROR_AGE_EMPTY') + '</li>';
+			} else if (isNaN(parseInt(self.age, 10)) || parseInt(self.age, 10) <= 0) {
+				errors += '<li>' + $translate.instant('ERROR_AGE_WRONG') + '</li>';
+			}
+
+			if (self.terms === false) {
+				errors += '<li>' + $translate.instant('ERROR_TERMS_EMPTY') + '</li>';
+			}
+
+			if (errors === '') {
+				callback(false);
+			} else {
+				callback(true, errors);
+			}
+		}
 	}
+}());
 
-})();
-
-(function(){
-
+(function () {
 	angular.module('app')
 		.factory('register', ['api', registerService]);
 
 	function registerService(api) {
-
 		var register = {
+			validateUsernameAndEmail: validateUsernameAndEmail,
 			register: send,
-			pending: false
+			pending: false,
 		};
 
 		return register;
@@ -487,20 +621,20 @@
 
 		// Internal functions
 
-		function send(name, email, pass, cb) {
-			
+		function send(name, email, pass, age, cb) {
 			var body = {
 				name: name,
 				email: email,
-				password: pass
+				password: pass,
+				age: age,
 			};
 
 			register.pending = true;
-			api.post(api.url + '/user', body, function(data, status) {
+			api.post(api.url + '/user', body, function (data, status) {
 				register.pending = false;
 				var success = true;
 
-				if(status >= 400) {
+				if (status >= 400) {
 					console.error('Error while registering');
 					success = false;
 				}
@@ -509,6 +643,18 @@
 			});
 		}
 
-	}
+		function validateUsernameAndEmail(nickname, email, callback) {
+			api.get(api.url + '/user/exist?name=' + nickname + '&email=' + email, function (data, status) {
+				var success = true;
 
-})();
+				if (status >= 400) {
+					console.error('Error while registering');
+					success = false;
+				}
+
+				console.log(data, status);
+				callback(success, data);
+			});
+		}
+	}
+}());

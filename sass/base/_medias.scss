@@ -1,0 +1,39 @@
+$mobile-width: 320px;
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+@mixin mobileQueryPortrait {
+	@media (max-width: #{$tablet-width - 1px}) and (orientation: portrait) {
+		@content;
+	}
+}
+
+@mixin mobileQueryLandscape {
+	@media (max-width: #{$tablet-width - 1px}) and (orientation: landscape) {
+		@content;
+	}
+}
+
+@mixin tabletQueryPortrait {
+	@media (max-width: #{$desktop-width - 1px}) and (orientation: portrait) {
+		@content;
+	}
+}
+
+@mixin tabletQueryLandscape {
+	@media (max-width: #{$desktop-width - 1px}) and (orientation: landscape) {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media (min-width: #{$desktop-width}) {
+		@content;
+	}
+}
+
+@mixin keyboard {
+	@media (min-aspect-ratio: 6/7) {
+		@content;
+	}
+}

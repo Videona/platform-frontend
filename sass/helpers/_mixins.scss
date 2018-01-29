@@ -1,0 +1,56 @@
+@mixin linear-gradient($from, $to) {
+  background-image: linear-gradient($from, $to);
+}
+
+@mixin video-prop ($v-width: $VCwidth, $aux: 0) {
+  width: $v-width;
+  height: $v-width + $aux;
+  background-color: #d9d9d9;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin border-radius-full($radius-top, $radius-right, $radius-bottom, $radius-left) {
+  -webkit-border-radius: $radius-top $radius-right $radius-bottom $radius-left;
+  -ms-border-radius: $radius-top $radius-right $radius-bottom $radius-left;
+  border-radius: $radius-top $radius-right $radius-bottom $radius-left;
+  @include media(SM) {
+    -webkit-border-radius: $radius-top+1px $radius-right+1px $radius-bottom+1px $radius-left+1px;
+    -ms-border-radius: $radius-top+1px $radius-right+1px $radius-bottom+1px $radius-left+1px;
+    border-radius: $radius-top+1px $radius-right+1px $radius-bottom+1px $radius-left+1px;
+  }
+}
+
+@mixin flex-order($order) {
+  -webkit-order: $order;
+  -ms-flex-order: $order;
+  order: $order
+}
+
+@mixin gradient-bottom-top($color1, $alpha1, $color2, $alpha2) {
+  background: $color1;
+  background: -moz-linear-gradient(top, $color1 $alpha1, $color2 $alpha2);
+  background: -webkit-gradient(left top, left bottom, color-stop($alpha1, $color1), color-stop($alpha2, $color2));
+  background: -webkit-linear-gradient(top, $color1 $alpha1, $color2 $alpha2);
+  background: -o-linear-gradient(top, $color1 $alpha1, $color2 $alpha2);
+  background: -ms-linear-gradient(top, $color1 $alpha1, $color2 $alpha2);
+  background: linear-gradient(to bottom, $color1 $alpha1, $color2 $alpha2);
+}
+
+@mixin image-container($size){
+  .image-container{
+  overflow: hidden;
+  @extend %center-element;
+  height: $size;
+  width: $size;
+  border-radius: $size/2;
+  img{
+    width: 100%;
+  }
+  }
+}
+

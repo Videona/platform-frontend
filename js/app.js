@@ -30,15 +30,19 @@
 		$stateProvider
 			.state('home', {
 				url: '/',
-				templateUrl: 'pages/home/view.html',
+				templateUrl: 'pages/home/home.view.html',
 			})
 			.state('login', {
 				url: '/login?:redirect',
-				templateUrl: 'pages/login/view.html',
+				templateUrl: 'pages/login/login.view.html',
 			})
 			.state('register', {
 				url: '/register',
-				templateUrl: 'pages/register/view.html',
+				templateUrl: 'pages/register/register.view.html',
+			})
+			.state('terms', {
+				url: '/terms',
+				templateUrl: 'pages/terms/terms.view.html',
 			});
 	}
 }());
