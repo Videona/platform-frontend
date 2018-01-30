@@ -22,7 +22,7 @@ describe('RegisterController', function() {
 	};
 
 	var RegisterServiceMock = {
-		register: function(user, email, pass, cb) {
+		register: function(user, email, pass, age, cb) {
 			setTimeout(function() {
 				if(user === _USER && email === _EMAIL && pass === _PASS) {
 					cb(true);

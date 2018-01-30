@@ -240,7 +240,7 @@ describe('RegisterController', function() {
 	};
 
 	var RegisterServiceMock = {
-		register: function(user, email, pass, cb) {
+		register: function(user, email, pass, age, cb) {
 			setTimeout(function() {
 				if(user === _USER && email === _EMAIL && pass === _PASS) {
 					cb(true);
@@ -443,7 +443,7 @@ describe('Register service', function() {
 		});
 
 		it('should execute callback when register finish', function() {
-			register.register(undefined, undefined, undefined, callback);
+			register.register(undefined, undefined, undefined, undefined, callback);
 			expect(callback).not.toHaveBeenCalled();
 			// wait for it...
 			jasmine.clock().tick(101);
@@ -461,12 +461,12 @@ describe('Register service', function() {
 		});
 
 		it('should turn true on register() send', function() {
-			register.register(undefined, undefined, undefined, callback);
+			register.register(undefined, undefined, undefined, undefined, callback);
 			expect(register.pending).toEqual(true);
 		});
 
 		it('should go back to false on response recieved', function() {
-			register.register(undefined, undefined, undefined, callback);
+			register.register(undefined, undefined, undefined, undefined, callback);
 			expect(callback).not.toHaveBeenCalled();
 			// wait for it...
 			jasmine.clock().tick(101);

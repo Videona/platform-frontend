@@ -55,6 +55,12 @@
 				if (!error) {
 					self.status.terms = false;
 					self.status.captcha = true;
+
+					var element = document.getElementById('recaptcha');
+					console.log(element)
+					console.log(typeof element)
+
+					grecaptcha.render(element);
 				}
 			});
 		}
@@ -86,7 +92,7 @@
 				self.loading = true;
 				// console.log('Registered! Logging in...');
 
-				login.login(self.username, self.password, function (loginResult) {
+				login.login(self.email, self.password, function (loginResult) {
 					self.loading = false;
 					if (loginResult) {
 						$state.go($stateParams.redirect || 'home');
