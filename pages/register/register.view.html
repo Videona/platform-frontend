@@ -11,13 +11,13 @@
 
 			<form name="form" novalidate>
 
-				<div ng-show="Register.status.register">
+				<div ng-show="Register.activeView.credentials">
 					<input type="text" placeholder="{{'USERNAME' | translate }}" ng-model="Register.username">
 					<input type="text" placeholder="{{'EMAIL' | translate }}" ng-model="Register.email">
 					<input type="password" placeholder="{{'PASSWORD' | translate }}" ng-model="Register.password">
 				</div>
 
-				<div ng-show="Register.status.terms">
+				<div ng-show="Register.activeView.terms">
 					<div id="recaptcha" class="g-recaptcha" data-sitekey="6LfKYUMUAAAAAHza4xAfzQ7FHCpKy1Nbz5TBj7GM" render="explicit"></div>
 					<span>
 						<input type="checkbox" id="signup" ng-model="Register.terms" required="required">
@@ -35,8 +35,8 @@
 			</ul>
 
 			<button>
-				<span ng-if="Register.status.register" ng-click="Register.list1()">{{'REGISTER_ACTION' | translate }}</span>
-				<span ng-if="Register.status.terms" ng-click="Register.submit()">{{'COMPLETED' | translate }}</span>
+				<span ng-if="Register.activeView.credentials" ng-click="Register.validateRegister()">{{'REGISTER_ACTION' | translate }}</span>
+				<span ng-if="Register.activeView.terms" ng-click="Register.submit()">{{'COMPLETED' | translate }}</span>
 			</button>
 
 		</section>
