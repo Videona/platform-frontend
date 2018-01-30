@@ -23,7 +23,6 @@
 
 		// Methods
 		self.list1 = list1;
-		self.list2 = list2;
 		self.submit = submit;
 
 		// On Run...
@@ -46,25 +45,6 @@
 			});
 		}
 
-		function list2() {
-			self.loading = true;
-
-			validateSlide2(function (error) {
-				self.loading = false;
-				
-				if (!error) {
-					self.status.terms = false;
-					self.status.captcha = true;
-
-					var element = document.getElementById('recaptcha');
-					console.log(element)
-					console.log(typeof element)
-
-					grecaptcha.render(element);
-				}
-			});
-		}
-
 		function submit() {
 			
 			self.error = [];
@@ -83,6 +63,8 @@
 			if (response) {
 				self.status.register = false;
 				self.status.terms = true;
+
+				grecaptcha.render(document.getElementById('recaptcha'));
 			}
 		}
 
