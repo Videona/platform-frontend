@@ -1,0 +1,11 @@
+<div ng-controller="VideoDownloadController as VideoDownload">
+	YEEEEEPALE!! {{VideoDownload.id}}
+
+	<div>
+		{{VideoDownload.video.data.title}}
+		{{VideoDownload.video.data.description}}
+	</div>
+
+	<input type="text" ng-model="VideoDownload.code">
+	<a ng-click="VideoDownload.download()" target="_blank">Download</a>
+</div>
