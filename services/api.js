@@ -6,6 +6,7 @@
 		var api = {
 			url: 'http://localhost:3000',
 			token: '',
+			download: download,
 			get: get,
 			post: post,
 			del: del,
@@ -48,6 +49,49 @@
 					onSuccess(r, callback);
 				}).catch(function (r) {
 					onError(r, callback);
+				});
+		}
+
+		function download(url, callback) {
+
+			var req = {
+				method: 'GET',
+				headers: {},
+				url: url,
+				responseType: 'arraybuffer'
+			};
+
+			if (api.token !== '') {
+				req.headers.authorization = 'Bearer ' + api.token;
+			}
+
+			return $http(req)
+				.then(function (response) {
+					var data = response.data;
+					var headers = response.headers();
+					var filename = headers['x-filename'];
+					var contentType = headers['content-type'];
+			 
+					var linkElement = document.createElement('a');
+					try {
+						var blob = new Blob([data], { type: contentType });
+						var url = window.URL.createObjectURL(blob);
+		
+						linkElement.setAttribute('href', url);
+						linkElement.setAttribute('download', filename);
+
+						var clickEvent = new MouseEvent('click', {
+							'view': window,
+							'bubbles': true,
+							'cancelable': false
+						});
+						linkElement.dispatchEvent(clickEvent);
+					} catch (ex) {
+						console.log(ex);
+					}
+					onSuccess(response, callback);
+				}).catch(function (response) {
+					onError(response, callback);
 				});
 		}
 
