@@ -19,7 +19,7 @@
 
 		self.activeView = {
 			credentials: true,
-			terms: false
+			terms: false,
 		};
 
 		// Methods
@@ -50,7 +50,7 @@
 			self.error = [];
 
 			validateTerms(function (isValid) {
-				if(isValid) {			
+				if (isValid) {
 					if (self.username !== '' && self.password !== '') {
 						self.loading = true;
 						self.service.register(self.username, self.email, self.password, self.age, success);
@@ -63,12 +63,12 @@
 
 		function showCaptchaAndTermsView(response) {
 			self.loading = false;
-			
+
 			if (response) {
 				self.activeView.credentials = false;
 				self.activeView.terms = true;
 
-				grecaptcha.render(document.getElementById('recaptcha'));
+				window.grecaptcha.render(document.getElementById('recaptcha'));
 			} else {
 				self.error.push($translate.instant('ERROR_EMAIL_ALREADY_IN_USE'));
 			}
@@ -141,7 +141,7 @@
 			// 	self.error.push($translate.instant('ERROR_AGE_WRONG'));
 			// }
 
-			var captchaResponse = grecaptcha.getResponse();
+			var captchaResponse = window.grecaptcha.getResponse();
 
 			if (!self.terms) {
 				self.error.push($translate.instant('ERROR_TERMS_EMPTY'));
