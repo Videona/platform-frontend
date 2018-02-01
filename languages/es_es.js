@@ -41,6 +41,7 @@
 			ERROR_AGE_EMPTY: 'La edad no puede estar vacía.',
 			ERROR_AGE_WRONG: 'La edad tiene que ser válida.',
 			ERROR_TERMS_EMPTY: 'Tienes que aceptar los términos y condiciones de uso.',
+			ERROR_RECAPTCHA_NOT_CHECKED: 'En esta aplicación solo aceptamos humanos ¿Acaso eres un robot?',
 		});
 	}
 }());

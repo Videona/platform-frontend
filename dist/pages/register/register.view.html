@@ -11,23 +11,21 @@
 
 			<form name="form" novalidate>
 
-				<div ng-show="Register.status.register">
+				<div ng-show="Register.activeView.credentials">
 					<input type="text" placeholder="{{'USERNAME' | translate }}" ng-model="Register.username">
 					<input type="text" placeholder="{{'EMAIL' | translate }}" ng-model="Register.email">
 					<input type="password" placeholder="{{'PASSWORD' | translate }}" ng-model="Register.password">
 				</div>
 
-				<div ng-show="Register.status.terms">
-					<input type="text" placeholder="{{'QUESTION_AGE' | translate }}" ng-model="Register.age">
+				<div ng-show="Register.activeView.terms">
+					<div id="recaptcha" class="g-recaptcha" data-sitekey="6LfKYUMUAAAAAHza4xAfzQ7FHCpKy1Nbz5TBj7GM" render="explicit"></div>
 					<span>
-						<input type="checkbox" id="signup" ng-model="Register.terms">
+						<input type="checkbox" id="signup" ng-model="Register.terms" required="required">
 						<label for="signup">{{'ACCEPT_CONDITIONS_1' | translate}}<span>
 							<a ui-sref="terms" target="_blank">{{'CONDITIONS' | translate}}</a>
 						</span>{{'ACCEPT_CONDITIONS_2' | translate}}</label>
 					</span>
 				</div>
-
-				<div id="recaptcha" ng-show="Register.status.captcha" class="g-recaptcha" data-sitekey="6LfKYUMUAAAAAHza4xAfzQ7FHCpKy1Nbz5TBj7GM" render="explicit"></div>
 
 			</form>
 
@@ -37,9 +35,8 @@
 			</ul>
 
 			<button>
-				<span ng-if="Register.status.register" ng-click="Register.list1()">{{'REGISTER_ACTION' | translate }}</span>
-				<span ng-if="Register.status.terms" ng-click="Register.list2()">{{'NEXT_ACTION' | translate }}</span>
-				<span ng-if="Register.status.captcha" ng-click="Register.submit()">{{'COMPLETED' | translate }}</span>
+				<span ng-if="Register.activeView.credentials" ng-click="Register.validateRegister()">{{'REGISTER_ACTION' | translate }}</span>
+				<span ng-if="Register.activeView.terms" ng-click="Register.submit()">{{'COMPLETED' | translate }}</span>
 			</button>
 
 		</section>

@@ -90,6 +90,7 @@
 			ERROR_AGE_EMPTY: 'The field age is empty',
 			ERROR_AGE_WRONG: 'The age must be valid',
 			ERROR_TERMS_EMPTY: 'You must accept the terms and conditions of the service',
+			ERROR_RECAPTCHA_NOT_CHECKED: 'This app only is able to be used by humans. Aren\'t you human?',
 		});
 	}
 }());
@@ -137,6 +138,7 @@
 			ERROR_AGE_EMPTY: 'La edad no puede estar vacía.',
 			ERROR_AGE_WRONG: 'La edad tiene que ser válida.',
 			ERROR_TERMS_EMPTY: 'Tienes que aceptar los términos y condiciones de uso.',
+			ERROR_RECAPTCHA_NOT_CHECKED: 'En esta aplicación solo aceptamos humanos ¿Acaso eres un robot?',
 		});
 	}
 }());
@@ -455,17 +457,17 @@
 		self.password = '';
 		self.age = '';
 		self.terms = false;
+
 		self.error = [];
 		self.loading = false;
-		self.status = {
-			register: true,
+
+		self.activeView = {
+			credentials: true,
 			terms: false,
-			captcha: false,
 		};
 
 		// Methods
-		self.list1 = list1;
-		self.list2 = list2;
+		self.validateRegister = validateRegister;
 		self.submit = submit;
 
 		// On Run...
@@ -475,56 +477,44 @@
 		}
 
 		// Internal functions
-		function list1() {
+		function validateRegister() {
 			self.loading = true;
 			self.error = null;
 
-			validateSlide1(function (error) {
+			validateUserCredentials(function (error) {
 				if (!error) {
-					self.service.validateUsernameAndEmail(self.username, self.email, pushList2);
+					self.service.validateUsernameAndEmail(self.username, self.email, showCaptchaAndTermsView);
 				} else {
 					self.loading = false;
 				}
 			});
 		}
 
-		function list2() {
-			self.loading = true;
+		function submit() {
+			self.error = [];
 
-			validateSlide2(function (error) {
-				self.loading = false;
-				
-				if (!error) {
-					self.status.terms = false;
-					self.status.captcha = true;
-
-					var element = document.getElementById('recaptcha');
-					console.log(element)
-					console.log(typeof element)
-
-					grecaptcha.render(element);
+			validateTerms(function (isValid) {
+				if (isValid) {
+					if (self.username !== '' && self.password !== '') {
+						self.loading = true;
+						self.service.register(self.username, self.email, self.password, self.age, success);
+					} else {
+						self.error.push($translate.instant('WRONG_REGISTER'));
+					}
 				}
 			});
 		}
 
-		function submit() {
-			
-			self.error = [];
-			
-			if (self.username !== '' && self.password !== '') {
-				self.loading = true;
-				self.service.register(self.username, self.email, self.password, self.age, success);
-			} else {
-				self.error.push($translate.instant('WRONG_REGISTER'));
-			}
-		}
-
-		function pushList2(response) {
+		function showCaptchaAndTermsView(response) {
 			self.loading = false;
-			
+
 			if (response) {
-				self.status.register = false;
-				self.status.terms = true;
+				self.activeView.credentials = false;
+				self.activeView.terms = true;
+
+				window.grecaptcha.render(document.getElementById('recaptcha'));
+			} else {
+				self.error.push($translate.instant('ERROR_EMAIL_ALREADY_IN_USE'));
 			}
 		}
 
@@ -549,7 +539,7 @@
 			}
 		}
 
-		function validateSlide1(callback) {
+		function validateUserCredentials(callback) {
 			self.error = [];
 			var EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
 
@@ -586,23 +576,29 @@
 			}
 		}
 
-		function validateSlide2(callback) {
+		function validateTerms(callback) {
 			self.error = [];
 
-			if (self.age === '') {
-				self.error.push($translate.instant('ERROR_AGE_EMPTY'));
-			} else if (isNaN(parseInt(self.age, 10)) || parseInt(self.age, 10) <= 0) {
-				self.error.push($translate.instant('ERROR_AGE_WRONG'));
-			}
+			// if (self.age === '') {
+			// 	self.error.push($translate.instant('ERROR_AGE_EMPTY'));
+			// } else if (isNaN(parseInt(self.age, 10)) || parseInt(self.age, 10) <= 0) {
+			// 	self.error.push($translate.instant('ERROR_AGE_WRONG'));
+			// }
 
-			if (self.terms === false) {
+			var captchaResponse = window.grecaptcha.getResponse();
+
+			if (!self.terms) {
 				self.error.push($translate.instant('ERROR_TERMS_EMPTY'));
 			}
 
+			if (!captchaResponse) {
+				self.error.push($translate.instant('ERROR_CAPTCHA'));
+			}
+
 			if (self.error.length === 0) {
-				callback(false);
-			} else {
 				callback(true);
+			} else {
+				callback(false);
 			}
 		}
 	}
