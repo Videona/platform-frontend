@@ -1,17 +1,3 @@
-@font-face {
-  font-family: "Helvetica Neue LT Std 45 Light";
-  src: url("../../../fonts/Helvetica/Regular/Helvetica-Regular.woff?v=1.0") format("woff"), url("../../../fonts/Helvetica/Regular/Helvetica-Regular.ttf?v=1.0") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Helvetica Neue LT Std 45 Light";
-  src: url("../../../fonts/Helvetica/Regular/Helvetica-Regular.woff?v=1.0") format("woff"), url("../../../fonts/Helvetica/Regular/Helvetica-Regular.ttf?v=1.0") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
 /* COLORS */
 /* SIZES */
 @-webkit-keyframes imageTranslation {
@@ -399,6 +385,10 @@ html body {
 .home-buttons button:hover {
   background-color: #f14b51;
   color: white;
+}
+
+.g-recaptcha {
+  transform: scale(0.75) translateX(1px);
 }
 
 .full-sized-bg-img {

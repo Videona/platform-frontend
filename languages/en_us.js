@@ -41,6 +41,7 @@
 			ERROR_AGE_EMPTY: 'The field age is empty',
 			ERROR_AGE_WRONG: 'The age must be valid',
 			ERROR_TERMS_EMPTY: 'You must accept the terms and conditions of the service',
+			ERROR_RECAPTCHA_NOT_CHECKED: 'This app only is able to be used by humans. Aren\'t you human?',
 		});
 	}
 }());

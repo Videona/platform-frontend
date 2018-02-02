@@ -22,7 +22,7 @@
 
 
 		function setSession(newSession) {
-			session.id = newSession.id || -1;
+			session.id = newSession._id || newSession.id || -1;
 			session.name = newSession.name || '';
 			session.email = newSession.email || '';
 			session.role = newSession.role || '';

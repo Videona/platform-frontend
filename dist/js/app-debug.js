@@ -30,7 +30,7 @@
 		$stateProvider
 			.state('home', {
 				url: '/',
-				templateUrl: 'pages/home/view.html',
+				templateUrl: 'pages/home/home.view.html',
 			})
 			.state('login', {
 				url: '/login?:redirect',
@@ -90,6 +90,7 @@
 			ERROR_AGE_EMPTY: 'The field age is empty',
 			ERROR_AGE_WRONG: 'The age must be valid',
 			ERROR_TERMS_EMPTY: 'You must accept the terms and conditions of the service',
+			ERROR_RECAPTCHA_NOT_CHECKED: 'This app only is able to be used by humans. Aren\'t you human?',
 		});
 	}
 }());
@@ -137,6 +138,7 @@
 			ERROR_AGE_EMPTY: 'La edad no puede estar vacía.',
 			ERROR_AGE_WRONG: 'La edad tiene que ser válida.',
 			ERROR_TERMS_EMPTY: 'Tienes que aceptar los términos y condiciones de uso.',
+			ERROR_RECAPTCHA_NOT_CHECKED: 'En esta aplicación solo aceptamos humanos ¿Acaso eres un robot?',
 		});
 	}
 }());
@@ -265,7 +267,7 @@
 
 
 		function setSession(newSession) {
-			session.id = newSession.id || -1;
+			session.id = newSession._id || newSession.id || -1;
 			session.name = newSession.name || '';
 			session.email = newSession.email || '';
 			session.role = newSession.role || '';
@@ -455,151 +457,148 @@
 		self.password = '';
 		self.age = '';
 		self.terms = false;
-		self.error = '';
+
+		self.error = [];
 		self.loading = false;
-		self.status = {
-			register: true,
+
+		self.activeView = {
+			credentials: true,
 			terms: false,
-			captcha: false,
 		};
 
 		// Methods
-		self.list1 = list1;
-		self.list2 = list2;
+		self.validateRegister = validateRegister;
 		self.submit = submit;
 
 		// On Run...
 		if (session.id > 0) {
-			console.log('Found a session! Redirecting...');
+			// console.log('Found a session! Redirecting...');
 			$state.go($stateParams.redirect || 'home');
 		}
 
 		// Internal functions
-		function list1() {
+		function validateRegister() {
 			self.loading = true;
 			self.error = null;
-			console.log('Verifying...');
-			validateSlide1(function (error, message) {
+
+			validateUserCredentials(function (error) {
 				if (!error) {
-					self.service.validateUsernameAndEmail(self.username, self.email, pushList2);
+					self.service.validateUsernameAndEmail(self.username, self.email, showCaptchaAndTermsView);
 				} else {
-					self.error = message;
 					self.loading = false;
 				}
 			});
 		}
 
-		function list2() {
-			self.loading = true;
-			self.error = null;
-			console.log('Verifying...');
-			validateSlide2(function (error, message) {
-				if (!error) {
-					self.status.terms = false;
-					self.status.captcha = true;
-				} else {
-					self.error = message;
+		function submit() {
+			self.error = [];
+
+			validateTerms(function (isValid) {
+				if (isValid) {
+					if (self.username !== '' && self.password !== '') {
+						self.loading = true;
+						self.service.register(self.username, self.email, self.password, self.age, success);
+					} else {
+						self.error.push($translate.instant('WRONG_REGISTER'));
+					}
 				}
-				self.loading = false;
 			});
 		}
 
-		function submit() {
-			if (self.username !== '' && self.password !== '') {
-				self.loading = true;
-				self.error = null;
-				console.log('Submiting...');
-				self.service.register(self.username, self.email, self.password, self.age, success);
-			} else {
-				self.error = $translate.instant('WRONG_REGISTER');
-			}
-		}
-
-		function pushList2(response, message) {
-			if (response) {
-				self.status.register = false;
-				self.error = null;
-				self.status.terms = true;
-			} else {
-				self.error = message;
-			}
+		function showCaptchaAndTermsView(response) {
 			self.loading = false;
+
+			if (response) {
+				self.activeView.credentials = false;
+				self.activeView.terms = true;
+
+				window.grecaptcha.render(document.getElementById('recaptcha'));
+			} else {
+				self.error.push($translate.instant('ERROR_EMAIL_ALREADY_IN_USE'));
+			}
 		}
 
 		function success(result) { // , data) {
 			self.loading = false;
 			if (result) {
 				self.loading = true;
-				console.log('Registered! Logging in...');
-				login.login(self.username, self.password, function (loginResult) {
+				// console.log('Registered! Logging in...');
+
+				login.login(self.email, self.password, function (loginResult) {
 					self.loading = false;
 					if (loginResult) {
 						$state.go($stateParams.redirect || 'home');
 					} else {
-						self.error = 'Login error. Please, try again...';
+						self.error.push($translate.instant('WRONG_LOGIN'));
 						$state.go('login');
 					}
 				});
 			} else {
-				console.log('Bad username, email or password...');
-				self.error = $translate.instant('WRONG_REGISTER');
+				// console.log('Bad username, email or password...');
+				self.error.push($translate.instant('WRONG_REGISTER'));
 			}
 		}
 
-		function validateSlide1(callback) {
-			var errors = '';
+		function validateUserCredentials(callback) {
+			self.error = [];
 			var EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
 
 			if (self.username === '') {
-				errors += '<li>' + $translate.instant('ERROR_USERNAME_EMPTY') + '</li>';
+				self.error.push($translate.instant('ERROR_USERNAME_EMPTY'));
 			} else if (self.username.length < 5) {
-				errors += '<li>' + $translate.instant('ERROR_USERNAME_MIN_LENGTH') + '</li>';
+				self.error.push($translate.instant('ERROR_USERNAME_MIN_LENGTH'));
 			} else if (self.username.length > 30) {
-				errors += '<li>' + $translate.instant('ERROR_USERNAME_MAX_LENGTH') + '</li>';
+				self.error.push($translate.instant('ERROR_USERNAME_MAX_LENGTH'));
 			}
 
 			if (self.password === '') {
-				errors += '<li>' + $translate.instant('ERROR_PASSWORD_EMPTY') + '</li>';
+				self.error.push($translate.instant('ERROR_PASSWORD_EMPTY'));
 			} else if (self.password.length < 5) {
-				errors += '<li>' + $translate.instant('ERROR_PASSWORD_MIN_LENGTH') + '</li>';
+				self.error.push($translate.instant('ERROR_PASSWORD_MIN_LENGTH'));
 			} else if (self.password.length > 30) {
-				errors += '<li>' + $translate.instant('ERROR_PASSWORD_MAX_LENGTH') + '</li>';
+				self.error.push($translate.instant('ERROR_PASSWORD_MAX_LENGTH'));
 			}
 
 			if (self.email === '') {
-				errors += '<li>' + $translate.instant('ERROR_EMAIL_EMPTY') + '</li>';
+				self.error.push($translate.instant('ERROR_EMAIL_EMPTY'));
 			} else if (self.email.length < 5) {
-				errors += '<li>' + $translate.instant('ERROR_EMAIL_MIN_LENGTH') + '</li>';
+				self.error.push($translate.instant('ERROR_EMAIL_MIN_LENGTH'));
 			} else if (self.email.length > 30) {
-				errors += '<li>' + $translate.instant('ERROR_EMAIL_MAX_LENGTH') + '</li>';
-			} else if (EMAIL_REGEXP.test(self.email) === false) {
-				errors += '<li>' + $translate.instant('ERROR_EMAIL_NOT_VALID') + '</li>';
+				self.error.push($translate.instant('ERROR_EMAIL_MAX_LENGTH'));
+			} else if (!EMAIL_REGEXP.test(self.email)) {
+				self.error.push($translate.instant('ERROR_EMAIL_NOT_VALID'));
 			}
 
-			if (errors === '') {
+			if (self.error.length === 0) {
 				callback(false);
 			} else {
-				callback(true, errors);
+				callback(true);
 			}
 		}
 
-		function validateSlide2(callback) {
-			var errors = '';
+		function validateTerms(callback) {
+			self.error = [];
 
-			if (self.age === '') {
-				errors += '<li>' + $translate.instant('ERROR_AGE_EMPTY') + '</li>';
-			} else if (isNaN(parseInt(self.age, 10)) || parseInt(self.age, 10) <= 0) {
-				errors += '<li>' + $translate.instant('ERROR_AGE_WRONG') + '</li>';
+			// if (self.age === '') {
+			// 	self.error.push($translate.instant('ERROR_AGE_EMPTY'));
+			// } else if (isNaN(parseInt(self.age, 10)) || parseInt(self.age, 10) <= 0) {
+			// 	self.error.push($translate.instant('ERROR_AGE_WRONG'));
+			// }
+
+			var captchaResponse = window.grecaptcha.getResponse();
+
+			if (!self.terms) {
+				self.error.push($translate.instant('ERROR_TERMS_EMPTY'));
 			}
 
-			if (self.terms === false) {
-				errors += '<li>' + $translate.instant('ERROR_TERMS_EMPTY') + '</li>';
+			if (!captchaResponse) {
+				self.error.push($translate.instant('ERROR_CAPTCHA'));
 			}
 
-			if (errors === '') {
-				callback(false);
+			if (self.error.length === 0) {
+				callback(true);
 			} else {
-				callback(true, errors);
+				callback(false);
 			}
 		}
 	}
