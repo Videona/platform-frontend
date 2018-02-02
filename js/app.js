@@ -24,19 +24,19 @@
 		$translateProvider.useSanitizeValueStrategy('escape');
 		$translateProvider.preferredLanguage(lang);
 
-		$locationProvider.html5Mode({
-			enabled: true,
-			requireBase: false
-		});
+//		$locationProvider.html5Mode({
+//			enabled: true,
+//			requireBase: false,
+//		});
 
 		// Router configuration
 		$urlRouterProvider.otherwise('/');
 
 		$stateProvider
-		.state('root', {
-			controller: function(session) {},
-			abstract: true
-		})
+			.state('root', {
+				controller: function(session) {},
+				abstract: true,
+			})
 			.state('home', {
 				url: '/',
 				templateUrl: './pages/home/home.view.html',

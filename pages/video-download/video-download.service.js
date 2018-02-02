@@ -10,10 +10,10 @@ function videoDownloadService(api) {
 
 
 	function get(videoId, code) {
-		api.download(api.url + '/video/' + videoId + '/original?code=' + code, function (data, status, headers) {
-			if(status >= 400 ) {
-				console.error('Unable to download file.');
-			}
-		});
+//		api.download(api.url + '/video/' + videoId + '/original?code=' + code, function (data, status, headers) {
+//			if(status >= 400 ) {
+//				console.error('Unable to download file.');
+//			}
+//		});
 	}
 }

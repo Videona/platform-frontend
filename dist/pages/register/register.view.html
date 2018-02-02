@@ -9,12 +9,15 @@
 		</div>
 
 		<section class="register-form">
+
 			<form name="form" novalidate>
+
 				<div ng-if="Register.status.register">
 					<input type="text" placeholder="{{'USERNAME' | translate }}" ng-model="Register.username">
 					<input type="text" placeholder="{{'EMAIL' | translate }}" ng-model="Register.email">
 					<input type="password" placeholder="{{'PASSWORD' | translate }}" ng-model="Register.password">
 				</div>
+
 				<div ng-if="Register.status.terms">
 					<input type="text" placeholder="{{'QUESTION_AGE' | translate }}" ng-model="Register.age">
 					<span>
@@ -24,14 +27,21 @@
 						</span>{{'ACCEPT_CONDITIONS_2' | translate}}</label>
 					</span>
 				</div>
+
 				<div ng-if="Register.status.captcha" class="g-recaptcha" data-sitekey="6LeELkIUAAAAACXrqJCDeOlCvvio78mgG2wj22ou"></div>
+
 			</form>
-			<ul class="credentials-errors" ng-if="Register.error" ng-bind-html="Register.error | renderHTMLCorrectly"></ul>
+
+			<ul class="credentials-errors" ng-if="Register.error.length > 0">
+				<li ng-repeat="err in Register.error"> {{err}} </li>
+			</ul>
+
 			<button>
 				<span ng-if="Register.status.register" ng-click="Register.list1()">{{'REGISTER_ACTION' | translate }}</span>
 				<span ng-if="Register.status.terms" ng-click="Register.list2()">{{'NEXT_ACTION' | translate }}</span>
 				<span ng-if="Register.status.captcha" ng-click="Register.submit()">{{'COMPLETED' | translate }}</span>
 			</button>
+
 		</section>
 
 		<section class="mobile-apps">

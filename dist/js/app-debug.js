@@ -1,9 +1,9 @@
 (function () {
 	// App
 	angular.module('app', ['ui.router', 'pascalprecht.translate'])
-		.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', conf]);
+		.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$translateProvider', conf]);
 
-	function conf($stateProvider, $urlRouterProvider, $translateProvider) {
+	function conf($locationProvider, $stateProvider, $urlRouterProvider, $translateProvider) {
 		// Get browser lang and set this var
 		var shortLang = navigator.language.split('-')[0];
 		var lang;
@@ -24,13 +24,22 @@
 		$translateProvider.useSanitizeValueStrategy('escape');
 		$translateProvider.preferredLanguage(lang);
 
+//		$locationProvider.html5Mode({
+//			enabled: true,
+//			requireBase: false,
+//		});
+
 		// Router configuration
 		$urlRouterProvider.otherwise('/');
 
 		$stateProvider
+			.state('root', {
+				controller: function(session) {},
+				abstract: true,
+			})
 			.state('home', {
 				url: '/',
-				templateUrl: 'pages/home/view.html',
+				templateUrl: './pages/home/home.view.html',
 			})
 			.state('login', {
 				url: '/login?:redirect',
@@ -43,6 +52,11 @@
 			.state('terms', {
 				url: '/terms',
 				templateUrl: 'pages/terms/terms.view.html',
+			})
+			.state('videoDownload', {
+				url: '/download/:id',
+				parent: 'root',
+				templateUrl: 'pages/video-download/video-download.view.html',
 			});
 	}
 }());
@@ -149,6 +163,7 @@
 		var api = {
 			url: 'http://localhost:3000',
 			token: '',
+			download: download,
 			get: get,
 			post: post,
 			del: del,
@@ -191,6 +206,49 @@
 					onSuccess(r, callback);
 				}).catch(function (r) {
 					onError(r, callback);
+				});
+		}
+
+		function download(url, callback) {
+
+			var req = {
+				method: 'GET',
+				headers: {},
+				url: url,
+				responseType: 'arraybuffer'
+			};
+
+			if (api.token !== '') {
+				req.headers.authorization = 'Bearer ' + api.token;
+			}
+
+			return $http(req)
+				.then(function (response) {
+					var data = response.data;
+					var headers = response.headers();
+					var filename = headers['x-filename'];
+					var contentType = headers['content-type'];
+			 
+					var linkElement = document.createElement('a');
+					try {
+						var blob = new Blob([data], { type: contentType });
+						var url = window.URL.createObjectURL(blob);
+		
+						linkElement.setAttribute('href', url);
+						linkElement.setAttribute('download', filename);
+
+						var clickEvent = new MouseEvent('click', {
+							'view': window,
+							'bubbles': true,
+							'cancelable': false
+						});
+						linkElement.dispatchEvent(clickEvent);
+					} catch (ex) {
+						console.log(ex);
+					}
+					onSuccess(response, callback);
+				}).catch(function (response) {
+					onError(response, callback);
 				});
 		}
 
@@ -344,6 +402,30 @@
 	}
 }());
 
+angular.module('app')
+	.service('video', ['api', videoService]);
+
+function videoService(api) {
+	var video = {
+		data: null,
+		get: get,
+		reset: reset
+	};
+
+	return video;
+
+
+	function get(videoId) {
+		api.get(api.url + '/video/' + videoId, function (data) {
+			video.data = data;
+		});
+	}
+
+	function reset() {
+		video.data = null;
+	}
+}
+
 (function () {
 	angular.module('app').controller('LoginController', ['login', 'session', '$state', '$stateParams', '$translate', LoginController]);
 
@@ -455,7 +537,7 @@
 		self.password = '';
 		self.age = '';
 		self.terms = false;
-		self.error = '';
+		self.error = [];
 		self.loading = false;
 		self.status = {
 			register: true,
@@ -470,7 +552,7 @@
 
 		// On Run...
 		if (session.id > 0) {
-			console.log('Found a session! Redirecting...');
+			// console.log('Found a session! Redirecting...');
 			$state.go($stateParams.redirect || 'home');
 		}
 
@@ -478,12 +560,11 @@
 		function list1() {
 			self.loading = true;
 			self.error = null;
-			console.log('Verifying...');
-			validateSlide1(function (error, message) {
+
+			validateSlide1(function (error) {
 				if (!error) {
 					self.service.validateUsernameAndEmail(self.username, self.email, pushList2);
 				} else {
-					self.error = message;
 					self.loading = false;
 				}
 			});
@@ -491,115 +572,113 @@
 
 		function list2() {
 			self.loading = true;
-			self.error = null;
-			console.log('Verifying...');
-			validateSlide2(function (error, message) {
+
+			validateSlide2(function (error) {
+				self.loading = false;
+				
 				if (!error) {
 					self.status.terms = false;
 					self.status.captcha = true;
-				} else {
-					self.error = message;
 				}
-				self.loading = false;
 			});
 		}
 
 		function submit() {
+			
+			self.error = [];
+			
 			if (self.username !== '' && self.password !== '') {
 				self.loading = true;
-				self.error = null;
-				console.log('Submiting...');
 				self.service.register(self.username, self.email, self.password, self.age, success);
 			} else {
-				self.error = $translate.instant('WRONG_REGISTER');
+				self.error.push($translate.instant('WRONG_REGISTER'));
 			}
 		}
 
-		function pushList2(response, message) {
+		function pushList2(response) {
+			self.loading = false;
+			
 			if (response) {
 				self.status.register = false;
-				self.error = null;
 				self.status.terms = true;
-			} else {
-				self.error = message;
 			}
-			self.loading = false;
 		}
 
 		function success(result) { // , data) {
 			self.loading = false;
 			if (result) {
 				self.loading = true;
-				console.log('Registered! Logging in...');
+				// console.log('Registered! Logging in...');
+
 				login.login(self.username, self.password, function (loginResult) {
 					self.loading = false;
 					if (loginResult) {
 						$state.go($stateParams.redirect || 'home');
 					} else {
-						self.error = 'Login error. Please, try again...';
+						self.error.push($translate.instant('WRONG_LOGIN'));
 						$state.go('login');
 					}
 				});
 			} else {
-				console.log('Bad username, email or password...');
-				self.error = $translate.instant('WRONG_REGISTER');
+				// console.log('Bad username, email or password...');
+				self.error.push($translate.instant('WRONG_REGISTER'));
 			}
 		}
 
 		function validateSlide1(callback) {
-			var errors = '';
+			self.error = [];
 			var EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
 
 			if (self.username === '') {
-				errors += '<li>' + $translate.instant('ERROR_USERNAME_EMPTY') + '</li>';
+				self.error.push($translate.instant('ERROR_USERNAME_EMPTY'));
 			} else if (self.username.length < 5) {
-				errors += '<li>' + $translate.instant('ERROR_USERNAME_MIN_LENGTH') + '</li>';
+				self.error.push($translate.instant('ERROR_USERNAME_MIN_LENGTH'));
 			} else if (self.username.length > 30) {
-				errors += '<li>' + $translate.instant('ERROR_USERNAME_MAX_LENGTH') + '</li>';
+				self.error.push($translate.instant('ERROR_USERNAME_MAX_LENGTH'));
 			}
 
 			if (self.password === '') {
-				errors += '<li>' + $translate.instant('ERROR_PASSWORD_EMPTY') + '</li>';
+				self.error.push($translate.instant('ERROR_PASSWORD_EMPTY'));
 			} else if (self.password.length < 5) {
-				errors += '<li>' + $translate.instant('ERROR_PASSWORD_MIN_LENGTH') + '</li>';
+				self.error.push($translate.instant('ERROR_PASSWORD_MIN_LENGTH'));
 			} else if (self.password.length > 30) {
-				errors += '<li>' + $translate.instant('ERROR_PASSWORD_MAX_LENGTH') + '</li>';
+				self.error.push($translate.instant('ERROR_PASSWORD_MAX_LENGTH'));
 			}
 
 			if (self.email === '') {
-				errors += '<li>' + $translate.instant('ERROR_EMAIL_EMPTY') + '</li>';
+				self.error.push($translate.instant('ERROR_EMAIL_EMPTY'));
 			} else if (self.email.length < 5) {
-				errors += '<li>' + $translate.instant('ERROR_EMAIL_MIN_LENGTH') + '</li>';
+				self.error.push($translate.instant('ERROR_EMAIL_MIN_LENGTH'));
 			} else if (self.email.length > 30) {
-				errors += '<li>' + $translate.instant('ERROR_EMAIL_MAX_LENGTH') + '</li>';
-			} else if (EMAIL_REGEXP.test(self.email) === false) {
-				errors += '<li>' + $translate.instant('ERROR_EMAIL_NOT_VALID') + '</li>';
+				self.error.push($translate.instant('ERROR_EMAIL_MAX_LENGTH'));
+			} else if (!EMAIL_REGEXP.test(self.email)) {
+				self.error.push($translate.instant('ERROR_EMAIL_NOT_VALID'));
 			}
 
-			if (errors === '') {
+			if (self.error.length === 0) {
 				callback(false);
 			} else {
-				callback(true, errors);
+				callback(true);
 			}
 		}
 
 		function validateSlide2(callback) {
-			var errors = '';
+			self.error = [];
 
 			if (self.age === '') {
-				errors += '<li>' + $translate.instant('ERROR_AGE_EMPTY') + '</li>';
+				self.error.push($translate.instant('ERROR_AGE_EMPTY'));
 			} else if (isNaN(parseInt(self.age, 10)) || parseInt(self.age, 10) <= 0) {
-				errors += '<li>' + $translate.instant('ERROR_AGE_WRONG') + '</li>';
+				self.error.push($translate.instant('ERROR_AGE_WRONG'));
 			}
 
 			if (self.terms === false) {
-				errors += '<li>' + $translate.instant('ERROR_TERMS_EMPTY') + '</li>';
+				self.error.push($translate.instant('ERROR_TERMS_EMPTY'));
 			}
 
-			if (errors === '') {
+			if (self.error.length === 0) {
 				callback(false);
 			} else {
-				callback(true, errors);
+				callback(true);
 			}
 		}
 	}
@@ -658,3 +737,64 @@
 		}
 	}
 }());
+
+angular.module('app')
+	.controller('VideoDownloadController', ['$stateParams', 'video', 'videoDownload', VideoDownload]);
+
+function VideoDownload($stateParams, video, videoDownload) {
+	var self = this;
+
+	// 
+	self.id = $stateParams.id;
+	self.code = '';
+	
+	//
+	self.video = video;
+
+	//
+	self.download = download;
+
+	self.video.get(self.id);
+
+
+	function download(document) {
+		videoDownload.get(self.id, self.code);
+
+/*		// DocumentResource.download(document).$promise
+		videoDownload.get(document).$promise
+		// videoDownload.get(self.id, self.code).$promise
+			.then(function(result) {
+				var url = URL.createObjectURL(new Blob([result.data]));
+				var a = document.createElement('a');
+				a.href = url;
+				a.download = result.filename;
+				a.target = '_blank';
+				a.click();
+			})
+			.catch(resourceError)
+			.catch(function(error) {
+				console.log(error.data); // in JSON
+			});*/
+
+	}
+}
+
+angular.module('app')
+	.service('videoDownload', ['api', videoDownloadService]);
+
+function videoDownloadService(api) {
+	var video = {
+		get: get
+	};
+
+	return video;
+
+
+	function get(videoId, code) {
+//		api.download(api.url + '/video/' + videoId + '/original?code=' + code, function (data, status, headers) {
+//			if(status >= 400 ) {
+//				console.error('Unable to download file.');
+//			}
+//		});
+	}
+}
