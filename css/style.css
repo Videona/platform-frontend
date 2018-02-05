@@ -387,6 +387,10 @@ html body {
   color: white;
 }
 
+.g-recaptcha {
+  transform: scale(0.75) translateX(1px);
+}
+
 .full-sized-bg-img {
   background-color: #F14b51;
   background-image: url("../../img/login-bg.jpg");
