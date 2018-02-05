@@ -1,26 +1,30 @@
-<!--YEEEEEPALE!! {{VideoDownload.id}}-->
 <div ng-controller="VideoDownloadController as VideoDownload" class="download-page">
 	<article>
-		<video poster="../../img/video1.jpg" class="video-download-page"></video>
+		<video controls ng-src="{{::VideoDownload.video.data.video}}" ng-attr-poster="{{VideoDownload.video.data.video}}" preload="metadata" controlsList="nodownload" class="video-download-page"></video>
 		<section class="info-download-video">
 			<div>
 				<div class="headers-info-videoDownload">
-					<h1>{{VideoDownload.video.data.title}}</h1>
-					<h4>{{VideoDownload.video.data.description}}</h4>
+					<h1 ng-bind="VideoDownload.video.data.title"></h1>
+					<h4 ng-bind="VideoDownload.video.data.description"></h4>
 				</div>
-				<div ng-if="VideoDownload.video.data.isVerified">
-					<img src="#" alt="video-verified" />
+				<div ng-if="VideoDownload.video.data.isVerified" class="videoDownload-isVerified">
+					<img src="../../img/checked.svg" alt="video-verified" />
 					<p>Verified video</p>
 				</div>
 				<div class="download-video-code">
 					<p>Enter your download code</p>
 					<input type="text" ng-model="VideoDownload.code">
 				</div>
-				<a ng-click="VideoDownload.download()" target="_blank">Download</a>
+				<div class="videoDownload-button">
+					<button ng-click="VideoDownload.download()" target="_blank">Download Video</button>
+				</div>
 			</div>
-			<div>
-				<p>Back to gallery</p>
+			<div class="videoDownload-go-back-portrait">
+				<p ui-sref="gallery">Back to gallery</p>
 			</div>
 		</section>
 	</article>
+	<div class="videoDownload-back-landscape">
+		<p ui-sref="gallery">Back to gallery</p>
+	</div>
 </div>

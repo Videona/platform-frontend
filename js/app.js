@@ -24,10 +24,10 @@
 		$translateProvider.useSanitizeValueStrategy('escape');
 		$translateProvider.preferredLanguage(lang);
 
-//		$locationProvider.html5Mode({
-//			enabled: true,
-//			requireBase: false,
-//		});
+		$locationProvider.html5Mode({
+			enabled: true,
+			requireBase: false,
+		});
 
 		// Router configuration
 		$urlRouterProvider.otherwise('/');
@@ -52,6 +52,10 @@
 			.state('terms', {
 				url: '/terms',
 				templateUrl: 'pages/terms/terms.view.html',
+			})
+			.state('gallery', {
+				url: '/gallery',
+				templateUrl: 'pages/gallery/gallery.view.html',
 			})
 			.state('videoDownload', {
 				url: '/download/:id',

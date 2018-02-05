@@ -32,6 +32,18 @@ $desktop-width: 1024px;
 	}
 }
 
+@mixin landscape {
+	@media (orientation: landscape) {
+		@content;
+	}
+}
+
+@mixin portrait {
+	@media (orientation: portrait) {
+		@content;
+	}
+}
+
 @mixin keyboard {
 	@media (min-aspect-ratio: 6/7) {
 		@content;

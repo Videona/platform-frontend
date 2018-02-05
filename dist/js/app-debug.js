@@ -24,10 +24,10 @@
 		$translateProvider.useSanitizeValueStrategy('escape');
 		$translateProvider.preferredLanguage(lang);
 
-//		$locationProvider.html5Mode({
-//			enabled: true,
-//			requireBase: false,
-//		});
+		$locationProvider.html5Mode({
+			enabled: true,
+			requireBase: false,
+		});
 
 		// Router configuration
 		$urlRouterProvider.otherwise('/');
@@ -52,6 +52,10 @@
 			.state('terms', {
 				url: '/terms',
 				templateUrl: 'pages/terms/terms.view.html',
+			})
+			.state('gallery', {
+				url: '/gallery',
+				templateUrl: 'pages/gallery/gallery.view.html',
 			})
 			.state('videoDownload', {
 				url: '/download/:id',
@@ -426,6 +430,33 @@ function videoService(api) {
 	}
 }
 
+angular.module('app')
+	.controller('GalleryController', ['$stateParams', 'gallery', Gallery]);
+
+function Gallery($stateParams, gallery) {
+	var self = this;
+
+	self.gallery = gallery;
+}
+
+angular.module('app')
+	.service('Gallery', ['api', galleryService]);
+
+function galleryService(api) {
+	var gallery = {
+		get: get,
+	};
+
+	return gallery;
+
+
+	function get() {
+		api.get(api.url + '/gallery', function (data, status) {
+			// TO-DO: Complete stuff
+		});
+	}
+}
+
 (function () {
 	angular.module('app').controller('LoginController', ['login', 'session', '$state', '$stateParams', '$translate', LoginController]);
 
@@ -744,38 +775,18 @@ angular.module('app')
 function VideoDownload($stateParams, video, videoDownload) {
 	var self = this;
 
-	// 
 	self.id = $stateParams.id;
 	self.code = '';
-	
-	//
+
 	self.video = video;
 
-	//
 	self.download = download;
 
 	self.video.get(self.id);
 
 
-	function download(document) {
+	function download() {
 		videoDownload.get(self.id, self.code);
-
-/*		// DocumentResource.download(document).$promise
-		videoDownload.get(document).$promise
-		// videoDownload.get(self.id, self.code).$promise
-			.then(function(result) {
-				var url = URL.createObjectURL(new Blob([result.data]));
-				var a = document.createElement('a');
-				a.href = url;
-				a.download = result.filename;
-				a.target = '_blank';
-				a.click();
-			})
-			.catch(resourceError)
-			.catch(function(error) {
-				console.log(error.data); // in JSON
-			});*/
-
 	}
 }
 
@@ -791,10 +802,10 @@ function videoDownloadService(api) {
 
 
 	function get(videoId, code) {
-//		api.download(api.url + '/video/' + videoId + '/original?code=' + code, function (data, status, headers) {
-//			if(status >= 400 ) {
-//				console.error('Unable to download file.');
-//			}
-//		});
+		api.download(api.url + '/video/' + videoId + '/original?code=' + code, function (data, status, headers) {
+			if(status >= 400 ) {
+				console.error('Unable to download file.');
+			}
+		});
 	}
 }
