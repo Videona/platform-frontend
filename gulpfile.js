@@ -6,17 +6,36 @@ var debug = require('gulp-debug');
 var concat = require('gulp-concat');
 var eslint = require('gulp-eslint');
 var minify = require('gulp-minify');
+var runSequence = require('run-sequence');
+var gulpNgConfig = require('gulp-ng-config');
+var b2v = require('buffer-to-vinyl');
+
 require('gulp-watch');
 
 gulp.task('serve', function () {
 	gulp.src('./')
 		.pipe(webserver({
-			host: '0.0.0.0',
-			port: 8080,
+			host: process.env.FRONTEND_HOST,
+			port: process.env.FRONTEND_PORT,
 			fallback: 'index.html',
 			livereload: true,
 		}));
 });
+
+gulp.task('dev', function (done) {
+    runSequence('build', ['watch', 'serve'], done);
+});
+
+gulp.task('make-config', function() {
+    var json = JSON.stringify({
+        mojofyApiUrl: process.env.MOJOFY_API_URL
+    });
+
+    return b2v.stream(new Buffer(json), 'config.js')
+        .pipe(gulpNgConfig('app.config'))
+        .pipe(gulp.dest('js'));
+});
+
 
 // --------
 // TO_DO:
@@ -77,7 +96,7 @@ gulp.task('html', function () {
 });
 
 // Perform a complete build
-gulp.task('build', ['js', 'html', 'tests', 'sass']);
+gulp.task('build', ['make-config', 'js', 'html', 'tests', 'sass']);
 
 
 var sourceSass = [

@@ -1,10 +1,10 @@
 (function () {
 	angular.module('app')
-		.factory('api', ['$http', apiService]);
+		.factory('api', ['$http', 'mojofyApiUrl', apiService]);
 
-	function apiService($http) {
+	function apiService($http, mojofyApiUrl) {
 		var api = {
-			url: 'http://localhost:3000',
+            url: mojofyApiUrl,
 			token: '',
 			get: get,
 			post: post,

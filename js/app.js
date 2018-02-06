@@ -1,7 +1,7 @@
 (function () {
 	// App
-	angular.module('app', ['ui.router', 'pascalprecht.translate'])
-		.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', conf]);
+	var app = angular.module('app', ['app.config', 'ui.router', 'pascalprecht.translate']);
+	app.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', conf])
 
 	function conf($stateProvider, $urlRouterProvider, $translateProvider) {
 		// Get browser lang and set this var
