@@ -1,3 +1,11 @@
+a {
+	color: #2b2b2b;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+
 .download-page {
 	height: 100%;
 	width: 100%;
@@ -26,8 +34,11 @@
 .video-download-page {
 	width: 100%;
 	@include landscape {
-		width: 40%;
+		width: 46%;
 		margin: 20px 0 0 20px;
+	}
+	video, .video-player {
+		width: 100%;
 	}
 }
 
@@ -63,12 +74,19 @@
 .headers-info-videoDownload {
 	h1 {
 		font-weight: 500;
-		font-size: 20px;
+		font-size: 24px;
 		color: #2b2b2b;
+		@include landscape {
+			font-size: 36px;
+		}
 	}
-	h4 {
-		margin-top: 10px;
+	h2 {
 		color: #626262; 
+		font-size: 20px;
+		margin: 10px 0;
+		@include landscape {
+			font-size: 20px;
+		}
 	}
 }
 
@@ -83,12 +101,13 @@
 	p {
 		color: #626262;
 		font-size: 20px;
-		margin-left: 5px;
+		margin-left: 8px;
 	}
 }
 
 .download-video-code {
 	margin-top: 30px;
+	color: $grey;
 	text-align: center;
 	input {
 		margin-top: 8px;
@@ -102,8 +121,9 @@
 }
 
 .videoDownload-button {
-	width: 100%;
+	cursor: pointer;
 	text-align: center;
+	width: 100%;
 	button {
 		color: white;
 		background-color: #fac5c7;
@@ -112,6 +132,11 @@
 		padding: 0 15px;
 		margin-top: 30px;
 		font-size: 15px;
+		@include landscape {
+			background-color: $primaryColor;
+			font-size: 24px;
+			height: 48px;
+		}
 	}
 }
 
@@ -129,8 +154,11 @@
 	padding-bottom: 20px;
 	margin: 0 auto;
 	background-color: white;
-	text-align: center;
 	@include portrait {
 		display: none;
+	}
+	p {
+		width: 50%;
+		text-align: center;
 	}
 }
