@@ -1,9 +1,9 @@
 (function () {
 	// App
 	angular.module('app', ['ui.router', 'pascalprecht.translate'])
-		.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', conf]);
+		.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$translateProvider', conf]);
 
-	function conf($stateProvider, $urlRouterProvider, $translateProvider) {
+	function conf($locationProvider, $stateProvider, $urlRouterProvider, $translateProvider) {
 		// Get browser lang and set this var
 		var shortLang = navigator.language.split('-')[0];
 		var lang;
@@ -24,13 +24,22 @@
 		$translateProvider.useSanitizeValueStrategy('escape');
 		$translateProvider.preferredLanguage(lang);
 
+		$locationProvider.html5Mode({
+			enabled: true,
+			requireBase: false,
+		});
+
 		// Router configuration
 		$urlRouterProvider.otherwise('/');
 
 		$stateProvider
+			.state('root', {
+				controller: function(session) {},
+				abstract: true,
+			})
 			.state('home', {
 				url: '/',
-				templateUrl: 'pages/home/home.view.html',
+				templateUrl: './pages/home/home.view.html',
 			})
 			.state('login', {
 				url: '/login?:redirect',
@@ -43,6 +52,15 @@
 			.state('terms', {
 				url: '/terms',
 				templateUrl: 'pages/terms/terms.view.html',
+			})
+			.state('gallery', {
+				url: '/gallery',
+				templateUrl: 'pages/gallery/gallery.view.html',
+			})
+			.state('videoDownload', {
+				url: '/download/:id',
+				parent: 'root',
+				templateUrl: 'pages/video-download/video-download.view.html',
 			});
 	}
 }());
@@ -151,6 +169,7 @@
 		var api = {
 			url: 'http://localhost:3000',
 			token: '',
+			download: download,
 			get: get,
 			post: post,
 			del: del,
@@ -193,6 +212,49 @@
 					onSuccess(r, callback);
 				}).catch(function (r) {
 					onError(r, callback);
+				});
+		}
+
+		function download(url, callback) {
+
+			var req = {
+				method: 'GET',
+				headers: {},
+				url: url,
+				responseType: 'arraybuffer'
+			};
+
+			if (api.token !== '') {
+				req.headers.authorization = 'Bearer ' + api.token;
+			}
+
+			return $http(req)
+				.then(function (response) {
+					var data = response.data;
+					var headers = response.headers();
+					var filename = headers['x-filename'];
+					var contentType = headers['content-type'];
+			 
+					var linkElement = document.createElement('a');
+					try {
+						var blob = new Blob([data], { type: contentType });
+						var url = window.URL.createObjectURL(blob);
+		
+						linkElement.setAttribute('href', url);
+						linkElement.setAttribute('download', filename);
+
+						var clickEvent = new MouseEvent('click', {
+							'view': window,
+							'bubbles': true,
+							'cancelable': false
+						});
+						linkElement.dispatchEvent(clickEvent);
+					} catch (ex) {
+						console.log(ex);
+					}
+					onSuccess(response, callback);
+				}).catch(function (response) {
+					onError(response, callback);
 				});
 		}
 
@@ -345,6 +407,57 @@
 		}
 	}
 }());
+
+angular.module('app')
+	.service('video', ['api', videoService]);
+
+function videoService(api) {
+	var video = {
+		data: null,
+		get: get,
+		reset: reset
+	};
+
+	return video;
+
+
+	function get(videoId) {
+		api.get(api.url + '/video/' + videoId, function (data) {
+			video.data = data;
+		});
+	}
+
+	function reset() {
+		video.data = null;
+	}
+}
+
+angular.module('app')
+	.controller('GalleryController', ['$stateParams', 'gallery', Gallery]);
+
+function Gallery($stateParams, gallery) {
+	var self = this;
+
+	self.gallery = gallery;
+}
+
+angular.module('app')
+	.service('Gallery', ['api', galleryService]);
+
+function galleryService(api) {
+	var gallery = {
+		get: get,
+	};
+
+	return gallery;
+
+
+	function get() {
+		api.get(api.url + '/gallery', function (data, status) {
+			// TO-DO: Complete stuff
+		});
+	}
+}
 
 (function () {
 	angular.module('app').controller('LoginController', ['login', 'session', '$state', '$stateParams', '$translate', LoginController]);
@@ -657,3 +770,44 @@
 		}
 	}
 }());
+
+angular.module('app')
+	.controller('VideoDownloadController', ['$stateParams', 'video', 'videoDownload', VideoDownload]);
+
+function VideoDownload($stateParams, video, videoDownload) {
+	var self = this;
+
+	self.id = $stateParams.id;
+	self.code = '';
+
+	self.video = video;
+
+	self.download = download;
+
+	self.video.get(self.id);
+
+
+	function download() {
+		videoDownload.get(self.id, self.code);
+	}
+}
+
+angular.module('app')
+	.service('videoDownload', ['api', videoDownloadService]);
+
+function videoDownloadService(api) {
+	var video = {
+		get: get
+	};
+
+	return video;
+
+
+	function get(videoId, code) {
+		api.download(api.url + '/video/' + videoId + '/original?code=' + code, function (data, status, headers) {
+			if(status >= 400 ) {
+				console.error('Unable to download file.');
+			}
+		});
+	}
+}

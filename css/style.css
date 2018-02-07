@@ -27,7 +27,7 @@
   }
 }
 
-.register-page, .register-page article, .register-form, .register-form form div, .register-form button span, .mobile-apps, .home-buttons {
+.register-page, .register-page article, .register-form, .register-form form div, .register-form button span, .mobile-apps, .home-buttons, .download-page, .download-page article, .info-download-video, .videoDownload-isVerified {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -35,13 +35,13 @@
   display: flex;
 }
 
-.register-page article, .register-form, .register-form form div, .home-buttons {
+.register-page article, .register-form, .register-form form div, .home-buttons, .download-page, .download-page article, .info-download-video {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
 }
 
-.register-page, .register-page article, .register-form form div, .register-form button span {
+.register-page, .register-page article, .register-form form div, .register-form button span, .download-page article, .info-download-video, .videoDownload-isVerified {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -moz-box-align: center;
@@ -57,12 +57,12 @@
   justify-content: center;
 }
 
-.mobile-apps {
+.mobile-apps, .download-page article, .info-download-video {
   -webkit-justify-content: space-between;
   justify-content: space-between;
 }
 
-.register-page article, .register-form, .register-form form div, .home-buttons {
+.register-page article, .register-form, .register-form form div, .home-buttons, .download-page, .download-page article, .info-download-video {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -482,4 +482,201 @@ html body {
 
 #login .block-link {
   margin: 32px 0;
+}
+
+a {
+  color: #2b2b2b;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.download-page {
+  height: 100%;
+  width: 100%;
+  background-color: #f3f3f3;
+}
+
+.download-page article {
+  width: 100%;
+  height: 100%;
+  max-width: 1200px;
+}
+
+@media (orientation: landscape) {
+  .download-page article {
+    margin: 20px auto 0 auto;
+    width: 96vw;
+    background-color: white;
+    flex-direction: row;
+    align-items: flex-start;
+    height: auto;
+  }
+}
+
+.video-download-page {
+  width: 100%;
+}
+
+@media (orientation: landscape) {
+  .video-download-page {
+    width: 46%;
+    margin: 20px 0 0 20px;
+  }
+}
+
+.video-download-page video, .video-download-page .video-player {
+  width: 100%;
+}
+
+.info-download-video {
+  width: 96vw;
+  margin: 2vw;
+  background-color: white;
+  height: 100%;
+  -webkit-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+}
+
+@media (orientation: landscape) {
+  .info-download-video {
+    height: auto;
+  }
+}
+
+.info-download-video > div:first-child {
+  margin-top: 5vw;
+  width: 90%;
+}
+
+@media (orientation: landscape) {
+  .info-download-video > div:first-child {
+    margin-top: 0;
+  }
+}
+
+.info-download-video > div:last-child {
+  height: 8%;
+  margin-bottom: 5vw;
+}
+
+@media (orientation: landscape) {
+  .info-download-video > div:last-child {
+    display: none;
+  }
+}
+
+.headers-info-videoDownload h1 {
+  font-weight: 500;
+  font-size: 24px;
+  color: #2b2b2b;
+}
+
+@media (orientation: landscape) {
+  .headers-info-videoDownload h1 {
+    font-size: 36px;
+  }
+}
+
+.headers-info-videoDownload h2 {
+  color: #626262;
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+@media (orientation: landscape) {
+  .headers-info-videoDownload h2 {
+    font-size: 20px;
+  }
+}
+
+.videoDownload-isVerified {
+  margin-top: 17px;
+  height: 40px;
+}
+
+.videoDownload-isVerified img {
+  width: 32px;
+}
+
+.videoDownload-isVerified p {
+  color: #626262;
+  font-size: 20px;
+  margin-left: 8px;
+}
+
+.download-video-code {
+  margin-top: 30px;
+  color: #5A6978;
+  text-align: center;
+}
+
+.download-video-code input {
+  margin-top: 8px;
+  width: 75%;
+  max-width: 300px;
+  height: 32px;
+  background-color: #f3f3f3;
+  -webkit-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  padding-left: 10px;
+}
+
+.videoDownload-button {
+  width: 100%;
+  text-align: center;
+}
+
+.videoDownload-button button {
+  color: white;
+  background-color: #fac5c7;
+  -webkit-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  height: 32px;
+  padding: 0 15px;
+  margin-top: 30px;
+  font-size: 15px;
+}
+
+@media (orientation: landscape) {
+  .videoDownload-button button {
+    background-color: #F14b51;
+    font-size: 24px;
+    height: 48px;
+  }
+}
+
+.videoDownload-go-back-portrait {
+  color: grey;
+}
+
+@media (orientation: landscape) {
+  .videoDownload-go-back-portrait {
+    display: none;
+  }
+}
+
+.videoDownload-back-landscape {
+  color: grey;
+  width: 96vw;
+  max-width: 1200px;
+  padding-bottom: 20px;
+  margin: 0 auto;
+  background-color: white;
+}
+
+@media (orientation: portrait) {
+  .videoDownload-back-landscape {
+    display: none;
+  }
+}
+
+.videoDownload-back-landscape p {
+  width: 50%;
+  text-align: center;
 }
