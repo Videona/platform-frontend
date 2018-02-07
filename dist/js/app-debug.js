@@ -1,9 +1,9 @@
 (function () {
 	// App
 	angular.module('app', ['app.config', 'ui.router', 'pascalprecht.translate'])
-		.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', conf]);
+		.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$translateProvider', conf]);
 
-	function conf($stateProvider, $urlRouterProvider, $translateProvider) {
+	function conf($locationProvider, $stateProvider, $urlRouterProvider, $translateProvider) {
 		// Get browser lang and set this var
 		var shortLang = navigator.language.split('-')[0];
 		var lang;
@@ -24,13 +24,22 @@
 		$translateProvider.useSanitizeValueStrategy('escape');
 		$translateProvider.preferredLanguage(lang);
 
+		$locationProvider.html5Mode({
+			enabled: true,
+			requireBase: false,
+		});
+
 		// Router configuration
 		$urlRouterProvider.otherwise('/');
 
 		$stateProvider
+			.state('root', {
+				controller: function(session) {},
+				abstract: true,
+			})
 			.state('home', {
 				url: '/',
-				templateUrl: 'pages/home/home.view.html',
+				templateUrl: './pages/home/home.view.html',
 			})
 			.state('login', {
 				url: '/login?:redirect',
@@ -43,11 +52,21 @@
 			.state('terms', {
 				url: '/terms',
 				templateUrl: 'pages/terms/terms.view.html',
+			})
+			.state('gallery', {
+				url: '/gallery',
+				templateUrl: 'pages/gallery/gallery.view.html',
+			})
+			.state('videoDownload', {
+				url: '/download/:id',
+				parent: 'root',
+				templateUrl: 'pages/video-download/video-download.view.html',
 			});
 	}
 }());
 
-angular.module("app.config", []);
+angular.module("app.config", [])
+.constant("backendApiUrl", "http://backend:3000");
 
 (function () {
 	// English
@@ -153,6 +172,7 @@ angular.module("app.config", []);
 		var api = {
             url: backendApiUrl,
 			token: '',
+			download: download,
 			get: get,
 			post: post,
 			del: del,
@@ -195,6 +215,49 @@ angular.module("app.config", []);
 					onSuccess(r, callback);
 				}).catch(function (r) {
 					onError(r, callback);
+				});
+		}
+
+		function download(url, callback) {
+
+			var req = {
+				method: 'GET',
+				headers: {},
+				url: url,
+				responseType: 'arraybuffer'
+			};
+
+			if (api.token !== '') {
+				req.headers.authorization = 'Bearer ' + api.token;
+			}
+
+			return $http(req)
+				.then(function (response) {
+					var data = response.data;
+					var headers = response.headers();
+					var filename = headers['x-filename'];
+					var contentType = headers['content-type'];
+			 
+					var linkElement = document.createElement('a');
+					try {
+						var blob = new Blob([data], { type: contentType });
+						var url = window.URL.createObjectURL(blob);
+		
+						linkElement.setAttribute('href', url);
+						linkElement.setAttribute('download', filename);
+
+						var clickEvent = new MouseEvent('click', {
+							'view': window,
+							'bubbles': true,
+							'cancelable': false
+						});
+						linkElement.dispatchEvent(clickEvent);
+					} catch (ex) {
+						console.log(ex);
+					}
+					onSuccess(response, callback);
+				}).catch(function (response) {
+					onError(response, callback);
 				});
 		}
 
@@ -344,6 +407,153 @@ angular.module("app.config", []);
 			session.verified = false;
 
 			localStorage.removeItem('session');
+		}
+	}
+}());
+
+angular.module('app')
+	.service('video', ['api', videoService]);
+
+function videoService(api) {
+	var video = {
+		data: null,
+		get: get,
+		reset: reset
+	};
+
+	return video;
+
+
+	function get(videoId) {
+		api.get(api.url + '/video/' + videoId, function (data) {
+			video.data = data;
+		});
+	}
+
+	function reset() {
+		video.data = null;
+	}
+}
+
+angular.module('app')
+	.controller('GalleryController', ['$stateParams', 'gallery', Gallery]);
+
+function Gallery($stateParams, gallery) {
+	var self = this;
+
+	self.gallery = gallery;
+}
+
+angular.module('app')
+	.service('Gallery', ['api', galleryService]);
+
+function galleryService(api) {
+	var gallery = {
+		get: get,
+	};
+
+	return gallery;
+
+
+	function get() {
+		api.get(api.url + '/gallery', function (data, status) {
+			// TO-DO: Complete stuff
+		});
+	}
+}
+
+(function () {
+	angular.module('app').controller('LoginController', ['login', 'session', '$state', '$stateParams', '$translate', LoginController]);
+
+	function LoginController(login, session, $state, $stateParams, $translate) {
+		var self = this;
+
+		// Service binding
+		self.service = login;
+
+		// Properties
+		self.username = '';
+		self.password = '';
+		self.error = '';
+		self.loading = false;
+
+		// Methods
+		self.submit = submit;
+
+
+		// On Run...
+		if (session.id > 0) {
+			console.log('Found a session! Redirecting...');
+			$state.go($stateParams.redirect || 'home');
+		}
+
+
+		// Internal functions
+		function submit() {
+			if (self.username !== '' && self.password !== '') {
+				self.loading = true;
+				self.error = null;
+				console.log('Submiting...');
+				self.service.login(self.username, self.password, success);
+			} else {
+				self.error = $translate.instant('WRONG_LOGIN');
+			}
+		}
+
+		function success(result) {	// , data) {
+			self.loading = false;
+			if (result) {
+				console.log('Logged in! Redirecting...');
+				$state.go($stateParams.redirect || 'home');
+			} else {
+				console.log('Bad username or password...');
+				self.error = $translate.instant('WRONG_LOGIN');
+				// self.error = 'Wrong login data. Check it out...';
+			}
+		}
+	}
+}());
+
+(function () {
+	angular.module('app')
+		.factory('login', ['api', 'session', loginService]);
+
+	function loginService(api, session) {
+		var login = {
+			login: send,
+			pending: false,
+		};
+
+		return login;
+
+		// Internal functions
+
+		function send(name, pass, cb) {
+			var body = {
+				// name: name,
+				email: name,
+				password: pass,
+			};
+
+			login.pending = true;
+			return api.post(api.url + '/login', body, function (data, status) {
+				login.pending = false;
+				var success = false;
+
+				if (status >= 400) {
+					console.error('Error while logging in');
+					success = false;
+				} else {
+					success = true;
+					session.set(data);
+				}
+
+				if (typeof (cb) === 'function') {
+					cb(success, data);
+				} else {
+					console.warn('No callback specified for login.');
+				}
+			});
 		}
 	}
 }());
@@ -564,98 +774,43 @@ angular.module("app.config", []);
 	}
 }());
 
-(function () {
-	angular.module('app').controller('LoginController', ['login', 'session', '$state', '$stateParams', '$translate', LoginController]);
+angular.module('app')
+	.controller('VideoDownloadController', ['$stateParams', 'video', 'videoDownload', VideoDownload]);
 
-	function LoginController(login, session, $state, $stateParams, $translate) {
-		var self = this;
+function VideoDownload($stateParams, video, videoDownload) {
+	var self = this;
 
-		// Service binding
-		self.service = login;
+	self.id = $stateParams.id;
+	self.code = '';
 
-		// Properties
-		self.username = '';
-		self.password = '';
-		self.error = '';
-		self.loading = false;
+	self.video = video;
 
-		// Methods
-		self.submit = submit;
+	self.download = download;
+
+	self.video.get(self.id);
 
 
-		// On Run...
-		if (session.id > 0) {
-			console.log('Found a session! Redirecting...');
-			$state.go($stateParams.redirect || 'home');
-		}
-
-
-		// Internal functions
-		function submit() {
-			if (self.username !== '' && self.password !== '') {
-				self.loading = true;
-				self.error = null;
-				console.log('Submiting...');
-				self.service.login(self.username, self.password, success);
-			} else {
-				self.error = $translate.instant('WRONG_LOGIN');
-			}
-		}
-
-		function success(result) {	// , data) {
-			self.loading = false;
-			if (result) {
-				console.log('Logged in! Redirecting...');
-				$state.go($stateParams.redirect || 'home');
-			} else {
-				console.log('Bad username or password...');
-				self.error = $translate.instant('WRONG_LOGIN');
-				// self.error = 'Wrong login data. Check it out...';
-			}
-		}
+	function download() {
+		videoDownload.get(self.id, self.code);
 	}
-}());
+}
 
-(function () {
-	angular.module('app')
-		.factory('login', ['api', 'session', loginService]);
+angular.module('app')
+	.service('videoDownload', ['api', videoDownloadService]);
 
-	function loginService(api, session) {
-		var login = {
-			login: send,
-			pending: false,
-		};
+function videoDownloadService(api) {
+	var video = {
+		get: get
+	};
 
-		return login;
+	return video;
 
-		// Internal functions
 
-		function send(name, pass, cb) {
-			var body = {
-				// name: name,
-				email: name,
-				password: pass,
-			};
-
-			login.pending = true;
-			return api.post(api.url + '/login', body, function (data, status) {
-				login.pending = false;
-				var success = false;
-
-				if (status >= 400) {
-					console.error('Error while logging in');
-					success = false;
-				} else {
-					success = true;
-					session.set(data);
-				}
-
-				if (typeof (cb) === 'function') {
-					cb(success, data);
-				} else {
-					console.warn('No callback specified for login.');
-				}
-			});
-		}
+	function get(videoId, code) {
+		api.download(api.url + '/video/' + videoId + '/original?code=' + code, function (data, status, headers) {
+			if(status >= 400 ) {
+				console.error('Unable to download file.');
+			}
+		});
 	}
-}());
+}
