@@ -28,7 +28,7 @@ gulp.task('dev', function (done) {
 
 gulp.task('make-config', function() {
     var json = JSON.stringify({
-        mojofyApiUrl: process.env.MOJOFY_API_URL
+        backendApiUrl: process.env.BACKEND_API_URL
     });
 
     return b2v.stream(new Buffer(json), 'config.js')
