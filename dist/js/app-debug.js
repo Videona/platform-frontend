@@ -1,6 +1,6 @@
 (function () {
 	// App
-	angular.module('app', ['ui.router', 'pascalprecht.translate'])
+	angular.module('app', ['app.config', 'ui.router', 'pascalprecht.translate'])
 		.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$translateProvider', conf]);
 
 	function conf($locationProvider, $stateProvider, $urlRouterProvider, $translateProvider) {
@@ -64,6 +64,9 @@
 			});
 	}
 }());
+
+angular.module("app.config", [])
+.constant("backendApiUrl", "http://backend:3000");
 
 (function () {
 	// English
@@ -163,11 +166,11 @@
 
 (function () {
 	angular.module('app')
-		.factory('api', ['$http', apiService]);
+		.factory('api', ['$http', 'backendApiUrl', apiService]);
 
-	function apiService($http) {
+	function apiService($http, backendApiUrl) {
 		var api = {
-			url: 'http://localhost:3000',
+            url: backendApiUrl,
 			token: '',
 			download: download,
 			get: get,

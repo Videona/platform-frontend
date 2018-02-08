@@ -1,6 +1,6 @@
 (function () {
 	// App
-	angular.module('app', ['ui.router', 'pascalprecht.translate'])
+	angular.module('app', ['app.config', 'ui.router', 'pascalprecht.translate'])
 		.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$translateProvider', conf]);
 
 	function conf($locationProvider, $stateProvider, $urlRouterProvider, $translateProvider) {

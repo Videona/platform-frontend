@@ -627,8 +627,9 @@ a:hover {
 }
 
 .videoDownload-button {
-  width: 100%;
+  cursor: pointer;
   text-align: center;
+  width: 100%;
 }
 
 .videoDownload-button button {
