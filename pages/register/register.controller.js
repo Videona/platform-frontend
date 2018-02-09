@@ -1,7 +1,7 @@
 (function () {
-	angular.module('app').controller('RegisterController', ['register', 'login', 'session', '$state', '$stateParams', '$translate', RegisterController]);
+	angular.module('app').controller('RegisterController', ['register', 'login', 'session', 'nodeEnv', '$state', '$stateParams', '$translate', RegisterController]);
 
-	function RegisterController(register, login, session, $state, $stateParams, $translate) {
+	function RegisterController(register, login, session, nodeEnv, $state, $stateParams, $translate) {
 		var self = this;
 
 		// Service binding
@@ -147,8 +147,10 @@
 				self.error.push($translate.instant('ERROR_TERMS_EMPTY'));
 			}
 
-			if (!captchaResponse) {
-				self.error.push($translate.instant('ERROR_CAPTCHA'));
+			if (nodeEnv === 'production') {
+				if (!captchaResponse) {
+					self.error.push($translate.instant('ERROR_CAPTCHA'));
+				}
 			}
 
 			if (self.error.length === 0) {
