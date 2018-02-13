@@ -61,6 +61,13 @@
 				url: '/download/:id',
 				parent: 'root',
 				templateUrl: 'pages/video-download/video-download.view.html',
-			});
+			})
+			.state('videoPreview', {
+			url: '/video/:id',
+			parent: 'root',
+			controller: function($state, $stateParams) {
+				$state.go('videoDownload', {id: $stateParams.id});
+			},
+		});
 	}
 }());
