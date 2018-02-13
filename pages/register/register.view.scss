@@ -67,8 +67,8 @@
 				font-size: 14px;
 			}
 			input[type="text"]:nth-child(2) {
-				border-top: 1px solid lightgrey;
-				border-bottom: 1px solid lightgrey;
+				border-top: 1px solid $textLight;
+				border-bottom: 1px solid $textLight;
 			}
 			span {
 				position: relative;
@@ -80,12 +80,12 @@
 				}
 				label {
 					display: inline-block;
-    			color: #919191;
+    			color: $textLight;
 					margin: 11px;
 					margin-left: 30px;
 				}
 				a {
-					color: #919191;
+					color: $textLight;
 				}
 			}
 		}
@@ -150,7 +150,7 @@
 		color: grey;
 	}
 	button:hover {
-		background-color: #f14b51;
+		background-color: $mainColor;
 		color: white;
 	}
 }
