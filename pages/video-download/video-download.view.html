@@ -3,9 +3,9 @@
 	<!-- Screen loading directive -->
 	<div ng-if="!VideoDownload.video.data && VideoDownload.loading" class="loading">{{'LOADING' | translate}}</div>
 
-	<div ng-if="!VideoDownload.video.data && !VideoDownload.loading">Video erróneo</div>
+	<div ng-if="VideoDownload.video.data.error && !VideoDownload.loading">Video erróneo</div>
 
-	<article ng-if="VideoDownload.video.data">
+	<article ng-if="VideoDownload.video.data && !VideoDownload.video.data.error">
 		<video controls ng-src="{{::VideoDownload.video.data.video}}" ng-attr-poster="{{::VideoDownload.video.data.poster}}" preload="metadata" controlsList="nodownload" class="video-download-page"></video>
 		<section class="info-download-video">
 			<div>
