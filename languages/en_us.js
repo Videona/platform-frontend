@@ -42,6 +42,11 @@
 			ERROR_AGE_WRONG: 'The age must be valid',
 			ERROR_TERMS_EMPTY: 'You must accept the terms and conditions of the service',
 			ERROR_RECAPTCHA_NOT_CHECKED: 'This app only is able to be used by humans. Aren\'t you human?',
+			DOWNLOAD_CODE: 'Enter your download code',
+			VERIFIED: 'Verified video',
+			DOWNLOAD_VIDEO: 'Download Video',
+			BACK_TO_GALLERY: 'Back to gallery',
+			ERROR_WRONG_DOWNLOAD_CODE: 'Invalid download code'
 		});
 	}
 }());

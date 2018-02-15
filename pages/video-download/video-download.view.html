@@ -10,24 +10,26 @@
 				</div>
 				<div ng-if="!VideoDownload.video.data.isVerified" class="videoDownload-isVerified">
 					<img src="../../img/checked.svg" alt="video-verified" />
-					<p>Verified video</p>
+					<p>{{'VERIFIED' | translate}}</p>
 				</div>
 				<div class="download-video-code">
-					<p>Enter your download code</p>
+					<p>{{'DOWNLOAD_CODE' | translate}}</p>
+					<div class="code-error" ng-if="VideoDownload.error" ng-bind="VideoDownload.error"></div>
+					<div ng-if="VideoDownload.loading" class="loading">{{'LOADING' | translate}}</div>
 					<input type="text" ng-model="VideoDownload.code">
 				</div>
 				<div class="videoDownload-button">
-					<button ng-click="VideoDownload.download()" target="_blank">Download Video</button>
+					<button ng-click="VideoDownload.download()" target="_blank">{{'DOWNLOAD_VIDEO' | translate}}</button>
 				</div>
 			</div>
 			<div class="videoDownload-go-back-portrait">
-					<a ui-sref="gallery">Back to gallery</a>
+					<a ui-sref="gallery">{{'BACK_TO_GALLERY' | translate}}</a>
 			</div>
 		</section>
 	</article>
 	<div class="videoDownload-back-landscape">
 		<p>
-			<a ui-sref="gallery">Back to gallery</a>
+			<a ui-sref="gallery">{{'BACK_TO_GALLERY' | translate}}</a>
 		</p>
 	</div>
 </div>

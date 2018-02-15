@@ -162,3 +162,10 @@ a:hover {
 		text-align: center;
 	}
 }
+
+.code-error {
+	padding: 8px;
+	display: inline-block;
+	width: 50%;
+	color: $error;
+}

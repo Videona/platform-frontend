@@ -42,6 +42,11 @@
 			ERROR_AGE_WRONG: 'La edad tiene que ser válida.',
 			ERROR_TERMS_EMPTY: 'Tienes que aceptar los términos y condiciones de uso.',
 			ERROR_RECAPTCHA_NOT_CHECKED: 'En esta aplicación solo aceptamos humanos ¿Acaso eres un robot?',
+			DOWNLOAD_CODE: 'Introduce un código de descarga',
+			VERIFIED: 'Video verificado',
+			DOWNLOAD_VIDEO: 'Descargar video',
+			BACK_TO_GALLERY: 'Volver a la galería',
+			ERROR_WRONG_DOWNLOAD_CODE: 'Código de descarga inválido'
 		});
 	}
 }());

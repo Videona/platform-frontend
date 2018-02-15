@@ -681,3 +681,10 @@ a:hover {
   width: 50%;
   text-align: center;
 }
+
+.code-error {
+  padding: 8px;
+  display: inline-block;
+  width: 50%;
+  color: #ff0000;
+}
