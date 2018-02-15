@@ -6,14 +6,17 @@ function VideoDownload($stateParams, video, videoDownload, $translate) {
 
 	self.id = $stateParams.id;
 	self.code = '';
-	self.loading = false;
+	self.loading = true;
 	self.error = null;
 
 	self.video = video;
 
 	self.download = download;
 
-	self.video.get(self.id);
+	// ToDo: Check invalid video :S
+	self.video.get(self.id, function() {
+		self.loading = false;
+	});
 
 
 	function download() {

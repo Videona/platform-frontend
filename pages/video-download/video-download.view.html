@@ -1,5 +1,11 @@
 <div ng-controller="VideoDownloadController as VideoDownload" class="download-page">
-	<article>
+
+	<!-- Screen loading directive -->
+	<div ng-if="!VideoDownload.video.data && VideoDownload.loading" class="loading">{{'LOADING' | translate}}</div>
+
+	<div ng-if="!VideoDownload.video.data && !VideoDownload.loading">Video erróneo</div>
+
+	<article ng-if="VideoDownload.video.data">
 		<video controls ng-src="{{::VideoDownload.video.data.video}}" ng-attr-poster="{{::VideoDownload.video.data.poster}}" preload="metadata" controlsList="nodownload" class="video-download-page"></video>
 		<section class="info-download-video">
 			<div>
