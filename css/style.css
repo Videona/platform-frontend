@@ -224,7 +224,7 @@ html body {
   width: 100%;
 }
 
-@media (max-width: 767px) and (orientation: portrait) {
+@media (max-width: 767px) {
   .register-page {
     -webkit-animation: imageTranslation 10s both ease-in-out;
     -moz-animation: imageTranslation 10s both ease-in-out;
@@ -266,13 +266,7 @@ html body {
   margin-top: 60px;
 }
 
-@media (max-width: 767px) and (orientation: landscape) {
-  .register-form {
-    margin-top: 30px;
-  }
-}
-
-@media (max-width: 1023px) and (orientation: landscape) {
+@media (max-width: 1023px) {
   .register-form {
     margin-top: 30px;
   }
@@ -362,13 +356,7 @@ html body {
   max-width: 350px;
 }
 
-@media (max-width: 767px) and (orientation: landscape) {
-  .mobile-apps {
-    display: none;
-  }
-}
-
-@media (max-width: 1023px) and (orientation: landscape) {
+@media (max-width: 1023px) {
   .mobile-apps {
     display: none;
   }
@@ -510,7 +498,7 @@ a:hover {
   max-width: 1200px;
 }
 
-@media (orientation: landscape) {
+@media (min-width: 1024px) {
   .download-page article {
     margin: 20px auto 0 auto;
     width: 96vw;
@@ -525,7 +513,7 @@ a:hover {
   width: 100%;
 }
 
-@media (orientation: landscape) {
+@media (min-width: 1024px) {
   .video-download-page {
     width: 46%;
     margin: 20px 0 0 20px;
@@ -546,7 +534,7 @@ a:hover {
   border-radius: 4px;
 }
 
-@media (orientation: landscape) {
+@media (min-width: 1024px) {
   .info-download-video {
     height: auto;
   }
@@ -557,7 +545,7 @@ a:hover {
   width: 90%;
 }
 
-@media (orientation: landscape) {
+@media (min-width: 1024px) {
   .info-download-video > div:first-child {
     margin-top: 0;
   }
@@ -568,7 +556,7 @@ a:hover {
   margin-bottom: 5vw;
 }
 
-@media (orientation: landscape) {
+@media (min-width: 1024px) {
   .info-download-video > div:last-child {
     display: none;
   }
@@ -580,7 +568,7 @@ a:hover {
   color: #2b2b2b;
 }
 
-@media (orientation: landscape) {
+@media (min-width: 1024px) {
   .headers-info-videoDownload h1 {
     font-size: 36px;
   }
@@ -592,7 +580,7 @@ a:hover {
   margin: 10px 0;
 }
 
-@media (orientation: landscape) {
+@media (min-width: 1024px) {
   .headers-info-videoDownload h2 {
     font-size: 20px;
   }
@@ -649,7 +637,7 @@ a:hover {
   font-size: 15px;
 }
 
-@media (orientation: landscape) {
+@media (min-width: 1024px) {
   .videoDownload-button button {
     background-color: #f14b51;
     font-size: 24px;
@@ -661,17 +649,17 @@ a:hover {
   background-color: #fac5c7;
 }
 
-.videoDownload-go-back-portrait {
+.videoDownload-go-back-mobile {
   color: #5A6978;
 }
 
-@media (orientation: landscape) {
-  .videoDownload-go-back-portrait {
+@media (min-width: 1024px) {
+  .videoDownload-go-back-mobile {
     display: none;
   }
 }
 
-.videoDownload-back-landscape {
+.videoDownload-back-desktop {
   color: #5A6978;
   width: 96vw;
   max-width: 1200px;
@@ -680,13 +668,19 @@ a:hover {
   background-color: white;
 }
 
-@media (orientation: portrait) {
-  .videoDownload-back-landscape {
+@media (max-width: 767px) {
+  .videoDownload-back-desktop {
     display: none;
   }
 }
 
-.videoDownload-back-landscape p {
+@media (max-width: 1023px) {
+  .videoDownload-back-desktop {
+    display: none;
+  }
+}
+
+.videoDownload-back-desktop p {
   width: 50%;
   text-align: center;
 }

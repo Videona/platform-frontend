@@ -7,7 +7,7 @@
 	@extend %justify-content-center;
 	height: 100%;
 	width: 100%;
-	@include mobileQueryPortrait {
+	@include mobile {
 		-webkit-animation: imageTranslation 10s both ease-in-out;
   	-moz-animation: imageTranslation 10s both ease-in-out;
 		animation: imageTranslation 10s both ease-in-out;
@@ -46,10 +46,7 @@
 	width: 100%;
 	max-width: 250px;
 	margin-top: 60px;
-	@include mobileQueryLandscape {
-		margin-top: 30px;
-	}
-	@include tabletQueryLandscape {
+	@include tablet {
 		margin-top: 30px;
 	}
 	form {
@@ -123,10 +120,7 @@
 }
 
 .mobile-apps {
-	@include mobileQueryLandscape {
-		display: none;
-	}
-	@include tabletQueryLandscape {
+	@include tablet {
 		display: none;
 	}
 	@extend %display-flex;

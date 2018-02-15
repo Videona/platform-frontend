@@ -20,7 +20,7 @@ a:hover {
 		@extend %flex-direction-column;
 		@extend %justify-content-space-between;
 		@extend %align-items-center;
-		@include landscape {
+		@include desktop {
 			margin: 20px auto 0 auto;
 			width: 96vw;
 			background-color: white;
@@ -33,7 +33,7 @@ a:hover {
 
 .video-download-page {
 	width: 100%;
-	@include landscape {
+	@include desktop {
 		width: 46%;
 		margin: 20px 0 0 20px;
 	}
@@ -52,20 +52,20 @@ a:hover {
 	@extend %flex-direction-column;
 	@extend %justify-content-space-between;
 	@extend %align-items-center;
-	@include landscape {
+	@include desktop {
 		height: auto;
 	}
 	& > div:first-child {
 		margin-top: 5vw;
 		width: 90%;
-		@include landscape {
+		@include desktop {
 			margin-top: 0;
 		}
 	}
 	& > div:last-child {
 		height: 8%;
 		margin-bottom: 5vw;
-		@include landscape {
+		@include desktop {
 			display: none;
 		}
 	}
@@ -76,7 +76,7 @@ a:hover {
 		font-weight: 500;
 		font-size: 24px;
 		color: $textDark;
-		@include landscape {
+		@include desktop {
 			font-size: 36px;
 		}
 	}
@@ -84,7 +84,7 @@ a:hover {
 		color: $text; 
 		font-size: 20px;
 		margin: 10px 0;
-		@include landscape {
+		@include desktop {
 			font-size: 20px;
 		}
 	}
@@ -132,7 +132,7 @@ a:hover {
 		padding: 0 15px;
 		margin-top: 30px;
 		font-size: 15px;
-		@include landscape {
+		@include desktop {
 			background-color: $mainColor;
 			font-size: 24px;
 			height: 48px;
@@ -143,21 +143,24 @@ a:hover {
 	}
 }
 
-.videoDownload-go-back-portrait {
+.videoDownload-go-back-mobile {
 	color: $grey;
-	@include landscape {
+	@include desktop {
 		display: none;
 	}
 }
 
-.videoDownload-back-landscape {
+.videoDownload-back-desktop {
 	color: $grey;
 	width: 96vw;
 	max-width: 1200px;
 	padding-bottom: 20px;
 	margin: 0 auto;
 	background-color: white;
-	@include portrait {
+	@include mobile {
+		display: none;
+	}
+	@include tablet {
 		display: none;
 	}
 	p {

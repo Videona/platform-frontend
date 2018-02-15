@@ -1,6 +1,6 @@
 <div ng-controller="VideoDownloadController as VideoDownload" class="download-page">
 	<article>
-		<video controls ng-src="{{::VideoDownload.video.data.video}}" ng-attr-poster="{{::VideoDownload.video.data.video}}" preload="metadata" controlsList="nodownload" class="video-download-page"></video>
+		<video controls ng-src="{{::VideoDownload.video.data.video}}" ng-attr-poster="{{::VideoDownload.video.data.poster}}" preload="metadata" controlsList="nodownload" class="video-download-page"></video>
 		<section class="info-download-video">
 			<div>
 				<div class="headers-info-videoDownload">
@@ -17,15 +17,15 @@
 					<input type="text" ng-model="VideoDownload.code">
 				</div>
 				<div class="videoDownload-button">
-					<button ng-click="VideoDownload.download()" target="_blank">Download Video</button>
+					<button ng-class="VideoDownload.code ? '' : 'disabled'" ng-click="VideoDownload.download()" target="_blank">Download Video</button>
 				</div>
 			</div>
-			<div class="videoDownload-go-back-portrait">
+			<div class="videoDownload-go-back-mobile">
 					<a ui-sref="gallery">Back to gallery</a>
 			</div>
 		</section>
 	</article>
-	<div class="videoDownload-back-landscape">
+	<div class="videoDownload-back-desktop">
 		<p>
 			<a ui-sref="gallery">Back to gallery</a>
 		</p>
