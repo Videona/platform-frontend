@@ -1,5 +1,5 @@
 a {
-	color: #2b2b2b;
+	color: $textDark;
 	text-decoration: none;
 }
 a:hover {
@@ -9,7 +9,7 @@ a:hover {
 .download-page {
 	height: 100%;
 	width: 100%;
-	background-color: #f3f3f3;
+	background-color: $background;
 	@extend %display-flex;
 	@extend %flex-direction-column;
 	article {
@@ -45,7 +45,7 @@ a:hover {
 .info-download-video {
 	width: 96vw;
 	margin: 2vw;
-	background-color: white;
+	background-color: $backgroundLight;
 	height: 100%;
 	@include border-radius(4px);
 	@extend %display-flex;
@@ -75,13 +75,13 @@ a:hover {
 	h1 {
 		font-weight: 500;
 		font-size: 24px;
-		color: #2b2b2b;
+		color: $textDark;
 		@include landscape {
 			font-size: 36px;
 		}
 	}
 	h2 {
-		color: #626262; 
+		color: $text; 
 		font-size: 20px;
 		margin: 10px 0;
 		@include landscape {
@@ -99,7 +99,7 @@ a:hover {
 		width: 32px;
 	}
 	p {
-		color: #626262;
+		color: $text;
 		font-size: 20px;
 		margin-left: 8px;
 	}
@@ -126,29 +126,32 @@ a:hover {
 	width: 100%;
 	button {
 		color: white;
-		background-color: #fac5c7;
+		background-color: $mainColor;
 		@include border-radius(4px);
 		height: 32px;
 		padding: 0 15px;
 		margin-top: 30px;
 		font-size: 15px;
 		@include landscape {
-			background-color: $primaryColor;
+			background-color: $mainColor;
 			font-size: 24px;
 			height: 48px;
 		}
 	}
+	button.disabled {
+		background-color: $mainColorDisabled;
+	}
 }
 
 .videoDownload-go-back-portrait {
-	color: grey;
+	color: $grey;
 	@include landscape {
 		display: none;
 	}
 }
 
 .videoDownload-back-landscape {
-	color: grey;
+	color: $grey;
 	width: 96vw;
 	max-width: 1200px;
 	padding-bottom: 20px;

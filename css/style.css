@@ -1,5 +1,10 @@
 /* COLORS */
-/* SIZES */
+/* Main Color */
+/* Secondary Color */
+/* Grey */
+/* Background Color */
+/* Text Color */
+/* Status Colors */
 @-webkit-keyframes imageTranslation {
   from {
     background-position-x: 35%;
@@ -292,8 +297,8 @@ html body {
 }
 
 .register-form form div input[type="text"]:nth-child(2) {
-  border-top: 1px solid lightgrey;
-  border-bottom: 1px solid lightgrey;
+  border-top: 1px solid #5A6978;
+  border-bottom: 1px solid #5A6978;
 }
 
 .register-form form div span {
@@ -309,13 +314,13 @@ html body {
 
 .register-form form div span label {
   display: inline-block;
-  color: #919191;
+  color: #5A6978;
   margin: 11px;
   margin-left: 30px;
 }
 
 .register-form form div span a {
-  color: #919191;
+  color: #5A6978;
 }
 
 .register-form button {
@@ -392,7 +397,7 @@ html body {
 }
 
 .full-sized-bg-img {
-  background-color: #F14b51;
+  background-color: #f14b51;
   background-image: url("../../img/login-bg.jpg");
   background-position: center;
   background-size: cover;
@@ -424,7 +429,7 @@ html body {
 }
 
 #login .input-group-two {
-  background-color: #fff;
+  background-color: #ffffff;
   border-radius: 5px;
   display: inline-block;
   max-width: 264px;
@@ -460,7 +465,7 @@ html body {
 }
 
 #login input.button-border {
-  border: 2px solid #fff;
+  border: 2px solid #ffffff;
 }
 
 .button-border {
@@ -472,8 +477,8 @@ html body {
 }
 
 .button-border:hover {
-  background-color: #fff;
-  color: #F14b51;
+  background-color: #ffffff;
+  color: #f14b51;
 }
 
 .block-link {
@@ -534,7 +539,7 @@ a:hover {
 .info-download-video {
   width: 96vw;
   margin: 2vw;
-  background-color: white;
+  background-color: #ffffff;
   height: 100%;
   -webkit-border-radius: 4px;
   -ms-border-radius: 4px;
@@ -634,7 +639,7 @@ a:hover {
 
 .videoDownload-button button {
   color: white;
-  background-color: #fac5c7;
+  background-color: #f14b51;
   -webkit-border-radius: 4px;
   -ms-border-radius: 4px;
   border-radius: 4px;
@@ -646,14 +651,18 @@ a:hover {
 
 @media (orientation: landscape) {
   .videoDownload-button button {
-    background-color: #F14b51;
+    background-color: #f14b51;
     font-size: 24px;
     height: 48px;
   }
 }
 
+.videoDownload-button button.disabled {
+  background-color: #fac5c7;
+}
+
 .videoDownload-go-back-portrait {
-  color: grey;
+  color: #5A6978;
 }
 
 @media (orientation: landscape) {
@@ -663,7 +672,7 @@ a:hover {
 }
 
 .videoDownload-back-landscape {
-  color: grey;
+  color: #5A6978;
   width: 96vw;
   max-width: 1200px;
   padding-bottom: 20px;

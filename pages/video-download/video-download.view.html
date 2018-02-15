@@ -17,7 +17,7 @@
 					<input type="text" ng-model="VideoDownload.code">
 				</div>
 				<div class="videoDownload-button">
-					<button ng-click="VideoDownload.download()" target="_blank">Download Video</button>
+					<button ng-class="VideoDownload.code ? '' : 'disabled'" ng-click="VideoDownload.download()" target="_blank">Download Video</button>
 				</div>
 			</div>
 			<div class="videoDownload-go-back-portrait">
