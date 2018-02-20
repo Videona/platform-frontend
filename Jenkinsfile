@@ -19,11 +19,11 @@ node {
                 script: 'node -e "console.log(require('./package.json').version);"',
                 returnStdout: true
                 ).trim()
-            sh '../node_modules/gulp/bin/gulp.js build'
+            sh "../node_modules/gulp/bin/gulp.js build"
             try {
-                sh '../node_modules/karma/bin/karma start --watch false --single-run true'
+                sh "../node_modules/karma/bin/karma start --watch false --single-run true"
             } catch(err) {
-                sh 'echo TESTS FAILED'
+                sh "echo TESTS FAILED"
                 step ([$class: 'JUnitResultArchiver', testResults: 'report/*.xml', healthScaleFactor: 1.0])
                 currentBuild.result = 'UNSTABLE'
                 throw err
