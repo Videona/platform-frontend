@@ -15,10 +15,10 @@ node {
         def testImage = docker.build("my-image:${env.BUILD_ID}", "-f ${dockerfile} ./")
 
         testImage.inside {
-            FRONTEND_TAG = 'v' + sh (
-                script: 'node -e "console.log(require('./package.json').version);"',
-                returnStdout: true
-                ).trim()
+//            FRONTEND_TAG = 'v' + sh (
+//                script: 'node -e "console.log(require('./package.json').version);"',
+//                returnStdout: true
+//                ).trim()
             sh "../node_modules/gulp/bin/gulp.js build"
             try {
                 sh "../node_modules/karma/bin/karma start --watch false --single-run true"
