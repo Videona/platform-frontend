@@ -14,14 +14,15 @@ node {
         def dockerfile = 'Dockerfile.test'
         def testImage = docker.build("my-image:${env.BUILD_ID}", "-f ${dockerfile} ./")
 
-        testImage.inside {
-//            FRONTEND_TAG = 'v' + sh (
-//                script: 'node -e "console.log(require('./package.json').version);"',
-//                returnStdout: true
-//                ).trim()
-            sh "../node_modules/gulp/bin/gulp.js build"
+        testImage.inside('-e "NODE_ENV=production" -e BACKEND_API_URL=http://${DOCKER_MACHINE_IP}:3000') {
+            FRONTEND_TAG = sh (
+                script: "node -e \"console.log(require(\'./package.json\').version);\"",
+                returnStdout: true
+                ).trim()
+            sh "cd /app/src && ../node_modules/gulp/bin/gulp.js build"
             try {
-                sh "../node_modules/karma/bin/karma start --watch false --single-run true"
+                sh "cd /app/src && ../node_modules/karma/bin/karma start --watch false --single-run true"
+                sh "cp -r /app/src/report ${WORKSPACE}"
             } catch(err) {
                 sh "echo TESTS FAILED"
                 step ([$class: 'JUnitResultArchiver', testResults: 'report/*.xml', healthScaleFactor: 1.0])
@@ -29,12 +30,14 @@ node {
                 throw err
             }
             sh 'echo "Tests passed"'
+            step ([$class: 'JUnitResultArchiver', testResults: 'report/*.xml', healthScaleFactor: 1.0])
         }
     }
 
 
     stage('Build image') {
-        app = docker.build("${base_image}")
+        app = docker.build("${base_image}:${FRONTEND_TAG}")
+        echo "fronted tag is ${FRONTEND_TAG}"
         echo "Built container image with frontend version ${env.BUILD_NUMBER}"
     }
 
@@ -48,11 +51,11 @@ node {
 //    }
 
 
-//    stage('Push image') {
-//        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-//            app.push("${env.BUILD_NUMBER}")
-//            app.push()
-//            app.push("latest")
-//        }
-//    }
+    stage('Push image') {
+        docker.withRegistry("https://891817301160.dkr.ecr.us-east-2.amazonaws.com/m4n/mojofy_frontend", "ecr:us-east-2:m4n-aws") {
+            app.push("build_${env.BUILD_NUMBER}")
+            app.push("${FRONTEND_TAG}")
+            app.push("latest")
+        }
+    }
 }
