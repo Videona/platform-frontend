@@ -15,8 +15,8 @@ require('gulp-watch');
 gulp.task('serve', function () {
 	gulp.src('./')
 		.pipe(webserver({
-			host: process.env.FRONTEND_HOST,
-			port: process.env.FRONTEND_PORT,
+			host: process.env.FRONTEND_HOST || 'localhost',
+			port: process.env.FRONTEND_PORT || 8080,
 			fallback: 'index.html',
 			livereload: true,
 		}));
@@ -28,8 +28,8 @@ gulp.task('dev', function (done) {
 
 gulp.task('make-config', function() {
     var json = JSON.stringify({
-	    nodeEnv: process.env.NODE_ENV,
-	    backendApiUrl: process.env.BACKEND_API_URL
+	    nodeEnv: process.env.NODE_ENV || 'development',
+	    backendApiUrl: process.env.BACKEND_API_URL || 'http://localhost:3000'
     });
 
     return b2v.stream(new Buffer(json), 'config.js')
