@@ -9,7 +9,7 @@ $color1: #0089ff;
 $color2: #2a5ab5;
 //backgrounds
 $backwhite: #ffffff;
-$backgrey: #e3e3e3;
+$backgrey: #f3f3f3;
 //fonts colors
 $maintag: #c4c4c4;
 $mainQuestion: #525252;
@@ -27,5 +27,8 @@ $topbarImgHeight: 30px;
 // Navbar
 $navbarHeight: 50px; // Navbar base height
 $navbarImgHeight: 30px;
-$cardMargin: 13px;
 $specificInteraction: 43px;
+
+// Card
+$cardMargin: 13px;
+$cardRadius: 5px;

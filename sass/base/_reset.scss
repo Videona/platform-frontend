@@ -57,7 +57,7 @@ q:before, q:after {
   content: none;
 }
 
-ins {
+a:hover, ins {
   text-decoration: none;
 }
 del {
@@ -74,6 +74,11 @@ body {
   height: 100%;
   overflow: hidden;
   position: fixed;
+}
+
+body {
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
 }
 
 textarea {
