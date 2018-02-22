@@ -42,6 +42,12 @@
 			ERROR_AGE_WRONG: 'La edad tiene que ser válida.',
 			ERROR_TERMS_EMPTY: 'Tienes que aceptar los términos y condiciones de uso.',
 			ERROR_RECAPTCHA_NOT_CHECKED: 'En esta aplicación solo aceptamos humanos ¿Acaso eres un robot?',
+			GALLERY_FEATURED_VIDEOS: 'Featured videos',
+			GALLERY_VIEW_ALL: 'Ver todo',
+			GALLERY_ORDER_BY: 'Ordenar por',
+			GALLERY_ORDER_BY_SELECTOR_RELEVANCE: 'Relevancia',
+			VIDEO_CARD_VERIFIED: 'Verificado',
+			VIDEO_CARD_NOT_VERIFIED: 'No verificado',
 		});
 	}
 }());

@@ -42,6 +42,12 @@
 			ERROR_AGE_WRONG: 'The age must be valid',
 			ERROR_TERMS_EMPTY: 'You must accept the terms and conditions of the service',
 			ERROR_RECAPTCHA_NOT_CHECKED: 'This app only is able to be used by humans. Aren\'t you human?',
+			GALLERY_FEATURED_VIDEOS: 'Featured videos',
+			GALLERY_VIEW_ALL: 'View all',
+			GALLERY_ORDER_BY: 'Order by',
+			GALLERY_ORDER_BY_SELECTOR_RELEVANCE: 'Relevance',
+			VIDEO_CARD_VERIFIED: 'Verified',
+			VIDEO_CARD_NOT_VERIFIED: 'Not verified',
 		});
 	}
 }());
