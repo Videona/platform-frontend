@@ -23,29 +23,33 @@ function Gallery($stateParams, $translate, gallery) {
 	getNotFeaturedVideos();
 	
 	function getFeaturedVideos() {
-		self.loading = true;
-		self.gallery.getFeaturedVideoList(function (data) {
-			if (self.featured.length > 0) {
-				var obj = JSON.parse(self.featured);
-				obj.videoList.push(data);
-				data = JSON.stringify(obj);
-			}
-			self.featured = data;
-			self.loading = false;
-		});
+		if (!this.busy) {
+			self.loading = true;
+			self.gallery.getFeaturedVideoList(function (data) {
+				if (self.featured.length > 0) {
+					var obj = JSON.parse(self.featured);
+					obj.videoList.push(data);
+					data = JSON.stringify(obj);
+				}
+				self.featured = data;
+				self.loading = false;
+			});
+		} 
 	}
 	
 	function getNotFeaturedVideos() {
-		self.loading = true;
-		self.gallery.getNotFeaturedVideoList(function (data) {
-			if (self.notFeatured.length > 0) {
-				var obj = JSON.parse(self.notFeatured);
-				obj.videoList.push(data);
-				data = JSON.stringify(obj);
-			}
-			self.notFeatured = data;
-			self.loading = false;
-		});
+		if (!this.busy) {
+			self.loading = true;
+			self.gallery.getNotFeaturedVideoList(function (data) {
+				if (self.notFeatured.length > 0) {
+					var obj = JSON.parse(self.notFeatured);
+					obj.videoList.push(data);
+					data = JSON.stringify(obj);
+				}
+				self.notFeatured = data;
+				self.loading = false;
+			});
+		}  
 	}
 	
 	function setupFeaturedCard() {
