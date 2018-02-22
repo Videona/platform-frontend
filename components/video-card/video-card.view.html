@@ -1,0 +1,15 @@
+<div ng-style="{'width':width}">
+	<img ng-src="{{poster}}" alt="title" />
+	<section class="video-info">
+		<h2 ng-bind="title"></h2>
+		<h4 ng-bind="productType"></h4>
+	</section>
+	<section class="video-isVerified" ng-if="isVerified">
+		<img src="../../img/checked.svg" alt="video_verified" />
+		<p>{{'VIDEO_CARD_VERIFIED' | translate}}</p>
+	</section>
+	<section class="video-isVerified" ng-if="!isVerified">
+		<img src="../../img/unchecked.svg" alt="video_not_verified" />
+		<p>{{'VIDEO_CARD_NOT_VERIFIED' | translate}}</p>
+	</section>
+</div>
