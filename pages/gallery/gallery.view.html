@@ -1,38 +1,41 @@
 <div ng-controller="GalleryController as Gallery" class="gallery">
 	<topbar></topbar>
-	<section class="gallery-featured">
-		<div>
-			<h1>{{'GALLERY_FEATURED_VIDEOS' | translate}}</h1>
-			<a href="#">
-				<p>{{'GALLERY_VIEW_ALL' | translate}}</p>
-			</a>
-		</div>
-		<article>
-			<video-card ng-repeat="video in Gallery.featured.videoList" video="video" width="Gallery.featuredWidth" ui-sref="video/{{video._id}}"></video-card>
-		</article>
-	</section>
-	<section class="gallery-filter">
-		<img src="../../img/funnel.svg" alt="img_funnel">
-		<div>
-<!--
-			TO-DO: Solve the problem with this ugly text, not changing the name
-			<style type="text/css">
-				.gallery-label-select:before {
-					content: "'" + {{'GALLERY_ORDER_BY' | translate}} + "'";
-				} 
-			</style>
--->
-			<label class="gallery-label-select">
-				<select>
-					<option selected>{{'GALLERY_ORDER_BY_SELECTOR_RELEVANCE' | translate}}</option>
-				</select>
-			</label>
-		</div>
-	</section>
-	<section class="gallery-nonFeatured">
-		<article>
-			<video-card ng-repeat="video in Gallery.notFeatured.videoList" ng-style="($index + 1) % Gallery.notFeaturedVideosQuantity === 0 ? { 'margin':'0px' } : {}" video="video" width="Gallery.notFeaturedWidth" ui-sref="video/{{::video._id}}">
-			</video-card>
-		</article>
-	</section>
+	<div infinite-scroll='Gallery.getNotFeaturedVideos()' infinite-scroll-distance='3'>
+		<section class="gallery-featured">
+			<div>
+				<h1>{{'GALLERY_FEATURED_VIDEOS' | translate}}</h1>
+				<a href="#">
+					<p>{{'GALLERY_VIEW_ALL' | translate}}</p>
+				</a>
+			</div>
+			<article infinite-scroll='Gallery.getFeaturedVideos()' infinite-scroll-distance='3'>
+				<video-card ng-repeat="video in Gallery.featured.videoList" video="video" width="Gallery.featuredWidth" ui-sref="video/{{video._id}}"></video-card>
+			</article>
+		</section>
+		<section class="gallery-filter">
+			<img src="../../img/funnel.svg" alt="img_funnel">
+			<div>
+	<!--
+				TO-DO: Solve the problem with this ugly text, not changing the name
+				<style type="text/css">
+					.gallery-label-select:before {
+						content: "'" + {{'GALLERY_ORDER_BY' | translate}} + "'";
+					} 
+				</style>
+	-->
+				<label class="gallery-label-select">
+					<select>
+						<option selected>{{'GALLERY_ORDER_BY_SELECTOR_RELEVANCE' | translate}}</option>
+					</select>
+				</label>
+			</div>
+		</section>
+		<section class="gallery-nonFeatured">
+			<article>
+				<video-card ng-repeat="video in Gallery.notFeatured.videoList" ng-style="($index + 1) % Gallery.notFeaturedVideosQuantity === 0 ? { 'margin':'0px' } : {}" video="video" width="Gallery.notFeaturedWidth" ui-sref="video/{{::video._id}}">
+				</video-card>
+			</article>
+		</section>
+	</div>
+	<div ng-if='Gallery.loading'>Loading data...</div>
 </div>
