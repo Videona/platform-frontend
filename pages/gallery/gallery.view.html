@@ -1,6 +1,6 @@
 <div ng-controller="GalleryController as Gallery" class="gallery">
 	<topbar></topbar>
-	<div infinite-scroll='Gallery.getNotFeaturedVideos()' infinite-scroll-distance='3'>
+	<div infinite-scroll='Gallery.getNotFeaturedVideos()' infinite-scroll-distance='20' infinite-scroll-disabled="Gallery.loading">
 		<section class="gallery-featured">
 			<div>
 				<h1>{{'GALLERY_FEATURED_VIDEOS' | translate}}</h1>
@@ -8,7 +8,7 @@
 					<p>{{'GALLERY_VIEW_ALL' | translate}}</p>
 				</a>
 			</div>
-			<article infinite-scroll='Gallery.getFeaturedVideos()' infinite-scroll-distance='3'>
+			<article infinite-scroll='Gallery.getFeaturedVideos()' infinite-scroll-distance='5'>
 				<video-card ng-repeat="video in Gallery.featured.videoList" video="video" width="Gallery.featuredWidth" ui-sref="video/{{video._id}}"></video-card>
 			</article>
 		</section>
