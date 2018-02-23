@@ -11,9 +11,12 @@ function videoService(api) {
 	return video;
 
 
-	function get(videoId) {
-		api.get(api.url + '/video/' + videoId, function (data) {
+	function get(videoId, callback) {
+		api.get(api.url + '/video/' + videoId, function (data, status) {
 			video.data = data;
+			if(callback && typeof callback === 'function') {
+				callback(data, status);
+			}
 		});
 	}
 
