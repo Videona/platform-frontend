@@ -1,5 +1,10 @@
 /* COLORS */
-/* SIZES */
+/* Main Color */
+/* Secondary Color */
+/* Grey */
+/* Background Color */
+/* Text Color */
+/* Status Colors */
 @-webkit-keyframes imageTranslation {
   from {
     background-position-x: 35%;
@@ -219,7 +224,7 @@ html body {
   width: 100%;
 }
 
-@media (max-width: 767px) and (orientation: portrait) {
+@media (max-width: 767px) {
   .register-page {
     -webkit-animation: imageTranslation 10s both ease-in-out;
     -moz-animation: imageTranslation 10s both ease-in-out;
@@ -261,13 +266,7 @@ html body {
   margin-top: 60px;
 }
 
-@media (max-width: 767px) and (orientation: landscape) {
-  .register-form {
-    margin-top: 30px;
-  }
-}
-
-@media (max-width: 1023px) and (orientation: landscape) {
+@media (max-width: 1023px) {
   .register-form {
     margin-top: 30px;
   }
@@ -292,8 +291,8 @@ html body {
 }
 
 .register-form form div input[type="text"]:nth-child(2) {
-  border-top: 1px solid lightgrey;
-  border-bottom: 1px solid lightgrey;
+  border-top: 1px solid #5A6978;
+  border-bottom: 1px solid #5A6978;
 }
 
 .register-form form div span {
@@ -309,13 +308,13 @@ html body {
 
 .register-form form div span label {
   display: inline-block;
-  color: #919191;
+  color: #5A6978;
   margin: 11px;
   margin-left: 30px;
 }
 
 .register-form form div span a {
-  color: #919191;
+  color: #5A6978;
 }
 
 .register-form button {
@@ -357,13 +356,7 @@ html body {
   max-width: 350px;
 }
 
-@media (max-width: 767px) and (orientation: landscape) {
-  .mobile-apps {
-    display: none;
-  }
-}
-
-@media (max-width: 1023px) and (orientation: landscape) {
+@media (max-width: 1023px) {
   .mobile-apps {
     display: none;
   }
@@ -392,7 +385,7 @@ html body {
 }
 
 .full-sized-bg-img {
-  background-color: #F14b51;
+  background-color: #f14b51;
   background-image: url("../../img/login-bg.jpg");
   background-position: center;
   background-size: cover;
@@ -424,7 +417,7 @@ html body {
 }
 
 #login .input-group-two {
-  background-color: #fff;
+  background-color: #ffffff;
   border-radius: 5px;
   display: inline-block;
   max-width: 264px;
@@ -460,7 +453,7 @@ html body {
 }
 
 #login input.button-border {
-  border: 2px solid #fff;
+  border: 2px solid #ffffff;
 }
 
 .button-border {
@@ -472,8 +465,8 @@ html body {
 }
 
 .button-border:hover {
-  background-color: #fff;
-  color: #F14b51;
+  background-color: #ffffff;
+  color: #f14b51;
 }
 
 .block-link {
@@ -505,7 +498,7 @@ a:hover {
   max-width: 1200px;
 }
 
-@media (orientation: landscape) {
+@media (min-width: 1024px) {
   .download-page article {
     margin: 20px auto 0 auto;
     width: 96vw;
@@ -520,7 +513,7 @@ a:hover {
   width: 100%;
 }
 
-@media (orientation: landscape) {
+@media (min-width: 1024px) {
   .video-download-page {
     width: 46%;
     margin: 20px 0 0 20px;
@@ -534,14 +527,14 @@ a:hover {
 .info-download-video {
   width: 96vw;
   margin: 2vw;
-  background-color: white;
+  background-color: #ffffff;
   height: 100%;
   -webkit-border-radius: 4px;
   -ms-border-radius: 4px;
   border-radius: 4px;
 }
 
-@media (orientation: landscape) {
+@media (min-width: 1024px) {
   .info-download-video {
     height: auto;
   }
@@ -552,7 +545,7 @@ a:hover {
   width: 90%;
 }
 
-@media (orientation: landscape) {
+@media (min-width: 1024px) {
   .info-download-video > div:first-child {
     margin-top: 0;
   }
@@ -563,7 +556,7 @@ a:hover {
   margin-bottom: 5vw;
 }
 
-@media (orientation: landscape) {
+@media (min-width: 1024px) {
   .info-download-video > div:last-child {
     display: none;
   }
@@ -575,7 +568,7 @@ a:hover {
   color: #2b2b2b;
 }
 
-@media (orientation: landscape) {
+@media (min-width: 1024px) {
   .headers-info-videoDownload h1 {
     font-size: 36px;
   }
@@ -587,7 +580,7 @@ a:hover {
   margin: 10px 0;
 }
 
-@media (orientation: landscape) {
+@media (min-width: 1024px) {
   .headers-info-videoDownload h2 {
     font-size: 20px;
   }
@@ -634,7 +627,7 @@ a:hover {
 
 .videoDownload-button button {
   color: white;
-  background-color: #fac5c7;
+  background-color: #f14b51;
   -webkit-border-radius: 4px;
   -ms-border-radius: 4px;
   border-radius: 4px;
@@ -644,26 +637,30 @@ a:hover {
   font-size: 15px;
 }
 
-@media (orientation: landscape) {
+@media (min-width: 1024px) {
   .videoDownload-button button {
-    background-color: #F14b51;
+    background-color: #f14b51;
     font-size: 24px;
     height: 48px;
   }
 }
 
-.videoDownload-go-back-portrait {
-  color: grey;
+.videoDownload-button button.disabled {
+  background-color: #fac5c7;
 }
 
-@media (orientation: landscape) {
-  .videoDownload-go-back-portrait {
+.videoDownload-go-back-mobile {
+  color: #5A6978;
+}
+
+@media (min-width: 1024px) {
+  .videoDownload-go-back-mobile {
     display: none;
   }
 }
 
-.videoDownload-back-landscape {
-  color: grey;
+.videoDownload-back-desktop {
+  color: #5A6978;
   width: 96vw;
   max-width: 1200px;
   padding-bottom: 20px;
@@ -671,13 +668,19 @@ a:hover {
   background-color: white;
 }
 
-@media (orientation: portrait) {
-  .videoDownload-back-landscape {
+@media (max-width: 767px) {
+  .videoDownload-back-desktop {
     display: none;
   }
 }
 
-.videoDownload-back-landscape p {
+@media (max-width: 1023px) {
+  .videoDownload-back-desktop {
+    display: none;
+  }
+}
+
+.videoDownload-back-desktop p {
   width: 50%;
   text-align: center;
 }

@@ -32,15 +32,15 @@
 					<input type="text" ng-model="VideoDownload.code">
 				</div>
 				<div class="videoDownload-button">
-					<button ng-click="VideoDownload.download()" target="_blank">{{'DOWNLOAD_VIDEO' | translate}}</button>
+					<button ng-class="VideoDownload.code ? '' : 'disabled'" ng-click="VideoDownload.download()" target="_blank">{{'DOWNLOAD_VIDEO' | translate}}</button>
 				</div>
 			</div>
-			<div class="videoDownload-go-back-portrait">
+			<div class="videoDownload-go-back-mobile">
 					<a ui-sref="gallery">{{'BACK_TO_GALLERY' | translate}}</a>
 			</div>
 		</section>
 	</article>
-	<div class="videoDownload-back-landscape">
+	<div class="videoDownload-back-desktop">
 		<p>
 			<a ui-sref="gallery">{{'BACK_TO_GALLERY' | translate}}</a>
 		</p>

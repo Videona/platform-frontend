@@ -1,5 +1,5 @@
 a {
-	color: #2b2b2b;
+	color: $textDark;
 	text-decoration: none;
 }
 a:hover {
@@ -9,7 +9,7 @@ a:hover {
 .download-page {
 	height: 100%;
 	width: 100%;
-	background-color: #f3f3f3;
+	background-color: $background;
 	@extend %display-flex;
 	@extend %flex-direction-column;
 	article {
@@ -20,7 +20,7 @@ a:hover {
 		@extend %flex-direction-column;
 		@extend %justify-content-space-between;
 		@extend %align-items-center;
-		@include landscape {
+		@include desktop {
 			margin: 20px auto 0 auto;
 			width: 96vw;
 			background-color: white;
@@ -33,7 +33,7 @@ a:hover {
 
 .video-download-page {
 	width: 100%;
-	@include landscape {
+	@include desktop {
 		width: 46%;
 		margin: 20px 0 0 20px;
 	}
@@ -45,27 +45,27 @@ a:hover {
 .info-download-video {
 	width: 96vw;
 	margin: 2vw;
-	background-color: white;
+	background-color: $backgroundLight;
 	height: 100%;
 	@include border-radius(4px);
 	@extend %display-flex;
 	@extend %flex-direction-column;
 	@extend %justify-content-space-between;
 	@extend %align-items-center;
-	@include landscape {
+	@include desktop {
 		height: auto;
 	}
 	& > div:first-child {
 		margin-top: 5vw;
 		width: 90%;
-		@include landscape {
+		@include desktop {
 			margin-top: 0;
 		}
 	}
 	& > div:last-child {
 		height: 8%;
 		margin-bottom: 5vw;
-		@include landscape {
+		@include desktop {
 			display: none;
 		}
 	}
@@ -75,16 +75,16 @@ a:hover {
 	h1 {
 		font-weight: 500;
 		font-size: 24px;
-		color: #2b2b2b;
-		@include landscape {
+		color: $textDark;
+		@include desktop {
 			font-size: 36px;
 		}
 	}
 	h2 {
-		color: #626262; 
+		color: $text; 
 		font-size: 20px;
 		margin: 10px 0;
-		@include landscape {
+		@include desktop {
 			font-size: 20px;
 		}
 	}
@@ -99,7 +99,7 @@ a:hover {
 		width: 32px;
 	}
 	p {
-		color: #626262;
+		color: $text;
 		font-size: 20px;
 		margin-left: 8px;
 	}
@@ -126,35 +126,41 @@ a:hover {
 	width: 100%;
 	button {
 		color: white;
-		background-color: #fac5c7;
+		background-color: $mainColor;
 		@include border-radius(4px);
 		height: 32px;
 		padding: 0 15px;
 		margin-top: 30px;
 		font-size: 15px;
-		@include landscape {
-			background-color: $primaryColor;
+		@include desktop {
+			background-color: $mainColor;
 			font-size: 24px;
 			height: 48px;
 		}
 	}
+	button.disabled {
+		background-color: $mainColorDisabled;
+	}
 }
 
-.videoDownload-go-back-portrait {
-	color: grey;
-	@include landscape {
+.videoDownload-go-back-mobile {
+	color: $grey;
+	@include desktop {
 		display: none;
 	}
 }
 
-.videoDownload-back-landscape {
-	color: grey;
+.videoDownload-back-desktop {
+	color: $grey;
 	width: 96vw;
 	max-width: 1200px;
 	padding-bottom: 20px;
 	margin: 0 auto;
 	background-color: white;
-	@include portrait {
+	@include mobile {
+		display: none;
+	}
+	@include tablet {
 		display: none;
 	}
 	p {
