@@ -149,14 +149,6 @@ table {
   border-spacing: 0;
 }
 
-html,
-body {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  position: fixed;
-}
-
 textarea {
   border: none;
   overflow: auto;
@@ -689,5 +681,5 @@ a:hover {
   padding: 8px;
   display: inline-block;
   width: 50%;
-  color: #ff0000;
+  color: #00ff00;
 }
