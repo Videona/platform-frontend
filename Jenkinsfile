@@ -3,6 +3,7 @@ node {
     def base_image = 'm4n/mojofy_frontend'
     environment {
         FRONTEND_TAG = 'latest'
+        AWS_ECR_LOGIN = true	
     }
 
     stage('Clone repository') {
@@ -52,6 +53,11 @@ node {
 
 
     stage('Push image') {
+        //cleanup current user docker credentials
+        // workarround for https://issues.jenkins-ci.org/browse/JENKINS-44143
+        sh 'rm  ~/.dockercfg || true'
+        sh 'rm ~/.docker/config.json || true'
+      	
         docker.withRegistry("https://891817301160.dkr.ecr.us-east-2.amazonaws.com/m4n/mojofy_frontend", "ecr:us-east-2:m4n-aws") {
             app.push("build_${env.BUILD_NUMBER}")
             app.push("${FRONTEND_TAG}")
