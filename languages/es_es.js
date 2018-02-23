@@ -48,6 +48,10 @@
 			GALLERY_ORDER_BY_SELECTOR_RELEVANCE: 'Relevancia',
 			VIDEO_CARD_VERIFIED: 'Verificado',
 			VIDEO_CARD_NOT_VERIFIED: 'No verificado',
+			DOWNLOAD_CODE: 'Introduce un código de descarga',
+			DOWNLOAD_VIDEO: 'Descargar video',
+			BACK_TO_GALLERY: 'Volver a la galería',
+			ERROR_WRONG_DOWNLOAD_CODE: 'Código de descarga inválido'
 		});
 	}
 }());

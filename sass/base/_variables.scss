@@ -1,9 +1,21 @@
 /* COLORS */
-//base
-$primaryColor: #F14b51;
-$alertColor: #F23260;
-$lightGrey: #B6B6B6;
+
+/* Main Color */
+$mainColor: #f14b51;
+$mainColorLight: #F23260;
+$mainColorDark: #f14b51;
+$mainColorDisabled: #fac5c7;
+
+/* Secondary Color */
+$secondaryColor: #000000;
+$secondaryColorLight: #000000;
+$secondaryColorDark: #000000;
+$secondaryColorDisabled: #000000;
+
+/* Grey */
 $grey: #5A6978;
+$lightGrey: #B6B6B6;
+
 //gradient colors
 $color1: #0089ff;
 $color2: #2a5ab5;
@@ -13,22 +25,27 @@ $backgrey: #f3f3f3;
 //fonts colors
 $maintag: #c4c4c4;
 $mainQuestion: #525252;
-//svg
-$stroke_svg: #878787;
-$stroke_width: 0.9863;
-$fill_disabled: #ffffff;
-$fill_enabled: #c1c1c1;
 
-/* SIZES */
+/* Background Color */
+$background: #f3f3f3;
+$backgroundLight: #ffffff;
+$backgroundDark: #cecece;
+
+/* Text Color */
+$text: #626262;
+$textLight: #5A6978;
+$textDark: #2b2b2b;
 
 // Topbar
 $topbarHeight: 52px; // Topbar base height
 $topbarImgHeight: 30px;
-// Navbar
-$navbarHeight: 50px; // Navbar base height
-$navbarImgHeight: 30px;
-$specificInteraction: 43px;
 
 // Card
 $cardMargin: 13px;
 $cardRadius: 5px;
+
+/* Status Colors */
+$success: #00ff00;
+$error: #00ff00;
+$info: #0000ff;
+$warning: #00ffff;
