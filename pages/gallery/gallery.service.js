@@ -2,10 +2,11 @@ angular.module('app')
 	.service('gallery', ['api', galleryService]);
 
 function galleryService(api) {
-	var featuredOffset = 0;
-	var notFeaturedOffset = 0;
-	
 	var gallery = {
+		featuredOffset: 0,
+		notFeaturedOffset: 0,
+		featured: [],
+		notFeatured: [],
 		getFeaturedVideoList: getFeaturedVideoList,
 		getNotFeaturedVideoList: getNotFeaturedVideoList
 	};
@@ -13,34 +14,34 @@ function galleryService(api) {
 	return gallery;
 
 	function getFeaturedVideoList(cb) {
-		var limit = 5;
+		var limit = 15;
 		
-		api.get(api.url + '/gallery?tag=highlighted&limit=' + limit + '&offset=' + featuredOffset, function (data, status) {
+		api.get(api.url + '/video?tag=featured&limit=' + limit + '&offset=' + gallery.featuredOffset, function (data, status) {
 			var success = false;
 			
-			if (status < 400) {
+			if (status < 400 && data.length > 0) {
+				gallery.featured = gallery.featured.concat(data);
+				gallery.featuredOffset += limit;
 				success = true;
 			}
 			
-			featuredOffset += limit;
-			
-			cb(success, data);
+			cb(success);
 		});
 	}
 	
 	function getNotFeaturedVideoList(cb) {
-		var limit = 20;
+		var limit = 10;
 		
-		api.get(api.url + '/gallery?excludeTag=highlighted&limit=' + limit + '&offset=' + notFeaturedOffset, function (data, status) {
+		api.get(api.url + '/video?excludeTag=featured&limit=' + limit + '&offset=' + gallery.notFeaturedOffset, function (data, status) {
 			var success = false;
 			
-			if (status < 400) {
+			if (status < 400 && data.length > 0) {
+				gallery.notFeatured = gallery.notFeatured.concat(data);
+				gallery.notFeaturedOffset += limit;
 				success = true;
 			}
-			
-			notFeaturedOffset += limit;
-			
-			cb(success, data);
+
+			cb(success);
 		});
 	}
 }

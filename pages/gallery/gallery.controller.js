@@ -3,76 +3,75 @@ angular.module('app')
 
 function Gallery($stateParams, $translate, gallery) {
 	var self = this;
+	
+	self.featured = {
+		get: getFeaturedVideos,
+		videoWidth: 0,
+		videoHeight: 0,
+		videosPerRow: 0,
+		isLoading: false
+	};	
+	
+	self.notFeatured = {
+		get: getNotFeaturedVideos,
+		videoWidth: 0,
+		videoHeight: 0,
+		videosPerRow: 0,
+		isLoading: false
+	};
 
 	self.gallery = gallery;
 	
 	self.search = '';
 	
-	self.notFeaturedVideosQuantity = 0;
-	self.featuredWidth = 0;
-	self.notFeaturedWidth = 0;
-	
-	self.loading = true;
-
 	setupFeaturedCard();
 	
-	self.featured = [];
-	self.notFeatured = [];
-
-	getFeaturedVideos();
-	getNotFeaturedVideos();
-	
 	function getFeaturedVideos() {
-		if (!this.busy) {
-			self.loading = true;
-			self.gallery.getFeaturedVideoList(function (data) {
-				if (self.featured.length > 0) {
-					var obj = JSON.parse(self.featured);
-					obj.videoList.push(data);
-					data = JSON.stringify(obj);
+		if (!self.featured.isLoading) {
+			self.featured.isLoading = true;
+			self.gallery.getFeaturedVideoList(function (success) {
+				if (success) {
+					self.featured.isLoading = false;
 				}
-				self.featured = data;
-				self.loading = false;
 			});
 		} 
 	}
 	
 	function getNotFeaturedVideos() {
-		if (!this.busy) {
-			self.loading = true;
-			self.gallery.getNotFeaturedVideoList(function (data) {
-				if (self.notFeatured.length > 0) {
-					var obj = JSON.parse(self.notFeatured);
-					obj.videoList.push(data);
-					data = JSON.stringify(obj);
+		if (!self.notFeatured.isLoading) {
+			self.notFeatured.isLoading = true;
+			self.gallery.getNotFeaturedVideoList(function (success) {
+				if (success) {
+					self.notFeatured.isLoading = false;
 				}
-				self.notFeatured = data;
-				self.loading = false;
 			});
 		}  
 	}
 	
 	function setupFeaturedCard() {
-		var featuredVideoQuantity = 0;
-		var notFeaturedVideoQuantity = 0;
+		self.featured.videosPerRow = 0;
+		self.notFeatured.videosPerRow = 0;
 		
 		if (window.innerWidth > 1920) {
-			featuredVideoQuantity = 5;
-			notFeaturedVideoQuantity = 7;
+			self.featured.videosPerRow = 5;
+			self.notFeatured.videosPerRow = 7;
 		} else if (window.innerWidth > 1024) {
-			featuredVideoQuantity = 4;
-			notFeaturedVideoQuantity = 6;
+			self.featured.videosPerRow = 4;
+			self.notFeatured.videosPerRow = 6;
 		} else if (window.innerWidth > 720) {
-			featuredVideoQuantity = 3.2;
-			notFeaturedVideoQuantity = 5;
+			self.featured.videosPerRow = 3.2;
+			self.notFeatured.videosPerRow = 5;
 		} else {
-			featuredVideoQuantity = 2.2;
-			notFeaturedVideoQuantity = 3;
+			self.featured.videosPerRow = 2.2;
+			self.notFeatured.videosPerRow = 3;
 		}
+
+		self.featured.videoWidth = (window.innerWidth - parseInt(self.featured.videosPerRow) * 13) / self.featured.videosPerRow;
+		self.featured.videoHeight = (self.featured.wivideoWidthdth * 9) / 16;
+
+		self.notFeatured.videoWidth = (window.innerWidth - parseInt(self.notFeatured.videosPerRow - 1) * 13 - 26) / self.notFeatured.videosPerRow;
+		self.notFeatured.videoHeight = (self.notFeatured.videoWidth * 9) / 16;
 		
-		self.featuredWidth = (window.innerWidth - parseInt(featuredVideoQuantity) * 13) / featuredVideoQuantity;
-		
-		self.notFeaturedVideosQuantity = notFeaturedVideoQuantity;
-		self.notFeaturedWidth = (window.innerWidth - parseInt(notFeaturedVideoQuantity - 1) * 13 - 26) / notFeaturedVideoQuantity;
+		self.featured.get();
 	}
 }

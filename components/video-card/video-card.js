@@ -9,12 +9,18 @@ function VideoCard() {
 		scope.poster = scope.video.poster;
 		scope.productType = scope.video.productType;
 		scope.isVerified = scope.video.isVerified;
+		
+		scope.size = {
+			width: scope.width,
+			height: scope.height
+		}
 	}
 	
 	return {
 		scope: {
 			video: '<',
-			width: '<'
+			width: '<',
+			height: '<'
 		},
 		link: link,
 		templateUrl: 'components/video-card/video-card.view.html'

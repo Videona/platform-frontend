@@ -2,8 +2,11 @@
 	@extend %display-flex;
 	@extend %flex-direction-column;
 	width: 100%;
-	min-height: 100vh;
+	height: 100%;
 	background-color: $backgrey;
+	> div {
+		margin-top: $topbarHeight;
+	}
 }
 
 .gallery-featured {

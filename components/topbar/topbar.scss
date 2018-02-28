@@ -1,5 +1,7 @@
 .topbar {
 	height: $topbarHeight;
+	position: fixed;
+	width: 100%;
 	@extend %display-flex;
 	@extend %justify-content-space-between;
 	@extend %align-items-center;

@@ -70,7 +70,6 @@ table {
 }
 
 body {
-	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
 }
 
@@ -125,7 +124,7 @@ div[contenteditable=true]:empty:before {
 
 html body {
 	font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
-	font-size: 16px/1.4;
+	font-size: 16px;
 	min-height: 100vh;
 	min-width: 100vw;
 	margin: 0;
