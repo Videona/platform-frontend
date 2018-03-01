@@ -41,8 +41,7 @@ gulp.task('flavour', function() {
 
 	var flavour = process.env.FLAVOUR || 'vimojo';
 	console.log('##############################################');
-	console.log('### Building flavour ' + flavour + ' from:');
-	console.log('### ./flavour/' + flavour + '/**/**');
+	console.log('### Building flavour ' + flavour);
 	console.log('##############################################');
 
 	return gulp.src('./flavour/' + flavour + '/**/**')
@@ -134,7 +133,7 @@ gulp.task('images', ['flavour'], function () {
 
 
 // Perform a complete build
-gulp.task('build', ['make-config', 'js', 'images', 'html', 'tests', 'sass']);
+gulp.task('build', ['make-config', 'flavour', 'js', 'images', 'html', 'tests', 'sass']);
 
 
 /**

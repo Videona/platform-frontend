@@ -8,6 +8,10 @@ js/config.js
 dist/*
 !dist/index.html
 
+# Flavour generated files
+img/brand
+sass/base/_variables.scss
+
 # Logs
 logs
 *.log
