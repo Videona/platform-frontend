@@ -19,12 +19,12 @@ video-card {
 			}
 			h2 {
 				font-size: 15px;
-				color: $mainQuestion;
+				color: $text;
 			}
 			h4 {
 				margin-top: 4px;
 				font-size: 12px;
-				color: $maintag;
+				color: $background;
 			}
 		}
 		.video-isVerified {
@@ -38,7 +38,7 @@ video-card {
 			p {
 				margin-left: 5px;
 				font-size: 14px;
-				color: $maintag;
+				color: $background;
 			}
 		}
 	}
