@@ -1,7 +1,7 @@
 angular.module('app')
-	.controller('GalleryController', ['$stateParams', '$translate', 'gallery', Gallery]);
+	.controller('GalleryController', ['$translate', 'gallery', Gallery]);
 
-function Gallery($stateParams, $translate, gallery) {
+function Gallery($translate, gallery) {
 	var self = this;
 	
 	self.featured = {
