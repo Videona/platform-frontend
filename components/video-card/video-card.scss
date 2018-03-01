@@ -1,0 +1,45 @@
+video-card {
+	div {
+		@extend %display-flex;
+		@extend %flex-direction-column;
+		background-color: white;
+		@include border-radius($cardRadius);
+		img {
+			@include border-radius($cardRadius);
+			width: 100%;
+		}
+		.video-info {
+			@extend %display-flex;
+			@extend %flex-direction-column;
+			margin: 12px 7px 0 12px;
+			h2, h4 {
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+			h2 {
+				font-size: 15px;
+				color: $text;
+			}
+			h4 {
+				margin-top: 4px;
+				font-size: 12px;
+				color: $background;
+			}
+		}
+		.video-isVerified {
+			@extend %display-flex;
+			@extend %align-items-flex-end;
+			margin: 8px 0 15px 12px;
+			img {
+				width: 15px;
+				height: 15px;
+			}
+			p {
+				margin-left: 5px;
+				font-size: 14px;
+				color: $background;
+			}
+		}
+	}
+}
