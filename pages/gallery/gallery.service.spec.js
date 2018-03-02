@@ -40,7 +40,7 @@ describe('Gallery service', function () {
 		
 		it('should have empty values before calling the callback', function() {
 			expect(gallery.featuredOffset).toEqual(0);
-			expect(gallery.featured).toEqual([]);
+			expect(gallery.featured.length).toBe(0);
 		});
 		
 		it('should execute callback', function() {
@@ -59,7 +59,7 @@ describe('Gallery service', function () {
 		
 		it('should have empty values before calling the callback', function() {
 			expect(gallery.notFeaturedOffset).toEqual(0);
-			expect(gallery.notFeatured).toEqual([]);
+			expect(gallery.notFeatured.length).toBe(0);
 		});
 		
 		it('should execute callback', function() {
