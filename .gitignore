@@ -11,6 +11,7 @@ dist/*
 # Flavour generated files
 img/brand
 sass/base/_variables.scss
+js/flavour.js
 
 # Logs
 logs
