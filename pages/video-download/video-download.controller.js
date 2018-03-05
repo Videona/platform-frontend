@@ -13,6 +13,10 @@ function VideoDownload($stateParams, video, videoDownload, $translate) {
 
 	self.download = download;
 
+	if(self.video && self.video.data && self.video.data.id !== self.id) {
+		self.video.reset();
+	}
+	
 	// ToDo: Check invalid video :S
 	self.video.get(self.id, function() {
 		self.loading = false;
