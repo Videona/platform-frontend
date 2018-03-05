@@ -9,7 +9,9 @@
 				</a>
 			</div>
 			<article>
-				<video-card ng-repeat="video in Gallery.gallery.featured" video="video" width="Gallery.featured.videoWidth" height="Gallery.featured.videoHeight" ui-sref="video/{{video._id}}"></video-card>
+				<video-card ng-repeat="video in Gallery.gallery.featured" video="video"
+							width="Gallery.featured.videoWidth" height="Gallery.featured.videoHeight"
+							ui-sref="videoPreview({ id: video._id })"></video-card>
 			</article>
 		</section>
 		<section class="gallery-filter">
@@ -25,7 +27,10 @@
 		</section>
 		<section class="gallery-nonFeatured">
 			<article>
-				<video-card ng-repeat="video in Gallery.gallery.notFeatured" ng-style="($index + 1) % Gallery.notFeatured.videosPerRow === 0 ? { 'margin':'0px' } : {}" video="video" width="Gallery.notFeatured.videoWidth" height="Gallery.notFeatured.videoHeight" ui-sref="video/{{::video._id}}">
+				<video-card ng-repeat="video in Gallery.gallery.notFeatured"
+							ng-style="($index + 1) % Gallery.notFeatured.videosPerRow === 0 ? { 'margin':'0px' } : {}"
+							video="video" width="Gallery.notFeatured.videoWidth"
+							height="Gallery.notFeatured.videoHeight" ui-sref="videoPreview({ id: video._id })"/>
 				</video-card>
 			</article>
 		</section>
