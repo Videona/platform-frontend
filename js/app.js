@@ -57,6 +57,10 @@
 				url: '/gallery',
 				templateUrl: 'pages/gallery/gallery.view.html',
 			})
+			.state('upload', {
+				url: '/upload',
+				templateUrl: 'pages/upload/upload.view.html',
+			})
 			.state('videoDownload', {
 				url: '/download/:id',
 				parent: 'root',

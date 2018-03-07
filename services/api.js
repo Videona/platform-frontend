@@ -4,9 +4,10 @@
 
 	function apiService($http, backendApiUrl) {
 		var api = {
-            url: backendApiUrl,
+			url: backendApiUrl,
 			token: '',
 			download: download,
+			upload: upload,
 			get: get,
 			post: post,
 			del: del,
@@ -93,6 +94,34 @@
 				}).catch(function (response) {
 					onError(response, callback);
 				});
+		}
+
+		function upload(uploadUrl, file, data) {
+			var headers = {'Content-Type': undefined};
+
+			if (api.token !== '') {
+				headers.authorization = 'Bearer ' + api.token;
+			}
+
+			var formData = new FormData();
+			formData.append('file', file);
+
+			for(var param in data) {
+				formData.append(param, data);
+			}
+
+			$http.post(uploadUrl, formData, {
+				transformRequest: angular.identity,
+				headers: headers
+			})
+			.success(function(res){
+				console.log('Success!');
+				console.log(res);
+			})
+			.error(function(res){
+				console.log('Error!');
+				console.log(res);
+			});
 		}
 
 		function transformRequest(obj) {
