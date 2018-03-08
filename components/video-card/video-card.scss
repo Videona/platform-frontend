@@ -1,8 +1,9 @@
 video-card {
-	div {
+	div.card-container {
 		@extend %display-flex;
 		@extend %flex-direction-column;
 		background-color: white;
+		cursor: pointer;
 		@include border-radius($cardRadius);
 		img {
 			@include border-radius($cardRadius);
