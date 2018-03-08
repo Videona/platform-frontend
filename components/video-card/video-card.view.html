@@ -1,5 +1,5 @@
 <div ng-style="{'width':size.width}" class="card-container">
-	<img ng-src="{{poster}}" alt="title" ng-style="size" />
+	<img ng-src="{{poster}}" onerror="this.src = '/img/no-video.svg'" fallback-url="/img/no-image.svg" alt="title" ng-style="size" />
 	<section class="video-info">
 		<h2 ng-bind="title"></h2>
 		<h4 ng-bind="productType"></h4>
