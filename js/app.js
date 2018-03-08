@@ -59,6 +59,7 @@
 			})
 			.state('upload', {
 				url: '/upload',
+				parent: 'root',
 				templateUrl: 'pages/upload/upload.view.html',
 			})
 			.state('videoDownload', {

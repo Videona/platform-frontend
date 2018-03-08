@@ -96,32 +96,44 @@
 				});
 		}
 
-		function upload(uploadUrl, file, data) {
-			var headers = {'Content-Type': undefined};
+		function upload(url, file, data, callback) {
+			if(!url || !file) {
+				console.error('API Upload error: file or url was not provided.');
+				return false;
+			}
+
+			var formData = data;
+
+			if(!callback && typeof data === 'function') {
+				callback = data;
+				formData = null;
+			}
+
+			var req = {
+				method: 'POST',
+				headers: {'Content-Type': undefined},
+				url: url,
+				data: new FormData(),
+				transformRequest: angular.identity
+			};
 
 			if (api.token !== '') {
-				headers.authorization = 'Bearer ' + api.token;
+				req.headers.authorization = 'Bearer ' + api.token;
 			}
 
-			var formData = new FormData();
-			formData.append('file', file);
+			req.data.append('file', file);
 
-			for(var param in data) {
-				formData.append(param, data);
+			for(var param in formData) {
+				req.data.append(param, formData[param]);
 			}
 
-			$http.post(uploadUrl, formData, {
-				transformRequest: angular.identity,
-				headers: headers
-			})
-			.success(function(res){
-				console.log('Success!');
-				console.log(res);
-			})
-			.error(function(res){
-				console.log('Error!');
-				console.log(res);
-			});
+			return $http(req)
+				.then(function(response){
+					onSuccess(response, callback);
+				})
+				.catch(function(response){
+					onError(response, callback);
+				});
 		}
 
 		function transformRequest(obj) {
