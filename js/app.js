@@ -1,6 +1,6 @@
 (function () {
 	// App
-	angular.module('app', ['app.config', 'ui.router', 'pascalprecht.translate'])
+	angular.module('app', ['app.config', 'ui.router', 'pascalprecht.translate', 'infinite-scroll'])
 		.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$translateProvider', conf]);
 
 	function conf($locationProvider, $stateProvider, $urlRouterProvider, $translateProvider) {
@@ -63,11 +63,15 @@
 				templateUrl: 'pages/video-download/video-download.view.html',
 			})
 			.state('videoPreview', {
-			url: '/video/:id',
-			parent: 'root',
-			controller: function($state, $stateParams) {
-				$state.go('videoDownload', {id: $stateParams.id});
-			},
-		});
+				url: '/video/:id',
+				parent: 'root',
+				controller: function($state, $stateParams) {
+					// Updating the state also updates the history stack, so we update the location to avoid redirection loop
+					// $state.go('videoDownload', {id: $stateParams.id});
+
+					// So, this works in any protocol and host ^^
+					window.location.replace(window.location.protocol + '//' + window.location.host + '/download/' + $stateParams.id);
+				},
+			});
 	}
 }());

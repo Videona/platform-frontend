@@ -24,6 +24,7 @@ module.exports = function (config) {
 			'../node_modules/angular/angular.js',
 			'../node_modules/@uirouter/angularjs/release/angular-ui-router.js',
 			'../node_modules/angular-translate/dist/angular-translate.js',
+			'../node_modules/ng-infinite-scroll/build/ng-infinite-scroll.js',
 			'../node_modules/angular-mocks/angular-mocks.js',
 			// Angular app
 			'./dist/js/app.min.js',

@@ -1,0 +1,29 @@
+.topbar {
+	height: $topbarHeight;
+	position: fixed;
+	width: 100%;
+	@extend %display-flex;
+	@extend %justify-content-space-between;
+	@extend %align-items-center;
+	background-color: white;
+	box-shadow: 0px 0px 1px 1px #e8e8e8;
+	z-index: 999;
+	img {
+		height: $topbarImgHeight;
+	}
+	img:first-child {
+		margin-left: $cardMargin;
+	}
+	img:last-child {
+		margin-right: $cardMargin;
+	}
+	@include desktop {
+		img:first-child,
+		img:last-child {
+			display: none;
+		}
+		img {
+			margin-left: $cardMargin;
+		}
+	}
+}

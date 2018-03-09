@@ -1,6 +1,6 @@
 {
   "name": "vimojo-platform-frontend",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Frontend for Vimojo Platform",
   "main": "gulpfile.js",
   "scripts": {
@@ -39,6 +39,7 @@
     "karma-jasmine": "^1.0.2",
     "karma-junit-reporter": "^1.2.0",
     "karma-spec-reporter": "0.0.26",
+		"ng-infinite-scroll": "1.3.0",
     "run-sequence": "^2.2.1"
   },
   "dependencies": {
