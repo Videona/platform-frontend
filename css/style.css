@@ -32,7 +32,7 @@
   }
 }
 
-.register-page, .register-page article, .register-form, .register-form form div, .register-form button span, .mobile-apps, .home-buttons, .download-page, .download-page article, .info-download-video, .videoDownload-isVerified {
+.topbar, video-card div, video-card div .video-info, video-card div .video-isVerified, .register-page, .register-page article, .register-form, .register-form form div, .register-form button span, .mobile-apps, .home-buttons, .download-page, .download-page article, .info-download-video, .videoDownload-isVerified, .gallery, .gallery-featured, .gallery-featured > div, .gallery-featured article, .gallery-filter, .gallery-filter div, .gallery-nonFeatured, .gallery-nonFeatured article {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -40,18 +40,26 @@
   display: flex;
 }
 
-.register-page article, .register-form, .register-form form div, .home-buttons, .download-page, .download-page article, .info-download-video {
+video-card div, video-card div .video-info, .register-page article, .register-form, .register-form form div, .home-buttons, .download-page, .download-page article, .info-download-video, .gallery, .gallery-featured, .gallery-nonFeatured {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
 }
 
-.register-page, .register-page article, .register-form form div, .register-form button span, .download-page article, .info-download-video, .videoDownload-isVerified {
+.topbar, .register-page, .register-page article, .register-form form div, .register-form button span, .download-page article, .info-download-video, .videoDownload-isVerified, .gallery-featured > div, .gallery-filter div {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -moz-box-align: center;
   -ms-box-align: center;
   align-items: center;
+}
+
+video-card div .video-isVerified {
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -moz-box-align: flex-end;
+  -ms-box-align: flex-end;
+  align-items: flex-end;
 }
 
 .register-page, .register-page article, .register-form button span {
@@ -62,15 +70,102 @@
   justify-content: center;
 }
 
-.mobile-apps, .download-page article, .info-download-video {
+.topbar, .mobile-apps, .download-page article, .info-download-video, .gallery-featured > div, .gallery-filter {
   -webkit-justify-content: space-between;
   justify-content: space-between;
 }
 
-.register-page article, .register-form, .register-form form div, .home-buttons, .download-page, .download-page article, .info-download-video {
+video-card div, video-card div .video-info, .register-page article, .register-form, .register-form form div, .home-buttons, .download-page, .download-page article, .info-download-video, .gallery, .gallery-featured, .gallery-nonFeatured {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+}
+
+.gallery-nonFeatured article {
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.topbar {
+  height: 52px;
+  position: fixed;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0px 0px 1px 1px #e8e8e8;
+}
+
+.topbar img {
+  height: 30px;
+}
+
+.topbar img:first-child {
+  margin-left: 13px;
+}
+
+.topbar img:last-child {
+  margin-right: 13px;
+}
+
+@media (min-width: 1024px) {
+  .topbar img:first-child,
+  .topbar img:last-child {
+    display: none;
+  }
+  .topbar img {
+    margin-left: 13px;
+  }
+}
+
+video-card div {
+  background-color: white;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+}
+
+video-card div img {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+video-card div .video-info {
+  margin: 12px 7px 0 12px;
+}
+
+video-card div .video-info h2, video-card div .video-info h4 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+video-card div .video-info h2 {
+  font-size: 15px;
+  color: #626262;
+}
+
+video-card div .video-info h4 {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #f3f3f3;
+}
+
+video-card div .video-isVerified {
+  margin: 8px 0 15px 12px;
+}
+
+video-card div .video-isVerified img {
+  width: 15px;
+  height: 15px;
+}
+
+video-card div .video-isVerified p {
+  margin-left: 5px;
+  font-size: 14px;
+  color: #f3f3f3;
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/
@@ -136,7 +231,7 @@ q:before, q:after {
   content: none;
 }
 
-ins {
+a:hover, ins {
   text-decoration: none;
 }
 
@@ -147,6 +242,10 @@ del {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+body {
+  -webkit-overflow-scrolling: touch;
 }
 
 textarea {
@@ -201,7 +300,7 @@ div[contenteditable=true]:empty:before {
 
 html body {
   font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
-  font-size: 16px/1.4;
+  font-size: 16px;
   min-height: 100vh;
   min-width: 100vw;
   margin: 0;
@@ -267,6 +366,7 @@ html body {
 .register-form form {
   background-color: white;
   -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   border-radius: 10px;
 }
@@ -312,6 +412,7 @@ html body {
 .register-form button {
   background-color: transparent;
   -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   border-radius: 10px;
   border: 1px solid white;
@@ -333,6 +434,7 @@ html body {
 .credentials-errors {
   background-color: rgba(0, 0, 0, 0.7);
   -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   border-radius: 10px;
   color: white;
@@ -522,6 +624,7 @@ a:hover {
   background-color: #ffffff;
   height: 100%;
   -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
   -ms-border-radius: 4px;
   border-radius: 4px;
 }
@@ -606,6 +709,7 @@ a:hover {
   height: 32px;
   background-color: #f3f3f3;
   -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
   -ms-border-radius: 4px;
   border-radius: 4px;
   padding-left: 10px;
@@ -621,6 +725,7 @@ a:hover {
   color: white;
   background-color: #f14b51;
   -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
   -ms-border-radius: 4px;
   border-radius: 4px;
   height: 32px;
@@ -682,4 +787,120 @@ a:hover {
   display: inline-block;
   width: 50%;
   color: #00ff00;
+}
+
+.gallery {
+  width: 100%;
+  height: 100%;
+  background-color: #f3f3f3;
+}
+
+.gallery > div {
+  margin-top: 52px;
+}
+
+.gallery-featured {
+  margin: 13px 13px 0px 13px;
+}
+
+.gallery-featured > div {
+  margin: 5px 0;
+}
+
+.gallery-featured > div h1 {
+  font-size: 20px;
+  color: #626262;
+}
+
+.gallery-featured > div a:hover {
+  text-decoration: none;
+}
+
+.gallery-featured > div p {
+  font-size: 12px;
+  color: #f14b51;
+}
+
+.gallery-featured article {
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 7px;
+}
+
+.gallery-featured article video-card {
+  margin: 0 13px 0 0;
+}
+
+.gallery-featured article video-card:last-child {
+  margin: 0;
+}
+
+@media (min-width: 1024px) {
+  .gallery-featured article {
+    overflow-x: hidden;
+  }
+}
+
+.gallery-filter {
+  margin: 17px 13px 0 13px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.gallery-filter img {
+  width: 25px;
+  height: 25px;
+  padding: 10px 0 10px 15px;
+}
+
+.gallery-filter div {
+  margin-right: 15px;
+}
+
+.gallery-filter div label {
+  font-size: 12px;
+  color: #626262;
+  position: relative;
+}
+
+.gallery-filter div span {
+  margin-right: 5px;
+}
+
+.gallery-filter div label:after {
+  background-image: url("../../img/down-arrow.svg");
+  background-size: 17px 12px;
+  width: 17px;
+  height: 12px;
+  content: "";
+  right: 8px;
+  top: 6px;
+  position: absolute;
+  pointer-events: none;
+}
+
+.gallery-filter div select {
+  margin-left: 5px;
+  padding: 3px 15px;
+  border: 1px solid #626262;
+  color: #626262;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+  width: 100px;
+  margin: 0;
+  outline: none;
+  cursor: pointer;
+}
+
+.gallery-nonFeatured {
+  margin: 17px 13px 0 13px;
+}
+
+.gallery-nonFeatured article video-card {
+  margin: 0 13px 13px 0;
 }

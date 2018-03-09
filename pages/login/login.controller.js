@@ -36,7 +36,7 @@
 			}
 		}
 
-		function success(result) {	// , data) {
+		function success(result) {
 			self.loading = false;
 			if (result) {
 				console.log('Logged in! Redirecting...');

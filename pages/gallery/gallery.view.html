@@ -30,10 +30,12 @@
 				<video-card ng-repeat="video in Gallery.gallery.notFeatured"
 							ng-style="($index + 1) % Gallery.notFeatured.videosPerRow === 0 ? { 'margin':'0px' } : {}"
 							video="video" width="Gallery.notFeatured.videoWidth"
-							height="Gallery.notFeatured.videoHeight" ui-sref="videoPreview({ id: video._id })"/>
+							height="Gallery.notFeatured.videoHeight" ui-sref="videoPreview({ id: video._id })">
 				</video-card>
 			</article>
 		</section>
 	</div>
-	<div ng-if='Gallery.loading'>Loading data...</div>
+	<div ng-if='Gallery.loading'>
+		<loading></loading>
+	</div>
 </div>

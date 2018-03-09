@@ -3,19 +3,23 @@
 	<div class="vertical-middle">
 		<form ng-submit="Login.submit()" class="small-center-container">
 
-			<img src="img/brand/logo.png" class="header-logo">
+			<img src="img/brand/logo_white.png" class="header-logo">
 			
 			<div ng-show="Login.loading">{{'LOADING' | translate}}</div>
 			<div ng-show="Login.error">{{Login.error}}</div>
 
-			<div class="input-group-two">
+			<div class="input-group-two row">
 				<input type="text" placeholder="{{'EMAIL' | translate }}" ng-model="Login.username">
 				<input type="password" placeholder="{{'PASSWORD' | translate }}" ng-model="Login.password">
 			</div>
 
-			<input type="submit" value="{{'LOGIN_ACTION' | translate }}" class="button-border">
+			<div class="row">
+				<input type="submit" value="{{'LOGIN_ACTION' | translate }}" class="button-border row">
+			</div>
 
-			<a class="block-link">{{'FORGOTTEN_PASSWORD' | translate }}</a>
+			<div class="row">
+				<a class="block-link">{{'FORGOTTEN_PASSWORD' | translate }}</a>
+			</div>
 		</form>
 	</div>
 </div>
