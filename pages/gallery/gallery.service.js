@@ -16,7 +16,7 @@ function galleryService(api) {
 	function getFeaturedVideoList(cb) {
 		var limit = 15;
 		
-		api.get(api.url + '/video?tag=featured&limit=' + limit + '&offset=' + gallery.featuredOffset, function (data, status) {
+		api.get(api.url + '/video?tag=featured&limit=' + limit + '&order=-date&offset=' + gallery.featuredOffset, function (data, status) {
 			var success = false;
 			
 			if (status < 400 && data.length > 0) {
@@ -32,7 +32,7 @@ function galleryService(api) {
 	function getNotFeaturedVideoList(cb) {
 		var limit = 10;
 		
-		api.get(api.url + '/video?excludeTag=featured&limit=' + limit + '&offset=' + gallery.notFeaturedOffset, function (data, status) {
+		api.get(api.url + '/video?excludeTag=featured&limit=' + limit + '&order=-date&offset=' + gallery.notFeaturedOffset, function (data, status) {
 			var success = false;
 			
 			if (status < 400 && data.length > 0) {

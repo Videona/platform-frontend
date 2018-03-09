@@ -28,8 +28,7 @@
 
 		// On Run...
 		if (session.id > 0) {
-			// console.log('Found a session! Redirecting...');
-			$state.go($stateParams.redirect || 'home');
+			redirect();
 		}
 
 		// Internal functions
@@ -83,7 +82,7 @@
 				login.login(self.email, self.password, function (loginResult) {
 					self.loading = false;
 					if (loginResult) {
-						$state.go($stateParams.redirect || 'home');
+						redirect();
 					} else {
 						self.error.push($translate.instant('WRONG_LOGIN'));
 						$state.go('login');
@@ -158,6 +157,10 @@
 			} else {
 				callback(false);
 			}
+		}
+
+		function redirect() {
+			$state.go($stateParams.redirect || 'gallery');
 		}
 	}
 }());
