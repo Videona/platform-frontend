@@ -51,7 +51,11 @@
 			DOWNLOAD_CODE: 'Enter your download code',
 			DOWNLOAD_VIDEO: 'Download Video',
 			BACK_TO_GALLERY: 'Back to gallery',
-			ERROR_WRONG_DOWNLOAD_CODE: 'Invalid download code'
+			ERROR_WRONG_DOWNLOAD_CODE: 'Invalid download code',
+
+			DROP_VIDEO: 'Drop your video here or click to upload',
+			UPLOAD_TITLE_PLACEHOLDER: 'Title',
+			UPLOAD_DESCRIPTION_PLACEHOLDER: 'Description',
 		});
 	}
 }());

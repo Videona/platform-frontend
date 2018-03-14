@@ -51,7 +51,11 @@
 			DOWNLOAD_CODE: 'Introduce un código de descarga',
 			DOWNLOAD_VIDEO: 'Descargar video',
 			BACK_TO_GALLERY: 'Volver a la galería',
-			ERROR_WRONG_DOWNLOAD_CODE: 'Código de descarga inválido'
+			ERROR_WRONG_DOWNLOAD_CODE: 'Código de descarga inválido',
+
+			DROP_VIDEO: 'Arrastra tu video o haz click para subirlo',
+			UPLOAD_TITLE_PLACEHOLDER: 'Título',
+			UPLOAD_DESCRIPTION_PLACEHOLDER: 'Descripcion',
 		});
 	}
 }());

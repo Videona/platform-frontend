@@ -1,21 +1,33 @@
 <topbar></topbar>
 
-<div ng-controller="UploadController as Upload">
+<div ng-controller="UploadController as Upload" class="upload-page">
 	<div class="container">
-		<div class="left-preview">	
-		    <div ngf-drop ngf-select ng-model="Upload.file" class="drop-box" 
-		        ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="false"
-		        accept="video/*" 
-		        ngf-pattern="'video/*'">
-		    	Drop your video here or click to upload
-		    </div>
-		    <div ngf-no-file-drop>
-				<input type="file" accept="video/*" file-model="Upload.file"/>
-		    </div>
-		    <video controls ngf-src="Upload.file"></video>
+		<div class="left-preview">
+			<div class="upload-form-file" ng-if="!Upload.file">
+			    <div ngf-drop ngf-select ng-model="Upload.file" class="drop-box" 
+			        ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="false"
+			        accept="video/*" 
+			        ngf-pattern="'video/*'">
+			    	{{'DROP_VIDEO' | translate}}
+			    </div>
+			    <div ngf-no-file-drop>
+					<input type="file" accept="video/*" file-model="Upload.file"/>
+			    </div>
+			</div>
+		    <video ng-if="Upload.file" class="upload-form-preview" controls ngf-src="Upload.file"></video>
 		</div>
 
-		<div class="right-form">	
+		<div class="right-form">
+			<input type="text" name="title" class="upload-form-title" ng-model="Upload.data.title" placeholder="{{'UPLOAD_TITLE_PLACEHOLDER' | translate}}" />
+			<textarea name="description" class="upload-form-description" ng-model="Upload.data.description" placeholder="{{'UPLOAD_DESCRIPTION_PLACEHOLDER' | translate}}"></textarea>
+
+			<div class="product-types">
+				<span ng-repeat="type in Upload.productTypes" class="product-type">
+					<input type="checkbox" name="product-type-{{type.id}}" ng-model="Upload.data.productType[type.id]" id="product-type-{{type.id}}">
+					<label for="product-type-{{type.id}}">{{type.name}}</label>
+				</span>
+			</div>
+
 			<button ng-click="Upload.send()">Send!</button>
 		</div>
 	</div>
@@ -23,14 +35,47 @@
 
 <!-- TAKE STYLES OUT OF HERE!! -->
 <style type="text/css">
+
+.upload-page {
+	font-size: 1.3em;
+}
+
+.right-form .upload-form-title,
+.right-form .upload-form-description {
+	border: 1px solid lightgrey;
+	box-sizing: border-box;
+	font-family: Arial;
+	margin: 4px 0;
+	padding: 8px 16px;
+	width: 100%;
+}
+.right-form .upload-form-title::placeholder,
+.right-form .upload-form-description::placeholder {
+	color: lightgrey;
+}
+
+.right-form .product-type {
+	box-sizing: border-box;
+	display: inline-block;
+	padding: 8px 16px;
+	width: 50%;
+}
+
+
+/* Upload drop box */
 .drop-box {
     background: #F8F8F8;
-    border: 5px dashed #DDD;
-    width: 200px;
-    height: 65px;
+    border: 3px solid #DDD;
+    border-radius: 5px;
+	box-sizing: border-box;
+    width: 90%;
+    height: 23vw;
     text-align: center;
-    padding-top: 25px;
+    padding-top: 21%;
     margin: 10px;
+}
+.drop-box * {
+	box-sizing: border-box;
 }
 .dragover {
     border: 5px dashed blue;
