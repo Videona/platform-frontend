@@ -37,6 +37,18 @@ gulp.task('make-config', function() {
         .pipe(gulp.dest('js'));
 });
 
+gulp.task('flavour', function() {
+
+	var flavour = process.env.FLAVOUR || 'vimojo';
+	console.log('##############################################');
+	console.log('### Building flavour ' + flavour);
+	console.log('##############################################');
+
+	return gulp.src('./flavour/' + flavour + '/**/**')
+		.pipe(debug({ title: 'Move flavour files (' + flavour + '):' }))
+		.pipe(gulp.dest('./'));
+});
+
 
 // --------
 // TO_DO:
@@ -55,7 +67,7 @@ var sourceJs = [
 	'!./node_modules/**',
 	'!./dist/**',
 ];
-gulp.task('js', function () {
+gulp.task('js', ['make-config', 'flavour'], function () {
 	gulp.src(sourceJs)
 		.pipe(debug({ title: 'Join JS:' }))
 		.pipe(concat('app.js'))
@@ -90,22 +102,18 @@ var sourceHtml = [
 	'!./node_modules/**',
 	'!./dist/**',
 ];
-gulp.task('html', function () {
+gulp.task('html', ['make-config', 'flavour'], function () {
 	gulp.src(sourceHtml)
 		.pipe(debug({ title: 'Move HTML:' }))
 		.pipe(gulp.dest('./dist'));
 });
-
-// Perform a complete build
-gulp.task('build', ['make-config', 'js', 'html', 'tests', 'sass']);
-
 
 var sourceSass = [
 	'./**.scss',
 	'./pages/**/**.scss',
 	'./components/**/**.scss',
 ];
-gulp.task('sass', function () {
+gulp.task('sass', ['flavour'], function () {
 	gulp.src('./sass/style.scss')
 		.pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
 		.pipe(debug({ title: 'Move SCSS:' }))
@@ -116,6 +124,17 @@ gulp.task('sass', function () {
 		.pipe(concat('style.min.css'))
 		.pipe(gulp.dest('./dist/css'));
 });
+
+gulp.task('images', ['flavour'], function () {
+	gulp.src('./img/**/**')
+		.pipe(debug({ title: 'Move images:' }))
+		.pipe(gulp.dest('./dist/img'));
+})
+
+
+// Perform a complete build
+gulp.task('build', ['make-config', 'flavour', 'js', 'images', 'html', 'tests', 'sass']);
+
 
 /**
  * 	Execute eslint code checker.
@@ -130,12 +149,6 @@ gulp.task('lint', function () {
 		.pipe(eslint.format())
 		.pipe(gulp.dest('.'))	// Apply fixes to original files
 		.pipe(eslint.failAfterError());
-});
-
-gulp.task('aaa', function () {
-	console.log(process.argv);
-	var shallFix = process.argv.indexOf('--nofix') === -1;
-	console.log('fix: ', shallFix);
 });
 
 // Watch and build on change

@@ -20,7 +20,7 @@
 		// On Run...
 		if (session.id > 0) {
 			console.log('Found a session! Redirecting...');
-			$state.go($stateParams.redirect || 'home');
+			redirect();
 		}
 
 
@@ -36,16 +36,20 @@
 			}
 		}
 
-		function success(result) {	// , data) {
+		function success(result) {
 			self.loading = false;
 			if (result) {
 				console.log('Logged in! Redirecting...');
-				$state.go($stateParams.redirect || 'home');
+				redirect();
 			} else {
 				console.log('Bad username or password...');
 				self.error = $translate.instant('WRONG_LOGIN');
 				// self.error = 'Wrong login data. Check it out...';
 			}
+		}
+
+		function redirect() {
+			$state.go($stateParams.redirect || 'gallery');
 		}
 	}
 }());

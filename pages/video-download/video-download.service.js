@@ -2,11 +2,11 @@ angular.module('app')
 	.service('videoDownload', ['api', videoDownloadService]);
 
 function videoDownloadService(api) {
-	var video = {
+	var videoDownload = {
 		get: get
 	};
 
-	return video;
+	return videoDownload;
 
 
 	function get(videoId, code, callback) {

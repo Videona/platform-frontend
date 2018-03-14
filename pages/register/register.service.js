@@ -16,7 +16,7 @@
 
 		function send(name, email, pass, age, cb) {
 			var body = {
-				name: name,
+				username: name,
 				email: email,
 				password: pass,
 				age: age,
