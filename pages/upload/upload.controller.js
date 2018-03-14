@@ -1,8 +1,14 @@
 angular.module('app')
-	.controller('UploadController', ['api', UploadController]);
+	.controller('UploadController', ['api', 'session', '$state', UploadController]);
 
-function UploadController(api) {
+function UploadController(api, session, $state) {
 	var self = this;
+
+	// On Run...
+	if (session.id <= 0) {
+		console.log('Session not found! Redirecting...');
+		$state.go('home');
+	}
 
 	self.file;
 	self.data
