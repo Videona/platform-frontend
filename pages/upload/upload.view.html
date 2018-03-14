@@ -1,7 +1,38 @@
+<topbar></topbar>
 
 <div ng-controller="UploadController as Upload">
-	<h1>Upload</h1>
-	<input type="file" file-model="Upload.file"/>
+	<div class="container">
+		<div class="left-preview">	
+		    <div ngf-drop ngf-select ng-model="Upload.file" class="drop-box" 
+		        ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="false"
+		        accept="video/*" 
+		        ngf-pattern="'video/*'">
+		    	Drop your video here or click to upload
+		    </div>
+		    <div ngf-no-file-drop>
+				<input type="file" accept="video/*" file-model="Upload.file"/>
+		    </div>
+		    <video controls ngf-src="Upload.file"></video>
+		</div>
 
-	<button ng-click="Upload.send()">Send!</button>
+		<div class="right-form">	
+			<button ng-click="Upload.send()">Send!</button>
+		</div>
+	</div>
 </div>
+
+<!-- TAKE STYLES OUT OF HERE!! -->
+<style type="text/css">
+.drop-box {
+    background: #F8F8F8;
+    border: 5px dashed #DDD;
+    width: 200px;
+    height: 65px;
+    text-align: center;
+    padding-top: 25px;
+    margin: 10px;
+}
+.dragover {
+    border: 5px dashed blue;
+}
+</style>
