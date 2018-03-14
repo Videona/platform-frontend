@@ -28,56 +28,9 @@
 				</span>
 			</div>
 
-			<button ng-click="Upload.send()">Send!</button>
+			<div class="form-send-button">
+				<a class="btn-send" ng-click="Upload.send()">Send!</a>
+			</div>
 		</div>
 	</div>
 </div>
-
-<!-- TAKE STYLES OUT OF HERE!! -->
-<style type="text/css">
-
-.upload-page {
-	font-size: 1.3em;
-}
-
-.right-form .upload-form-title,
-.right-form .upload-form-description {
-	border: 1px solid lightgrey;
-	box-sizing: border-box;
-	font-family: Arial;
-	margin: 4px 0;
-	padding: 8px 16px;
-	width: 100%;
-}
-.right-form .upload-form-title::placeholder,
-.right-form .upload-form-description::placeholder {
-	color: lightgrey;
-}
-
-.right-form .product-type {
-	box-sizing: border-box;
-	display: inline-block;
-	padding: 8px 16px;
-	width: 50%;
-}
-
-
-/* Upload drop box */
-.drop-box {
-    background: #F8F8F8;
-    border: 3px solid #DDD;
-    border-radius: 5px;
-	box-sizing: border-box;
-    width: 90%;
-    height: 23vw;
-    text-align: center;
-    padding-top: 21%;
-    margin: 10px;
-}
-.drop-box * {
-	box-sizing: border-box;
-}
-.dragover {
-    border: 5px dashed blue;
-}
-</style>
