@@ -16,6 +16,7 @@
 
 		self.error = [];
 		self.loading = false;
+		self.enableRecaptcha = nodeEnv === 'production';
 
 		self.activeView = {
 			credentials: true,
@@ -67,7 +68,9 @@
 				self.activeView.credentials = false;
 				self.activeView.terms = true;
 
-				window.grecaptcha.render(document.getElementById('recaptcha'));
+				if (nodeEnv === 'production') {
+					window.grecaptcha.render(document.getElementById('recaptcha'));
+				}
 			} else {
 				self.error.push($translate.instant('ERROR_EMAIL_ALREADY_IN_USE'));
 			}
@@ -140,13 +143,12 @@
 			// 	self.error.push($translate.instant('ERROR_AGE_WRONG'));
 			// }
 
-			var captchaResponse = window.grecaptcha.getResponse();
-
 			if (!self.terms) {
 				self.error.push($translate.instant('ERROR_TERMS_EMPTY'));
 			}
 
 			if (nodeEnv === 'production') {
+				var captchaResponse = window.grecaptcha.getResponse();
 				if (!captchaResponse) {
 					self.error.push($translate.instant('ERROR_CAPTCHA'));
 				}
