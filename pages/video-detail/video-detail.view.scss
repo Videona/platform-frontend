@@ -105,6 +105,17 @@ a:hover {
 	}
 }
 
+.videoDetail-detail {
+	color: $text;
+	margin: 12px 0;
+
+	strong {
+		color: $textDark;
+		font-weight: bold;
+    	padding-right: 12px;
+	}
+}
+
 
 .videoDetail-button {
 	cursor: pointer;

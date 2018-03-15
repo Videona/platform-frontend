@@ -1,3 +1,4 @@
+
 (function () {
 	// English
 	angular.module('app').config(['$translateProvider', translate]);
@@ -51,7 +52,14 @@
 			DOWNLOAD_CODE: 'Enter your download code',
 			DOWNLOAD_VIDEO: 'Download Video',
 			BACK_TO_GALLERY: 'Back to gallery',
-			ERROR_WRONG_DOWNLOAD_CODE: 'Invalid download code'
+			ERROR_WRONG_DOWNLOAD_CODE: 'Invalid download code',
+
+			VIDEO_DETAIL_DATETIME: 'Date and time',
+			VIDEO_DETAIL_CATEGORIES: 'Categories',
+			VIDEO_DETAIL_PRODUCT_TYPE: 'Type',
+			VIDEO_DETAIL_LENGTH: 'Length',
+			VIDEO_DETAIL_TECHNICAL_DETAILS: 'Technical details',
+			VIDEO_DETAIL_TAGS: 'Tags'
 		});
 	}
 }());
