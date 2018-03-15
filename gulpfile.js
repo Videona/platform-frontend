@@ -51,11 +51,11 @@ gulp.task('flavour', function() {
 
 
 // Build dependincies
-var sourceJs = [
+var sourceDeps = [
 	'./node_modules/ng-file-upload/dist/ng-file-upload.min.js',
 ];
 gulp.task('dependencies', ['make-config', 'flavour'], function () {
-	gulp.src(sourceJs)
+	gulp.src(sourceDeps)
 		.pipe(debug({ title: 'Join ng dependencies:' }))
 		.pipe(concat('modules.js'))
 		.pipe(minify({
