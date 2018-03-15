@@ -54,6 +54,7 @@
 			ERROR_WRONG_DOWNLOAD_CODE: 'Invalid download code',
 
 			DROP_VIDEO: 'Drop your video here or click to upload',
+			UPLOADING_FILE: 'Uploading video...',
 			UPLOAD_TITLE_PLACEHOLDER: 'Title',
 			UPLOAD_DESCRIPTION_PLACEHOLDER: 'Description',
 		});

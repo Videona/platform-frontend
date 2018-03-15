@@ -12,6 +12,7 @@ function UploadController(api, session, $state) {
 
 	self.file;
 	self.data
+	self.loading = false;
 	self.productTypes = [
 		{
 			id: 'fakeLive',
@@ -42,7 +43,7 @@ function UploadController(api, session, $state) {
 
 		var data = {};
 
-		if (true) { //	(self.data && self.file) {
+		if (!self.loading && self.data && self.file) {
 			data.title = self.data.title || undefined;
 			data.description = self.data.description || undefined;
 			data.tag = [];
@@ -57,8 +58,10 @@ function UploadController(api, session, $state) {
 
 			data.tag = data.tag.toString();
 
+			self.loading = true;
 			api.upload(api.url + '/video', self.file, data, function() {
-				console.log('done!!');
+				self.loading = false;
+				$state.go('gallery');
 			});
 		} else {
 			self.error = 'No video selected or data is not set';

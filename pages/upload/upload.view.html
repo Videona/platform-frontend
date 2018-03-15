@@ -16,6 +16,9 @@
 			    </div>
 			</div>
 		    <video ng-if="Upload.file" class="upload-form-preview" controls ngf-src="Upload.file"></video>
+		    <div class="file-uploading" ng-show="Upload.loading">
+		    	{{'UPLOADING_FILE' | translate}}
+		    </div>
 		</div>
 
 		<div class="right-form">
@@ -30,7 +33,7 @@
 			</div>
 
 			<div class="form-send-button">
-				<a class="btn-send" ng-click="Upload.send()">Send!</a>
+				<a ng-class="['btn-send', {'disabled': Upload.loading}]" ng-click="Upload.send()">Send!</a>
 			</div>
 		</div>
 	</div>

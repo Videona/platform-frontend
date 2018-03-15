@@ -49,6 +49,10 @@
 		video {
 			width: 100%;
 		}
+
+		.file-uploading {
+			margin-left: 18px;
+		}
 	}
 
 	.right-form {
@@ -121,6 +125,12 @@
 				color: $backgroundLight;
 				text-decoration: none;
 			}
+			a.btn-send.disabled {
+				background-color: $mainColorDisabled;
+				border-color: $mainColorDisabled;
+				color: $lightGrey;
+			}
+
 		}
 	}
 

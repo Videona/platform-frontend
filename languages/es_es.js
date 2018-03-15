@@ -54,6 +54,7 @@
 			ERROR_WRONG_DOWNLOAD_CODE: 'Código de descarga inválido',
 
 			DROP_VIDEO: 'Arrastra tu video o haz click para subirlo',
+			UPLOADING_FILE: 'Subiendo tu video...',
 			UPLOAD_TITLE_PLACEHOLDER: 'Título',
 			UPLOAD_DESCRIPTION_PLACEHOLDER: 'Descripcion',
 		});
