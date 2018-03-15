@@ -25,6 +25,36 @@
 					<img src="../../img/checked.svg" alt="video-verified" />
 					<p>{{'VIDEO_VERIFIED' | translate}}</p>
 				</div>
+				<div ng-if="!Video.video.data.added" class="videoDetail-detail">
+					<p>
+						<strong>{{'VIDEO_DETAIL_DATETIME' | translate}}</strong> {{Video.video.data.added}}
+					</p>
+				</div>
+				<div ng-if="!Video.video.data.tag" class="videoDetail-detail">
+					<p>
+						<strong>{{'VIDEO_DETAIL_CATEGORIES' | translate}}</strong> {{Video.video.data.tag}}
+					</p>
+				</div>
+				<div ng-if="!Video.video.data.productType" class="videoDetail-detail">
+					<p>
+						<strong>{{'VIDEO_DETAIL_PRODUCT_TYPE' | translate}}</s	rong> {{Video.video.data.productType}}
+					</p>
+				</div>
+				<div class="videoDetail-detail">
+					<p>
+						<strong>{{'VIDEO_DETAIL_LENGTH' | translate}}</strong> {{Video.video.data.length || 'desconocido'}}
+					</p>
+				</div>
+				<div  class="videoDetail-detail">
+					<p>
+						<strong>{{'VIDEO_DETAIL_TECHNICAL_DETAILS' | translate}}</strong> {{Video.video.data.size}} Mb | {{Video.video.data.format}} | {{Video.video.data.dimensions}} | {{Video.video.data.ratio}}
+					</p>
+				</div>
+				<div  class="videoDetail-detail">
+					<p>
+						<strong>{{'VIDEO_DETAIL_CATEGORIES' | translate}}</strong> {{Video.video.data.categories}}
+					</p>
+				</div>
 			</div>
 			<div class="videoDetail-go-back-mobile">
 					<a ui-sref="gallery">{{'BACK_TO_GALLERY' | translate}}</a>
