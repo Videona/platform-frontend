@@ -1,0 +1,39 @@
+<div ng-controller="VideoDetailController as Video" class="download-page">
+
+	<!-- Screen loading directive -->
+	<div ng-if="!Video.video.data && Video.loading" class="loading">
+		<loading></loading>
+	</div>
+
+	<div ng-if="Video.video.data.error && !Video.loading" class="headers-info-videoDownload">
+		<h1 class="header">Video erróneo</h1>
+		<div>
+			No hemos podido encontrar ese video. Por favor, comprueba que el enlace es correcto, y prueba de nuevo.
+		</div>
+	</div>
+
+	<article ng-if="Video.video.data && !Video.video.data.error">
+		<video controls ng-src="{{::Video.video.data.video}}" ng-attr-poster="{{::Video.video.data.poster}}" preload="metadata" controlsList="nodownload" class="video-download-page"></video>
+		<section class="info-download-video">
+			<div>
+				<div class="headers-info-videoDownload">
+					<h1 ng-bind="Video.video.data.title"></h1>
+					<h2 ng-bind="Video.video.data.productType"></h2>
+					<div ng-bind="Video.video.data.description"></div>
+				</div>
+				<div ng-if="!Video.video.data.isVerified" class="videoDownload-isVerified">
+					<img src="../../img/checked.svg" alt="video-verified" />
+					<p>{{'VIDEO_VERIFIED' | translate}}</p>
+				</div>
+			</div>
+			<div class="videoDownload-go-back-mobile">
+					<a ui-sref="gallery">{{'BACK_TO_GALLERY' | translate}}</a>
+			</div>
+		</section>
+	</article>
+	<div class="videoDownload-back-desktop">
+		<p>
+			<a ui-sref="gallery">{{'BACK_TO_GALLERY' | translate}}</a>
+		</p>
+	</div>
+</div>
