@@ -6,7 +6,7 @@ a:hover {
 	text-decoration: underline;
 }
 
-.download-page {
+.video-page {
 	height: 100%;
 	width: 100%;
 	background-color: $background;
@@ -31,7 +31,7 @@ a:hover {
 	}
 }
 
-.video-download-page {
+.video-detail-page {
 	width: 100%;
 	@include desktop {
 		width: 46%;
@@ -42,7 +42,7 @@ a:hover {
 	}
 }
 
-.info-download-video {
+.info-detail-video {
 	width: 96vw;
 	margin: 2vw;
 	background-color: $backgroundLight;
@@ -71,7 +71,7 @@ a:hover {
 	}
 }
 
-.headers-info-videoDownload {
+.headers-info-videoDetail {
 	h1 {
 		font-weight: 500;
 		font-size: 24px;
@@ -90,7 +90,7 @@ a:hover {
 	}
 }
 
-.videoDownload-isVerified {
+.videoDetail-isVerified {
 	@extend %display-flex;
 	@extend %align-items-center;
 	margin-top: 17px;
@@ -105,22 +105,8 @@ a:hover {
 	}
 }
 
-.download-video-code {
-	margin-top: 30px;
-	color: $grey;
-	text-align: center;
-	input {
-		margin-top: 8px;
-		width: 75%;
-		max-width: 300px;
-		height: 32px;
-		background-color: #f3f3f3;
-		@include border-radius(4px);
-		padding-left: 10px;
-	}
-}
 
-.videoDownload-button {
+.videoDetail-button {
 	cursor: pointer;
 	text-align: center;
 	width: 100%;
@@ -143,14 +129,14 @@ a:hover {
 	}
 }
 
-.videoDownload-go-back-mobile {
+.videoDetail-go-back-mobile {
 	color: $grey;
 	@include desktop {
 		display: none;
 	}
 }
 
-.videoDownload-back-desktop {
+.videoDetail-back-desktop {
 	color: $grey;
 	width: 96vw;
 	max-width: 1200px;
