@@ -1,5 +1,5 @@
 angular.module('app')
-	.controller('UploadController', ['api', 'session', '$state', UploadController]);
+	.controller('UploadController', ['api', 'session', '$state', '$translate', UploadController]);
 
 function UploadController(api, session, $state, $translate) {
 	var self = this;
@@ -16,27 +16,27 @@ function UploadController(api, session, $state, $translate) {
 	self.productTypes = [
 		{
 			id: 'fakeLive',
-			name: 'Fake live'
+			name: $translate.instant('PRODUCT_TYPE_FAKELIVE')
 		},
 		{
 			id: 'raw',
-			name: 'Raw videos'
+			name: $translate.instant('PRODUCT_TYPE_RAW')
 		},
 		{
 			id: 'spoolers',
-			name: 'Spoolers'
+			name: $translate.instant('PRODUCT_TYPE_SPOOLERS')
 		},
 		{
 			id: 'total',
-			name: 'Total'
+			name: $translate.instant('PRODUCT_TYPE_TOTAL')
 		},
 		{
 			id: 'graphic',
-			name: 'Graphic'
+			name: $translate.instant('PRODUCT_TYPE_GRAPHIC')
 		},
 		{
 			id: 'pieces',
-			name: 'Pieces'
+			name: $translate.instant('PRODUCT_TYPE_PIECES')
 		}
 	];
 

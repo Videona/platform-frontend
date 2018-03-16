@@ -57,6 +57,13 @@
 			UPLOADING_FILE: 'Subiendo tu video...',
 			UPLOAD_TITLE_PLACEHOLDER: 'Título',
 			UPLOAD_DESCRIPTION_PLACEHOLDER: 'Descripcion',
+
+			PRODUCT_TYPE_FAKELIVE: 'Falso directo',
+			PRODUCT_TYPE_RAW: 'Videos brutos',
+			PRODUCT_TYPE_SPOOLERS: 'Spoolers',
+			PRODUCT_TYPE_TOTAL: 'Total',
+			PRODUCT_TYPE_GRAPHIC: 'Grafico',
+			PRODUCT_TYPE_PIECES: 'Piezas',
 		});
 	}
 }());

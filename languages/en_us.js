@@ -57,6 +57,13 @@
 			UPLOADING_FILE: 'Uploading video...',
 			UPLOAD_TITLE_PLACEHOLDER: 'Title',
 			UPLOAD_DESCRIPTION_PLACEHOLDER: 'Description',
+
+			PRODUCT_TYPE_FAKELIVE: 'Fake live',
+			PRODUCT_TYPE_RAW: 'Raw videos',
+			PRODUCT_TYPE_SPOOLERS: 'Spoolers',
+			PRODUCT_TYPE_TOTAL: 'Total',
+			PRODUCT_TYPE_GRAPHIC: 'Graphic',
+			PRODUCT_TYPE_PIECES: 'Pieces',
 		});
 	}
 }());
