@@ -1,7 +1,7 @@
 angular.module('app')
 	.controller('UploadController', ['api', 'session', '$state', UploadController]);
 
-function UploadController(api, session, $state) {
+function UploadController(api, session, $state, $translate) {
 	var self = this;
 
 	// On Run...
@@ -19,20 +19,24 @@ function UploadController(api, session, $state) {
 			name: 'Fake live'
 		},
 		{
-			id: 'test',
-			name: 'Test type'
+			id: 'raw',
+			name: 'Raw videos'
 		},
 		{
-			id: 'steak',
-			name: 'crudo'
+			id: 'spoolers',
+			name: 'Spoolers'
 		},
 		{
-			id: 'hello',
-			name: 'Hello world'
+			id: 'total',
+			name: 'Total'
 		},
 		{
-			id: 'anotherType',
-			name: 'Another type'
+			id: 'graphic',
+			name: 'Graphic'
+		},
+		{
+			id: 'pieces',
+			name: 'Pieces'
 		}
 	];
 
