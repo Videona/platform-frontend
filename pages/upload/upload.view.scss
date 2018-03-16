@@ -1,27 +1,31 @@
 .upload-page {
-	align-items: flex-start;
+	@extend %display-flex;
+	@extend %align-items-flex-start;
 	background-color: $background;
-	display: flex;
 	font-size: 1.3em;
     height: 100%;
 	margin-top: $topbarHeight;
-    max-width: 1200px;
 	width: 100%;
 	@include desktop {
-    	padding-top: 16px;
+		box-sizing: border-box;
+    	padding: 16px;
     }
 
 	.container {
 		@extend %display-flex;
 	    @extend %flex-direction-column;
+    	margin: 0 auto;
+    	min-height: 25vw;
+    	max-width: 1200px;
 		width: 100%;
 
 		@include desktop {
-			margin: 16px 32px;
+			/* margin: 16px 32px; */
+    		margin: 16px auto;
 		    border-radius: 5px;
 		    padding: 8px;
 		    background-color: $backgroundLight;
-		    flex-direction: row;
+	    	@extend %flex-direction-row;
 			margin-top: 0;
 		}
 	}
