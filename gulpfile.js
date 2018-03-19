@@ -23,22 +23,21 @@ gulp.task('serve', function () {
 });
 
 gulp.task('dev', function (done) {
-    runSequence('build', ['watch', 'serve'], done);
+	runSequence('build', ['watch', 'serve'], done);
 });
 
-gulp.task('make-config', function() {
-    var json = JSON.stringify({
+gulp.task('make-config', function () {
+	var json = JSON.stringify({
 	    nodeEnv: process.env.NODE_ENV || 'development',
-	    backendApiUrl: process.env.BACKEND_API_URL || 'http://localhost:3000'
-    });
+	    backendApiUrl: process.env.BACKEND_API_URL || 'http://localhost:3000',
+	});
 
-    return b2v.stream(new Buffer(json), 'config.js')
-        .pipe(gulpNgConfig('app.config'))
-        .pipe(gulp.dest('js'));
+	return b2v.stream(new Buffer(json), 'config.js')
+		.pipe(gulpNgConfig('app.config'))
+		.pipe(gulp.dest('js'));
 });
 
-gulp.task('flavour', function() {
-
+gulp.task('flavour', function () {
 	var flavour = process.env.FLAVOUR || 'vimojo';
 	console.log('##############################################');
 	console.log('### Building flavour ' + flavour);
@@ -60,6 +59,7 @@ var sourceJs = [
 	'./js/**/**.js',
 	'./languages/**/**.js',
 	'./services/**/**.js',
+	'./services/**.js',
 	'./components/**/**.js',
 	'./pages/**/**.js',
 	'!./gulpfile.js',
@@ -83,6 +83,7 @@ gulp.task('js', ['make-config', 'flavour'], function () {
 // Build app tests
 var sourceTest = [
 	'./test-globals.js',
+	'./*/**.spec.js',
 	'./**/**.spec.js',
 	'!./node_modules/**',
 	'!./dist/**',
@@ -129,7 +130,7 @@ gulp.task('images', ['flavour'], function () {
 	gulp.src('./img/**/**')
 		.pipe(debug({ title: 'Move images:' }))
 		.pipe(gulp.dest('./dist/img'));
-})
+});
 
 
 // Perform a complete build

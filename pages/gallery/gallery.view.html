@@ -1,6 +1,6 @@
 <div ng-controller="GalleryController as Gallery" class="gallery">
 	<topbar></topbar>
-	<div infinite-scroll="Gallery.notFeatured.get()" infinite-scroll-distance="1" infinite-scroll-disabled='Gallery.notFeatured.isLoading'>
+	<div>
 		<section class="gallery-featured">
 			<div>
 				<h1>{{'GALLERY_FEATURED_VIDEOS' | translate}}</h1>
@@ -8,12 +8,10 @@
 					<p>{{'GALLERY_VIEW_ALL' | translate}}</p>
 				</a>
 			</div>
-			<article>
-				<video-card ng-repeat="video in Gallery.gallery.featured" video="video"
-							width="Gallery.featured.videoWidth" height="Gallery.featured.videoHeight"
-							ui-sref="videoPreview({ id: video._id })"></video-card>
-			</article>
 		</section>
+		<video-list section-class="gallery-featured" videosPerRow="Gallery.featured.videosPerRow"
+					width="Gallery.featured.videoWidth" height="Gallery.featured.videoHeight"
+					datasource="Gallery.featuredGallery.videos" loading="Gallery.featured.isLoading"></video-list>
 		<section class="gallery-filter">
 			<img src="../../img/funnel.svg" alt="img_funnel">
 			<div>
@@ -25,15 +23,10 @@
 				</label>
 			</div>
 		</section>
-		<section class="gallery-nonFeatured">
-			<article>
-				<video-card ng-repeat="video in Gallery.gallery.notFeatured"
-							ng-style="($index + 1) % Gallery.notFeatured.videosPerRow === 0 ? { 'margin':'0px' } : {}"
-							video="video" width="Gallery.notFeatured.videoWidth"
-							height="Gallery.notFeatured.videoHeight" ui-sref="videoPreview({ id: video._id })">
-				</video-card>
-			</article>
-		</section>
+		<video-list section-class="gallery-nonFeatured" videosPerRow="Gallery.notFeatured.videosPerRow"
+					width="Gallery.notFeatured.videoWidth" height="Gallery.notFeatured.videoHeight"
+					datasource="Gallery.nonFeaturedGallery.videos" loading="Gallery.notFeatured.isLoading"
+					infinite="Gallery.notFeatured.get()"></video-list>
 	</div>
 	<div ng-if='Gallery.loading'>
 		<loading></loading>

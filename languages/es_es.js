@@ -51,7 +51,11 @@
 			DOWNLOAD_CODE: 'Introduce un código de descarga',
 			DOWNLOAD_VIDEO: 'Descargar video',
 			BACK_TO_GALLERY: 'Volver a la galería',
-			ERROR_WRONG_DOWNLOAD_CODE: 'Código de descarga inválido'
+			ERROR_WRONG_DOWNLOAD_CODE: 'Código de descarga inválido',
+			// User Gallery page
+			USER_GALLERY_USER_VIDEOS: "Vídeos de {{username}}",
+			USER_GALLERY_USER_NOT_FOUND_TITLE: 'Usuario no encontrado',
+			USER_GALLERY_USER_NOT_FOUND_DESCRIPTION: 'No hemos podido encontrar este usuario. Por favor, comprueba que el enlace es correcto, y prueba de nuevo.',
 		});
 	}
 }());

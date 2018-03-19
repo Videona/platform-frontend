@@ -51,7 +51,11 @@
 			DOWNLOAD_CODE: 'Enter your download code',
 			DOWNLOAD_VIDEO: 'Download Video',
 			BACK_TO_GALLERY: 'Back to gallery',
-			ERROR_WRONG_DOWNLOAD_CODE: 'Invalid download code'
+			ERROR_WRONG_DOWNLOAD_CODE: 'Invalid download code',
+			// User Gallery page
+			USER_GALLERY_USER_VIDEOS: "{{username}} videos",
+			USER_GALLERY_USER_NOT_FOUND_TITLE: 'User not found',
+			USER_GALLERY_USER_NOT_FOUND_DESCRIPTION: 'We could not find this user. Please, check that link is correct and try again.',
 		});
 	}
 }());

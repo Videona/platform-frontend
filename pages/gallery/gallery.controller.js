@@ -1,57 +1,58 @@
 angular.module('app')
-	.controller('GalleryController', ['$translate', 'gallery', Gallery]);
+	.controller('GalleryController', ['$translate', 'galleryServiceFactory', Gallery]);
 
-function Gallery($translate, gallery) {
+function Gallery($translate, galleryServiceFactory) {
 	var self = this;
-	
+
 	self.featured = {
 		get: getFeaturedVideos,
 		videoWidth: 0,
 		videoHeight: 0,
 		videosPerRow: 0,
-		isLoading: false
-	};	
-	
+		isLoading: false,
+	};
+
 	self.notFeatured = {
 		get: getNotFeaturedVideos,
 		videoWidth: 0,
 		videoHeight: 0,
 		videosPerRow: 0,
-		isLoading: false
+		isLoading: false,
 	};
 
-	self.gallery = gallery;
-	
+	self.featuredGallery = galleryServiceFactory.getInstance(['featured']);
+	self.nonFeaturedGallery = galleryServiceFactory.getInstance(['-featured']);
+
 	self.search = '';
-	
-	setupFeaturedCard();
-	
+
+	setupVideoCardSizes();
+
 	function getFeaturedVideos() {
 		if (!self.featured.isLoading) {
 			self.featured.isLoading = true;
-			self.gallery.getFeaturedVideoList(function (success) {
+			self.featuredGallery.getVideoList(function (success) {
 				if (success) {
 					self.featured.isLoading = false;
 				}
 			});
-		} 
+		}
 	}
-	
+
 	function getNotFeaturedVideos() {
 		if (!self.notFeatured.isLoading) {
 			self.notFeatured.isLoading = true;
-			self.gallery.getNotFeaturedVideoList(function (success) {
+			self.nonFeaturedGallery.getVideoList(function (success) {
 				if (success) {
 					self.notFeatured.isLoading = false;
 				}
 			});
-		}  
+		}
 	}
-	
-	function setupFeaturedCard() {
+
+	function setupVideoCardSizes() {
 		self.featured.videosPerRow = 0;
 		self.notFeatured.videosPerRow = 0;
-		
+
 		if (window.innerWidth > 1920) {
 			self.featured.videosPerRow = 5;
 			self.notFeatured.videosPerRow = 7;
@@ -71,7 +72,7 @@ function Gallery($translate, gallery) {
 
 		self.notFeatured.videoWidth = (window.innerWidth - parseInt(self.notFeatured.videosPerRow - 1) * 13 - 26) / self.notFeatured.videosPerRow;
 		self.notFeatured.videoHeight = (self.notFeatured.videoWidth * 9) / 16;
-		
+
 		self.featured.get();
 	}
 }
