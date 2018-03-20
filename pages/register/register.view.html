@@ -18,7 +18,7 @@
 				</div>
 
 				<div ng-show="Register.activeView.terms">
-					<div id="recaptcha" class="g-recaptcha" data-sitekey="6LfKYUMUAAAAAHza4xAfzQ7FHCpKy1Nbz5TBj7GM" render="explicit"></div>
+					<div id="recaptcha" ng-if="enableRecaptcha" class="g-recaptcha" data-sitekey="6LfKYUMUAAAAAHza4xAfzQ7FHCpKy1Nbz5TBj7GM" render="explicit"></div>
 					<span>
 						<input type="checkbox" id="signup" ng-model="Register.terms" required="required">
 						<label for="signup">{{'ACCEPT_CONDITIONS_1' | translate}}<span>
