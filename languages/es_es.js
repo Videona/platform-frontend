@@ -60,7 +60,7 @@
 
 			PRODUCT_TYPE_FAKELIVE: 'Falso directo',
 			PRODUCT_TYPE_RAW: 'Videos brutos',
-			PRODUCT_TYPE_SPOOLERS: 'Spoolers',
+			PRODUCT_TYPE_SPOOLERS: 'Colas',
 			PRODUCT_TYPE_TOTAL: 'Total',
 			PRODUCT_TYPE_GRAPHIC: 'Grafico',
 			PRODUCT_TYPE_PIECES: 'Piezas',
