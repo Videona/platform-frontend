@@ -54,12 +54,18 @@
 			BACK_TO_GALLERY: 'Back to gallery',
 			ERROR_WRONG_DOWNLOAD_CODE: 'Invalid download code',
 
+			SHOW_VIDEO_DETAILS: 'Show video details',
+			HIDE_VIDEO_DETAILS: 'Hide video details',
+
 			VIDEO_DETAIL_DATETIME: 'Date and time',
 			VIDEO_DETAIL_CATEGORIES: 'Categories',
 			VIDEO_DETAIL_PRODUCT_TYPE: 'Type',
 			VIDEO_DETAIL_LENGTH: 'Length',
 			VIDEO_DETAIL_TECHNICAL_DETAILS: 'Technical details',
-			VIDEO_DETAIL_TAGS: 'Tags'
+			VIDEO_DETAIL_TAGS: 'Tags',
+			VIDEO_DETAIL_LANGUAGE: 'Language',
+			VIDEO_DETAIL_QUALITY: 'Quality',
+			VIDEO_DETAIL_CREDIBILITY: 'Credibility'
 		});
 	}
 }());

@@ -15,7 +15,17 @@
 	</div>
 
 	<article ng-if="Video.video.data && !Video.video.data.error">
-		<video controls ng-src="{{::Video.video.data.video}}" ng-attr-poster="{{::Video.video.data.poster}}" preload="metadata" controlsList="nodownload" class="video-detail-page"></video>
+		<div class="video-detail-page">
+			<video controls ng-src="{{::Video.video.data.video}}" ng-attr-poster="{{::Video.video.data.poster}}" preload="metadata" controlsList="nodownload"></video><br>
+			<div class="video-author">
+				<img src="" class="user-pic">
+				<div class="user-info">
+					<strong>Hello</strong><br>
+					<span>Proffessional</span><br>
+					<span>Videos publicados: 50</span>
+				</div>
+			</div>
+		</div>
 		<section class="info-detail-video">
 			<div>
 				<div class="headers-info-videoDetail">
@@ -27,36 +37,59 @@
 					<img src="../../img/checked.svg" alt="video-verified" />
 					<p>{{'VIDEO_VERIFIED' | translate}}</p>
 				</div>
-				<div ng-if="!Video.video.data.added" class="videoDetail-detail">
-					<p>
-						<strong>{{'VIDEO_DETAIL_DATETIME' | translate}}:</strong> {{Video.video.data.date}}
-					</p>
+
+				<div class="videoDetail-detail" ng-click="showDetails = !showDetails">
+					<span ng-show="showDetails">{{'HIDE_VIDEO_DETAILS' | translate}}</span>
+					<span ng-hide="showDetails">{{'SHOW_VIDEO_DETAILS' | translate}}</span>
 				</div>
-				<div ng-if="!Video.video.data.tag" class="videoDetail-detail">
-					<p>
-						<strong>{{'VIDEO_DETAIL_CATEGORIES' | translate}}:</strong> {{Video.video.data.tag}}
-					</p>
+				<div class="collapsable" ng-show="showDetails">
+					<div ng-if="!Video.video.data.added" class="videoDetail-detail">
+						<p>
+							<strong>{{'VIDEO_DETAIL_DATETIME' | translate}}:</strong> {{Video.video.data.date}}
+						</p>
+					</div>
+					<div ng-if="!Video.video.data.tag" class="videoDetail-detail">
+						<p>
+							<strong>{{'VIDEO_DETAIL_CATEGORIES' | translate}}:</strong> {{Video.video.data.tag}}
+						</p>
+					</div>
+					<div ng-if="!Video.video.data.productType" class="videoDetail-detail">
+						<p>
+							<strong>{{'VIDEO_DETAIL_PRODUCT_TYPE' | translate}}:</strong> {{Video.video.data.productType}}
+						</p>
+					</div>
+					<div class="videoDetail-detail">
+						<p>
+							<strong>{{'VIDEO_DETAIL_LENGTH' | translate}}:</strong> {{Video.video.data.length || 'desconocido'}}
+						</p>
+					</div>
+					<div class="videoDetail-detail">
+						<p>
+							<strong>{{'VIDEO_DETAIL_LANGUAGE' | translate}}:</strong> {{Video.video.data.language || '-'}}
+						</p>
+					</div>
+					<div class="videoDetail-detail">
+						<p>
+							<strong>{{'VIDEO_DETAIL_QUALITY' | translate}}:</strong> {{Video.video.data.quality || '-'}}
+						</p>
+					</div>
+					<div class="videoDetail-detail">
+						<p>
+							<strong>{{'VIDEO_DETAIL_CREDIBILITY' | translate}}:</strong> {{Video.video.data.credibility ||	 '-'}}
+						</p>
+					</div>
+					<div  class="videoDetail-detail">
+						<p>
+							<strong>{{'VIDEO_DETAIL_TECHNICAL_DETAILS' | translate}}:</strong> {{Video.video.data.size}} Mb | {{Video.video.data.format}} | {{Video.video.data.dimensions}} | {{Video.video.data.ratio}}
+						</p>
+					</div>
+					<div  class="videoDetail-detail">
+						<p>
+							<strong>{{'VIDEO_DETAIL_TAGS' | translate}}:</strong> {{Video.video.data.tag}}
+						</p>
+					</div>
 				</div>
-				<div ng-if="!Video.video.data.productType" class="videoDetail-detail">
-					<p>
-						<strong>{{'VIDEO_DETAIL_PRODUCT_TYPE' | translate}}:</strong> {{Video.video.data.productType}}
-					</p>
-				</div>
-				<div class="videoDetail-detail">
-					<p>
-						<strong>{{'VIDEO_DETAIL_LENGTH' | translate}}:</strong> {{Video.video.data.length || 'desconocido'}}
-					</p>
-				</div>
-				<div  class="videoDetail-detail">
-					<p>
-						<strong>{{'VIDEO_DETAIL_TECHNICAL_DETAILS' | translate}}:</strong> {{Video.video.data.size}} Mb | {{Video.video.data.format}} | {{Video.video.data.dimensions}} | {{Video.video.data.ratio}}
-					</p>
-				</div>
-				<div  class="videoDetail-detail">
-					<p>
-						<strong>{{'VIDEO_DETAIL_TAGS' | translate}}:</strong> {{Video.video.data.tag}}
-					</p>
-				</div>
+
 			</div>
 			<div class="videoDetail-go-back-mobile">
 					<a ui-sref="gallery">{{'BACK_TO_GALLERY' | translate}}</a>

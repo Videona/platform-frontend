@@ -53,12 +53,18 @@
 			BACK_TO_GALLERY: 'Volver a la galería',
 			ERROR_WRONG_DOWNLOAD_CODE: 'Código de descarga inválido',
 
+			SHOW_VIDEO_DETAILS: 'Mostrar detalles del video',
+			HIDE_VIDEO_DETAILS: 'Ocultar detalles del video',
+
 			VIDEO_DETAIL_DATETIME: 'Fecha y hora',
 			VIDEO_DETAIL_CATEGORIES: 'Categorías',
 			VIDEO_DETAIL_PRODUCT_TYPE: 'Tipo',
 			VIDEO_DETAIL_LENGTH: 'Duración',
 			VIDEO_DETAIL_TECHNICAL_DETAILS: 'Detalles técnicos',
-			VIDEO_DETAIL_TAGS: 'Etiquetas'
+			VIDEO_DETAIL_TAGS: 'Etiquetas',
+			VIDEO_DETAIL_LANGUAGE: 'Idioma',
+			VIDEO_DETAIL_QUALITY: 'Calidad',
+			VIDEO_DETAIL_CREDIBILITY: 'Credibilidad'
 		});
 	}
 }());
