@@ -35,7 +35,6 @@ a:hover {
 .video-detail-page {
 	width: 100%;
 	@include desktop {
-		/* width: 46%; */
 		margin: 20px 0 0 20px;
 	}
 
@@ -44,7 +43,7 @@ a:hover {
 	}
 
 	.video-author {
-		margin: 8px;
+		margin: 16px 8px;
 		.user-pic {
 			background: red;
 			border-radius: 50%;
