@@ -53,11 +53,18 @@ gulp.task('flavour', function() {
 // Build dependincies
 var sourceDeps = [
 	'./node_modules/ng-file-upload/dist/ng-file-upload.min.js',
+	'./node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js',
 ];
-gulp.task('dependencies', ['make-config', 'flavour'], function () {
-	gulp.src(sourceDeps)
-		.pipe(debug({ title: 'Join ng dependencies:' }))
+gulp.task('join-dependencies', ['make-config', 'flavour'], function () {
+	return gulp.src(sourceDeps)
+		.pipe(debug({ title: 'Join js dependencies:' }))
 		.pipe(concat('modules.js'))
+		.pipe(gulp.dest('./modules'));
+});
+	
+gulp.task('dependencies', ['join-dependencies'], function () {
+	return gulp.src('./modules/modules.js')
+		.pipe(debug({ title: 'Move js dependencies:' }))
 		.pipe(minify({
 			ext: {
 				src: '-debug.js',
@@ -66,6 +73,7 @@ gulp.task('dependencies', ['make-config', 'flavour'], function () {
 		}))
 		.pipe(gulp.dest('./dist/js'));
 });
+
 
 // Build app js
 var sourceJs = [
@@ -80,7 +88,7 @@ var sourceJs = [
 	'!./dist/**',
 ];
 gulp.task('js', ['dependencies', 'make-config', 'flavour'], function () {
-	gulp.src(sourceJs)
+	return gulp.src(sourceJs)
 		.pipe(debug({ title: 'Join JS:' }))
 		.pipe(concat('app.js'))
 		.pipe(minify({
