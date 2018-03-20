@@ -20,12 +20,11 @@
 		width: 100%;
 
 		@include desktop {
-			/* margin: 16px 32px; */
     		margin: 16px auto;
 		    border-radius: 5px;
 		    padding: 8px;
 		    background-color: $backgroundLight;
-	    	@extend %flex-direction-row;
+	    	flex-direction: row;
 			margin-top: 0;
 		}
 	}
