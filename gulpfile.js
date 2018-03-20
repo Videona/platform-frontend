@@ -52,8 +52,8 @@ gulp.task('flavour', function() {
 
 // Build dependincies
 var sourceDeps = [
-	'./node_modules/ng-file-upload/dist/ng-file-upload.min.js',
-	'./node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js',
+	'../node_modules/ng-file-upload/dist/ng-file-upload.min.js',
+	'../node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js',
 ];
 gulp.task('join-dependencies', ['make-config', 'flavour'], function () {
 	return gulp.src(sourceDeps)
