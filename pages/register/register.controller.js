@@ -16,7 +16,7 @@
 
 		self.error = [];
 		self.loading = false;
-		self.enableRecaptcha = nodeEnv === 'production';
+		self.recaptchaEnabled = nodeEnv === 'production';
 
 		self.activeView = {
 			credentials: true,
@@ -68,7 +68,7 @@
 				self.activeView.credentials = false;
 				self.activeView.terms = true;
 
-				if (nodeEnv === 'production') {
+				if (self.recaptchaEnabled) {
 					window.grecaptcha.render(document.getElementById('recaptcha'));
 				}
 			} else {
@@ -147,7 +147,7 @@
 				self.error.push($translate.instant('ERROR_TERMS_EMPTY'));
 			}
 
-			if (nodeEnv === 'production') {
+			if (self.recaptchaEnabled) {
 				var captchaResponse = window.grecaptcha.getResponse();
 				if (!captchaResponse) {
 					self.error.push($translate.instant('ERROR_CAPTCHA'));
