@@ -51,7 +51,20 @@
 			DOWNLOAD_CODE: 'Enter your download code',
 			DOWNLOAD_VIDEO: 'Download Video',
 			BACK_TO_GALLERY: 'Back to gallery',
-			ERROR_WRONG_DOWNLOAD_CODE: 'Invalid download code'
+			ERROR_WRONG_DOWNLOAD_CODE: 'Invalid download code',
+
+			DROP_VIDEO: 'Drop your video here or click to upload',
+			UPLOADING_FILE: 'Uploading video...',
+			UPLOAD_TITLE_PLACEHOLDER: 'Title',
+			UPLOAD_DESCRIPTION_PLACEHOLDER: 'Description',
+			UPLOAD_SEND: 'Upload video',
+
+			PRODUCT_TYPE_FAKELIVE: 'Live on tape',
+			PRODUCT_TYPE_RAW: 'B-roll',
+			PRODUCT_TYPE_SPOOLERS: 'Nat/Vo',
+			PRODUCT_TYPE_TOTAL: 'Interview',
+			PRODUCT_TYPE_GRAPHIC: 'Graphics',
+			PRODUCT_TYPE_PIECES: 'Piece',
 		});
 	}
 }());

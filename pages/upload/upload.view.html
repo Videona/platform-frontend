@@ -1,0 +1,40 @@
+<topbar></topbar>
+
+<div ng-controller="UploadController as Upload" class="upload-page">
+	<div class="container">
+		<div class="left-preview">
+			<div class="upload-form-file" ng-if="!Upload.file">
+			    <div ngf-drop ngf-select ng-model="Upload.file" class="drop-box" 
+			        ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="false"
+			        accept="video/*" 
+			        ngf-pattern="'video/*'">
+			        <img class="upload-drop-icon" src="/img/upload-arrow.svg" alt="img_menu"><br>
+			    	{{'DROP_VIDEO' | translate}}
+			    </div>
+			    <div ngf-no-file-drop>
+					<input type="file" accept="video/*" file-model="Upload.file"/>
+			    </div>
+			</div>
+		    <video ng-if="Upload.file" class="upload-form-preview" controls ngf-src="Upload.file"></video>
+		    <div class="file-uploading" ng-show="Upload.loading">
+		    	{{'UPLOADING_FILE' | translate}}
+		    </div>
+		</div>
+
+		<div class="right-form">
+			<input type="text" name="title" class="upload-form-title" ng-model="Upload.data.title" placeholder="{{'UPLOAD_TITLE_PLACEHOLDER' | translate}}" />
+			<textarea name="description" class="upload-form-description" ng-model="Upload.data.description" placeholder="{{'UPLOAD_DESCRIPTION_PLACEHOLDER' | translate}}"></textarea>
+
+			<div class="product-types">
+				<span ng-repeat="type in Upload.productTypes" class="product-type">
+					<input type="checkbox" name="product-type-{{type.id}}" ng-model="Upload.data.productType[type.id]" id="product-type-{{type.id}}">
+					<label for="product-type-{{type.id}}">{{type.name}}</label>
+				</span>
+			</div>
+
+			<div class="form-send-button">
+				<a ng-class="['btn-send', {'disabled': Upload.loading}]" ng-click="Upload.send()">{{'UPLOAD_SEND' | translate}}</a>
+			</div>
+		</div>
+	</div>
+</div>
