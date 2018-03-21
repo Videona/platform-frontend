@@ -9,9 +9,9 @@
 				</a>
 			</div>
 		</section>
-		<video-list section-class="gallery-featured" videosPerRow="Gallery.featured.videosPerRow"
-					width="Gallery.featured.videoWidth" height="Gallery.featured.videoHeight"
-					datasource="Gallery.featuredGallery.videos" loading="Gallery.featured.isLoading"></video-list>
+		<video-list section-class="gallery-featured" videos-per-row="Gallery.featured.videosPerRow"
+					tag-filter="Gallery.featured.tagFilter"
+					video-width="Gallery.featured.videoWidth" video-height="Gallery.featured.videoHeight"></video-list>
 		<section class="gallery-filter">
 			<img src="../../img/funnel.svg" alt="img_funnel">
 			<div>
@@ -23,10 +23,10 @@
 				</label>
 			</div>
 		</section>
-		<video-list section-class="gallery-nonFeatured" videosPerRow="Gallery.notFeatured.videosPerRow"
-					width="Gallery.notFeatured.videoWidth" height="Gallery.notFeatured.videoHeight"
-					datasource="Gallery.nonFeaturedGallery.videos" loading="Gallery.notFeatured.isLoading"
-					infinite="Gallery.notFeatured.get()"></video-list>
+		<video-list section-class="gallery-nonFeatured" videos-per-row="Gallery.notFeatured.videosPerRow"
+					tag-filter="Gallery.notFeatured.tagFilter" infinite-scroll-enabled="true"
+					video-width="Gallery.notFeatured.videoWidth" video-height="Gallery.notFeatured.videoHeight"
+		></video-list>
 	</div>
 	<div ng-if='Gallery.loading'>
 		<loading></loading>

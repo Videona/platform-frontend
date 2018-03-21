@@ -13,6 +13,9 @@ img/brand
 sass/base/_variables.scss
 js/flavour.js
 
+# SASS generated style
+css/style.css
+
 # Logs
 logs
 *.log

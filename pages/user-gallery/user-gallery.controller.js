@@ -2,31 +2,29 @@
 	angular.module('app')
 		.controller(
 			'UserGalleryController',
-			['$stateParams', '$translate', 'galleryServiceFactory', 'user', 'page', UserGallery],
+			['$stateParams', '$translate', 'user', 'page', UserGallery],
 		);
 
-	function UserGallery($stateParams, $translate, galleryServiceFactory, userService, page) {
+	function UserGallery($stateParams, $translate, userService, page) {
 		var self = this;
+		self.userService = userService;
+		self.userId = $stateParams.userId;
 
 		self.videos = {
-			get: getVideos,
 			videoWidth: 0,
 			videoHeight: 0,
 			videosPerRow: 0,
-			isLoading: false,
+			tagFilter: [],
 		};
 
-		self.userService = userService;
-		self.userId = $stateParams.userId;
+		setupVideoListDirective();
+
 		self.userService.getUser(self.userId)
 			.then((userDetails) => {
 				self.user = userDetails;
 				page.title = self.user.username + ' User gallery - ';
 				$translate('USER_GALLERY_USER_VIDEOS', { username: self.user.username })
 					.then(title => self.userGalleryTitle = title);
-				self.gallery = galleryServiceFactory.getInstance([], self.userId);
-
-				setupVideoListDirective();
 			})
 			.catch((status, data) => {
 				page.title = 'User gallery - ';
@@ -34,17 +32,6 @@
 				console.log('Error ' + status + ' while getting user details');
 				console.log('data is ', data);
 			});
-
-		function getVideos() {
-			if (!self.videos.isLoading) {
-				self.videos.isLoading = true;
-				self.gallery.getVideoList(function (success) {
-					if (success) {
-						self.videos.isLoading = false;
-					}
-				});
-			}
-		}
 
 		function setupVideoListDirective() {
 			self.videos.videosPerRow = 0;

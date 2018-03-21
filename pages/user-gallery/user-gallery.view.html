@@ -34,9 +34,9 @@
 				</label>
 			</div>
 		</section>
-		<video-list section-class="gallery-nonFeatured"
-					videosPerRow="UserGallery.videos.videosPerRow" width="UserGallery.videos.videoWidth"
-					height="UserGallery.videos.videoHeight" datasource="UserGallery.gallery.videos"
-					infinite="UserGallery.videos.get()" loading="UserGallery.videos.isLoading"></video-list>
+		<video-list class="gallery" section-class="gallery-nonFeatured" user-id="UserGallery.userId"
+					tag-filter="UserGallery.videos.tagFilter" videosPerRow="UserGallery.videos.videosPerRow"
+					video-width="UserGallery.videos.videoWidth" video-height="UserGallery.videos.videoHeight"
+					infinite-scroll-enabled="true"></video-list>
 	</div>
 </div>

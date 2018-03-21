@@ -1,53 +1,27 @@
 angular.module('app')
-	.controller('GalleryController', ['$translate', 'galleryServiceFactory', Gallery]);
+	.controller('GalleryController', ['$translate', Gallery]);
 
-function Gallery($translate, galleryServiceFactory) {
+function Gallery($translate) {
 	var self = this;
 
 	self.featured = {
-		get: getFeaturedVideos,
 		videoWidth: 0,
 		videoHeight: 0,
 		videosPerRow: 0,
 		isLoading: false,
+		tagFilter: ['featured'],
 	};
 
 	self.notFeatured = {
-		get: getNotFeaturedVideos,
 		videoWidth: 0,
 		videoHeight: 0,
 		videosPerRow: 0,
 		isLoading: false,
+		tagFilter: ['-featured'],
 	};
 
-	self.featuredGallery = galleryServiceFactory.getInstance(['featured']);
-	self.nonFeaturedGallery = galleryServiceFactory.getInstance(['-featured']);
-
 	self.search = '';
-
 	setupVideoCardSizes();
-
-	function getFeaturedVideos() {
-		if (!self.featured.isLoading) {
-			self.featured.isLoading = true;
-			self.featuredGallery.getVideoList(function (success) {
-				if (success) {
-					self.featured.isLoading = false;
-				}
-			});
-		}
-	}
-
-	function getNotFeaturedVideos() {
-		if (!self.notFeatured.isLoading) {
-			self.notFeatured.isLoading = true;
-			self.nonFeaturedGallery.getVideoList(function (success) {
-				if (success) {
-					self.notFeatured.isLoading = false;
-				}
-			});
-		}
-	}
 
 	function setupVideoCardSizes() {
 		self.featured.videosPerRow = 0;
@@ -72,7 +46,5 @@ function Gallery($translate, galleryServiceFactory) {
 
 		self.notFeatured.videoWidth = (window.innerWidth - parseInt(self.notFeatured.videosPerRow - 1) * 13 - 26) / self.notFeatured.videosPerRow;
 		self.notFeatured.videoHeight = (self.notFeatured.videoWidth * 9) / 16;
-
-		self.featured.get();
 	}
 }

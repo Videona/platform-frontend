@@ -1,31 +1,69 @@
-angular.module('app')
-	.directive('videoList', [VideoList]);
-// angular.module('app', ['infinite-scroll'])
+(function () {
+	class VideoListController {
+		constructor(api, httpParamSerializer) {
+			this.api = api;
+			this.serializer = httpParamSerializer;
+			this.loading = true;
+			this.videos = [];
+			this.queryParams = {
+				order: '-date',
+				offset: 0,
+				limit: 10,
+			};
+		}
 
-function VideoList() {
-	var self = this;
+	  $onInit() {
+		  if (this.tagFilter instanceof Array && this.tagFilter.length > 0) {
+			  this.createTagFilter(this.tagFilter);
+		  }
+		  this.getVideoList();
+	  }
 
-	self.isLoading = false;
+		createTagFilter(tagFilter) {
+			this.queryParams.tag = tagFilter.filter(item => !item.startsWith('-'));
+			this.queryParams.excludeTag = tagFilter.filter(item => item.startsWith('-')).map(item => item.substring(1));
+		}
 
-	return {
-		scope: {
-			videosPerRow: '=',
-			width: '=',
-			height: '=',
-			infinite: '&',
-			loading: '=',
-			datasource: '=',
-			sectionClass: '@',
-		},
-		restrict: 'E',
-		templateUrl: function (elem, attr) {
-			// TODO(jliarte): different templates for different types?
-			let type = 'non-featured';
-			if (attr.type !== undefined) {
-				type = attr.type;
+		getQuery() {
+			let baseQuery = '/video?';
+			if (this.userId !== undefined) {
+				baseQuery = '/user/' + this.userId + baseQuery;
 			}
-			return 'components/video-list/video-list-' + type + '.view.html';
+			return baseQuery + this.serializer(this.queryParams);
+		}
+
+		getVideoList() {
+			console.log('query url is ', this.api.url + this.getQuery());
+			this.loading = true;
+			this.api.get(this.api.url + this.getQuery(), function (data, status) {
+				this.loading = false;
+				if (status < 400 && data.length > 0) {
+					this.videos = this.videos.concat(data);
+					this.queryParams.offset += data.length;
+				}
+			}.bind(this));
+		}
+
+		infinite() {
+			if (this.infiniteScrollEnabled) {
+				this.getVideoList();
+			}
+		}
+	}
+
+	angular.module('app')
+	.component('videoList', {
+		bindings: {
+			videosPerRow: '=',
+			videoWidth: '=',
+			videoHeight: '=',
+			sectionClass: '@',
+			userId: '=',
+			tagFilter: '=',
+			infiniteScrollEnabled: '=',
 		},
-		// templateUrl: 'components/video-list/video-list-non-featured.view.html'
-	};
-}
+		controller: ['api', '$httpParamSerializer', (api, httpParamSerializer) => new VideoListController(api, httpParamSerializer)],
+		controllerAs: 'VideoList',
+		templateUrl: 'components/video-list/video-list.view.html',
+	});
+}());
