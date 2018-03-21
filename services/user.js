@@ -6,7 +6,7 @@
 
 		getUser(userId) {
 			return new Promise((resolve, reject) => {
-				let query = '/user/' + userId;
+				const query = '/user/' + userId;
 				this.api.get(this.api.url + query, function (data, status) {
 					if (status < 400 && data !== undefined) {
 						resolve(data);

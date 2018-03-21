@@ -1,8 +1,10 @@
 (function () {
-	angular.module('app')
-		.controller('MainCtrl', ['$scope', 'Page', MainCtrl]);
-
-	function MainCtrl($scope, Page) {
-		$scope.Page = Page;
+	class MainController {
+		constructor(page) {
+			this.page = page;
+		}
 	}
+
+	angular.module('app')
+		.controller('MainControler', ['page', page => new MainController(page)]);
 }());

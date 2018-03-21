@@ -1,11 +1,11 @@
 (function () {
 	angular.module('app')
-		.controller('UserGalleryController',
-			['$stateParams', '$translate', 'galleryServiceFactory', 'user', 'Page', UserGallery]);
+		.controller(
+			'UserGalleryController',
+			['$stateParams', '$translate', 'galleryServiceFactory', 'user', 'page', UserGallery],
+		);
 
-	function UserGallery($stateParams, $translate, galleryServiceFactory, userService, Page) {
-		Page.setTitle("User gallery - ");
-
+	function UserGallery($stateParams, $translate, galleryServiceFactory, userService, page) {
 		var self = this;
 
 		self.videos = {
@@ -19,19 +19,20 @@
 		self.userService = userService;
 		self.userId = $stateParams.userId;
 		self.userService.getUser(self.userId)
-			.then(userDetails => {
+			.then((userDetails) => {
 				self.user = userDetails;
-				$translate('USER_GALLERY_USER_VIDEOS', {username: self.user.username})
+				page.title = self.user.username + ' User gallery - ';
+				$translate('USER_GALLERY_USER_VIDEOS', { username: self.user.username })
 					.then(title => self.userGalleryTitle = title);
 				self.gallery = galleryServiceFactory.getInstance([], self.userId);
-				Page.setTitle(self.user.username + " User gallery - ");
 
 				setupVideoListDirective();
 			})
 			.catch((status, data) => {
+				page.title = 'User gallery - ';
 				// TODO(jliarte): 404?
-				console.log("Error " + status + " while getting user details");
-				console.log("data is ", data);
+				console.log('Error ' + status + ' while getting user details');
+				console.log('data is ', data);
 			});
 
 		function getVideos() {

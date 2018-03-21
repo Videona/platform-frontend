@@ -18,19 +18,18 @@ describe('Gallery (video api) factory', function () {
 		});
 
 		it('should have no videos before calling the callback', function () {
-			let gallery = galleryFactory.getInstance();
+			const gallery = galleryFactory.getInstance();
 			expect(gallery.videos.length).toBe(0);
 		});
 
 		it('should have default query params limit of 10 items', function () {
-			let gallery = galleryFactory.getInstance();
+			const gallery = galleryFactory.getInstance();
 			expect(gallery.queryParams.limit).toEqual(10);
 			expect(gallery.queryParams.offset).toEqual(0);
 			expect(gallery.queryParams.order).toEqual('-date');
 			expect(gallery.queryParams.tag).toBeUndefined();
 			expect(gallery.queryParams.excludeTag).toBeUndefined();
 		});
-
 	});
 });
 
@@ -46,36 +45,35 @@ function mockApi() {
 }
 
 describe('UserGallery (video api) service', function () {
-	let mockedApi = null;
+	const mockedApi = null;
 	let callback = null;
 	let serializerSpy = null;
 
-	function createCallbackSpy () {
+	function createCallbackSpy() {
 		callback = jasmine.createSpy('callback');
 	}
 	function createSerializerSpy() {
 		serializerSpy = jasmine.createSpy();
-
 	}
 	beforeEach(createCallbackSpy);
 	beforeEach(mockApi);
 	beforeEach(createSerializerSpy);
 
 	it('does not set tag filters if no filters param passed', function () {
-		let service = new GalleryService(mockedApi);
+		const service = new GalleryService(mockedApi);
 
-		expect(service.queryParams['tag']).toBeUndefined();
-		expect(service.queryParams['excludeTag']).toBeUndefined();
+		expect(service.queryParams.tag).toBeUndefined();
+		expect(service.queryParams.excludeTag).toBeUndefined();
 	});
 
 	it('set user if int userId is provided', function () {
-		let service = new GalleryService(mockedApi, serializerSpy, [], 42);
+		const service = new GalleryService(mockedApi, serializerSpy, [], 42);
 
 		expect(service.userId).toBe(42);
 	});
 
 	it('does not set user if non int userId is provided', function () {
-		let service = new GalleryService(mockedApi, serializerSpy, [], "");
+		const service = new GalleryService(mockedApi, serializerSpy, [], '');
 
 		expect(service.userId).toBeUndefined();
 	});
@@ -83,32 +81,32 @@ describe('UserGallery (video api) service', function () {
 
 	describe('.createTagFilter', function () {
 		it('should exists', function () {
-			let service = new GalleryService(mockedApi, serializerSpy, []);
+			const service = new GalleryService(mockedApi, serializerSpy, []);
 
 			expect(service.createTagFilter).toBeDefined();
 		});
 
 		it('should be called in constructor with tags param', function () {
-			let tagFilter = ['oneTag'];
-			let createTagFilterSpy = spyOn(GalleryService.prototype, "createTagFilter");
+			const tagFilter = ['oneTag'];
+			const createTagFilterSpy = spyOn(GalleryService.prototype, 'createTagFilter');
 
-			let service = new GalleryService(mockedApi, serializerSpy, tagFilter);
+			const service = new GalleryService(mockedApi, serializerSpy, tagFilter);
 
 			expect(createTagFilterSpy).toHaveBeenCalled();
 		});
 
 		it('should set tag filter with tags passed', function () {
-			let tagFilter = ['oneTag', 'anotherTag'];
+			const tagFilter = ['oneTag', 'anotherTag'];
 
-			let service = new GalleryService(mockedApi, serializerSpy, tagFilter);
+			const service = new GalleryService(mockedApi, serializerSpy, tagFilter);
 
 			expect(service.queryParams.tag).toEqual(['oneTag', 'anotherTag']);
 		});
 
 		it('should set excludeTag filter with tags passed with a -', function () {
-			let tagFilter = ['oneTag', 'anotherTag', '-excludedTag'];
+			const tagFilter = ['oneTag', 'anotherTag', '-excludedTag'];
 
-			let service = new GalleryService(mockedApi, serializerSpy, tagFilter);
+			const service = new GalleryService(mockedApi, serializerSpy, tagFilter);
 
 			expect(service.queryParams.tag).toEqual(['oneTag', 'anotherTag']);
 			expect(service.queryParams.excludeTag).toEqual(['excludedTag']);
@@ -116,27 +114,31 @@ describe('UserGallery (video api) service', function () {
 	});
 
 	describe('getQuery', function () {
-		it ('should exist', function () {
-			let service = new GalleryService(mockedApi, serializerSpy);
+		it('should exist', function () {
+			const service = new GalleryService(mockedApi, serializerSpy);
 
 			expect(service.getQuery).toBeDefined();
 		});
 
 		it('should call $httpParamSerializer', function () {
-			let service = new GalleryService(mockedApi, serializerSpy, ['tag1', '-tag2', 'tag3']);
+			const service = new GalleryService(mockedApi, serializerSpy, ['tag1', '-tag2', 'tag3']);
 
-			let query = service.getQuery();
+			const query = service.getQuery();
 
-			expect(serializerSpy).toHaveBeenCalledWith({ order: service.queryParams.order,
-				offset: service.queryParams.offset, limit: service.queryParams.limit,
-				tag: [ 'tag1', 'tag3' ], excludeTag: [ 'tag2' ] });
+			expect(serializerSpy).toHaveBeenCalledWith({
+				order: service.queryParams.order,
+				offset: service.queryParams.offset,
+				limit: service.queryParams.limit,
+				tag: ['tag1', 'tag3'],
+				excludeTag: ['tag2'],
+			});
 		});
 
 		it('defines /videos as query base', function () {
 			serializerSpy = jasmine.createSpy().and.returnValue('queryparams');
-			let service = new GalleryService(mockedApi, serializerSpy);
+			const service = new GalleryService(mockedApi, serializerSpy);
 
-			let query = service.getQuery();
+			const query = service.getQuery();
 
 			// expect(query).toStartWith('/video');
 			expect(query).toBe('/video?queryparams');
@@ -144,9 +146,9 @@ describe('UserGallery (video api) service', function () {
 
 		it('prepends user if userId is provided', function () {
 			serializerSpy = jasmine.createSpy().and.returnValue('queryparams');
-			let service = new GalleryService(mockedApi, serializerSpy, [], 42);
+			const service = new GalleryService(mockedApi, serializerSpy, [], 42);
 
-			let query = service.getQuery();
+			const query = service.getQuery();
 
 			// expect(query).toStartWith('/user/42');
 			expect(query).toBe('/user/42/video?queryparams');
@@ -160,5 +162,4 @@ describe('UserGallery (video api) service', function () {
 	// 	jasmine.clock().tick(101);
 	// 	expect(callback).toHaveBeenCalled();
 	// });
-
 });

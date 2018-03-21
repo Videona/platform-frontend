@@ -12,9 +12,9 @@ const RESPONSE_SUCCESS = [{
 describe('UserGalleryController', function () {
 	beforeEach(angular.mock.module('app'));
 
-	let mockedGalleryService = {
+	const mockedGalleryService = {
 		getVideoList: function (cb) {
-			console.log("called mocked video list......");
+			console.log('called mocked video list......');
 			setTimeout(function () {
 				if (cb === true) {
 					cb(true, [RESPONSE_SUCCESS]);
@@ -23,23 +23,23 @@ describe('UserGalleryController', function () {
 				}
 			}, 100);
 			return true;
-		}
+		},
 	};
 
 	beforeEach(module({
 		galleryServiceFactory: {
 			getInstance: function (tagFilter, userId) {
 				return mockedGalleryService;
-			}
-		}
+			},
+		},
 	}));
 
 	let controller;
-	let $stateParams = {userId: 42};
+	const $stateParams = { userId: 42 };
 
 	beforeEach(angular.mock.inject(function (_$controller_, _galleryServiceFactory_, _user_) {
-		let $controller = _$controller_;
-		controller = $controller('UserGalleryController', {$stateParams: $stateParams});
+		const $controller = _$controller_;
+		controller = $controller('UserGalleryController', { $stateParams: $stateParams });
 	}));
 
 	it('should be defined', function () {
@@ -56,7 +56,7 @@ describe('UserGalleryController', function () {
 		});
 
 		it('must have a successfull callback', function () {
-			let spy = spyOn(controller.userService, 'getUser').and.returnValue(Promise.resolve(true));
+			const spy = spyOn(controller.userService, 'getUser').and.returnValue(Promise.resolve(true));
 			controller.userService.getUser();
 			expect(controller.videos.isLoading).toEqual(false);
 			//
@@ -65,8 +65,6 @@ describe('UserGalleryController', function () {
 
 				expect(controller.videos.isLoading).toEqual(true);
 			});
-
 		});
 	});
-
 });

@@ -1,13 +1,8 @@
 (function () {
-	angular.module('app').factory('Page', function () {
-		let title = 'Vimojo Platform';
-		return {
-			title: function () {
-				return title;
-			},
-			setTitle: function (newTitle) {
-				title = newTitle;
-			}
-		};
-	});
+	class Page {
+		constructor() {
+			this.title = 'Vimojo Platform';
+		}
+	}
+	angular.module('app').service('page', Page);
 }());

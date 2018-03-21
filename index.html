@@ -9,12 +9,12 @@
 -->
 
 <!-- doctype html -->
-<html ng-app="app" ng-controller="MainCtrl">
+<html ng-app="app" ng-controller="MainControler as main">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 
-		<title>{{ Page.title() }} {{'NAME' | flavour}}</title>
+		<title>{{ main.page.title }} {{'NAME' | flavour}}</title>
 
 		<link rel="stylesheet" type="text/css" href="/css/style.css" />
 

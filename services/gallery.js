@@ -6,7 +6,7 @@ class GalleryService {
 		this.queryParams = {
 			order: '-date',
 			offset: 0,
-			limit: 10
+			limit: 10,
 		};
 		if (tagFilter instanceof Array && tagFilter.length > 0) {
 			this.createTagFilter(tagFilter);
@@ -22,7 +22,7 @@ class GalleryService {
 	}
 
 	getQuery() {
-		let baseQuery = "/video?";
+		let baseQuery = '/video?';
 		if (this.userId !== undefined) {
 			baseQuery = '/user/' + this.userId + baseQuery;
 		}
@@ -30,7 +30,7 @@ class GalleryService {
 	}
 
 	getVideoList(cb) {
-		console.log("query url is ", this.api.url + this.getQuery());
+		console.log('query url is ', this.api.url + this.getQuery());
 		this.api.get(this.api.url + this.getQuery(), function (data, status) {
 			let success = false;
 			if (status < 400 && data.length > 0) {
@@ -47,8 +47,8 @@ function galleryServiceGenerator(api, $httpParamSerializer) {
 	return {
 		getInstance: function (tagFilter, userId) {
 			return new GalleryService(api, $httpParamSerializer, tagFilter, userId);
-		}
-	}
+		},
+	};
 }
 
 angular.module('app')
