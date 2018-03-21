@@ -88,9 +88,6 @@ a:hover {
 	& > div:last-child {
 		height: 8%;
 		margin-bottom: 5vw;
-		@include desktop {
-			display: none;
-		}
 	}
 }
 
@@ -139,55 +136,35 @@ a:hover {
 	}
 }
 
+.videoDetail-edit-row {
+	margin: 16px 0;
+	text-align: center;
+	width: 100%; 
+	@include desktop {
+		text-align: right;
+	}
+}
 
 .videoDetail-button {
+	background-color: $mainColor;
+	@include border-radius(4px);
+	color: $backgroundLight;
 	cursor: pointer;
+	display: inline-block;
+	font-size: 1em;
+	margin-top: 30px;
+	padding: 8px 16px;
 	text-align: center;
-	width: 100%;
-	button {
-		color: white;
+	@include desktop {
 		background-color: $mainColor;
-		@include border-radius(4px);
-		height: 32px;
-		padding: 0 15px;
-		margin-top: 30px;
-		font-size: 15px;
-		@include desktop {
-			background-color: $mainColor;
-			font-size: 24px;
-			height: 48px;
-		}
+		font-size: 24px;
+		padding: 16px 32px;
 	}
-	button.disabled {
+	.disabled {
 		background-color: $mainColorDisabled;
 	}
 }
 
-.videoDetail-go-back-mobile {
-	color: $grey;
-	@include desktop {
-		display: none;
-	}
-}
-
-.videoDetail-back-desktop {
-	color: $grey;
-	width: 96vw;
-	max-width: 1200px;
-	padding-bottom: 20px;
-	margin: 0 auto;
-	background-color: white;
-	@include mobile {
-		display: none;
-	}
-	@include tablet {
-		display: none;
-	}
-	p {
-		width: 50%;
-		text-align: center;
-	}
-}
 
 .code-error {
 	padding: 8px;

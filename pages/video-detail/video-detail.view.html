@@ -90,15 +90,11 @@
 					</div>
 				</div>
 
-			</div>
-			<div class="videoDetail-go-back-mobile">
-					<a ui-sref="gallery">{{'BACK_TO_GALLERY' | translate}}</a>
+				<div ng-if="Video.session.id == Video.video.data.owner" class="videoDetail-edit-row">
+					<a ui-sref="download({id: Video.video.data._id})" class="videoDetail-button">Edit</a>
+				</div>
+
 			</div>
 		</section>
 	</article>
-	<div class="videoDetail-back-desktop">
-		<p>
-			<a ui-sref="gallery">{{'BACK_TO_GALLERY' | translate}}</a>
-		</p>
-	</div>
 </div>
