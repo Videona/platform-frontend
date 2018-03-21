@@ -50,10 +50,30 @@ gulp.task('flavour', function() {
 });
 
 
-// --------
-// TO_DO:
-// ADD TASK FOR BUID DEPENDENCIES
-// --------
+// Build dependincies
+var sourceDeps = [
+	'../node_modules/ng-file-upload/dist/ng-file-upload.min.js',
+	'../node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js',
+];
+gulp.task('join-dependencies', ['make-config', 'flavour'], function () {
+	return gulp.src(sourceDeps)
+		.pipe(debug({ title: 'Join js dependencies:' }))
+		.pipe(concat('modules.js'))
+		.pipe(gulp.dest('./modules'));
+});
+	
+gulp.task('dependencies', ['join-dependencies'], function () {
+	return gulp.src('./modules/modules.js')
+		.pipe(debug({ title: 'Move js dependencies:' }))
+		.pipe(minify({
+			ext: {
+				src: '-debug.js',
+				min: '.min.js',
+			},
+		}))
+		.pipe(gulp.dest('./dist/js'));
+});
+
 
 // Build app js
 var sourceJs = [
@@ -67,8 +87,8 @@ var sourceJs = [
 	'!./node_modules/**',
 	'!./dist/**',
 ];
-gulp.task('js', ['make-config', 'flavour'], function () {
-	gulp.src(sourceJs)
+gulp.task('js', ['dependencies', 'make-config', 'flavour'], function () {
+	return gulp.src(sourceJs)
 		.pipe(debug({ title: 'Join JS:' }))
 		.pipe(concat('app.js'))
 		.pipe(minify({
@@ -133,7 +153,7 @@ gulp.task('images', ['flavour'], function () {
 
 
 // Perform a complete build
-gulp.task('build', ['make-config', 'flavour', 'js', 'images', 'html', 'tests', 'sass']);
+gulp.task('build', ['make-config', 'flavour', 'dependencies', 'js', 'images', 'html', 'tests', 'sass']);
 
 
 /**

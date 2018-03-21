@@ -66,6 +66,19 @@
 			VIDEO_DETAIL_LANGUAGE: 'Language',
 			VIDEO_DETAIL_QUALITY: 'Quality',
 			VIDEO_DETAIL_CREDIBILITY: 'Credibility'
+
+			DROP_VIDEO: 'Drop your video here or click to upload',
+			UPLOADING_FILE: 'Uploading video...',
+			UPLOAD_TITLE_PLACEHOLDER: 'Title',
+			UPLOAD_DESCRIPTION_PLACEHOLDER: 'Description',
+			UPLOAD_SEND: 'Upload video',
+
+			PRODUCT_TYPE_FAKELIVE: 'Live on tape',
+			PRODUCT_TYPE_RAW: 'B-roll',
+			PRODUCT_TYPE_SPOOLERS: 'Nat/Vo',
+			PRODUCT_TYPE_TOTAL: 'Interview',
+			PRODUCT_TYPE_GRAPHIC: 'Graphics',
+			PRODUCT_TYPE_PIECES: 'Piece',
 		});
 	}
 }());

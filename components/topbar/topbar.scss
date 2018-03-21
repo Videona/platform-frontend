@@ -1,4 +1,6 @@
 .topbar {
+	top: 0;
+	left: 0;
 	height: $topbarHeight;
 	position: fixed;
 	width: 100%;
@@ -10,20 +12,22 @@
 	z-index: 999;
 	img {
 		height: $topbarImgHeight;
+		margin: $cardMargin;
+		cursor: pointer;
 	}
-	img:first-child {
-		margin-left: $cardMargin;
+
+	.desktop-right-icons {
+		display: none;
 	}
-	img:last-child {
-		margin-right: $cardMargin;
-	}
+
 	@include desktop {
-		img:first-child,
-		img:last-child {
+		.mobile-menu,
+		.mobile-icons {
 			display: none;
 		}
-		img {
-			margin-left: $cardMargin;
+
+		.desktop-right-icons {
+			display: inline;
 		}
 	}
 }

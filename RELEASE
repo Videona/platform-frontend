@@ -1,2 +1,2 @@
-v0.2.0
-- Add flavours feature, so we can customize our platform to partnership's brand
+v0.2.1
+- Recapcha disabled for non production environments

@@ -65,6 +65,19 @@
 			VIDEO_DETAIL_LANGUAGE: 'Idioma',
 			VIDEO_DETAIL_QUALITY: 'Calidad',
 			VIDEO_DETAIL_CREDIBILITY: 'Credibilidad'
+
+			DROP_VIDEO: 'Arrastra tu video o haz click para subirlo',
+			UPLOADING_FILE: 'Subiendo tu video...',
+			UPLOAD_TITLE_PLACEHOLDER: 'Título',
+			UPLOAD_DESCRIPTION_PLACEHOLDER: 'Descripcion',
+			UPLOAD_SEND: 'Subir video',
+
+			PRODUCT_TYPE_FAKELIVE: 'Falso directo',
+			PRODUCT_TYPE_RAW: 'Vídeos brutos',
+			PRODUCT_TYPE_SPOOLERS: 'Colas',
+			PRODUCT_TYPE_TOTAL: 'Total',
+			PRODUCT_TYPE_GRAPHIC: 'Gráfico',
+			PRODUCT_TYPE_PIECES: 'Piezas',
 		});
 	}
 }());

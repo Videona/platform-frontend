@@ -1,6 +1,6 @@
 (function () {
 	// App
-	angular.module('app', ['app.config', 'app.flavour', 'ui.router', 'pascalprecht.translate', 'infinite-scroll'])
+	angular.module('app', ['app.config', 'app.flavour', 'ui.router', 'pascalprecht.translate', 'infinite-scroll', 'ngFileUpload'])
 		.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$translateProvider', conf]);
 
 	function conf($locationProvider, $stateProvider, $urlRouterProvider, $translateProvider) {
@@ -56,6 +56,11 @@
 			.state('gallery', {
 				url: '/gallery',
 				templateUrl: 'pages/gallery/gallery.view.html',
+			})
+			.state('upload', {
+				url: '/upload',
+				parent: 'root',
+				templateUrl: 'pages/upload/upload.view.html',
 			})
 			.state('videoDownload', {
 				url: '/download/:id',
