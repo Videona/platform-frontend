@@ -57,6 +57,7 @@
 			UPLOADING_FILE: 'Uploading video...',
 			UPLOAD_TITLE_PLACEHOLDER: 'Title',
 			UPLOAD_DESCRIPTION_PLACEHOLDER: 'Description',
+			UPLOAD_SEND: 'Upload video',
 
 			PRODUCT_TYPE_FAKELIVE: 'Live on tape',
 			PRODUCT_TYPE_RAW: 'B-roll',
