@@ -3,7 +3,7 @@
 		constructor(api, httpParamSerializer) {
 			this.api = api;
 			this.serializer = httpParamSerializer;
-			this.loading = true;
+			this.loading = false;
 			this.videos = [];
 			this.queryParams = {
 				order: '-date',
@@ -36,8 +36,8 @@
 			console.log('query url is ', this.api.url + this.getQuery());
 			this.loading = true;
 			this.api.get(this.api.url + this.getQuery(), function (data, status) {
-				this.loading = false;
 				if (status < 400 && data.length > 0) {
+					this.loading = false;
 					this.videos = this.videos.concat(data);
 					this.queryParams.offset += data.length;
 				}
