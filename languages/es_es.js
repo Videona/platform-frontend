@@ -52,6 +52,19 @@
 			DOWNLOAD_VIDEO: 'Descargar video',
 			BACK_TO_GALLERY: 'Volver a la galería',
 			ERROR_WRONG_DOWNLOAD_CODE: 'Código de descarga inválido',
+
+			DROP_VIDEO: 'Arrastra tu video o haz click para subirlo',
+			UPLOADING_FILE: 'Subiendo tu video...',
+			UPLOAD_TITLE_PLACEHOLDER: 'Título',
+			UPLOAD_DESCRIPTION_PLACEHOLDER: 'Descripcion',
+			UPLOAD_SEND: 'Subir video',
+
+			PRODUCT_TYPE_FAKELIVE: 'Falso directo',
+			PRODUCT_TYPE_RAW: 'Vídeos brutos',
+			PRODUCT_TYPE_SPOOLERS: 'Colas',
+			PRODUCT_TYPE_TOTAL: 'Total',
+			PRODUCT_TYPE_GRAPHIC: 'Gráfico',
+			PRODUCT_TYPE_PIECES: 'Piezas',
 			// User Gallery page
 			USER_GALLERY_USER_VIDEOS: 'Vídeos de {{username}}',
 			USER_GALLERY_USER_NOT_FOUND_TITLE: 'Usuario no encontrado',
