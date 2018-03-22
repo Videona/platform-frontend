@@ -65,7 +65,7 @@
 			VIDEO_DETAIL_TAGS: 'Tags',
 			VIDEO_DETAIL_LANGUAGE: 'Language',
 			VIDEO_DETAIL_QUALITY: 'Quality',
-			VIDEO_DETAIL_CREDIBILITY: 'Credibility'
+			VIDEO_DETAIL_CREDIBILITY: 'Credibility',
 
 			DROP_VIDEO: 'Drop your video here or click to upload',
 			UPLOADING_FILE: 'Uploading video...',

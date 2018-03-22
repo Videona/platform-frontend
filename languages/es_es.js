@@ -64,7 +64,7 @@
 			VIDEO_DETAIL_TAGS: 'Etiquetas',
 			VIDEO_DETAIL_LANGUAGE: 'Idioma',
 			VIDEO_DETAIL_QUALITY: 'Calidad',
-			VIDEO_DETAIL_CREDIBILITY: 'Credibilidad'
+			VIDEO_DETAIL_CREDIBILITY: 'Credibilidad',
 
 			DROP_VIDEO: 'Arrastra tu video o haz click para subirlo',
 			UPLOADING_FILE: 'Subiendo tu video...',
