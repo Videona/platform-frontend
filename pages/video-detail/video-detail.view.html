@@ -19,11 +19,13 @@
 			<video controls ng-src="{{::Video.video.data.video}}" ng-attr-poster="{{::Video.video.data.poster}}" preload="metadata" controlsList="nodownload"></video><br>
 			<div class="video-author" ng-show="Video.user.data">
 				<img ng-if="Video.user.data.pic" ng-src="{{Video.user.data.pic}}" class="user-pic">
-				<object ng-if="!Video.user.data.pic" type="image/svg+xml" data="/img/no-user.svg" class="user-pic"></object>
+				
+				<ng-include ng-if="!Video.user.data.pic" src="'/img/no-user.svg'" class="user-pic"></ng-include>
+
 				<div class="user-info">
 					<strong>{{Video.user.data.username}}</strong><br>
-					<span>Proffessional</span><br>
-					<span>Videos publicados: 50</span>
+					<span>{{'USER_PROFFESSIONAL' | translate}}</span><br>
+					<span>{{'PUBLISHED_VIDEOS' | translate}}: 50</span>
 				</div>
 			</div>
 		</div>

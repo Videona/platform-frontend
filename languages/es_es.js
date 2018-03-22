@@ -56,6 +56,9 @@
 			SHOW_VIDEO_DETAILS: 'Mostrar detalles del video',
 			HIDE_VIDEO_DETAILS: 'Ocultar detalles del video',
 
+			USER_PROFFESSIONAL: 'Profesional',
+			PUBLISHED_VIDEOS: 'Videos publicados',
+
 			VIDEO_DETAIL_DATETIME: 'Fecha y hora',
 			VIDEO_DETAIL_CATEGORIES: 'Categorías',
 			VIDEO_DETAIL_PRODUCT_TYPE: 'Tipo',

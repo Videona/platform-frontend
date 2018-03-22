@@ -43,6 +43,7 @@ a:hover {
 	}
 
 	.video-author {
+		color: $text;
 		margin: 16px 8px;
 		.user-pic {
 			border-radius: 50%;
@@ -52,7 +53,7 @@ a:hover {
 			width: 64px;
 
 			svg {
-				fill: grey;
+				fill: $text;
 			}
 		}
 		
