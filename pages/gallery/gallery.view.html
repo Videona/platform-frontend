@@ -8,7 +8,7 @@
 					<p>{{'GALLERY_VIEW_ALL' | translate}}</p>
 				</a>
 			</div>
-			<video-list section-class="gallery-featured" tag-filter="featured"></video-list>
+			<video-list section-class="gallery-featured" tag-filter="['featured']"></video-list>
 		</section>
 		<section class="gallery-filter">
 			<img src="../../img/funnel.svg" alt="img_funnel">
@@ -22,7 +22,7 @@
 			</div>
 		</section>
 		<section class="gallery-section-nonFeatured">
-			<video-list section-class="gallery-nonFeatured" tag-filter="-featured"
+			<video-list section-class="gallery-nonFeatured" tag-filter="['-featured']"
 						infinite-scroll-enabled="true"></video-list>
 		</section>
 	</article>

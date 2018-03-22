@@ -4,9 +4,10 @@
 
 	function apiService($http, backendApiUrl) {
 		var api = {
-            url: backendApiUrl,
+			url: backendApiUrl,
 			token: '',
 			download: download,
+			upload: upload,
 			get: get,
 			post: post,
 			del: del,
@@ -91,6 +92,46 @@
 					}
 					onSuccess(response, callback);
 				}).catch(function (response) {
+					onError(response, callback);
+				});
+		}
+
+		function upload(url, file, data, callback) {
+			if(!url || !file) {
+				console.error('API Upload error: file or url was not provided.');
+				return false;
+			}
+
+			var formData = data;
+
+			if(!callback && typeof data === 'function') {
+				callback = data;
+				formData = null;
+			}
+
+			var req = {
+				method: 'POST',
+				headers: {'Content-Type': undefined},
+				url: url,
+				data: new FormData(),
+				transformRequest: angular.identity
+			};
+
+			if (api.token !== '') {
+				req.headers.authorization = 'Bearer ' + api.token;
+			}
+
+			req.data.append('file', file);
+
+			for(var param in formData) {
+				req.data.append(param, formData[param]);
+			}
+
+			return $http(req)
+				.then(function(response){
+					onSuccess(response, callback);
+				})
+				.catch(function(response){
 					onError(response, callback);
 				});
 		}
