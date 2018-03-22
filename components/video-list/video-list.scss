@@ -1,0 +1,50 @@
+.gallery-featured {
+	@extend %display-inline-flex;
+	video-card {
+		margin-right: $cardMargin;
+		width: calc(33.3vw);
+		@include tablet {
+			width: calc(25vw);
+		}
+		@include desktop {
+			width: calc(20vw - 15.6px);
+		}
+	}
+}
+
+.gallery-nonFeatured {
+	@extend %display-flex;
+	@extend %flex-wrap-wrap;
+	video-card {
+		margin: $cardMargin $cardMargin 0 0;
+		width: calc(25vw - 16.25px);
+		@include tablet {
+			width: calc(20vw - 15.6px);
+		}
+		@include desktop {
+			width: calc(16.66vw - 15.16px);
+		}
+	}
+	video-card:nth-child(4n) {
+		margin-right: 0;
+	}
+	@include tablet {
+		video-card:nth-child(4n),
+		video-card:nth-child(6n) {
+			margin: $cardMargin $cardMargin 0 0;
+		}
+		video-card:nth-child(5n) {
+			margin-right: 0;
+		}
+	}
+	@include desktop {
+		video-card:nth-child(4n),
+		video-card:nth-child(5n) {
+			margin: $cardMargin $cardMargin 0 0;
+		}
+		video-card:nth-child(6n) {
+			margin-right: 0;
+		}
+	}
+}
+

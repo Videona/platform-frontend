@@ -54,9 +54,6 @@
 	angular.module('app')
 	.component('videoList', {
 		bindings: {
-			videosPerRow: '=',
-			videoWidth: '=',
-			videoHeight: '=',
 			sectionClass: '@',
 			userId: '=',
 			tagFilter: '=',

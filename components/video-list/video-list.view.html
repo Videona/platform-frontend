@@ -1,12 +1,4 @@
-<div infinite-scroll="VideoList.infinite()" infinite-scroll-distance="1" infinite-scroll-disabled="VideoList.loading">
-    <section class="{{VideoList.sectionClass}}">
-        <article>
-            <video-card ng-repeat="video in VideoList.videos"
-                        ng-style="($index + 1) % VideoList.videosPerRow === 0 ? { 'margin':'0px' } : {}"
-                        video="video"
-                        width="VideoList.videoWidth" height="VideoList.videoHeight"
-                        ui-sref="videoPreview({ id: video._id })">
-            </video-card>
-        </article>
-    </section>
+<div infinite-scroll="VideoList.infinite()" infinite-scroll-distance="1" infinite-scroll-disabled="VideoList.loading" class="{{VideoList.sectionClass}}">
+	<video-card ng-repeat="video in VideoList.videos"	video="video"	ui-sref="videoPreview({ id: video._id })">
+	</video-card>
 </div>

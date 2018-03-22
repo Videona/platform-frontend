@@ -1,17 +1,15 @@
 <div ng-controller="GalleryController as Gallery" class="gallery">
 	<topbar></topbar>
-	<div>
-		<section class="gallery-featured">
+	<article>
+		<section class="gallery-section-featured">
 			<div>
 				<h1>{{'GALLERY_FEATURED_VIDEOS' | translate}}</h1>
 				<a href="#">
 					<p>{{'GALLERY_VIEW_ALL' | translate}}</p>
 				</a>
 			</div>
+			<video-list section-class="gallery-featured" tag-filter="featured"></video-list>
 		</section>
-		<video-list section-class="gallery-featured" videos-per-row="Gallery.featured.videosPerRow"
-					tag-filter="Gallery.featured.tagFilter"
-					video-width="Gallery.featured.videoWidth" video-height="Gallery.featured.videoHeight"></video-list>
 		<section class="gallery-filter">
 			<img src="../../img/funnel.svg" alt="img_funnel">
 			<div>
@@ -23,11 +21,11 @@
 				</label>
 			</div>
 		</section>
-		<video-list section-class="gallery-nonFeatured" videos-per-row="Gallery.notFeatured.videosPerRow"
-					tag-filter="Gallery.notFeatured.tagFilter" infinite-scroll-enabled="true"
-					video-width="Gallery.notFeatured.videoWidth" video-height="Gallery.notFeatured.videoHeight"
-		></video-list>
-	</div>
+		<section class="gallery-section-nonFeatured">
+			<video-list section-class="gallery-nonFeatured" tag-filter="-featured" 
+			></video-list>
+		</section>
+	</article>
 	<div ng-if='Gallery.loading'>
 		<loading></loading>
 	</div>

@@ -1,23 +1,23 @@
 .gallery {
-	@extend %display-flex;
-	@extend %flex-direction-column;
 	width: 100%;
-	height: 100%;
 	background-color: $background;
-	> div {
-		margin-top: $topbarHeight;
+	> article {
+		@extend %display-flex;
+		@extend %flex-direction-column;
+		overflow-x: hidden;
 	}
 }
 
-.gallery-featured {
+.gallery-section-featured {
 	@extend %display-flex;
 	@extend %flex-direction-column;
-	margin: $cardMargin $cardMargin 0px $cardMargin;
+	margin-top: $topbarHeight;
+	margin-left: $cardMargin;
 	> div {
 		@extend %display-flex;
 		@extend %justify-content-space-between;
 		@extend %align-items-center;
-		margin: 5px 0;
+		margin: 18px $cardMargin $cardMargin 0;
 		h1 {
 			font-size: 20px;
 			color: $text;
@@ -30,25 +30,21 @@
 			color: #f14b51;
 		}
 	}
-	article {
-		@extend %display-flex;
+	video-list {
 		overflow-x: scroll;
 		-webkit-overflow-scrolling: touch;
-		margin-top: 7px;
-		video-card {
-			margin: 0 $cardMargin 0 0;
-		}
-		video-card:last-child {
-			margin: 0;
-		}
 		@include desktop {
 			overflow-x: hidden;
 		}
 	}
 }
 
+.gallery-filter,
+.gallery-section-nonFeatured {
+	margin: $cardMargin $cardMargin 0 $cardMargin;
+}
+
 .gallery-filter {
-	margin: 17px $cardMargin 0 $cardMargin;
 	@extend %display-flex;
 	@extend %justify-content-space-between;
 	@include border-radius($cardRadius);
@@ -91,19 +87,6 @@
 			margin: 0;
 			outline: none;
 			cursor: pointer;
-		}
-	}
-}
-
-.gallery-nonFeatured {
-	margin: 17px $cardMargin 0 $cardMargin;
-	@extend %display-flex;
-	@extend %flex-direction-column;
-	article {
-		@extend %display-flex;
-		@extend %flex-wrap-wrap;
-		video-card {
-			margin: 0 $cardMargin $cardMargin 0;
 		}
 	}
 }
