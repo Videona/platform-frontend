@@ -45,14 +45,17 @@ a:hover {
 	.video-author {
 		margin: 16px 8px;
 		.user-pic {
-			background: red;
 			border-radius: 50%;
 			display: inline-block;
 			height: 64px;
 			vertical-align: middle;
 			width: 64px;
-		}
 
+			svg {
+				fill: grey;
+			}
+		}
+		
 		.user-info {
 			display: inline-block;
 			margin-left: 8px;
@@ -127,6 +130,7 @@ a:hover {
 
 .videoDetail-detail {
 	color: $text;
+	cursor: pointer;
 	margin: 12px 0;
 
 	strong {

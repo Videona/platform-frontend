@@ -18,7 +18,8 @@
 		<div class="video-detail-page">
 			<video controls ng-src="{{::Video.video.data.video}}" ng-attr-poster="{{::Video.video.data.poster}}" preload="metadata" controlsList="nodownload"></video><br>
 			<div class="video-author" ng-show="Video.user.data">
-				<img ng-src="{{Video.user.data.pic}}" class="user-pic">
+				<img ng-if="Video.user.data.pic" ng-src="{{Video.user.data.pic}}" class="user-pic">
+				<object ng-if="!Video.user.data.pic" type="image/svg+xml" data="/img/no-user.svg" class="user-pic"></object>
 				<div class="user-info">
 					<strong>{{Video.user.data.username}}</strong><br>
 					<span>Proffessional</span><br>
