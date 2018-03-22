@@ -7,7 +7,8 @@
 
 	function UserGallery($stateParams, $translate, userService, page) {
 		var self = this;
-		
+		page.title = 'User gallery - ';
+
 		self.userService = userService;
 		self.userId = $stateParams.userId;
 		self.user = {};
@@ -18,11 +19,12 @@
 
 		self.userService.getUser(self.userId)
 			.then(userDetails => {
-				console.log(userDetails);
 				self.user = userDetails;
-				page.title = self.user.username + ' User gallery - ';
-				$translate('USER_GALLERY_USER_VIDEOS', { username: self.user.username })
-					.then(title => self.userGalleryTitle = title);
+				if (typeof self.user !== 'undefined') {
+					page.title = self.user.username + ' ' + page.title;
+					$translate('USER_GALLERY_USER_VIDEOS', { username: self.user.username })
+						.then(title => self.userGalleryTitle = title);
+				}
 			})
 			.catch((status, data) => {
 				page.title = 'User gallery - ';
