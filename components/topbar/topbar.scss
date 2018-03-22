@@ -1,6 +1,8 @@
-.topbar {
+topbar {
 	height: $topbarHeight;
 	position: fixed;
+	top: 0;
+	left: 0;
 	width: 100%;
 	@extend %display-flex;
 	@extend %justify-content-space-between;

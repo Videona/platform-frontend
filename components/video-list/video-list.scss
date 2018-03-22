@@ -2,12 +2,12 @@
 	@extend %display-inline-flex;
 	video-card {
 		margin-right: $cardMargin;
-		width: calc(33.3vw);
+		width: 42vw;
 		@include tablet {
-			width: calc(25vw);
+			width: 33.33vw;
 		}
 		@include desktop {
-			width: calc(20vw - 15.6px);
+			width: calc(25vw - 16.25px);
 		}
 	}
 }
@@ -17,32 +17,32 @@
 	@extend %flex-wrap-wrap;
 	video-card {
 		margin: $cardMargin $cardMargin 0 0;
-		width: calc(25vw - 16.25px);
+		width: calc(33.3vw - 17.33px);
 		@include tablet {
-			width: calc(20vw - 15.6px);
+			width: calc(25vw - 16.25px);
 		}
 		@include desktop {
-			width: calc(16.66vw - 15.16px);
+			width: calc(20vw - 15.6px);
 		}
 	}
-	video-card:nth-child(4n) {
+	video-card:nth-child(3n) {
 		margin-right: 0;
 	}
 	@include tablet {
-		video-card:nth-child(4n),
-		video-card:nth-child(6n) {
+		video-card:nth-child(3n),
+		video-card:nth-child(5n) {
 			margin: $cardMargin $cardMargin 0 0;
 		}
-		video-card:nth-child(5n) {
+		video-card:nth-child(4n) {
 			margin-right: 0;
 		}
 	}
 	@include desktop {
-		video-card:nth-child(4n),
-		video-card:nth-child(5n) {
+		video-card:nth-child(3n),
+		video-card:nth-child(4n) {
 			margin: $cardMargin $cardMargin 0 0;
 		}
-		video-card:nth-child(6n) {
+		video-card:nth-child(5n) {
 			margin-right: 0;
 		}
 	}

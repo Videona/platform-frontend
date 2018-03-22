@@ -1,5 +1,6 @@
-<div ng-controller="UserGalleryController as UserGallery" class="gallery">
+<div ng-controller="UserGalleryController as UserGallery" class="user-gallery">
 	<topbar></topbar>
+
 	<div ng-if='UserGallery.videos.loading'>
 		<loading></loading>
 	</div>
@@ -12,7 +13,7 @@
 			</div>
 		</section>
 	</div>
-
+<!--
 	<div ng-if="UserGallery.user">
 		<section class="user-details">
 			<div>
@@ -22,7 +23,8 @@
 			<!--<article>-->
 				<!--User details-->
 			<!--</article>-->
-		</section>
+<!--		</section>-->
+	<!--
 		<section class="gallery-filter">
 			<img src="../../img/funnel.svg" alt="img_funnel">
 			<div>
@@ -34,8 +36,9 @@
 				</label>
 			</div>
 		</section>
-		<section class="gallery-section-nonFeatured">
+-->
+		<article class="gallery-section-nonFeatured">
 			<video-list section-class="gallery-nonFeatured" tag-filter="UserGallery.videos.tagFilter" user-id="UserGallery.userId" infinite-scroll-enabled="true"></video-list>
-		</section>
-	</div>
+		</article>
+<!--	</div>-->
 </div>
