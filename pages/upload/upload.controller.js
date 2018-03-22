@@ -47,7 +47,7 @@ function UploadController(api, session, $state, $translate) {
 
 		var data = {};
 
-		if (!self.loading && self.data && self.file) {
+		if (canUpload()) {
 			data.title = self.data.title || undefined;
 			data.description = self.data.description || undefined;
 			data.tag = [];
@@ -70,5 +70,24 @@ function UploadController(api, session, $state, $translate) {
 		} else {
 			self.error = 'No video selected or data is not set';
 		}
+	}
+
+	function canUpload() {
+
+		console.log(self.loading);
+		console.log(self.file);
+		console.log(self.data);
+		console.log(self.data.title);
+		console.log(self.data.description);
+		console.log(self.data.productType);
+		console.log(Object.keys(self.data.productType).length);
+
+		return (!self.loading 
+			&& self.file 
+			&& self.data 
+			&& self.data.title 
+			&& self.data.description 
+			&& self.data.productType
+			&& Object.keys(self.data.productType).length > 0);
 	}
 }
