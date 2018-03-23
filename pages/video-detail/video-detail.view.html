@@ -77,9 +77,6 @@
 						<p>
 							<strong>{{'VIDEO_DETAIL_TAGS' | translate}}:</strong> {{Video.video.data.tag}}
 						</p>
-						<div class="video-detail-edit-info">
-							<a ui-sref="download({id: Video.video.data._id})">{{'BUTTON_EDIT' | translate}}</a>
-						</div>
 					</div>
 				</div>
 				<section class="navigate"><!--TODO: is there a class for button only??-->
@@ -88,6 +85,11 @@
 					</div>
 					<div class="video-detail-edit-info button">
 						<a ui-sref="gallery">{{'BACK_TO_GALLERY' | translate}}</a>
+					</div>
+				</section>
+				<section class="navigate"><!--TODO: is there a class for button only??-->
+					<div class="video-detail-edit-info" ng-if="Video.session.id == Video.video.data.owner">
+						<a ui-sref="download({id: Video.video.data._id})">{{'BUTTON_EDIT' | translate}}</a>
 					</div>
 				</section>
 
