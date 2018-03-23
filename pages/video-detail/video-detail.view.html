@@ -8,96 +8,93 @@
 	</div>
 
 	<div ng-if="Video.video.data.error && !Video.loading" class="headers-info-videoDetail">
-		<h1 class="header">Video erróneo</h1>
-		<div>
-			No hemos podido encontrar ese video. Por favor, comprueba que el enlace es correcto, y prueba de nuevo.
-		</div>
+		<h1 class="header">{{'VIDEO_ERROR' | translate}}</h1>
+		<div>{{'VIDEO_NOT_FOUND' | translate}}</div>
 	</div>
-
+	
 	<article ng-if="Video.video.data && !Video.video.data.error">
-		<div class="video-detail-page">
-			<video controls ng-src="{{::Video.video.data.video}}" ng-attr-poster="{{::Video.video.data.poster}}" preload="metadata" controlsList="nodownload"></video><br>
-			<div class="video-author" ng-show="Video.user.data">
-				<img ng-if="Video.user.data.pic" ng-src="{{Video.user.data.pic}}" class="user-pic">
-				
-				<ng-include ng-if="!Video.user.data.pic" src="'/img/no-user.svg'" class="user-pic"></ng-include>
-
-				<div class="user-info">
-					<strong>{{Video.user.data.username}}</strong><br>
-					<span>{{'USER_PROFFESSIONAL' | translate}}</span><br>
-					<span>{{'PUBLISHED_VIDEOS' | translate}}: 50</span>
-				</div>
-			</div>
-		</div>
-		<section class="info-detail-video">
+		<section>
 			<div>
-				<div class="headers-info-videoDetail">
-					<h1 ng-bind="Video.video.data.title"></h1>
-					<h2 ng-bind="Video.video.data.productType"></h2>
-					<div ng-bind="Video.video.data.description"></div>
-				</div>
-				<div ng-if="!Video.video.data.isVerified" class="videoDetail-isVerified">
-					<img src="../../img/checked.svg" alt="video-verified" />
-					<p>{{'VIDEO_VERIFIED' | translate}}</p>
-				</div>
-
-				<div class="videoDetail-detail" ng-click="showDetails = !showDetails">
-					<span ng-show="showDetails">{{'HIDE_VIDEO_DETAILS' | translate}}</span>
-					<span ng-hide="showDetails">{{'SHOW_VIDEO_DETAILS' | translate}}</span>
-				</div>
-				<div class="collapsable" ng-show="showDetails">
-					<div ng-if="!Video.video.data.added" class="videoDetail-detail">
-						<p>
-							<strong>{{'VIDEO_DETAIL_DATETIME' | translate}}:</strong> {{Video.video.data.date}}
-						</p>
+				<video controls ng-src="{{::Video.video.data.video}}" ng-attr-poster="{{::Video.video.data.poster}}" preload="metadata" controlsList="nodownload"></video>
+				<!-- Only if desktop >>> -->
+				<section class="card-user-info card-user-info-desktop">
+					<div>
+						<img ng-if="Video.user.data.pic" ng-src="{{Video.user.data.pic}}">
+						<ng-include ng-if="!Video.user.data.pic" src="'/img/no-user.svg'" ui-sref="userGallery({userId: Video.user.data.owner})"></ng-include>
+						<span>{{'USER_PROFFESSIONAL' | translate}}</span>
 					</div>
-					<div ng-if="!Video.video.data.tag" class="videoDetail-detail">
-						<p>
+					<div>
+						<p><strong>{{'VIDEO_AUTHOR' | translate}}:</strong>{{Video.user.data.username}}</p>
+						<!-- TO-DO: Make published videos dynamic -->
+						<p><strong>{{'PUBLISHED_VIDEOS' | translate}}</strong>50</p>
+					</div>
+				</section>
+				<!-- <<<<<<< -->
+			</div>
+			<section class="card-video-info">
+				<div>
+					<h1 ng-bind="Video.video.data.title"></h1>
+					<p ng-bind="Video.video.data.description"></p>
+					<div><input type="button" value="+ {{'BUTTON_READ_ALL' | translate}}"/></div>
+				</div>
+				<hr>
+				<div>
+					<div class="video-detail-verified">
+						<img src="../../img/checked.svg" alt="video-verified" />
+						<p>{{'VIDEO_VERIFIED' | translate}}</p>
+					</div>
+					<div class="video-detail-show-info" ng-click="showDetails = !showDetails">
+						<span ng-show="showDetails">{{'HIDE_VIDEO_DETAILS' | translate}}</span>
+						<span ng-hide="showDetails">{{'SHOW_VIDEO_DETAILS' | translate}}</span>
+					</div>
+					<div class="video-detail-info" ng-show="showDetails">
+						<p ng-if="!Video.video.data.added">
+							<strong>{{'VIDEO_DETAIL_DATETIME' | translate}}:</strong> {{Video.video.data.date | date: 'dd/MM/yyyy HH:mm'}}
+						</p>
+						<p ng-if="!Video.video.data.tag">
 							<strong>{{'VIDEO_DETAIL_CATEGORIES' | translate}}:</strong> {{Video.video.data.tag}}
 						</p>
-					</div>
-					<div ng-if="!Video.video.data.productType" class="videoDetail-detail">
-						<p>
+						<p ng-if="!Video.video.data.productType">
 							<strong>{{'VIDEO_DETAIL_PRODUCT_TYPE' | translate}}:</strong> {{Video.video.data.productType}}
 						</p>
-					</div>
-					<div class="videoDetail-detail">
 						<p>
 							<strong>{{'VIDEO_DETAIL_LENGTH' | translate}}:</strong> {{Video.video.data.length || 'desconocido'}}
 						</p>
-					</div>
-					<div class="videoDetail-detail">
 						<p>
 							<strong>{{'VIDEO_DETAIL_LANGUAGE' | translate}}:</strong> {{Video.video.data.language || '-'}}
 						</p>
-					</div>
-					<div class="videoDetail-detail">
 						<p>
-							<strong>{{'VIDEO_DETAIL_QUALITY' | translate}}:</strong> {{Video.video.data.quality || '-'}}
+							<strong>{{'VIDEO_DETAIL_QUALITY' | translate}}:</strong>
+							{{Video.video.data.quality || '-'}}
 						</p>
-					</div>
-					<div class="videoDetail-detail">
 						<p>
-							<strong>{{'VIDEO_DETAIL_CREDIBILITY' | translate}}:</strong> {{Video.video.data.credibility ||	 '-'}}
+							<strong>{{'VIDEO_DETAIL_CREDIBILITY' | translate}}:</strong> {{Video.video.data.credibility || '-'}}
 						</p>
-					</div>
-					<div  class="videoDetail-detail">
 						<p>
-							<strong>{{'VIDEO_DETAIL_TECHNICAL_DETAILS' | translate}}:</strong> {{Video.video.data.size}} Mb | {{Video.video.data.format}} | {{Video.video.data.dimensions}} | {{Video.video.data.ratio}}
+							<strong>{{'VIDEO_DETAIL_TECHNICAL_DETAILS' | translate}}:</strong> {{Video.video.data.size || 0 }} Mb | {{Video.video.data.format}} | {{Video.video.data.dimensions}} | {{Video.video.data.ratio}}
 						</p>
-					</div>
-					<div  class="videoDetail-detail">
 						<p>
 							<strong>{{'VIDEO_DETAIL_TAGS' | translate}}:</strong> {{Video.video.data.tag}}
 						</p>
+						<div class="video-detail-edit-info">
+							<a ui-sref="download({id: Video.video.data._id})">{{'BUTTON_EDIT' | translate}}</a>
+						</div>
 					</div>
 				</div>
-
-				<div ng-if="Video.session.id == Video.video.data.owner" class="videoDetail-edit-row">
-					<a ui-sref="download({id: Video.video.data._id})" class="videoDetail-button">Edit</a>
-				</div>
-
+			</section>
+		</section>
+		<section class="card-user-info">
+			<div>
+				<img ng-if="Video.user.data.pic" ng-src="{{Video.user.data.pic}}">
+				<ng-include ng-if="!Video.user.data.pic" src="'/img/no-user.svg'" ui-sref="userGallery({userId: Video.user.data.owner})"></ng-include>
+				<span>{{'USER_PROFFESSIONAL' | translate}}</span>
+			</div>
+			<div>
+				<p><strong>{{'VIDEO_AUTHOR' | translate}}:</strong>{{Video.user.data.username}}</p>
+				<p><strong>{{'PUBLISHED_VIDEOS' | translate}}</strong>50</p>
 			</div>
 		</section>
+		
 	</article>
+	
 </div>

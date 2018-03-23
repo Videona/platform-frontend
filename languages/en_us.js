@@ -69,6 +69,10 @@
 			VIDEO_DETAIL_LANGUAGE: 'Language',
 			VIDEO_DETAIL_QUALITY: 'Quality',
 			VIDEO_DETAIL_CREDIBILITY: 'Credibility',
+			VIDEO_AUTHOR: 'Autor',
+			
+			VIDEO_ERROR: 'Error in video',
+			VIDEO_NOT_FOUND: 'We couldn\'t find that video. Please, check that the link is correct and try again.',
 
 			DROP_VIDEO: 'Drop your video here or click to upload',
 			UPLOADING_FILE: 'Uploading video...',
@@ -82,6 +86,9 @@
 			PRODUCT_TYPE_TOTAL: 'Interview',
 			PRODUCT_TYPE_GRAPHIC: 'Graphics',
 			PRODUCT_TYPE_PIECES: 'Piece',
+			
+			BUTTON_READ_ALL: 'Read all',
+			BUTTON_EDIT: 'Edit',
 		});
 	}
 }());

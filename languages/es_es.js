@@ -68,6 +68,10 @@
 			VIDEO_DETAIL_LANGUAGE: 'Idioma',
 			VIDEO_DETAIL_QUALITY: 'Calidad',
 			VIDEO_DETAIL_CREDIBILITY: 'Credibilidad',
+			VIDEO_AUTHOR: 'Autor/a',
+			
+			VIDEO_ERROR: 'Video erróneo',
+			VIDEO_NOT_FOUND: 'No hemos podido encontrar ese video. Por favor, comprueba que el enlace es correcto, y prueba de nuevo.',
 
 			DROP_VIDEO: 'Arrastra tu video o haz click para subirlo',
 			UPLOADING_FILE: 'Subiendo tu video...',
@@ -81,6 +85,9 @@
 			PRODUCT_TYPE_TOTAL: 'Total',
 			PRODUCT_TYPE_GRAPHIC: 'Gráfico',
 			PRODUCT_TYPE_PIECES: 'Piezas',
+			
+			BUTTON_READ_ALL: 'Leer todo',
+			BUTTON_EDIT: 'Editar',
 		});
 	}
 }());
