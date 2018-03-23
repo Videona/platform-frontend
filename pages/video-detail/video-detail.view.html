@@ -27,6 +27,7 @@
 						<p><strong>{{'VIDEO_AUTHOR' | translate}}:</strong>{{Video.user.data.username}}</p>
 						<!-- TO-DO: Make published videos dynamic -->
 						<p><strong>{{'PUBLISHED_VIDEOS' | translate}}</strong>50</p>
+
 					</div>
 				</section>
 				<!-- <<<<<<< -->
@@ -81,6 +82,15 @@
 						</div>
 					</div>
 				</div>
+				<section class="navigate"><!--TODO: is there a class for button only??-->
+					<div class="video-detail-edit-info button">
+						<a ui-sref="videoDownload({id: Video.video.data._id})">{{'DOWNLOAD_VIDEO' | translate}}</a>
+					</div>
+					<div class="video-detail-edit-info button">
+						<a ui-sref="gallery">{{'BACK_TO_GALLERY' | translate}}</a>
+					</div>
+				</section>
+
 			</section>
 		</section>
 		<section class="card-user-info">
