@@ -53,6 +53,7 @@
 			BACK_TO_GALLERY: 'Volver a la galería',
 			ERROR_WRONG_DOWNLOAD_CODE: 'Código de descarga inválido',
 
+			UPLOADED_AT: 'Fecha de subida',
 			SHOW_VIDEO_DETAILS: 'Mostrar detalles del video',
 			HIDE_VIDEO_DETAILS: 'Ocultar detalles del video',
 

@@ -38,6 +38,10 @@
 				</div>
 				
 				<div class="padding">
+					{{'UPLOADED_AT' | translate}} {{Video.video.data.date | localeDate}}
+				</div>
+
+				<div class="padding">
 					<div class="video-detail-verified">
 						<img src="../../img/checked.svg" alt="video-verified" />
 						<p>{{'VIDEO_VERIFIED' | translate}}</p>
@@ -45,13 +49,8 @@
 				</div>
 				
 				<div class="padding">
-					<!-- - ->
-					<p ng-class="{'block-ellipsis': !readMore}" id="video-description">
-						lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet 
-					</p> <!-- -->
-					<p ng-class="{'block-ellipsis': !readMore}" ng-bind="Video.video.data.description" id="video-description"></p> <!-- -->
+					<p ng-class="{'block-ellipsis': !readMore}" ng-bind="Video.video.data.description" id="video-description"></p>
 					
-					<!-- <div class="padding" ng-show="Video.showMore()"> -->
 					<div class="padding" ng-show="Video.showMore">
 						<a ng-click="readMore = !readMore" class="read-more">
 							<span ng-hide="readMore">+ {{'BUTTON_READ_ALL' | translate}}</span>

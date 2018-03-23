@@ -54,6 +54,7 @@
 			BACK_TO_GALLERY: 'Back to gallery',
 			ERROR_WRONG_DOWNLOAD_CODE: 'Invalid download code',
 
+			UPLOADED_AT: 'Uploaded at',
 			SHOW_VIDEO_DETAILS: 'Show video details',
 			HIDE_VIDEO_DETAILS: 'Hide video details',
 
