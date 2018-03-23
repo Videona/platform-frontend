@@ -86,7 +86,8 @@
 			PRODUCT_TYPE_GRAPHIC: 'Gráfico',
 			PRODUCT_TYPE_PIECES: 'Piezas',
 			
-			BUTTON_READ_ALL: 'Leer todo',
+			BUTTON_READ_ALL: 'Ver todo',
+			BUTTON_READ_LESS: 'Ver menos',
 			BUTTON_EDIT: 'Editar',
 		});
 	}

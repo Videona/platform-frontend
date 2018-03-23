@@ -30,24 +30,40 @@
 
 					</div>
 				</section>
-				<!-- <<<<<<< -->
+				<!--" <<<<<<< -->
 			</div>
 			<section class="card-video-info">
 				<div>
 					<h1 ng-bind="Video.video.data.title"></h1>
-					<p ng-bind="Video.video.data.description"></p>
-					<div><input type="button" value="+ {{'BUTTON_READ_ALL' | translate}}"/></div>
 				</div>
-				<hr>
-				<div>
+				
+				<div class="padding">
 					<div class="video-detail-verified">
 						<img src="../../img/checked.svg" alt="video-verified" />
 						<p>{{'VIDEO_VERIFIED' | translate}}</p>
 					</div>
+				</div>
+				
+				<div class="padding">
+					<!-- - ->
+					<p ng-class="{'block-ellipsis': !readMore}" id="video-description">
+						lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet 
+					</p> <!-- -->
+					<p ng-class="{'block-ellipsis': !readMore}" ng-bind="Video.video.data.description" id="video-description"></p> <!-- -->
+					
+					<!-- <div class="padding" ng-show="Video.showMore()"> -->
+					<div class="padding" ng-show="Video.showMore">
+						<a ng-click="readMore = !readMore" class="read-more">
+							<span ng-hide="readMore">+ {{'BUTTON_READ_ALL' | translate}}</span>
+							<span ng-show="readMore">- {{'BUTTON_READ_LESS' | translate}}</span>
+						</a>
+					</div>
+					
 					<div class="video-detail-show-info" ng-click="showDetails = !showDetails">
 						<span ng-show="showDetails">{{'HIDE_VIDEO_DETAILS' | translate}}</span>
 						<span ng-hide="showDetails">{{'SHOW_VIDEO_DETAILS' | translate}}</span>
 					</div>
+					
 					<div class="video-detail-info" ng-show="showDetails">
 						<p ng-if="!Video.video.data.added">
 							<strong>{{'VIDEO_DETAIL_DATETIME' | translate}}:</strong> {{Video.video.data.date | date: 'dd/MM/yyyy HH:mm'}}

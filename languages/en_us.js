@@ -88,6 +88,7 @@
 			PRODUCT_TYPE_PIECES: 'Piece',
 			
 			BUTTON_READ_ALL: 'Read all',
+			BUTTON_READ_LESS: 'Read less',
 			BUTTON_EDIT: 'Edit',
 		});
 	}
