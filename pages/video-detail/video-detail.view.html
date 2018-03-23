@@ -59,7 +59,7 @@
 							<strong>{{'VIDEO_DETAIL_PRODUCT_TYPE' | translate}}:</strong> {{Video.video.data.productType}}
 						</p>
 						<p>
-							<strong>{{'VIDEO_DETAIL_LENGTH' | translate}}:</strong> {{Video.video.data.length || 'desconocido'}}
+							<strong>{{'VIDEO_DETAIL_LENGTH' | translate}}:</strong> {{Video.video.data.length | time}}
 						</p>
 						<p>
 							<strong>{{'VIDEO_DETAIL_LANGUAGE' | translate}}:</strong> {{Video.video.data.language || '-'}}
@@ -72,7 +72,7 @@
 							<strong>{{'VIDEO_DETAIL_CREDIBILITY' | translate}}:</strong> {{Video.video.data.credibility || '-'}}
 						</p>
 						<p>
-							<strong>{{'VIDEO_DETAIL_TECHNICAL_DETAILS' | translate}}:</strong> {{Video.video.data.size || 0 }} Mb | {{Video.video.data.format}} | {{Video.video.data.dimensions}} | {{Video.video.data.ratio}}
+							<strong>{{'VIDEO_DETAIL_TECHNICAL_DETAILS' | translate}}:</strong> {{Video.video.data.size | toMB }} MB | {{Video.video.data.format}} | {{Video.video.data.dimensions}} | {{Video.video.data.ratio}}
 						</p>
 						<p>
 							<strong>{{'VIDEO_DETAIL_TAGS' | translate}}:</strong> {{Video.video.data.tag}}
