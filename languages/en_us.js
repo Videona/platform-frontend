@@ -58,6 +58,7 @@
 			UPLOAD_TITLE_PLACEHOLDER: 'Title',
 			UPLOAD_DESCRIPTION_PLACEHOLDER: 'Description',
 			UPLOAD_SEND: 'Upload video',
+			UPLOAD_ERROR_DATA: 'File not selected or data not setted.',
 
 			PRODUCT_TYPE_FAKELIVE: 'Live on tape',
 			PRODUCT_TYPE_RAW: 'B-roll',
