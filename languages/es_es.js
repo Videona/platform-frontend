@@ -53,6 +53,26 @@
 			BACK_TO_GALLERY: 'Volver a la galería',
 			ERROR_WRONG_DOWNLOAD_CODE: 'Código de descarga inválido',
 
+			SHOW_VIDEO_DETAILS: 'Mostrar detalles del video',
+			HIDE_VIDEO_DETAILS: 'Ocultar detalles del video',
+
+			USER_PROFFESSIONAL: 'Profesional',
+			PUBLISHED_VIDEOS: 'Videos publicados',
+
+			VIDEO_DETAIL_DATETIME: 'Fecha y hora',
+			VIDEO_DETAIL_CATEGORIES: 'Categorías',
+			VIDEO_DETAIL_PRODUCT_TYPE: 'Tipo',
+			VIDEO_DETAIL_LENGTH: 'Duración',
+			VIDEO_DETAIL_TECHNICAL_DETAILS: 'Detalles técnicos',
+			VIDEO_DETAIL_TAGS: 'Etiquetas',
+			VIDEO_DETAIL_LANGUAGE: 'Idioma',
+			VIDEO_DETAIL_QUALITY: 'Calidad',
+			VIDEO_DETAIL_CREDIBILITY: 'Credibilidad',
+			VIDEO_AUTHOR: 'Autor/a',
+			
+			VIDEO_ERROR: 'Video erróneo',
+			VIDEO_NOT_FOUND: 'No hemos podido encontrar ese video. Por favor, comprueba que el enlace es correcto, y prueba de nuevo.',
+
 			DROP_VIDEO: 'Arrastra tu video o haz click para subirlo',
 			UPLOADING_FILE: 'Subiendo tu video...',
 			UPLOAD_TITLE_PLACEHOLDER: 'Título',
@@ -69,6 +89,9 @@
 			USER_GALLERY_USER_VIDEOS: 'Vídeos de {{username}}',
 			USER_GALLERY_USER_NOT_FOUND_TITLE: 'Usuario no encontrado',
 			USER_GALLERY_USER_NOT_FOUND_DESCRIPTION: 'No hemos podido encontrar este usuario. Por favor, comprueba que el enlace es correcto, y prueba de nuevo.',
+			
+			BUTTON_READ_ALL: 'Leer todo',
+			BUTTON_EDIT: 'Editar',
 		});
 	}
 }());
