@@ -120,8 +120,13 @@ div[contenteditable=true]:empty:before {
 html body {
 	font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
 	font-size: 16px;
-	min-height: 100vh;
+	height: 100%;
 	min-width: 100vw;
 	margin: 0;
 	padding: 0;
+}
+
+body {
+	overflow-y: auto;
+	overflow-x: hidden;
 }
