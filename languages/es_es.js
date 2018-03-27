@@ -49,16 +49,16 @@
 			VIDEO_VERIFIED: 'Verificado',
 			VIDEO_NOT_VERIFIED: 'No verificado',
 			DOWNLOAD_CODE: 'Introduce un código de descarga',
-			DOWNLOAD_VIDEO: 'Descargar video',
+			DOWNLOAD_VIDEO: 'Descargar vídeo',
 			BACK_TO_GALLERY: 'Volver a la galería',
 			ERROR_WRONG_DOWNLOAD_CODE: 'Código de descarga inválido',
 
 			UPLOADED_AT: 'Fecha de subida',
-			SHOW_VIDEO_DETAILS: 'Mostrar detalles del video',
-			HIDE_VIDEO_DETAILS: 'Ocultar detalles del video',
+			SHOW_VIDEO_DETAILS: 'Mostrar detalles del vídeo',
+			HIDE_VIDEO_DETAILS: 'Ocultar detalles del vídeo',
 
 			USER_PROFFESSIONAL: 'Profesional',
-			PUBLISHED_VIDEOS: 'Videos publicados',
+			PUBLISHED_VIDEOS: 'Vídeos publicados',
 
 			VIDEO_DETAIL_DATETIME: 'Fecha y hora',
 			VIDEO_DETAIL_CATEGORIES: 'Categorías',
@@ -71,14 +71,14 @@
 			VIDEO_DETAIL_CREDIBILITY: 'Credibilidad',
 			VIDEO_AUTHOR: 'Autor/a',
 			
-			VIDEO_ERROR: 'Video erróneo',
-			VIDEO_NOT_FOUND: 'No hemos podido encontrar ese video. Por favor, comprueba que el enlace es correcto, y prueba de nuevo.',
+			VIDEO_ERROR: 'Vídeo erróneo',
+			VIDEO_NOT_FOUND: 'No hemos podido encontrar ese vídeo. Por favor, comprueba que el enlace es correcto, y prueba de nuevo.',
 
-			DROP_VIDEO: 'Arrastra tu video o haz click para subirlo',
-			UPLOADING_FILE: 'Subiendo tu video...',
+			DROP_VIDEO: 'Arrastra tu vídeo o haz click para subirlo',
+			UPLOADING_FILE: 'Subiendo tu vídeo...',
 			UPLOAD_TITLE_PLACEHOLDER: 'Título',
 			UPLOAD_DESCRIPTION_PLACEHOLDER: 'Descripcion',
-			UPLOAD_SEND: 'Subir video',
+			UPLOAD_SEND: 'Subir vídeo',
 
 			PRODUCT_TYPE_FAKELIVE: 'Falso directo',
 			PRODUCT_TYPE_RAW: 'Vídeos brutos',
