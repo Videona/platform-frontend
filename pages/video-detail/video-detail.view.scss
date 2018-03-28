@@ -172,10 +172,19 @@ strong {
 	padding: 7px 45px;
 	float: right;
 	@include border-radius(4px);
-	background-color: red;
+	background-color: $mainColor;
+	border: 1px solid $mainColor;
 	a {
-		color: white;
+		color: $backgroundLight;
 		cursor: pointer;
+	}
+}
+.video-detail-edit-info.button-empty {
+	background-color: $backgroundLight;
+	border: 1px solid $mainColor;
+	color: $mainColor;
+	a {
+		color: $mainColor;
 	}
 }
 
