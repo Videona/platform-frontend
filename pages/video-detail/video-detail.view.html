@@ -17,10 +17,10 @@
 			<div>
 				<video controls ng-src="{{::Video.video.data.video}}" ng-attr-poster="{{::Video.video.data.poster}}" preload="metadata" controlsList="nodownload"></video>
 				<!-- Only if desktop >>> -->
-				<section class="card-user-info card-user-info-desktop">
+				<section class="card-user-info card-user-info-desktop" ui-sref="userGallery({userId: Video.user.data._id})">
 					<div>
 						<img ng-if="Video.user.data.pic" ng-src="{{Video.user.data.pic}}">
-						<ng-include ng-if="!Video.user.data.pic" src="'/img/no-user.svg'" ui-sref="userGallery({userId: Video.user.data.owner})"></ng-include>
+						<ng-include ng-if="!Video.user.data.pic" src="'/img/no-user.svg'"></ng-include>
 						<span>{{'USER_PROFFESSIONAL' | translate}}</span>
 					</div>
 					<div>
@@ -110,10 +110,10 @@
 
 			</section>
 		</section>
-		<section class="card-user-info">
+		<section class="card-user-info" ui-sref="userGallery({userId: Video.user.data._id})">
 			<div>
 				<img ng-if="Video.user.data.pic" ng-src="{{Video.user.data.pic}}">
-				<ng-include ng-if="!Video.user.data.pic" src="'/img/no-user.svg'" ui-sref="userGallery({userId: Video.user.data.owner})"></ng-include>
+				<ng-include ng-if="!Video.user.data.pic" src="'/img/no-user.svg'"></ng-include>
 				<span>{{'USER_PROFFESSIONAL' | translate}}</span>
 			</div>
 			<div>
