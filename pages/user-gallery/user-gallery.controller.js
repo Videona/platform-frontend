@@ -5,11 +5,11 @@
 			['$stateParams', '$translate', 'user', 'page', UserGallery],
 		);
 
-	function UserGallery($stateParams, $translate, userService, page) {
+	function UserGallery($stateParams, $translate, user, page) {
 		var self = this;
 		page.title = 'User gallery - ';
 
-		self.userService = userService;
+		self.userService = user;
 		self.userId = $stateParams.userId;
 		self.user = {};
 
@@ -23,20 +23,15 @@
 		}
 
 		if (self.userId !== undefined && !isNaN(parseInt(self.userId))) {
-			self.userService.getUser(self.userId)
-				.then(userDetails => {
+			self.userService.get(self.userId, function (userDetails) {
+				if (userDetails) {
 					self.user = userDetails;
-					if (typeof self.user !== 'undefined') {
-						page.title = self.user.username + ' ' + page.title;
-						$translate('USER_GALLERY_USER_VIDEOS', { username: self.user.username })
-							.then(title => self.userGalleryTitle = title);
-					}
-				})
-				.catch((status, data) => {
+					page.title = self.user.username + ' ' + page.title;
+					self.userGalleryTitle = $translate.instant('USER_GALLERY_USER_VIDEOS', { username: self.user.username })
+				} else {
 					handleNoUserError();
-					console.log('Error ' + status + ' while getting user details');
-					console.log('data is ', data);
-				});
+				}
+			});
 		} else {
 			handleNoUserError();
 		}

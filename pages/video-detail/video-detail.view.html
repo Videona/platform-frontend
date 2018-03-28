@@ -1,0 +1,127 @@
+<topbar></topbar>
+
+<div ng-controller="VideoDetailController as Video" class="video-page">
+
+	<!-- Screen loading directive -->
+	<div ng-if="!Video.video.data && Video.loading" class="loading">
+		<loading></loading>
+	</div>
+
+	<div ng-if="Video.video.data.error && !Video.loading" class="headers-info-videoDetail">
+		<h1 class="header">{{'VIDEO_ERROR' | translate}}</h1>
+		<div>{{'VIDEO_NOT_FOUND' | translate}}</div>
+	</div>
+	
+	<article ng-if="Video.video.data && !Video.video.data.error">
+		<section>
+			<div>
+				<video controls ng-src="{{::Video.video.data.video}}" ng-attr-poster="{{::Video.video.data.poster}}" preload="metadata" controlsList="nodownload"></video>
+				<!-- Only if desktop >>> -->
+				<section class="card-user-info card-user-info-desktop" ui-sref="userGallery({userId: Video.user.data._id})">
+					<div>
+						<img ng-if="Video.user.data.pic" ng-src="{{Video.user.data.pic}}">
+						<ng-include ng-if="!Video.user.data.pic" src="'/img/no-user.svg'"></ng-include>
+						<span>{{'USER_PROFFESSIONAL' | translate}}</span>
+					</div>
+					<div>
+						<p><strong>{{'VIDEO_AUTHOR' | translate}}:</strong>{{Video.user.data.username}}</p>
+						<!-- TO-DO: Make published videos dynamic -->
+						<p><strong>{{'PUBLISHED_VIDEOS' | translate}}</strong>{{Video.user.data.videoCount || 0}}</p>
+
+					</div>
+				</section>
+				<!--" <<<<<<< -->
+			</div>
+			<section class="card-video-info">
+				<div>
+					<h1 ng-bind="Video.video.data.title"></h1>
+				</div>
+				
+				<div class="padding">
+					{{'UPLOADED_AT' | translate}} {{Video.video.data.date | localeDate}}
+				</div>
+
+				<div class="padding">
+					<div class="video-detail-verified">
+						<img src="../../img/checked.svg" alt="video-verified" />
+						<p>{{'VIDEO_VERIFIED' | translate}}</p>
+					</div>
+				</div>
+				
+				<div class="padding">
+					<p ng-class="{'block-ellipsis': !readMore}" ng-bind="Video.video.data.description" id="video-description"></p>
+					
+					<div class="padding" ng-show="Video.showMore">
+						<a ng-click="readMore = !readMore" class="read-more">
+							<span ng-hide="readMore">+ {{'BUTTON_READ_ALL' | translate}}</span>
+							<span ng-show="readMore">- {{'BUTTON_READ_LESS' | translate}}</span>
+						</a>
+					</div>
+					
+					<div class="video-detail-show-info" ng-click="showDetails = !showDetails">
+						<span ng-show="showDetails">{{'HIDE_VIDEO_DETAILS' | translate}}</span>
+						<span ng-hide="showDetails">{{'SHOW_VIDEO_DETAILS' | translate}}</span>
+					</div>
+					
+					<div class="video-detail-info" ng-show="showDetails">
+						<p ng-if="!Video.video.data.added">
+							<strong>{{'VIDEO_DETAIL_DATETIME' | translate}}:</strong> {{Video.video.data.date | date: 'dd/MM/yyyy HH:mm'}}
+						</p>
+						<p ng-if="!Video.video.data.tag">
+							<strong>{{'VIDEO_DETAIL_CATEGORIES' | translate}}:</strong> {{Video.video.data.tag}}
+						</p>
+						<p ng-if="!Video.video.data.productType">
+							<strong>{{'VIDEO_DETAIL_PRODUCT_TYPE' | translate}}:</strong> {{Video.video.data.productType}}
+						</p>
+						<p>
+							<strong>{{'VIDEO_DETAIL_LENGTH' | translate}}:</strong> {{Video.video.data.length | time}}
+						</p>
+						<p>
+							<strong>{{'VIDEO_DETAIL_LANGUAGE' | translate}}:</strong> {{Video.video.data.language || '-'}}
+						</p>
+						<p>
+							<strong>{{'VIDEO_DETAIL_QUALITY' | translate}}:</strong>
+							{{Video.video.data.quality || '-'}}
+						</p>
+						<p>
+							<strong>{{'VIDEO_DETAIL_CREDIBILITY' | translate}}:</strong> {{Video.video.data.credibility || '-'}}
+						</p>
+						<p>
+							<strong>{{'VIDEO_DETAIL_TECHNICAL_DETAILS' | translate}}:</strong> {{Video.video.data.size | toMB }} MB | {{Video.video.data.format}} | {{Video.video.data.dimensions}} | {{Video.video.data.ratio}}
+						</p>
+						<p>
+							<strong>{{'VIDEO_DETAIL_TAGS' | translate}}:</strong> {{Video.video.data.tag}}
+						</p>
+					</div>
+				</div>
+				<section class="navigate"><!--TODO: is there a class for button only??-->
+					<div class="video-detail-edit-info button">
+						<a ui-sref="videoDownload({id: Video.video.data._id})">{{'DOWNLOAD_VIDEO' | translate}}</a>
+					</div>
+					<div class="video-detail-edit-info button button-empty">
+						<a ui-sref="gallery">{{'BACK_TO_GALLERY' | translate}}</a>
+					</div>
+				</section>
+				<section class="navigate"><!--TODO: is there a class for button only??-->
+					<div class="video-detail-edit-info" ng-if="Video.session.id == Video.video.data.owner">
+						<a ui-sref="download({id: Video.video.data._id})">{{'BUTTON_EDIT' | translate}}</a>
+					</div>
+				</section>
+
+			</section>
+		</section>
+		<section class="card-user-info" ui-sref="userGallery({userId: Video.user.data._id})">
+			<div>
+				<img ng-if="Video.user.data.pic" ng-src="{{Video.user.data.pic}}">
+				<ng-include ng-if="!Video.user.data.pic" src="'/img/no-user.svg'"></ng-include>
+				<span>{{'USER_PROFFESSIONAL' | translate}}</span>
+			</div>
+			<div>
+				<p><strong>{{'VIDEO_AUTHOR' | translate}}:</strong>{{Video.user.data.username}}</p>
+				<p><strong>{{'PUBLISHED_VIDEOS' | translate}}</strong>{{Video.user.data.videoCount || 0}}</p>
+			</div>
+		</section>
+		
+	</article>
+	
+</div>

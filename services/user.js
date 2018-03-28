@@ -1,23 +1,28 @@
 (function () {
-	class UserService {
-		constructor(api) {
-			this.api = api;
+	angular.module('app')
+		.service('user', ['api', userService]);
+
+	function userService(api) {
+		var user = {
+			data: null,
+			get: get,
+			reset: reset
+		};
+
+		return user;
+
+
+		function get(userId, callback) {
+			api.get(api.url + '/user/' + userId, function (data, status) {
+				user.data = data;
+				if(callback && typeof callback === 'function') {
+					callback(data, status);
+				}
+			});
 		}
 
-		getUser(userId) {
-			return new Promise((resolve, reject) => {
-				const query = '/user/' + userId;
-				this.api.get(this.api.url + query, function (data, status) {
-					if (status < 400 && data !== undefined) {
-						resolve(data);
-					} else {
-						reject(status, data);
-					}
-				}.bind(this));
-			})
+		function reset() {
+			user.data = null;
 		}
 	}
-
-	angular.module('app')
-		.service('user', ['api', UserService]);
 }());
