@@ -44,14 +44,13 @@
 
 @mixin image-container($size){
   .image-container{
-  overflow: hidden;
-  @extend %center-element;
-  height: $size;
-  width: $size;
-  border-radius: $size/2;
-  img{
-    width: 100%;
-  }
+		overflow: hidden;
+		@extend %center-element;
+		height: $size;
+		width: $size;
+		border-radius: $size/2;
+		img{
+			width: 100%;
+		}
   }
 }
-

@@ -1,2 +1,2 @@
-v0.2.1
-- Recapcha disabled for non production environments
+v0.3.0
+- New user gallery feature to show user video gallery list

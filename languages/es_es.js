@@ -65,6 +65,10 @@
 			PRODUCT_TYPE_TOTAL: 'Total',
 			PRODUCT_TYPE_GRAPHIC: 'Gráfico',
 			PRODUCT_TYPE_PIECES: 'Piezas',
+			// User Gallery page
+			USER_GALLERY_USER_VIDEOS: 'Vídeos de {{username}}',
+			USER_GALLERY_USER_NOT_FOUND_TITLE: 'Usuario no encontrado',
+			USER_GALLERY_USER_NOT_FOUND_DESCRIPTION: 'No hemos podido encontrar este usuario. Por favor, comprueba que el enlace es correcto, y prueba de nuevo.',
 		});
 	}
 }());

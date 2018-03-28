@@ -13,12 +13,12 @@ function VideoDownload($stateParams, video, videoDownload, $translate) {
 
 	self.download = download;
 
-	if(self.video && self.video.data && self.video.data.id !== self.id) {
+	if (self.video && self.video.data && self.video.data.id !== self.id) {
 		self.video.reset();
 	}
-	
+
 	// ToDo: Check invalid video :S
-	self.video.get(self.id, function() {
+	self.video.get(self.id, function () {
 		self.loading = false;
 	});
 
@@ -26,10 +26,10 @@ function VideoDownload($stateParams, video, videoDownload, $translate) {
 	function download() {
 		self.error = null;
 		self.loading = true;
-		videoDownload.get(self.id, self.code, function(status) {
+		videoDownload.get(self.id, self.code, function (status) {
 			self.loading = false;
 			console.log(status);
-			if(status !== 200) {
+			if (status !== 200) {
 				self.error = $translate.instant('ERROR_WRONG_DOWNLOAD_CODE');
 			}
 		});
