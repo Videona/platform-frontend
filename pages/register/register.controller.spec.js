@@ -66,14 +66,18 @@ describe('RegisterController', function() {
 			expect(controller.loading).toEqual(false);
 		});
 
-		it('Shall start not loading on submit if no captcha passed', function() {
+		it('Shall start not loading on submit if no captcha passed (and enabled)', function() {
 			controller.username = _USER;
 			controller.email = _EMAIL;
 			controller.password = _PASS;
 			controller.terms = true;
 			controller.submit();
-			
-			expect(controller.loading).toEqual(false);
+
+			if (controller.recaptchaEnabled) {
+				expect(controller.loading).toEqual(false);
+			} else {
+				expect(controller.loading).toEqual(true);
+			}
 		});
 
 		it('Shall start loading on valid submit', function() {

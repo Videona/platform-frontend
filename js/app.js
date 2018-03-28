@@ -34,7 +34,7 @@
 
 		$stateProvider
 			.state('root', {
-				controller: function(session) {},
+				controller: function (session) {},
 				abstract: true,
 			})
 			.state('home', {
@@ -62,6 +62,11 @@
 				parent: 'root',
 				templateUrl: 'pages/upload/upload.view.html',
 			})
+			.state('userGallery', {
+				url: '/user/:userId/videos',
+				parent: 'root',
+				templateUrl: 'pages/user-gallery/user-gallery.view.html',
+			})
 			.state('videoDownload', {
 				url: '/download/:id',
 				parent: 'root',
@@ -70,13 +75,7 @@
 			.state('videoPreview', {
 				url: '/video/:id',
 				parent: 'root',
-				controller: function($state, $stateParams) {
-					// Updating the state also updates the history stack, so we update the location to avoid redirection loop
-					// $state.go('videoDownload', {id: $stateParams.id});
-
-					// So, this works in any protocol and host ^^
-					window.location.replace(window.location.protocol + '//' + window.location.host + '/download/' + $stateParams.id);
-				},
+				templateUrl: 'pages/video-detail/video-detail.view.html',
 			});
 	}
 }());

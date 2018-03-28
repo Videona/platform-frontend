@@ -1,3 +1,4 @@
+
 (function () {
 	// English
 	angular.module('app').config(['$translateProvider', translate]);
@@ -53,6 +54,27 @@
 			BACK_TO_GALLERY: 'Back to gallery',
 			ERROR_WRONG_DOWNLOAD_CODE: 'Invalid download code',
 
+			UPLOADED_AT: 'Uploaded at',
+			SHOW_VIDEO_DETAILS: 'Show video details',
+			HIDE_VIDEO_DETAILS: 'Hide video details',
+
+			USER_PROFFESSIONAL: 'Professional',
+			PUBLISHED_VIDEOS: 'Published videos',
+
+			VIDEO_DETAIL_DATETIME: 'Date and time',
+			VIDEO_DETAIL_CATEGORIES: 'Categories',
+			VIDEO_DETAIL_PRODUCT_TYPE: 'Type',
+			VIDEO_DETAIL_LENGTH: 'Length',
+			VIDEO_DETAIL_TECHNICAL_DETAILS: 'Technical details',
+			VIDEO_DETAIL_TAGS: 'Tags',
+			VIDEO_DETAIL_LANGUAGE: 'Language',
+			VIDEO_DETAIL_QUALITY: 'Quality',
+			VIDEO_DETAIL_CREDIBILITY: 'Credibility',
+			VIDEO_AUTHOR: 'Autor',
+			
+			VIDEO_ERROR: 'Error in video',
+			VIDEO_NOT_FOUND: 'We couldn\'t find that video. Please, check that the link is correct and try again.',
+
 			DROP_VIDEO: 'Drop your video here or click to upload',
 			UPLOADING_FILE: 'Uploading video...',
 			UPLOAD_TITLE_PLACEHOLDER: 'Title',
@@ -66,6 +88,15 @@
 			PRODUCT_TYPE_TOTAL: 'Interview',
 			PRODUCT_TYPE_GRAPHIC: 'Graphics',
 			PRODUCT_TYPE_PIECES: 'Piece',
+			
+			BUTTON_READ_ALL: 'Read all',
+			BUTTON_READ_LESS: 'Read less',
+			BUTTON_EDIT: 'Edit',
+
+			// User Gallery page
+			USER_GALLERY_USER_VIDEOS: '{{username}} videos',
+			USER_GALLERY_USER_NOT_FOUND_TITLE: 'User not found',
+			USER_GALLERY_USER_NOT_FOUND_DESCRIPTION: 'We could not find this user. Please, check that link is correct and try again.',
 		});
 	}
 }());
