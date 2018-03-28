@@ -91,6 +91,11 @@
 			BUTTON_READ_ALL: 'Read all',
 			BUTTON_READ_LESS: 'Read less',
 			BUTTON_EDIT: 'Edit',
+
+			// User Gallery page
+			USER_GALLERY_USER_VIDEOS: '{{username}} videos',
+			USER_GALLERY_USER_NOT_FOUND_TITLE: 'User not found',
+			USER_GALLERY_USER_NOT_FOUND_DESCRIPTION: 'We could not find this user. Please, check that link is correct and try again.',
 		});
 	}
 }());

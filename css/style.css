@@ -32,7 +32,7 @@
   }
 }
 
-.topbar, video-card div.card-container, video-card div.card-container .video-info, video-card div.card-container .video-isVerified, .register-page, .register-page article, .register-form, .register-form form div, .register-form button span, .mobile-apps, .home-buttons, .card-video-info, .video-detail-verified, .card-user-info, .card-user-info div:first-child, .download-page, .download-page article, .info-download-video, .videoDownload-isVerified, .gallery, .gallery-featured, .gallery-featured > div, .gallery-featured article, .gallery-filter, .gallery-filter div, .gallery-nonFeatured, .gallery-nonFeatured article, .upload-page, .upload-page .container {
+topbar, video-card div.card-container, video-card div.card-container .video-info, video-card div.card-container .video-isVerified, .gallery-nonFeatured, .register-page, .register-page article, .register-form, .register-form form div, .register-form button span, .mobile-apps, .home-buttons, .card-video-info, .video-detail-verified, .card-user-info, .card-user-info div:first-child, .download-page, .download-page article, .info-download-video, .videoDownload-isVerified, .gallery > article, .gallery-section-featured, .gallery-section-featured > div, .gallery-filter, .gallery-filter div, .upload-page, .upload-page .container, .user-gallery > article {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -40,13 +40,19 @@
   display: flex;
 }
 
-video-card div.card-container, video-card div.card-container .video-info, .register-page article, .register-form, .register-form form div, .home-buttons, .card-video-info, .card-user-info div:first-child, .download-page, .download-page article, .info-download-video, .gallery, .gallery-featured, .gallery-nonFeatured, .upload-page .container {
+.gallery-featured {
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+video-card div.card-container, video-card div.card-container .video-info, .register-page article, .register-form, .register-form form div, .home-buttons, .card-video-info, .card-user-info div:first-child, .download-page, .download-page article, .info-download-video, .gallery > article, .gallery-section-featured, .upload-page .container, .user-gallery > article {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
 }
 
-.topbar, .register-page, .register-page article, .register-form form div, .register-form button span, .video-detail-verified, .card-user-info div:first-child, .download-page article, .info-download-video, .videoDownload-isVerified, .gallery-featured > div, .gallery-filter div {
+topbar, .register-page, .register-page article, .register-form form div, .register-form button span, .video-detail-verified, .card-user-info div:first-child, .download-page article, .info-download-video, .videoDownload-isVerified, .gallery-section-featured > div, .gallery-filter div {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -moz-box-align: center;
@@ -78,49 +84,51 @@ video-card div.card-container .video-isVerified {
   justify-content: center;
 }
 
-.topbar, .mobile-apps, .download-page article, .info-download-video, .gallery-featured > div, .gallery-filter {
+topbar, .mobile-apps, .download-page article, .info-download-video, .gallery-section-featured > div, .gallery-filter {
   -webkit-justify-content: space-between;
   justify-content: space-between;
 }
 
-video-card div.card-container, video-card div.card-container .video-info, .register-page article, .register-form, .register-form form div, .home-buttons, .card-video-info, .card-user-info div:first-child, .download-page, .download-page article, .info-download-video, .gallery, .gallery-featured, .gallery-nonFeatured, .upload-page .container {
+video-card div.card-container, video-card div.card-container .video-info, .register-page article, .register-form, .register-form form div, .home-buttons, .card-video-info, .card-user-info div:first-child, .download-page, .download-page article, .info-download-video, .gallery > article, .gallery-section-featured, .upload-page .container, .user-gallery > article {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
 }
 
-.gallery-nonFeatured article {
+.gallery-nonFeatured {
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
 }
 
-.topbar {
+topbar {
   top: 0;
   left: 0;
   height: 52px;
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   background-color: white;
   box-shadow: 0px 0px 1px 1px #e8e8e8;
   z-index: 999;
 }
 
-.topbar img {
+topbar img {
   height: 30px;
   margin: 13px;
   cursor: pointer;
 }
 
-.topbar .desktop-right-icons {
+topbar .desktop-right-icons {
   display: none;
 }
 
 @media (min-width: 1024px) {
-  .topbar .mobile-menu,
-  .topbar .mobile-icons {
+  topbar .mobile-menu,
+  topbar .mobile-icons {
     display: none;
   }
-  .topbar .desktop-right-icons {
+  topbar .desktop-right-icons {
     display: inline;
   }
 }
@@ -178,6 +186,64 @@ video-card div.card-container .video-isVerified p {
   color: #5A6978;
 }
 
+.gallery-featured video-card {
+  margin-right: 13px;
+  width: 42vw;
+}
+
+@media (min-width: 768px) {
+  .gallery-featured video-card {
+    width: 33.33vw;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gallery-featured video-card {
+    width: calc(25vw - 16.25px);
+  }
+}
+
+.gallery-nonFeatured video-card {
+  margin: 13px 13px 0 0;
+  width: calc(33.3vw - 17.33px);
+}
+
+@media (min-width: 768px) {
+  .gallery-nonFeatured video-card {
+    width: calc(25vw - 16.25px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .gallery-nonFeatured video-card {
+    width: calc(20vw - 15.6px);
+  }
+}
+
+.gallery-nonFeatured video-card:nth-child(3n) {
+  margin-right: 0;
+}
+
+@media (min-width: 768px) {
+  .gallery-nonFeatured video-card:nth-child(3n),
+  .gallery-nonFeatured video-card:nth-child(5n) {
+    margin: 13px 13px 0 0;
+  }
+  .gallery-nonFeatured video-card:nth-child(4n) {
+    margin-right: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gallery-nonFeatured video-card:nth-child(3n),
+  .gallery-nonFeatured video-card:nth-child(4n) {
+    margin: 13px 13px 0 0;
+  }
+  .gallery-nonFeatured video-card:nth-child(5n) {
+    margin-right: 0;
+  }
+}
+
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0b1 | 201101
    NOTE: WORK IN PROGRESS
@@ -202,11 +268,6 @@ time, mark, audio, video {
   font: inherit;
   vertical-align: baseline;
   font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
-}
-
-::-webkit-scrollbar {
-  position: fixed;
-  display: none;
 }
 
 input {
@@ -311,10 +372,15 @@ div[contenteditable=true]:empty:before {
 html body {
   font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-size: 16px;
-  min-height: 100vh;
+  height: 100%;
   min-width: 100vw;
   margin: 0;
   padding: 0;
+}
+
+body {
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .register-page {
@@ -325,7 +391,7 @@ html body {
   width: 100%;
 }
 
-@media (max-width: 767px) {
+@media (min-width: 320px) {
   .register-page {
     -webkit-animation: imageTranslation 10s both ease-in-out;
     -moz-animation: imageTranslation 10s both ease-in-out;
@@ -367,7 +433,7 @@ html body {
   margin-top: 60px;
 }
 
-@media (max-width: 1023px) {
+@media (min-width: 768px) {
   .register-form {
     margin-top: 30px;
   }
@@ -460,7 +526,7 @@ html body {
   max-width: 350px;
 }
 
-@media (max-width: 1023px) {
+@media (min-width: 768px) {
   .mobile-apps {
     display: none;
   }
@@ -626,6 +692,10 @@ html body {
   }
 }
 
+.video-page .navigate .button {
+  margin: 5px;
+}
+
 .card-video-info {
   background-color: #ffffff;
   margin: 13px;
@@ -648,7 +718,7 @@ html body {
 }
 
 .card-video-info > div:first-child {
-  margin: 13px 13px 0 13px;
+  margin: 13px 13px 0 0;
 }
 
 .card-video-info > div:first-child h1 {
@@ -680,6 +750,28 @@ html body {
   margin: 8px 13px 0 13px;
 }
 
+.card-video-info .padding {
+  padding: 8px 0;
+}
+
+.card-video-info .block-ellipsis {
+  display: block;
+  display: -webkit-box;
+  max-width: 100%;
+  height: 43px;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 1;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-video-info .read-more {
+  cursor: pointer;
+}
+
 .video-detail-verified img {
   width: 30px;
   height: 30px;
@@ -687,6 +779,7 @@ html body {
 }
 
 .video-detail-show-info {
+  cursor: pointer;
   margin: 13px 0;
 }
 
@@ -759,12 +852,23 @@ strong {
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
   border-radius: 4px;
-  background-color: red;
+  background-color: #f14b51;
+  border: 1px solid #f14b51;
 }
 
 .video-detail-edit-info a {
-  color: white;
+  color: #ffffff;
   cursor: pointer;
+}
+
+.video-detail-edit-info.button-empty {
+  background-color: #ffffff;
+  border: 1px solid #f14b51;
+  color: #f14b51;
+}
+
+.video-detail-edit-info.button-empty a {
+  color: #f14b51;
 }
 
 .headers-info-videoDetail h1 {
@@ -985,13 +1089,13 @@ a:hover {
   background-color: white;
 }
 
-@media (max-width: 767px) {
+@media (min-width: 320px) {
   .videoDownload-back-desktop {
     display: none;
   }
 }
 
-@media (max-width: 1023px) {
+@media (min-width: 768px) {
   .videoDownload-back-desktop {
     display: none;
   }
@@ -1011,58 +1115,53 @@ a:hover {
 
 .gallery {
   width: 100%;
-  height: 100%;
   background-color: #f3f3f3;
 }
 
-.gallery > div {
+.gallery > article {
+  overflow-x: hidden;
+}
+
+.gallery-section-featured {
   margin-top: 52px;
+  margin-left: 13px;
 }
 
-.gallery-featured {
-  margin: 13px 13px 0px 13px;
+.gallery-section-featured > div {
+  margin: 18px 13px 13px 0;
 }
 
-.gallery-featured > div {
-  margin: 5px 0;
-}
-
-.gallery-featured > div h1 {
+.gallery-section-featured > div h1 {
   font-size: 20px;
   color: #626262;
 }
 
-.gallery-featured > div a:hover {
+.gallery-section-featured > div a:hover {
   text-decoration: none;
 }
 
-.gallery-featured > div p {
+.gallery-section-featured > div p {
   font-size: 12px;
   color: #f14b51;
 }
 
-.gallery-featured article {
+.gallery-section-featured video-list {
   overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
-  margin-top: 7px;
-}
-
-.gallery-featured article video-card {
-  margin: 0 13px 0 0;
-}
-
-.gallery-featured article video-card:last-child {
-  margin: 0;
 }
 
 @media (min-width: 1024px) {
-  .gallery-featured article {
+  .gallery-section-featured video-list {
     overflow-x: hidden;
   }
 }
 
+.gallery-filter,
+.gallery-section-nonFeatured {
+  margin: 13px 13px 0 13px;
+}
+
 .gallery-filter {
-  margin: 17px 13px 0 13px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -1115,14 +1214,6 @@ a:hover {
   margin: 0;
   outline: none;
   cursor: pointer;
-}
-
-.gallery-nonFeatured {
-  margin: 17px 13px 0 13px;
-}
-
-.gallery-nonFeatured article video-card {
-  margin: 0 13px 13px 0;
 }
 
 .upload-page {
@@ -1295,4 +1386,14 @@ a:hover {
 
 .upload-page .dragover {
   border: 5px dashed blue;
+}
+
+.user-gallery {
+  width: 100%;
+  background-color: #f3f3f3;
+  margin-top: 52px;
+}
+
+.gallery-section-nonFeatured {
+  margin: 13px 13px 0 13px;
 }

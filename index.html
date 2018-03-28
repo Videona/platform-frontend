@@ -9,12 +9,12 @@
 -->
 
 <!-- doctype html -->
-<html ng-app="app">
+<html ng-app="app" ng-controller="MainControler as main">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 
-		<title>Platform</title>
+		<title>{{ main.page.title }} {{'NAME' | flavour}}</title>
 
 		<link rel="stylesheet" type="text/css" href="/css/style.css" />
 
@@ -44,6 +44,8 @@
 
 		<!-- App -->
 		<script type="text/javascript" src="js/app.js"></script>
+		<!-- Main controller -->
+		<script type="text/javascript" src="js/main.controller.js"></script>
 		<!-- Load environment variables -->
 		<script src="js/config.js"></script>
 		<!-- Load flavour variables -->
@@ -65,11 +67,14 @@
 		<script type="text/javascript" src="services/session.js"></script>
 		<script type="text/javascript" src="services/user.js"></script>
 		<script type="text/javascript" src="services/video.js"></script>
-		
+		<script type="text/javascript" src="services/user.js"></script>
+		<script type="text/javascript" src="services/page.js"></script>
+
 		<!-- Components -->
 		<script type="text/javascript" src="components/loading/loading.js"></script>
 		<script type="text/javascript" src="components/file-model/file-model.js"></script>
 		<script type="text/javascript" src="components/video-card/video-card.js"></script>
+		<script type="text/javascript" src="components/video-list/video-list.js"></script>
 		<script type="text/javascript" src="components/topbar/topbar.js"></script>
 		<script type="text/javascript" src="components/bottombar/bottombar.js"></script>
 
@@ -82,9 +87,7 @@
 		<script type="text/javascript" src="pages/video-download/video-download.controller.js"></script>
 		<script type="text/javascript" src="pages/video-download/video-download.service.js"></script>
 		<script type="text/javascript" src="pages/gallery/gallery.controller.js"></script>
-		<script type="text/javascript" src="pages/gallery/gallery.service.js"></script>
+		<script type="text/javascript" src="pages/user-gallery/user-gallery.controller.js"></script>
 		<script type="text/javascript" src="pages/upload/upload.controller.js"></script>
-		<!-- <script type="text/javascript" src="pages/upload/upload.service.js"></script> -->
-
 	</body>
 </html>

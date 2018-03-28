@@ -1,0 +1,44 @@
+<div ng-controller="UserGalleryController as UserGallery" class="user-gallery">
+	<topbar></topbar>
+
+	<div ng-if='UserGallery.videos.loading'>
+		<loading></loading>
+	</div>
+
+	<div ng-if="!UserGallery.user">
+		<section class="user-details error">
+			<h1 class="header">{{ 'USER_GALLERY_USER_NOT_FOUND_TITLE' | translate }}</h1>
+			<div>
+				{{ 'USER_GALLERY_USER_NOT_FOUND_DESCRIPTION' | translate }}
+			</div>
+		</section>
+	</div>
+<!--
+	<div ng-if="UserGallery.user">
+		<section class="user-details">
+			<div>
+				<h1>{{ UserGallery.userGalleryTitle }}</h1>
+			</div>
+			<!--TODO: Implement and show user details -->
+			<!--<article>-->
+				<!--User details-->
+			<!--</article>-->
+<!--		</section>-->
+	<!--
+		<section class="gallery-filter">
+			<img src="../../img/funnel.svg" alt="img_funnel">
+			<div>
+				<label class="gallery-label-select">
+					<span>{{'GALLERY_ORDER_BY' | translate}}</span>
+					<select>
+						<option selected>{{'GALLERY_ORDER_BY_SELECTOR_RELEVANCE' | translate}}</option>
+					</select>
+				</label>
+			</div>
+		</section>
+-->
+		<article class="gallery-section-nonFeatured">
+			<video-list section-class="gallery-nonFeatured" tag-filter="UserGallery.videos.tagFilter" user-id="UserGallery.userId" infinite-scroll-enabled="true"></video-list>
+		</article>
+<!--	</div>-->
+</div>

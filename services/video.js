@@ -5,7 +5,7 @@ function videoService(api) {
 	var video = {
 		data: null,
 		get: get,
-		reset: reset
+		reset: reset,
 	};
 
 	return video;
@@ -14,7 +14,7 @@ function videoService(api) {
 	function get(videoId, callback) {
 		api.get(api.url + '/video/' + videoId, function (data, status) {
 			video.data = data;
-			if(callback && typeof callback === 'function') {
+			if (callback && typeof callback === 'function') {
 				callback(data, status);
 			}
 		});
