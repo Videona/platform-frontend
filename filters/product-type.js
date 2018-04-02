@@ -23,7 +23,7 @@
 
 		function find(id) {
 			for (var i = productType.length - 1; i >= 0; i--) {
-				if(productType[i].id === id) {
+				if(productType[i].id === id.trim()) {
 					return productType[i];
 				}
 			}
