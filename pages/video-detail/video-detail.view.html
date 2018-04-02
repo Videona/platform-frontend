@@ -64,14 +64,14 @@
 					</div>
 					
 					<div class="video-detail-info" ng-show="showDetails">
-						<p ng-if="!Video.video.data.added">
-							<strong>{{'VIDEO_DETAIL_DATETIME' | translate}}:</strong> {{Video.video.data.date | date: 'dd/MM/yyyy HH:mm'}}
+						<p>
+							<strong>{{'VIDEO_DETAIL_DATETIME' | translate}}:</strong> {{Video.video.data.date | date: 'dd/MM/yyyy HH:mm' || '-'}}
 						</p>
-						<p ng-if="!Video.video.data.tag">
-							<strong>{{'VIDEO_DETAIL_CATEGORIES' | translate}}:</strong> {{Video.video.data.tag}}
+						<p>
+							<strong>{{'VIDEO_DETAIL_CATEGORIES' | translate}}:</strong> {{Video.video.data.tag || '-'}}
 						</p>
-						<p ng-if="!Video.video.data.productType">
-							<strong>{{'VIDEO_DETAIL_PRODUCT_TYPE' | translate}}:</strong> {{Video.video.data.productType}}
+						<p>
+							<strong>{{'VIDEO_DETAIL_PRODUCT_TYPE' | translate}}:</strong> {{Video.video.data.productType || '-'}}
 						</p>
 						<p>
 							<strong>{{'VIDEO_DETAIL_LENGTH' | translate}}:</strong> {{Video.video.data.length | time}}
@@ -90,7 +90,7 @@
 							<strong>{{'VIDEO_DETAIL_TECHNICAL_DETAILS' | translate}}:</strong> {{Video.video.data.size | toMB }} MB | {{Video.video.data.format}} | {{Video.video.data.dimensions}} | {{Video.video.data.ratio}}
 						</p>
 						<p>
-							<strong>{{'VIDEO_DETAIL_TAGS' | translate}}:</strong> {{Video.video.data.tag}}
+							<strong>{{'VIDEO_DETAIL_TAGS' | translate}}:</strong> {{Video.video.data.tag || '-'}}
 						</p>
 					</div>
 				</div>
