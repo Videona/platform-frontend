@@ -71,7 +71,7 @@
 							<strong>{{'VIDEO_DETAIL_CATEGORIES' | translate}}:</strong> {{Video.video.data.categories || '-'}}
 						</p>
 						<p>
-							<strong>{{'VIDEO_DETAIL_PRODUCT_TYPE' | translate}}:</strong> {{Video.video.data.productType || '-'}}
+							<strong>{{'VIDEO_DETAIL_PRODUCT_TYPE' | translate}}:</strong> {{Video.video.data.productType | productType}}
 						</p>
 						<p>
 							<strong>{{'VIDEO_DETAIL_LENGTH' | translate}}:</strong> {{Video.video.data.length | time}}

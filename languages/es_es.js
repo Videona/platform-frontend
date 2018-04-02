@@ -81,12 +81,12 @@
 			UPLOAD_SEND: 'Subir vídeo',
 			UPLOAD_ERROR_DATA: 'Vídeo no seleccionado, o información no rellenada',
 
-			PRODUCT_TYPE_FAKELIVE: 'Falso directo',
-			PRODUCT_TYPE_RAW: 'Vídeos brutos',
-			PRODUCT_TYPE_SPOOLERS: 'Colas',
-			PRODUCT_TYPE_TOTAL: 'Total',
-			PRODUCT_TYPE_GRAPHIC: 'Gráfico',
-			PRODUCT_TYPE_PIECES: 'Piezas',
+			PRODUCT_TYPE_LIVE_ON_TAPE: 'Falso directo',
+			PRODUCT_TYPE_B_ROLL: 'Vídeo en bruto',
+			PRODUCT_TYPE_NAT_VO: 'Colas',
+			PRODUCT_TYPE_INTERVIEW: 'Total',
+			PRODUCT_TYPE_GRAPHICS: 'Gráfico',
+			PRODUCT_TYPE_PIECE: 'Pieza',
 			
 			BUTTON_READ_ALL: 'Ver todo',
 			BUTTON_READ_LESS: 'Ver menos',

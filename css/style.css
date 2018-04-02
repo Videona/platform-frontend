@@ -459,8 +459,8 @@ body {
 }
 
 .register-form form div input[type="text"]:nth-child(2) {
-  border-top: 1px solid #E6E9EC;
-  border-bottom: 1px solid #E6E9EC;
+  border-top: 1px solid #B6B6B6;
+  border-bottom: 1px solid #B6B6B6;
 }
 
 .register-form form div span {
@@ -546,7 +546,7 @@ body {
 }
 
 .home-buttons button:hover {
-  background-color: #6b7ecc;
+  background-color: #f14b51;
   color: white;
 }
 
@@ -555,7 +555,7 @@ body {
 }
 
 .full-sized-bg-img {
-  background-color: #6b7ecc;
+  background-color: #f14b51;
   background-image: url("../../img/brand/login-bg.jpg");
   background-position: center;
   background-size: cover;
@@ -595,7 +595,7 @@ body {
 }
 
 #login .input-group-two:before {
-  background-color: #E6E9EC;
+  background-color: #B6B6B6;
   content: "";
   display: inline-block;
   height: 1px;
@@ -636,7 +636,7 @@ body {
 
 .button-border:hover {
   background-color: #ffffff;
-  color: #6b7ecc;
+  color: #f14b51;
 }
 
 .block-link {
@@ -852,8 +852,8 @@ strong {
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
   border-radius: 4px;
-  background-color: #6b7ecc;
-  border: 1px solid #6b7ecc;
+  background-color: #f14b51;
+  border: 1px solid #f14b51;
 }
 
 .video-detail-edit-info a {
@@ -863,12 +863,12 @@ strong {
 
 .video-detail-edit-info.button-empty {
   background-color: #ffffff;
-  border: 1px solid #6b7ecc;
-  color: #6b7ecc;
+  border: 1px solid #f14b51;
+  color: #f14b51;
 }
 
 .video-detail-edit-info.button-empty a {
-  color: #6b7ecc;
+  color: #f14b51;
 }
 
 .headers-info-videoDetail h1 {
@@ -1047,7 +1047,7 @@ a:hover {
 
 .videoDownload-button button {
   color: white;
-  background-color: #6b7ecc;
+  background-color: #f14b51;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
@@ -1060,14 +1060,14 @@ a:hover {
 
 @media (min-width: 1024px) {
   .videoDownload-button button {
-    background-color: #6b7ecc;
+    background-color: #f14b51;
     font-size: 24px;
     height: 48px;
   }
 }
 
 .videoDownload-button button.disabled {
-  background-color: #6b7ecc;
+  background-color: #fac5c7;
 }
 
 .videoDownload-go-back-mobile {
@@ -1302,7 +1302,7 @@ a:hover {
 
 .upload-page .right-form .upload-form-title,
 .upload-page .right-form .upload-form-description {
-  border: 1px solid #E6E9EC;
+  border: 1px solid #B6B6B6;
   box-sizing: border-box;
   font-family: Arial;
   margin: 4px 0;
@@ -1312,7 +1312,7 @@ a:hover {
 
 .upload-page .right-form .upload-form-title::placeholder,
 .upload-page .right-form .upload-form-description::placeholder {
-  color: #E6E9EC;
+  color: #B6B6B6;
 }
 
 .upload-page .right-form .product-type {
@@ -1334,8 +1334,8 @@ a:hover {
 }
 
 .upload-page .right-form .form-send-button a.btn-send {
-  background-color: #6b7ecc;
-  border: 1px solid #6b7ecc;
+  background-color: #f14b51;
+  border: 1px solid #f14b51;
   box-sizing: border-box;
   cursor: pointer;
   color: #ffffff;
@@ -1353,20 +1353,20 @@ a:hover {
 
 .upload-page .right-form .form-send-button a.btn-send:hover {
   background: transparent;
-  color: #6b7ecc;
+  color: #f14b51;
   text-decoration: none;
 }
 
 .upload-page .right-form .form-send-button a.btn-send:active {
-  background-color: #6b7ecc;
+  background-color: #F23260;
   color: #ffffff;
   text-decoration: none;
 }
 
 .upload-page .right-form .form-send-button a.btn-send.disabled {
-  background-color: #6b7ecc;
-  border-color: #6b7ecc;
-  color: #E6E9EC;
+  background-color: #fac5c7;
+  border-color: #fac5c7;
+  color: #B6B6B6;
 }
 
 .upload-page .right-form .upload-error {
@@ -1377,8 +1377,8 @@ a:hover {
 }
 
 .upload-page .drop-box {
-  background: #E6E9EC;
-  border: 3px solid #E6E9EC;
+  background: #B6B6B6;
+  border: 3px solid #B6B6B6;
   border-radius: 5px;
   box-sizing: border-box;
   width: 100%;
