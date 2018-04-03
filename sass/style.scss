@@ -10,14 +10,15 @@
 // COMPONENTS
 
 @import
-'components/topbar/topbar',
-'components/video-card/video-card';
+'../components/topbar/topbar',
+'../components/video-card/video-card';
 
 @import
 'base/reset',
 '../pages/register/register.view',
 '../pages/login/login.view',
 '../pages/video-detail/video-detail.view',
+'../pages/video-detail-edit/video-detail-edit.view',
 '../pages/video-download/video-download.view',
 '../pages/gallery/gallery.view',
 '../pages/upload/upload.view';

@@ -29,7 +29,8 @@ gulp.task('dev', function (done) {
 gulp.task('make-config', function() {
     var json = JSON.stringify({
 	    nodeEnv: process.env.NODE_ENV || 'development',
-	    backendApiUrl: process.env.BACKEND_API_URL || 'http://localhost:3000'
+	    backendApiUrl: process.env.BACKEND_API_URL || 'http://localhost:3000',
+	    gmapsApiKey: process.env.GMAPS_API_KEY || 'provideGmapsApiKey',
     });
 
     return b2v.stream(new Buffer(json), 'config.js')
@@ -54,6 +55,7 @@ gulp.task('flavour', function() {
 var sourceDeps = [
 	'../node_modules/ng-file-upload/dist/ng-file-upload.min.js',
 	'../node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js',
+	'../node_modules/ngmap/build/scripts/ng-map.min.js',
 ];
 gulp.task('join-dependencies', ['make-config', 'flavour'], function () {
 	return gulp.src(sourceDeps)
@@ -130,7 +132,9 @@ gulp.task('html', ['make-config', 'flavour'], function () {
 
 var sourceSass = [
 	'./**.scss',
+	'./sass/*.scss',
 	'./pages/**/**.scss',
+	'./pages/**/*.scss',
 	'./components/**/**.scss',
 ];
 gulp.task('sass', ['flavour'], function () {

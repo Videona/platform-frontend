@@ -3,7 +3,8 @@
 /* Main Color */
 $mainColor: #f14b51;
 $mainColorLight: #F23260;
-$mainColorDark: #f14b51;
+//$mainColorDark: #f14b51;
+$mainColorDark: #D54348;
 $mainColorDisabled: #fac5c7;
 
 /* Secondary Color */
@@ -33,6 +34,11 @@ $topbarImgHeight: 30px;
 // Card
 $cardMargin: 13px;
 $cardRadius: 5px;
+
+// Button
+$buttonMargin: 13px;
+$buttonRadius: 5px;
+$buttonMargin: 2px;
 
 /* Status Colors */
 $success: #00ff00;

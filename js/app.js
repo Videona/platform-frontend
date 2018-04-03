@@ -1,9 +1,10 @@
 (function () {
 	// App
-	angular.module('app', ['app.config', 'app.flavour', 'ui.router', 'pascalprecht.translate', 'infinite-scroll', 'ngFileUpload'])
-		.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$translateProvider', conf]);
+	angular.module('app', ['app.config', 'app.flavour', 'ui.router', 'pascalprecht.translate', 'infinite-scroll',
+		'ngFileUpload', 'ngMaterial', 'ngMap'])
+		.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$translateProvider', '$mdThemingProvider', conf]);
 
-	function conf($locationProvider, $stateProvider, $urlRouterProvider, $translateProvider) {
+	function conf($locationProvider, $stateProvider, $urlRouterProvider, $translateProvider, $mdThemingProvider) {
 		// Get browser lang and set this var
 		var shortLang = navigator.language.split('-')[0];
 		var lang;
@@ -23,6 +24,33 @@
 
 		$translateProvider.useSanitizeValueStrategy('escape');
 		$translateProvider.preferredLanguage(lang);
+
+		// TODO(jliarte): define palette for m4n and swicth based on flavor env var
+		$mdThemingProvider.definePalette('vimojo', {
+			'50': 'f14b51',
+			'100': 'F23260',
+			'200': 'f14b51',
+			'300': 'fac5c7',
+			'400': '000400',
+			'500': 'f14b51', // primary color
+			'600': 'D54348', // primary dark
+			'700': '000700',
+			'800': '000800',
+			'900': '000900',
+			'A100': 'f14b51',
+			'A200': '00f200',
+			'A400': '00f400',
+			'A700': '00f700',
+			'contrastDefaultColor': 'light',    // whether, by default, text (contrast)
+		                                      // on this palette should be dark or light
+
+			'contrastDarkColors': ['50', '100', //hues which contrast should be 'dark' by default
+				'200', '300', '400', 'A100'],
+			'contrastLightColors': undefined    // could also specify this if default was 'dark'
+		});
+
+		$mdThemingProvider.theme('default')
+			.primaryPalette('vimojo');
 
 		$locationProvider.html5Mode({
 			enabled: true,
@@ -71,6 +99,11 @@
 				url: '/video/:id',
 				parent: 'root',
 				templateUrl: 'pages/video-detail/video-detail.view.html',
+			})
+			.state('videoDetailEdit', {
+				url: '/video/:id/edit',
+				parent: 'root',
+				templateUrl: 'pages/video-detail-edit/video-detail-edit.view.html',
 			});
 	}
 }());
