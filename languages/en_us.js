@@ -82,12 +82,12 @@
 			UPLOAD_SEND: 'Upload video',
 			UPLOAD_ERROR_DATA: 'File not selected or data not setted.',
 
-			PRODUCT_TYPE_FAKELIVE: 'Live on tape',
-			PRODUCT_TYPE_RAW: 'B-roll',
-			PRODUCT_TYPE_SPOOLERS: 'Nat/Vo',
-			PRODUCT_TYPE_TOTAL: 'Interview',
-			PRODUCT_TYPE_GRAPHIC: 'Graphics',
-			PRODUCT_TYPE_PIECES: 'Piece',
+			PRODUCT_TYPE_LIVE_ON_TAPE: 'Live on tape',
+			PRODUCT_TYPE_B_ROLL: 'B-roll',
+			PRODUCT_TYPE_NAT_VO: 'Nat/VO',
+			PRODUCT_TYPE_INTERVIEW: 'Interview',
+			PRODUCT_TYPE_GRAPHICS: 'Graphics',
+			PRODUCT_TYPE_PIECE: 'Piece',
 			
 			BUTTON_READ_ALL: 'Read all',
 			BUTTON_READ_LESS: 'Read less',

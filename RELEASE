@@ -1,2 +1,2 @@
-v0.4.1
-- Moved background images in register and login to flavour folders
+v0.4.2
+- Product types refactored to service in order to display names consistently 

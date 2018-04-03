@@ -1,7 +1,7 @@
 angular.module('app')
-	.controller('UploadController', ['api', 'session', '$state', '$translate', UploadController]);
+	.controller('UploadController', ['api', 'session', '$state', '$translate', 'productType', UploadController]);
 
-function UploadController(api, session, $state, $translate) {
+function UploadController(api, session, $state, $translate, productType) {
 	var self = this;
 
 	// On Run...
@@ -14,32 +14,7 @@ function UploadController(api, session, $state, $translate) {
 	self.file;
 	self.data
 	self.loading = false;
-	self.productTypes = [
-		{
-			id: 'fakeLive',
-			name: $translate.instant('PRODUCT_TYPE_FAKELIVE')
-		},
-		{
-			id: 'raw',
-			name: $translate.instant('PRODUCT_TYPE_RAW')
-		},
-		{
-			id: 'spoolers',
-			name: $translate.instant('PRODUCT_TYPE_SPOOLERS')
-		},
-		{
-			id: 'total',
-			name: $translate.instant('PRODUCT_TYPE_TOTAL')
-		},
-		{
-			id: 'graphic',
-			name: $translate.instant('PRODUCT_TYPE_GRAPHIC')
-		},
-		{
-			id: 'pieces',
-			name: $translate.instant('PRODUCT_TYPE_PIECES')
-		}
-	];
+	self.productTypes = productType;
 
 	self.send = send;
 
