@@ -1,7 +1,12 @@
 .video-edit-page {
+  margin-top: $topbarHeight + 10px;
   .vertical-middle {
     display: flex;
     align-items: center;
+  }
+
+  .horizontal-center {
+    justify-content: center;
   }
 
   background-color: $background;
@@ -21,6 +26,9 @@
       padding: 5px;
     }
   }
+  @media (max-width: 600px) {
+    padding-bottom: 200px;
+  }
 }
 
 .video-edit-page__thumbnails {
@@ -30,13 +38,21 @@
   i {
     color: $mainColor;
   }
+  .custom-thumbnail {
+    display: flex;
+    flex-direction: column;
+    .new-thumbnail-input {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+  }
   .drop-box {
+    flex-grow: 1;
+    flex-direction: column;
     background-color: $lightGrey;
     @include border-radius(5px);
-    //box-sizing: border-box;
-    //width: 100%;
     height: 100%;
-    //margin: 10px;
     text-align: center;
     padding: 5% 0;
     .upload-drop-icon {
@@ -51,9 +67,9 @@
 }
 
 .video-edit-page__aditional-details {
-  .half-sized-input {
-    width: 100px;
-  }
+  //.half-sized-input {
+  //  width: 100px;
+  //}
   .feature-icon {
     color: yellow;
   }
@@ -63,10 +79,6 @@
 }
 
 .video-edit-page__video-file {
-  //.vertical-middle {
-  //  display: flex;
-  //  align-items: center;
-  //}
   .drop-box {
     border: 3px dashed $lightGrey;
     @include border-radius(5px);
@@ -83,10 +95,18 @@
     position: absolute;
     top: 5px;
     right: 5px;
+    z-index: 90;
   }
 }
 
 .video-edit-page__edit-actions {
+  @media (max-width: 600px) {
+    margin: 0;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    z-index: 100;
+  }
   button {
     @include border-radius($buttonRadius);
     margin: $buttonMargin;
@@ -106,189 +126,31 @@
       font-size: 120%;
       font-weight: bold;
     }
-    //&.vertical-middle {
-    //  display: flex;
-    //  align-items: center;
-    //}
+    md-progress-circular {
+      display: inline-block;
+    }
   }
   .actions-save {
     text-align: right;
   }
 }
 
-//.video-page {
-//	background-color: $background;
-//	margin-top: $topbarHeight;
-//	height: 100%;
-//	video {
-//		width: 100%;
-//		height: 56.25vw;
-//		@include desktop {
-//			width: 500px;
-//			height: 281.25px;
-//			margin: $cardMargin;
-//		}
-//	}
-//	.card-user-info-desktop {
-//		display: none;
-//	}
-//	@include desktop {
-//		article {
-//			background-color: $backgroundLight;
-//			width: 1024px;
-//			margin: 0 auto;
-//			> section {
-//				display: flex;
-//			}
-//		}
-//		.card-user-info {
-//			display: none;
-//		}
-//		.card-user-info-desktop {
-//			display: flex;
-//		}
-//	}
-//	.navigate {
-//		.button {
-//			margin: 5px;
-//		}
-//	}
-//}
-//
-//.card-video-info {
-//	@extend %display-flex;
-//	@extend %flex-direction-column;
-//	background-color: $backgroundLight;
-//	margin: $cardMargin;
-//	@include border-radius($cardRadius);
-//	@include desktop {
-//		flex-direction: row;
-//	}
-//	@include desktop {
-//		flex-direction: column;
-//	}
-//	> div:first-child {
-//		margin: $cardMargin $cardMargin 0 $cardMargin;
-//		h1 {
-//			color: $textDark;
-//			font-size: 23px;
-//		}
-//		p {
-//			color: $text;
-//			font-size: 18px;
-//			margin: 10px 15px 0 5px;
-//			line-height: 1.2;
-//		}
-//		> div {
-//			text-align: right;
-//			input {
-//				margin-top: 15px;
-//			}
-//		}
-//	}
-//	hr {
-//		border: 0.5px solid $backgroundDark;
-//		margin: 5px 13px;
-//	}
-//	> div:last-child {
-//		margin: 8px $cardMargin 0 $cardMargin;
-//	}
-//}
-//
-//.video-detail-verified {
-//	@extend %display-flex;
-//	@extend %align-items-center;
-//	img {
-//		width: 30px;
-//		height: 30px;
-//		margin-right: 7px;
-//	}
-//}
-//
-//.video-detail-show-info {
-//	margin: $cardMargin 0;
-//	span {
-//		font-size: 18px;
-//	}
-//}
-//
-//.video-detail-info {
-//	margin: 0 0 $cardMargin $cardMargin;
-//	p {
-//		line-height: 1.5;
-//		color: $text;
-//	}
-//}
-//
-//strong {
-//	color: $textDark;
-//	font-weight: 500;
-//	padding-right: 7px;
-//}
-//
-//.card-user-info {
-//	@extend %display-flex;
-//	background-color: $backgroundLight;
-//	margin: $cardMargin;
-//	@include border-radius($cardRadius);
-//	div:first-child {
-//		@extend %display-flex;
-//		@extend %flex-direction-column;
-//		@extend %align-items-center;
-//		ng-include {
-//			fill: $text;
-//		}
-//		img, svg {
-//			@include border-radius(50%);
-//			margin: $cardMargin 25px 5px $cardMargin;
-//			width: 65px;
-//			height: 65px;
-//		}
-//		span {
-//			color: $text;
-//			font-size: 12px;
-//		}
-//	}
-//	div:last-child {
-//		margin-top: $cardMargin;
-//		p:first-child {
-//			color: red;
-//		}
-//		p {
-//			line-height: 1.5;
-//			color: $text;
-//		}
-//	}
-//}
-//
-//.video-detail-edit-info {
-//	margin: $cardMargin 0;
-//	text-align: right;
-//	padding: 7px 45px;
-//	float: right;
-//	@include border-radius(4px);
-//	background-color: red;
-//	a {
-//		color: white;
-//		cursor: pointer;
-//	}
-//}
-//
-//.headers-info-videoDetail {
-//	h1 {
-//		font-weight: 500;
-//		font-size: 24px;
-//		color: $textDark;
-//		@include desktop {
-//			font-size: 36px;
-//		}
-//	}
-//	h2 {
-//		color: $text;
-//		font-size: 20px;
-//		margin: 10px 0;
-//		@include desktop {
-//			font-size: 20px;
-//		}
-//	}
-//}
+
+
+////////////////
+md-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  background-color: white;
+  box-shadow: 0px 0px 1px 1px #e8e8e8;
+  z-index: 999;
+  height: $topbarHeight;
+
+  md-icon, img {
+    height: $topbarImgHeight;
+    margin: $cardMargin;
+    cursor: pointer;
+  }
+}

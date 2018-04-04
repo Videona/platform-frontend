@@ -3,7 +3,7 @@ angular.module('app')
 
 function videoDownloadService(api) {
 	var videoDownload = {
-		get: get
+		get: get,
 	};
 
 	return videoDownload;
@@ -11,7 +11,7 @@ function videoDownloadService(api) {
 
 	function get(videoId, code, callback) {
 		api.download(api.url + '/video/' + videoId + '/original?code=' + code, function (data, status, headers) {
-			if(status >= 400 ) {
+			if (status >= 400) {
 				console.error('Unable to download file.');
 			}
 			callback(status);

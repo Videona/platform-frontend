@@ -32,6 +32,10 @@
 				</span>
 			</div>
 
+			<div ng-if="Upload.error" class="upload-error">
+				{{Upload.error}}
+			</div>
+
 			<div class="form-send-button">
 				<a ng-class="['btn-send', {'disabled': Upload.loading}]" ng-click="Upload.send()">{{'UPLOAD_SEND' | translate}}</a>
 			</div>

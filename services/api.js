@@ -10,6 +10,7 @@
 			upload: upload,
 			get: get,
 			post: post,
+			put,
 			del: del,
 			setToken: setToken,
 		};
@@ -18,6 +19,10 @@
 
 		function post(url, data, callback) {
 			return request('POST', url, data, callback);
+		}
+
+		function put(url, data, callback) {
+			return request('PUT', url, data, callback);
 		}
 
 		function get(url, callback) {

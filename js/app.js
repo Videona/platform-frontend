@@ -35,7 +35,7 @@
 			'500': 'f14b51', // primary color
 			'600': 'D54348', // primary dark
 			'700': '000700',
-			'800': '000800',
+			'800': 'ffffff', // md-hue-2
 			'900': '000900',
 			'A100': 'f14b51',
 			'A200': '00f200',
@@ -62,7 +62,7 @@
 
 		$stateProvider
 			.state('root', {
-				controller: function(session) {},
+				controller: function (session) {},
 				abstract: true,
 			})
 			.state('home', {
@@ -89,6 +89,11 @@
 				url: '/upload',
 				parent: 'root',
 				templateUrl: 'pages/upload/upload.view.html',
+			})
+			.state('userGallery', {
+				url: '/user/:userId/videos',
+				parent: 'root',
+				templateUrl: 'pages/user-gallery/user-gallery.view.html',
 			})
 			.state('videoDownload', {
 				url: '/download/:id',

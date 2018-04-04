@@ -1,7 +1,7 @@
 angular.module('app')
-	.controller('VideoDetailController', ['$stateParams', 'session', 'video', 'user', VideoDetail]);
+	.controller('VideoDetailController', ['$stateParams', 'session', 'video', 'user', '$timeout', VideoDetail]);
 
-function VideoDetail($stateParams, session, video, user) {
+function VideoDetail($stateParams, session, video, user, $timeout) {
 	var self = this;
 
 	self.id = $stateParams.id;
@@ -13,6 +13,8 @@ function VideoDetail($stateParams, session, video, user) {
 	self.video = video;
 	self.user = user;
 
+	self.showMore = showMore();
+
 	if(self.video && self.video.data && self.video.data.id !== self.id) {
 		self.video.reset();
 	}
@@ -23,5 +25,20 @@ function VideoDetail($stateParams, session, video, user) {
 		self.user.get(self.video.data.owner, function() {
 			self.loadingAuthor = false;
 		});
+		$timeout(function() {
+			self.showMore = showMore();
+		}, 100);
 	});
+
+	function showMore() {
+		var el = document.getElementById('video-description');
+
+		if (el && el.scrollHeight > el.clientHeight) { 
+			console.log('is bigger than shown');
+			return true;
+		} else {
+			console.log('full shown');
+			return false;
+		}
+	}
 }

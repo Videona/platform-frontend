@@ -54,6 +54,7 @@
 			BACK_TO_GALLERY: 'Back to gallery',
 			ERROR_WRONG_DOWNLOAD_CODE: 'Invalid download code',
 
+			UPLOADED_AT: 'Uploaded at',
 			SHOW_VIDEO_DETAILS: 'Show video details',
 			HIDE_VIDEO_DETAILS: 'Hide video details',
 
@@ -79,16 +80,23 @@
 			UPLOAD_TITLE_PLACEHOLDER: 'Title',
 			UPLOAD_DESCRIPTION_PLACEHOLDER: 'Description',
 			UPLOAD_SEND: 'Upload video',
+			UPLOAD_ERROR_DATA: 'File not selected or data not setted.',
 
-			PRODUCT_TYPE_FAKELIVE: 'Live on tape',
-			PRODUCT_TYPE_RAW: 'B-roll',
-			PRODUCT_TYPE_SPOOLERS: 'Nat/Vo',
-			PRODUCT_TYPE_TOTAL: 'Interview',
-			PRODUCT_TYPE_GRAPHIC: 'Graphics',
-			PRODUCT_TYPE_PIECES: 'Piece',
+			PRODUCT_TYPE_LIVE_ON_TAPE: 'Live on tape',
+			PRODUCT_TYPE_B_ROLL: 'B-roll',
+			PRODUCT_TYPE_NAT_VO: 'Nat/VO',
+			PRODUCT_TYPE_INTERVIEW: 'Interview',
+			PRODUCT_TYPE_GRAPHICS: 'Graphics',
+			PRODUCT_TYPE_PIECE: 'Piece',
 			
 			BUTTON_READ_ALL: 'Read all',
+			BUTTON_READ_LESS: 'Read less',
 			BUTTON_EDIT: 'Edit',
+
+			// User Gallery page
+			USER_GALLERY_USER_VIDEOS: '{{username}} videos',
+			USER_GALLERY_USER_NOT_FOUND_TITLE: 'User not found',
+			USER_GALLERY_USER_NOT_FOUND_DESCRIPTION: 'We could not find this user. Please, check that link is correct and try again.',
 		});
 	}
 }());

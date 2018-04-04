@@ -9,12 +9,12 @@
 -->
 
 <!DOCTYPE html>
-<html ng-app="app">
+<html ng-app="app" ng-controller="MainControler as main">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 
-		<title>Platform</title>
+		<title>{{ main.page.title }} {{'NAME' | flavour}}</title>
 
 		<!-- Angular Material style sheet -->
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css">
@@ -24,9 +24,9 @@
 
 		<base href="/" />
 	</head>
-	<body>
+	<body layout="column">
 
-		<div ui-view></div>
+		<div ui-view flex layout-fill></div>
 
 		<!-- ReCaptcha -->
 		<script src='https://www.google.com/recaptcha/api.js'></script>
@@ -61,13 +61,19 @@
 
 		<!-- App -->
 		<script type="text/javascript" src="js/app.js"></script>
+		<!-- Main controller -->
+		<script type="text/javascript" src="js/main.controller.js"></script>
 		<!-- Load environment variables -->
 		<script src="js/config.js"></script>
 		<!-- Load flavour variables -->
 		<script src="js/flavour.js"></script>
 
 		<!-- Filters -->
+		<script type="text/javascript" src="filters/product-type.js"></script>
 		<script type="text/javascript" src="filters/trust-as-html.js"></script>
+		<script type="text/javascript" src="filters/to-mb.js"></script>
+		<script type="text/javascript" src="filters/time.js"></script>
+		<script type="text/javascript" src="filters/locale-date.js"></script>
 		<script type="text/javascript" src="filters/flavour.js"></script>
 
 		<!-- Translations -->
@@ -79,11 +85,16 @@
 		<script type="text/javascript" src="services/session.js"></script>
 		<script type="text/javascript" src="services/user.js"></script>
 		<script type="text/javascript" src="services/video.js"></script>
-		
+		<script type="text/javascript" src="services/user.js"></script>
+		<script type="text/javascript" src="services/page.js"></script>
+		<script type="text/javascript" src="services/product-type.js"></script>
+
 		<!-- Components -->
 		<script type="text/javascript" src="components/loading/loading.js"></script>
+		<script type="text/javascript" src="components/loading-card/loading-card.js"></script>
 		<script type="text/javascript" src="components/file-model/file-model.js"></script>
 		<script type="text/javascript" src="components/video-card/video-card.js"></script>
+		<script type="text/javascript" src="components/video-list/video-list.js"></script>
 		<script type="text/javascript" src="components/topbar/topbar.js"></script>
 		<script type="text/javascript" src="components/bottombar/bottombar.js"></script>
 
@@ -97,9 +108,7 @@
 		<script type="text/javascript" src="pages/video-download/video-download.controller.js"></script>
 		<script type="text/javascript" src="pages/video-download/video-download.service.js"></script>
 		<script type="text/javascript" src="pages/gallery/gallery.controller.js"></script>
-		<script type="text/javascript" src="pages/gallery/gallery.service.js"></script>
+		<script type="text/javascript" src="pages/user-gallery/user-gallery.controller.js"></script>
 		<script type="text/javascript" src="pages/upload/upload.controller.js"></script>
-		<!-- <script type="text/javascript" src="pages/upload/upload.service.js"></script> -->
-
 	</body>
 </html>

@@ -1,0 +1,34 @@
+<md-card layout-wrap="auto" class="video-player">
+	<div flex layout="column">
+		<div flex="auto">
+			<video controls ng-src="{{::EditCtrl.video.video}}" ng-attr-poster="{{::EditCtrl.video.poster}}"
+				   preload="metadata" controlsList="nodownload"></video>
+		</div>
+		<div layout="row" layout-margin="10" class="video-edit-page__thumbnails">
+			<div flex-gt-xs="10" flex="0"></div>
+			<div flex-gt-xs="40" flex="50" layout="column">
+				<div>Miniatura por defecto</div>
+				<img ng-if="EditCtrl.video.poster" ng-src="{{EditCtrl.video.poster}}">
+			</div>
+			<div flex-gt-xs="40" flex="50" layout="column" class="custom-thumbnail">
+				<div>
+					Miniatura personalizada
+					<i ng-if="EditCtrl.newPoster" ng-click="EditCtrl.resetVideoPoster()" class="material-icons">remove_circle_outline</i>
+				</div>
+				<div ng-if="!EditCtrl.newPoster" class="new-thumbnail-input">
+					<div ngf-drop ngf-select ng-model="EditCtrl.newPoster" class="drop-box vertical-middle"
+						 ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="false"
+						 accept="image/*"
+						 ngf-pattern="'image/*'">
+						<img class="upload-drop-icon" src="/img/upload-arrow.svg" alt="img_menu"><br/>
+						{{'Arrástralo o haz click aquí.' | translate}}
+					</div>
+				</div>
+				<div ng-if="EditCtrl.newPoster" class="new-thumbnail-preview">
+					<img ngf-src="EditCtrl.newPoster"></video>
+				</div>
+			</div>
+			<div flex-gt-xs="10" flex="0"></div>
+		</div>
+	</div>
+</md-card> <!-- // .video-player md-card -->

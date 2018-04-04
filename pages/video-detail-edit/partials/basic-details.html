@@ -1,32 +1,32 @@
 <md-card layout-wrap="auto" layout="column" class="video-edit-page__basic-details">
 	<md-input-container flex>
 		<label>Title</label>
-		<input ng-model="Video.video.title" required>
+		<input ng-model="EditCtrl.video.title" required>
 	</md-input-container flex>
 	<md-input-container flex>
 		<label>Summary</label>
-		<textarea ng-model="Video.video.description" required></textarea>
+		<textarea ng-model="EditCtrl.video.description" required></textarea>
 	</md-input-container>
 	<md-input-container flex>
 		<label>categorías</label>
-		<md-select ng-model="Video.video.categories" multiple="true">
-			<md-option ng-repeat="category in Video.categories" value="{{category.name}}">
+		<md-select ng-model="EditCtrl.video.categories" multiple="true">
+			<md-option ng-repeat="category in EditCtrl.categories" value="{{category.name}}">
 				{{category.name}}
 			</md-option>
 		</md-select>
 	</md-input-container>
 	<md-input-container flex>
 		<label>ubicación</label>
-		<input ng-model="Video.video.location">
+		<input ng-model="EditCtrl.video.location">
 	</md-input-container>
 	<md-input-container flex>
 		<label>Enter date</label>
-		<md-datepicker ng-model="Video.video.date"></md-datepicker>
+		<md-datepicker ng-model="EditCtrl.video.date"></md-datepicker>
 	</md-input-container>
 	<!-- TODO: add time picker -->
 	<md-input-container flex>
 		<label>Observaciones</label>
-		<textarea ng-model="Video.video.observations"></textarea>
+		<textarea ng-model="EditCtrl.video.observations"></textarea>
 	</md-input-container>
 
 </md-card> <!-- // .basic-details md-card -->

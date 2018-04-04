@@ -1,25 +1,25 @@
 <md-card layout="row" layout-wrap class="video-edit-page__video-file">
-	<div flex="20" class="vertical-middle">
+	<div flex-gt-sm="20" flex="100" class="vertical-middle">
 		Fichero de vídeo
 	</div>
-	<div flex="30" class="vertical-middle">
-		<div ng-if="!Video.newFile" class="new-video-input">
-			<div ngf-drop ngf-select ng-model="Video.newFile" class="drop-box"
+	<div flex-gt-sm="30" flex-gt-xs="50" flex="100" class="vertical-middle">
+		<div ng-if="!EditCtrl.newFile" class="new-video-input">
+			<div ngf-drop ngf-select ng-model="EditCtrl.newFile" class="drop-box"
 				 ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="false"
 				 accept="video/*"
 				 ngf-pattern="'video/*'">
 				{{'Arrastra uno nuevo o haz click para sustituir.' | translate}}
 			</div>
 		</div>
-		<div ng-if="Video.newFile" class="new-video-preview">
-			<i ng-click="Video.resetVideoFile()" class="material-icons">remove_circle_outline</i>
-			<video ng-if="Video.newFile" controls ngf-src="Video.newFile"></video>
+		<div ng-if="EditCtrl.newFile" class="new-video-preview">
+			<i ng-click="EditCtrl.resetVideoFile()" class="material-icons">remove_circle_outline</i>
+			<video ng-if="EditCtrl.newFile" controls ngf-src="EditCtrl.newFile"></video>
 		</div>
 	</div>
-	<div flex="50" class="vertical-middle">
+	<div flex-gt-sm="50" flex="100" class="vertical-middle">
 		<md-input-container>
 			<div>
-				<input type="file" accept="video/*" file-model="Video.newFile"/>
+				<input type="file" accept="video/*" file-model="EditCtrl.newFile"/>
 			</div>
 			<div class="hint">Tamaño máximo del vídeo: xxxxMb</div>
 

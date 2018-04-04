@@ -3,10 +3,10 @@
 module.exports = function (config) {
 	config.set({
 
-		plugins : [
+		plugins: [
 			'karma-chrome-launcher',
 			'karma-jasmine',
-			'karma-junit-reporter'
+			'karma-junit-reporter',
 		],
 
 		// base path that will be used to resolve all patterns (eg. files, exclude)
@@ -51,7 +51,7 @@ module.exports = function (config) {
 			useBrowserName: false, // add browser name to report and classes names
 			nameFormatter: undefined, // function (browser, result) to customize the name attribute in xml testcase element
 			classNameFormatter: undefined, // function (browser, result) to customize the classname attribute in xml testcase element
-			properties: {} // key value pair of properties to add to the <properties> section of the report
+			properties: {}, // key value pair of properties to add to the <properties> section of the report
 		},
 
 		// test results reporter to use
@@ -82,8 +82,8 @@ module.exports = function (config) {
 		customLaunchers: {
 			Chrome_without_sandbox: {
 				base: 'Chrome',
-				flags: ['--no-sandbox'] // with sandbox it fails under Docker
-			}
+				flags: ['--no-sandbox'], // with sandbox it fails under Docker
+			},
 		},
 
 		// Continuous Integration mode
