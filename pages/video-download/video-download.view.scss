@@ -7,9 +7,10 @@ a:hover {
 }
 
 .download-page {
-	height: 100%;
-	width: 100%;
 	background-color: $background;
+	min-height: calc(100% - $topbarHeight);
+	margin-top: $topbarHeight;
+	width: 100%;
 	@extend %display-flex;
 	@extend %flex-direction-column;
 	article {
