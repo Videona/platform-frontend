@@ -45,8 +45,9 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, gm
 	// Private selfish methods
 	function checkEditAccess(video) {
 		if (video !== undefined && video.owner == self.session.id) {
-			// TODO(jliarte): check admin role
-			// self.editorRole = true;
+			if (self.session.role === 'editor') {
+				self.editorRole = true;
+			}
 			console.log("User is allowed to edit this video");
 		} else {
 			// TODO(jliarte): should show an error instead of redirecting?
