@@ -1,3 +1,6 @@
+v0.4.5
+Fix, if user is logged in home page, redirect to gallery
+
 v0.4.4
 - Fix colors and styles in download page
 - Show properly product types in download page 
