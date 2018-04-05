@@ -4,7 +4,7 @@
 
 	function toMb()	{
 		return function (size) {
-			return (size / 1000000).toFixed(2) || 0;
+			return (size/1000000).toFixed(2) || 0;
 		};
 	}
 }());
