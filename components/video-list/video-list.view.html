@@ -1,4 +1,4 @@
 <div infinite-scroll="VideoList.infinite()" infinite-scroll-distance="1" infinite-scroll-disabled="VideoList.loading" class="{{VideoList.sectionClass}}">
-	<video-card ng-repeat="video in VideoList.videos" video="video"	ui-sref="videoPreview({ id: video._id })">
+	<video-card ng-repeat="video in VideoList.videos"	video="video"	ui-sref="videoPreview({ id: video._id })">
 	</video-card>
 </div>
