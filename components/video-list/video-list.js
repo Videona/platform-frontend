@@ -5,6 +5,7 @@
 			sectionClass: '@',
 			userId: '=',
 			tagFilter: '=',
+			featured: '=',
 			infiniteScrollEnabled: '=',
 		},
 		controller: 'VideoListController',
