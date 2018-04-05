@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 v0.4.5
 Fix, if user is logged in home page, redirect to gallery
 
@@ -10,7 +8,6 @@ v0.4.4
 v0.4.3.
  - Update topbar, page title, update video card and video list directies and minor code style fixes
 
->>>>>>> dev
 v0.4.2
 - Product types refactored to service in order to display names consistently 
 
