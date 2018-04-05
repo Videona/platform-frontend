@@ -1,2 +1,3 @@
-v0.4.2
-- Product types refactored to service in order to display names consistently 
+v0.4.4
+- Fix colors and styles in download page
+- Show properly product types in download page 
