@@ -1,33 +1,37 @@
 .video-edit-page {
   margin-top: $topbarHeight + 10px;
+  background-color: $background;
+  width: 100%;
+  @media (max-width: 600px) {
+    margin-bottom: 200px;
+  }
+
+  video {
+    width: 100%;
+  }
+
+  // TODO: move upper!
   .vertical-middle {
     display: flex;
     align-items: center;
   }
 
+  // TODO: move upper!
   .horizontal-center {
     justify-content: center;
   }
 
-  background-color: $background;
-  width: 100%;
-  video {
-    width: 100%;
-  }
+  // TODO: move upper!
   md-card {
     @include border-radius($cardRadius);
     padding: 13px;
     md-input-container {
-      margin: 1px 0;
+      margin: 10px 0;
     }
-    input, select, textarea {
-      //border: 1px solid #dedede;
+    input, select, textarea, md-select-value {
       border: 1px solid $lightGrey;
       padding: 5px;
     }
-  }
-  @media (max-width: 600px) {
-    margin-bottom: 200px;
   }
 }
 
@@ -93,6 +97,9 @@
     margin: 10px;
     text-align: center;
     padding: 5% 0;
+  }
+  input {
+    height: 40px;
   }
 }
 

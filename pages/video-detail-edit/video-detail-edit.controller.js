@@ -27,9 +27,9 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, gm
 		self.actionsDisabled = true;
 		self.video.tag = self.tags.join(",");
 		self.video.productType = self.productType.join(",");
+		self.video.id = self.id;
 		console.log("video to update is ", self.video);
-		video.id = self.id;
-		video.update(self.video).then( result => {
+		self.videoService.update(self.video).then( result => {
 			self.actionsDisabled = false;
 		});
 	};
@@ -56,12 +56,24 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, gm
 	}
 
 	function initSelectMaps() {
-		video.getVideoLangs().then(langs => self.langs = langs );
-		video.getProductTypes().then(productTypes => self.productTypes = productTypes );
+		self.videoService.getVideoLangs().then(langs => self.langs = langs );
+		self.videoService.getProductTypes().then(productTypes => self.productTypes = productTypes );
 		// TODO(jliarte): get them from backend
 		self.categories = ['Economía', 'Nacional', 'Internacional'].map(function (category) {
 			return {name: category};
 		});
+	}
+
+	function initVideoFields() {
+		self.video.quality = self.video.quality || 0;
+		self.video.credibility = self.video.credibility || 0;
+		self.video.priceStd = self.video.priceStd || 0;
+		self.video.priceCountry = self.video.priceCountry || 0;
+		self.video.priceContinent = self.video.priceContinent || 0;
+		self.video.priceWorld = self.video.priceWorld || 0;
+		self.tags = self.video.tag.trim().split(',').filter(item => item);
+		self.productType = self.video.productType.trim().split(',').filter(item => item);
+		// TODO(jliarte): self.categories =
 	}
 
 	function getVideo() {
@@ -72,14 +84,7 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, gm
 		self.videoService.get(self.id, function () {
 			self.video = self.videoService.data;
 			checkEditAccess(self.video);
-
-			self.video.quality = self.video.quality || 0;
-			self.video.credibility = self.video.credibility || 0;
-			// TODO(jliarte): initialize prices also?
-			self.tags = self.video.tag.trim().split(',').filter(item => item);
-			self.productType = self.video.productType.trim().split(',').filter(item => item);
-			// TODO(jliarte): self.categories =
-
+			initVideoFields();
 			self.loading = false;
 			self.actionsDisabled = false;
 		});

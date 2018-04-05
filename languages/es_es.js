@@ -74,7 +74,15 @@
 			VIDEO_DETAIL_QUALITY: 'Calidad',
 			VIDEO_DETAIL_CREDIBILITY: 'Credibilidad',
 			VIDEO_AUTHOR: 'Autor/a',
-			
+			'VIDEO_LANG_es-es': 'Español',
+			'VIDEO_LANG_en-en': 'Inglés',
+			'VIDEO_LANG_gl-es': 'Gallego',
+			'VIDEO_LANG_ca-es': 'Catalán',
+			'VIDEO_LANG_eu-es': 'Euskera',
+			VIDEO_LANG_ambient: 'Sonido ambiente',
+			VIDEO_LANG_other: 'Otro',
+
+
 			VIDEO_ERROR: 'Vídeo erróneo',
 			VIDEO_NOT_FOUND: 'No hemos podido encontrar ese vídeo. Por favor, comprueba que el enlace es correcto, y prueba de nuevo.',
 

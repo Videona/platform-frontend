@@ -75,8 +75,16 @@
 			VIDEO_DETAIL_QUALITY: 'Quality',
 			VIDEO_DETAIL_CREDIBILITY: 'Credibility',
 			VIDEO_AUTHOR: 'Autor',
-			
-			VIDEO_ERROR: 'Error in video',
+			'VIDEO_LANG_es-es': 'Spanish',
+			'VIDEO_LANG_en-en': 'English',
+			'VIDEO_LANG_gl-es': 'Galician',
+			'VIDEO_LANG_ca-es': 'Catalan',
+			'VIDEO_LANG_eu-es': 'Basque',
+			VIDEO_LANG_ambient: 'Ambient',
+			VIDEO_LANG_other: 'Other',
+
+
+		VIDEO_ERROR: 'Error in video',
 			VIDEO_NOT_FOUND: 'We couldn\'t find that video. Please, check that the link is correct and try again.',
 
 			DROP_VIDEO: 'Drop your video here or click to upload',
