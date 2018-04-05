@@ -8,13 +8,12 @@
 
 -->
 
-<!DOCTYPE html>
-<html ng-app="app" ng-controller="MainControler as main">
+<html ng-app="app" ng-controller="MainControler as Main">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 
-		<title>{{ main.page.title }} {{'NAME' | flavour}}</title>
+		<title ng-bind="Main.page.pageTitle()"></title>
 
 		<!-- Angular Material style sheet -->
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css">
@@ -32,7 +31,7 @@
 		<script src='https://www.google.com/recaptcha/api.js'></script>
 		
 		<!-- AngularJS -->
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.0/angular-ui-router.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.17.0/angular-translate.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/ngInfiniteScroll/1.3.0/ng-infinite-scroll.min.js"></script>
@@ -51,7 +50,6 @@
 				type="text/javascript"></script>
 
 		<!-- Angular Material requires Angular.js Libraries -->
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-aria.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js"></script>
@@ -96,6 +94,7 @@
 		<script type="text/javascript" src="components/file-model/file-model.js"></script>
 		<script type="text/javascript" src="components/video-card/video-card.js"></script>
 		<script type="text/javascript" src="components/video-list/video-list.js"></script>
+		<script type="text/javascript" src="components/video-list/video-list.controller.js"></script>
 		<script type="text/javascript" src="components/topbar/topbar.js"></script>
 		<script type="text/javascript" src="components/bottombar/bottombar.js"></script>
 
