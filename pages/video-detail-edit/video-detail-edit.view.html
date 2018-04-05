@@ -8,15 +8,6 @@
 		<span class="logo">
 			<img ui-sref="gallery" src="/img/brand/logo_low.png" alt="logo">
 		</span>
-		<!--<span class="mobile-icons">-->
-		<!--<img ui-sref="upload" src="/img/upload-arrow.svg" alt="img_menu">-->
-		<!--<img src="/img/search.svg" alt="img_menu">-->
-	<!--</span>-->
-		<!--<span class="desktop-right-icons">-->
-		<!--<img ui-sref="upload" src="/img/upload-arrow.svg" alt="img_menu">-->
-		<!--<img src="/img/search.svg" alt="img_menu">-->
-	<!--</span>-->
-
 		<h2 md-truncate flex></h2>
 
 		<md-icon ui-sref="upload" md-svg-src="/img/upload-arrow.svg" class="upload-drop-icon" aria-label="Upload"></md-icon>
@@ -55,24 +46,24 @@
 						<md-button ng-click="!EditCtrl.actionsDisabled && EditCtrl.delete()"
 								   ng-disabed="EditCtrl.actionsDisabled" class="md-raised vertical-middle">
 							<i class="material-icons">delete</i>
-							Eliminar
+							{{ 'VIDEO_DELETE' | translate}}
 						</md-button>
 					</div>
 					<div flex="50" class="actions-save">
 						<md-button ui-sref="videoPreview({id: EditCtrl.id})" ng-disabed="EditCtrl.actionsDisabled"
-								   class="md-raised">Cancelar</md-button>
+								   class="md-raised">{{ 'VIDEO_CANCEL' | translate }}</md-button>
 						<md-button hide-sm hide-xs type="submit" ng-disabed="EditCtrl.actionsDisabled"
 								   class="md-raised md-primary cta">
 							<md-progress-circular ng-show="EditCtrl.actionsDisabled" class="md-hue-2 md-inline"
 												  md-diameter="20px"></md-progress-circular>
-							Guardar
+							{{ 'VIDEO_SAVE' | translate }}
 						</md-button>
 					</div>
 					<div flex="100" hide-gt-sm class="vertical-middle horizontal-center">
 						<md-button type="submit" ng-disabed="EditCtrl.actionsDisabled" class="md-raised md-primary cta">
 							<md-progress-circular ng-show="EditCtrl.actionsDisabled" class="md-hue-2 md-inline"
 												  md-diameter="20px"></md-progress-circular>
-							Guardar
+							{{ 'VIDEO_SAVE' | translate }}
 						</md-button>
 					</div>
 				</md-card>

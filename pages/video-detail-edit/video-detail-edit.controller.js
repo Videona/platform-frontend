@@ -27,6 +27,7 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, gm
 		self.actionsDisabled = true;
 		self.video.tag = self.tags.join(",");
 		self.video.productType = self.productType.join(",");
+		self.video.categories = self.category.join(",");
 		self.video.id = self.id;
 		console.log("video to update is ", self.video);
 		self.videoService.update(self.video).then( result => {
@@ -71,9 +72,15 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, gm
 		self.video.priceCountry = self.video.priceCountry || 0;
 		self.video.priceContinent = self.video.priceContinent || 0;
 		self.video.priceWorld = self.video.priceWorld || 0;
-		self.tags = self.video.tag.trim().split(',').filter(item => item);
-		self.productType = self.video.productType.trim().split(',').filter(item => item);
-		// TODO(jliarte): self.categories =
+		if (self.video.tag) {
+			self.tags = self.video.tag.trim().split(',').filter(item => item);
+		}
+		if (self.video.productType) {
+			self.productType = self.video.productType.trim().split(',').filter(item => item);
+		}
+		if (self.video.categories) {
+			self.category = self.video.categories.trim().split(',').filter(item => item);
+		}
 	}
 
 	function getVideo() {

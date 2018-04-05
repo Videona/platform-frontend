@@ -7,12 +7,12 @@
 		<div layout="row" layout-margin="10" class="video-edit-page__thumbnails">
 			<div flex-gt-xs="10" flex="0"></div>
 			<div flex-gt-xs="40" flex="50" layout="column">
-				<div>Miniatura por defecto</div>
+				<div>{{ 'VIDEO_EDIT_THUMBNAIL_DEFAULT' | translate }}</div>
 				<img ng-if="EditCtrl.video.poster" ng-src="{{EditCtrl.video.poster}}">
 			</div>
 			<div flex-gt-xs="40" flex="50" layout="column" class="custom-thumbnail">
 				<div>
-					Miniatura personalizada
+					{{ 'VIDEO_EDIT_THUMBNAIL_CUSTOM' | translate }}
 				</div>
 				<div ng-if="!EditCtrl.newPoster" class="new-thumbnail-input">
 					<div ngf-drop ngf-select ng-model="EditCtrl.newPoster" class="drop-box vertical-middle"
@@ -20,8 +20,8 @@
 						 accept="image/*"
 						 ngf-pattern="'image/*'">
 						<img class="upload-drop-icon" src="/img/upload-arrow.svg" alt="img_menu"><br/>
-						<span hide-xs>{{'Arrástralo o haz click aquí.' | translate}}</span>
-						<md-tooltip>{{'Arrástralo o haz click aquí.' | translate}}</md-tooltip>
+						<span hide-xs>{{ 'VIDEO_EDIT_THUMBNAIL_CUSTOM_HINT' | translate}}</span>
+						<md-tooltip>{{ 'VIDEO_EDIT_THUMBNAIL_CUSTOM_HINT' | translate}}</md-tooltip>
 					</div>
 				</div>
 				<div ng-if="EditCtrl.newPoster" class="new-thumbnail-preview">
