@@ -13,7 +13,6 @@
 			<div flex-gt-xs="40" flex="50" layout="column" class="custom-thumbnail">
 				<div>
 					Miniatura personalizada
-					<i ng-if="EditCtrl.newPoster" ng-click="EditCtrl.resetVideoPoster()" class="material-icons">remove_circle_outline</i>
 				</div>
 				<div ng-if="!EditCtrl.newPoster" class="new-thumbnail-input">
 					<div ngf-drop ngf-select ng-model="EditCtrl.newPoster" class="drop-box vertical-middle"
@@ -21,10 +20,12 @@
 						 accept="image/*"
 						 ngf-pattern="'image/*'">
 						<img class="upload-drop-icon" src="/img/upload-arrow.svg" alt="img_menu"><br/>
-						{{'Arrástralo o haz click aquí.' | translate}}
+						<span hide-xs>{{'Arrástralo o haz click aquí.' | translate}}</span>
+						<md-tooltip>{{'Arrástralo o haz click aquí.' | translate}}</md-tooltip>
 					</div>
 				</div>
 				<div ng-if="EditCtrl.newPoster" class="new-thumbnail-preview">
+					<i ng-if="EditCtrl.newPoster" ng-click="EditCtrl.resetVideoPoster()" class="material-icons">remove_circle_outline</i>
 					<img ngf-src="EditCtrl.newPoster"></video>
 				</div>
 			</div>

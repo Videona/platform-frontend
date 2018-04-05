@@ -19,15 +19,14 @@
 
 		<h2 md-truncate flex></h2>
 
-		<md-button>
-			Right Bar Button
-		</md-button>
 		<md-icon ui-sref="upload" md-svg-src="/img/upload-arrow.svg" class="upload-drop-icon" aria-label="Upload"></md-icon>
 		<md-icon md-svg-src="/img/search.svg" class="search-drop-icon" aria-label="Search"></md-icon>
 	</div>
 </md-toolbar>
 
 <div ng-controller="VideoDetailEditController as EditCtrl" class="video-edit-page" layout flex layout-fill>
+	<error404 ng-if="!EditCtrl.video && !EditCtrl.loading" title="{{'VIDEO_ERROR' | translate}}" message="{{'VIDEO_NOT_FOUND' | translate}}"></error404>
+
 	<loading-card ng-if="!EditCtrl.video && EditCtrl.loading"></loading-card>
 	<div ng-if="!EditCtrl.loading && EditCtrl.video" layout="row" flex-gt-md="80" flex-offset-gt-md="10" layout-wrap="auto" class="video-edit-page__main-details">
 		<div flex-gt-sm="60" flex="100">

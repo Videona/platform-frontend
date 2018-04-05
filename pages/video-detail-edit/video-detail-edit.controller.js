@@ -46,21 +46,17 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, gm
 	function checkEditAccess(video) {
 		if (video !== undefined && video.owner == self.session.id) {
 			// TODO(jliarte): check admin role
+			// self.editorRole = true;
 			console.log("User is allowed to edit this video");
 		} else {
+			// TODO(jliarte): should show an error instead of redirecting?
 			$state.go("videoPreview", {id: self.id});
 		}
 	}
 
 	function initSelectMaps() {
-		video.getVideoLangs().then(langs => {
-			console.log("setting langs var to ", langs);
-			self.langs = langs;
-		});
-		video.getProductTypes().then(productTypes => {
-			console.log("setting product types var to ", productTypes);
-			self.productTypes = productTypes;
-		});
+		video.getVideoLangs().then(langs => self.langs = langs );
+		video.getProductTypes().then(productTypes => self.productTypes = productTypes );
 		// TODO(jliarte): get them from backend
 		self.categories = ['Economía', 'Nacional', 'Internacional'].map(function (category) {
 			return {name: category};
@@ -72,8 +68,6 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, gm
 			self.videoService.reset();
 		}
 
-		// ToDo: Check invalid video :S
-		// TODO(jliarte): check if we're allowed to edit this video
 		self.videoService.get(self.id, function () {
 			self.video = self.videoService.data;
 			checkEditAccess(self.video);

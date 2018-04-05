@@ -1,11 +1,11 @@
 <md-card layout="column" class="video-edit-page__aditional-details">
 	<div flex>
-		<md-checkbox ng-model="EditCtrl.video.featured" ng-init="EditCtrl.video.featured=true">
+		<md-checkbox ng-model="EditCtrl.video.featured" ng-init="EditCtrl.video.featured=true" ng-disabled="!EditCtrl.editorRole">
 			<span class="vertical-middle">
 			Destacar <i class="material-icons feature-icon">star_rate</i>
 			</span>
 		</md-checkbox>
-		<md-checkbox ng-model="EditCtrl.video.verified" ng-init="EditCtrl.video.verified=true">
+		<md-checkbox ng-model="EditCtrl.video.verified" ng-init="EditCtrl.video.verified=true" ng-disabled="!EditCtrl.editorRole">
 			<span class="vertical-middle">
 			Verificar <i class="material-icons verify-icon">check_circle</i>
 			</span>
@@ -16,31 +16,31 @@
 			<div>
 				<md-input-container class="md-inline half-sized-input">
 					<label>Credibilidad</label>
-					<input ng-model="EditCtrl.video.credibility" type="number" min="0" max="5" step="1">
+					<input ng-model="EditCtrl.video.credibility" type="number" min="0" max="5" step="1" ng-disabled="!EditCtrl.editorRole">
 				</md-input-container>
 				<md-input-container class="md-inline">
 					<label>Calidad</label>
-					<input ng-model="EditCtrl.video.quality" type="number" min="0" max="5" step="1">
+					<input ng-model="EditCtrl.video.quality" type="number" min="0" max="5" step="1" ng-disabled="!EditCtrl.editorRole">
 				</md-input-container>
 			</div>
 			<div>
 				<md-input-container class="md-inline half-sized-input">
 					<label>Precio de emisión estándar</label>
-					<input ng-model="EditCtrl.video.priceStd" type="number" min="0"  step="1">
+					<input ng-model="EditCtrl.video.priceStd" type="number" min="0"  step="1" ng-disabled="!EditCtrl.editorRole">
 				</md-input-container>
 				<md-input-container class="md-inline half-sized-input">
 					<label>Precio de antena en país</label>
-					<input ng-model="EditCtrl.video.priceCountry" type="number" min="0"  step="1">
+					<input ng-model="EditCtrl.video.priceCountry" type="number" min="0"  step="1" ng-disabled="!EditCtrl.editorRole">
 				</md-input-container>
 			</div>
 			<div>
 				<md-input-container class="md-inline half-sized-input">
 					<label>Precio de antena continental</label>
-					<input ng-model="EditCtrl.video.priceContinent" type="number" min="0"  step="1">
+					<input ng-model="EditCtrl.video.priceContinent" type="number" min="0"  step="1" ng-disabled="!EditCtrl.editorRole">
 				</md-input-container>
 				<md-input-container class="md-inline half-sized-input">
 					<label>Precio de antena mundial</label>
-					<input ng-model="EditCtrl.video.priceWorld" type="number" min="0"  step="1">
+					<input ng-model="EditCtrl.video.priceWorld" type="number" min="0"  step="1" ng-disabled="!EditCtrl.editorRole">
 				</md-input-container>
 			</div>
 		</div>

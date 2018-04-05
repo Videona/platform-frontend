@@ -8,6 +8,10 @@
 			HELLO: 'Hello',
 			WORLD: 'world',
 
+			// 404 directive
+			DEFAULT404_ERROR_TITLE: 'Page not found',
+			DEFAULT404_ERROR_MESSAGE: 'This page could not be found, please check the url.',
+
 			LOADING: 'loading...',
 
 			LOGIN: 'Login',

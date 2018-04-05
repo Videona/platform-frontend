@@ -27,16 +27,24 @@
     }
   }
   @media (max-width: 600px) {
-    padding-bottom: 200px;
+    margin-bottom: 200px;
   }
 }
 
 .video-edit-page__thumbnails {
   img {
-      width: 100%;
+    width: 100%;
+  }
+  .new-thumbnail-preview {
+    position: relative;
   }
   i {
+    background-color: #fff;
     color: $mainColor;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 90;
   }
   .custom-thumbnail {
     display: flex;

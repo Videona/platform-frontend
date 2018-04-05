@@ -7,6 +7,10 @@
 			HELLO: 'Hola',
 			WORLD: 'mundo',
 
+			// 404 directive
+			DEFAULT404_ERROR_TITLE: 'Página no encontrada',
+			DEFAULT404_ERROR_MESSAGE: 'Esta página no ha podido ser encontrada, por favor comprueba la dirección de la página.',
+
 			LOADING: 'cargando...',
 
 			LOGIN: 'Acceder',
