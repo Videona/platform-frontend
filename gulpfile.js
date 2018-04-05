@@ -60,7 +60,7 @@ gulp.task('join-dependencies', ['make-config', 'flavour'], function () {
 		.pipe(concat('modules.js'))
 		.pipe(gulp.dest('./modules'));
 });
-	
+
 gulp.task('dependencies', ['join-dependencies'], function () {
 	return gulp.src('./modules/modules.js')
 		.pipe(debug({ title: 'Move js dependencies:' }))
