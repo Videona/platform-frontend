@@ -1,11 +1,11 @@
 <md-card layout="column" class="video-edit-page__aditional-details">
 	<div flex>
-		<md-checkbox ng-model="EditCtrl.video.featured" ng-init="EditCtrl.video.featured=true" ng-disabled="!EditCtrl.editorRole">
+		<md-checkbox ng-model="EditCtrl.video.featured" ng-disabled="!EditCtrl.editorRole">
 			<span class="vertical-middle">
 			{{ 'VIDEO_EDIT_FEATURE' | translate }} <i class="material-icons feature-icon">star_rate</i>
 			</span>
 		</md-checkbox>
-		<md-checkbox ng-model="EditCtrl.video.verified" ng-init="EditCtrl.video.verified=true" ng-disabled="!EditCtrl.editorRole">
+		<md-checkbox ng-model="EditCtrl.video.verified" ng-disabled="!EditCtrl.editorRole">
 			<span class="vertical-middle">
 			{{ 'VIDEO_EDIT_VERIFY' | translate }} <i class="material-icons verify-icon">check_circle</i>
 			</span>

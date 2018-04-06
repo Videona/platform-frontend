@@ -22,7 +22,19 @@
 		}
 
 		function put(url, data, callback) {
-			return request('PUT', url, data, callback);
+			if (data.files != undefined && data.files.length > 0) {
+				let uploadFiles = data.files;
+				delete data.files;
+				delete data.file;
+				let req = buildRequestForFileUpload('PUT', url, data);
+				let i = 0;
+				uploadFiles.forEach(file => {
+					req.data.append(file.name, file.file);
+				});
+				return performHttpRequest(req, callback);
+			} else  {
+				return request('PUT', url, data, callback);
+			}
 		}
 
 		function get(url, callback) {
@@ -50,12 +62,7 @@
 				req.data = data;
 			}
 
-			return $http(req)
-				.then(function (r) {
-					onSuccess(r, callback);
-				}).catch(function (r) {
-					onError(r, callback);
-				});
+			return performHttpRequest(req, callback);
 		}
 
 		function download(url, callback) {
@@ -114,8 +121,15 @@
 				formData = null;
 			}
 
-			var req = {
-				method: 'POST',
+			let req = buildRequestForFileUpload('POST', url, formData);
+			req.data.append('file', file);
+
+			return performHttpRequest(req, callback);
+		}
+
+		function buildRequestForFileUpload(requestMethod, url, formData) {
+			let req = {
+				method: requestMethod,
 				headers: {'Content-Type': undefined},
 				url: url,
 				data: new FormData(),
@@ -126,20 +140,21 @@
 				req.headers.authorization = 'Bearer ' + api.token;
 			}
 
-			req.data.append('file', file);
-
-			for(var param in formData) {
+			for (let param in formData) {
 				req.data.append(param, formData[param]);
 			}
+			return req;
+		}
 
+		function performHttpRequest(req, callback) {
 			return $http(req)
-				.then(function(response){
+				.then(function (response) {
 					onSuccess(response, callback);
-				})
-				.catch(function(response){
+				}).catch(function (response) {
 					onError(response, callback);
 				});
 		}
+
 
 		function transformRequest(obj) {
 			var str = [];

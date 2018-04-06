@@ -1,8 +1,8 @@
 angular.module('app')
 	.controller('VideoDetailEditController', ['$stateParams', '$mdConstant', 'session', 'video', 'gmapsApiKey',
-		'$sce', '$state', VideoDetailEditController]);
+		'$sce', '$state', '$mdToast', VideoDetailEditController]);
 
-function VideoDetailEditController($stateParams, $mdConstant, session, video, gmapsApiKey, $sce, $state) {
+function VideoDetailEditController($stateParams, $mdConstant, session, video, gmapsApiKey, $sce, $state, $mdToast) {
 	var self = this;
 
 	self.session = session;
@@ -25,13 +25,16 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, gm
 
 	self.update = function () {
 		self.actionsDisabled = true;
-		self.video.tag = self.tags.join(",");
-		self.video.productType = self.productType.join(",");
-		self.video.categories = self.category.join(",");
-		self.video.id = self.id;
+		sanitizeVideoFields();
 		console.log("video to update is ", self.video);
 		self.videoService.update(self.video).then( result => {
-			self.actionsDisabled = false;
+			showMessage('Video updated!');
+			resetForm();
+			self.videoService.reset();
+		}).catch( error => {
+			console.log("error in request ", error);
+			showMessage('Error updating video!');
+			resetForm();
 		});
 	};
 
@@ -44,8 +47,36 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, gm
 	getVideo();
 
 	// Private selfish methods
+	function showMessage(message) {
+		$mdToast.show(
+			$mdToast.simple()
+				.textContent(message)
+				.hideDelay(3000)
+		);
+	}
+
+	function sanitizeVideoFields() {
+		self.video.tag = self.tags.join(",");
+		self.video.productType = self.productType.join(",");
+		self.video.files = [];
+		if (self.newPoster) {
+			self.video.files.push({name: 'newPoster', file: self.newPoster});
+		}
+		if (self.newFile) {
+			self.video.files.push({name: 'newFile', file: self.newFile});
+		}
+		self.video.categories = self.category.join(",");
+		self.video.id = self.id;
+	}
+
+	function resetForm() {
+		self.actionsDisabled = false;
+		self.resetVideoFile();
+		self.resetVideoPoster();
+	}
+
 	function checkEditAccess(video) {
-		if (video !== undefined && video.owner == self.session.id) {
+		if (video !== undefined && video.owner === self.session.id) {
 			if (self.session.role === 'editor') {
 				self.editorRole = true;
 			}
@@ -66,12 +97,18 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, gm
 	}
 
 	function initVideoFields() {
+		if (self.video.date == {}) {
+			delete self.video.date;
+		}
 		self.video.quality = self.video.quality || 0;
 		self.video.credibility = self.video.credibility || 0;
 		self.video.priceStd = self.video.priceStd || 0;
 		self.video.priceCountry = self.video.priceCountry || 0;
 		self.video.priceContinent = self.video.priceContinent || 0;
 		self.video.priceWorld = self.video.priceWorld || 0;
+		self.tags = [];
+		self.productType = [];
+		self.category = [];
 		if (self.video.tag) {
 			self.tags = self.video.tag.trim().split(',').filter(item => item);
 		}
@@ -90,6 +127,7 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, gm
 
 		self.videoService.get(self.id, function () {
 			self.video = self.videoService.data;
+			console.log("retrieved video is ", self.video);
 			checkEditAccess(self.video);
 			initVideoFields();
 			self.loading = false;
