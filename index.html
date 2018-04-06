@@ -9,12 +9,12 @@
 -->
 
 <!DOCTYPE html>
-<html ng-app="app" ng-controller="MainControler as main">
+<html ng-app="app" ng-controller="MainControler as Main">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 
-		<title>{{ main.page.title }} {{'NAME' | flavour}}</title>
+		<title ng-bind="Main.page.pageTitle()"></title>
 
 		<!-- Angular Material style sheet -->
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css">
@@ -96,10 +96,12 @@
 		<script type="text/javascript" src="components/file-model/file-model.js"></script>
 		<script type="text/javascript" src="components/video-card/video-card.js"></script>
 		<script type="text/javascript" src="components/video-list/video-list.js"></script>
+		<script type="text/javascript" src="components/video-list/video-list.controller.js"></script>
 		<script type="text/javascript" src="components/topbar/topbar.js"></script>
 		<script type="text/javascript" src="components/bottombar/bottombar.js"></script>
 
 		<!-- Pages -->
+		<script type="text/javascript" src="pages/home/home.controller.js"></script>
 		<script type="text/javascript" src="pages/login/login.controller.js"></script>
 		<script type="text/javascript" src="pages/login/login.service.js"></script>
 		<script type="text/javascript" src="pages/register/register.controller.js"></script>

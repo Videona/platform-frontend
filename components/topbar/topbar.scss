@@ -1,4 +1,4 @@
-topbar {
+.topbar {
 	top: 0;
 	left: 0;
 	height: $topbarHeight;
@@ -12,6 +12,7 @@ topbar {
 	background-color: white;
 	box-shadow: 0px 0px 1px 1px #e8e8e8;
 	z-index: 999;
+	
 	img {
 		height: $topbarImgHeight;
 		margin: $cardMargin;

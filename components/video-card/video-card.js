@@ -1,7 +1,7 @@
 angular.module('app')
-	.directive('videoCard', VideoCard);
+	.directive('videoCard', videoCardDirective);
 
-function VideoCard() {
+function videoCardDirective() {
 	
 	function link(scope, element, attr) {
 		scope._id = scope.video._id;

@@ -1,2 +1,2 @@
-v0.4.2
-- Product types refactored to service in order to display names consistently 
+v0.4.7
+Fix register button is broken in firefox
