@@ -29,7 +29,14 @@
 			if (self.tagFilter instanceof Array && self.tagFilter.length > 0) {
 			  createTagFilter(self.tagFilter);
 			}
+			if (typeof self.query === 'string' && self.query.trim() !== '') {
+				createQueryFilter(self.query);
+			}
 			getVideoList();
+		}
+
+		function createQueryFilter(query) {
+			self.queryParams.q = query;
 		}
 
 		function createTagFilter(tagFilter) {

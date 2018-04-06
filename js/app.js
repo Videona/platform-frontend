@@ -57,6 +57,10 @@
 				url: '/gallery',
 				templateUrl: 'pages/gallery/gallery.view.html',
 			})
+			.state('search', {
+				url: '/search?:q',
+				templateUrl: 'pages/search/search.view.html',
+			})
 			.state('upload', {
 				url: '/upload',
 				parent: 'root',
