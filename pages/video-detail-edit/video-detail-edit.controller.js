@@ -31,6 +31,7 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, gm
 			showMessage('Video updated!');
 			resetForm();
 			self.videoService.reset();
+			getVideo();
 		}).catch( error => {
 			console.log("error in request ", error);
 			showMessage('Error updating video!');
