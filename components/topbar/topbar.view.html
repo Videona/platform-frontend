@@ -1,21 +1,21 @@
 <header class="topbar">
 	<span class="mobile-menu">
-		<img src="/img/menu.svg" alt="img_menu">
+		<ng-include src="'/img/menu.svg'" alt="img_menu"></ng-include>
 	</span>
 	<span class="logo">
 		<img ui-sref="gallery" src="/img/brand/logo_low.png" alt="logo">
 	</span>
-	<span>
+	<span class="search-bar" ng-show="searching">
+		<ng-include src="'/img/close.svg'" ng-click="searching = !searching" class="close-search"></ng-include>
 		<input type="text" name="searchBox" ng-model="search.searchBox" on-enter="search.search()">
-		<button ng-click="search.search()">Search</button>
+		<ng-include src="'/img/search.svg'" alt="img_menu" ng-click="search.search()" class="search-button"></ng-include>
 	</span>
 	<span class="mobile-icons">
-		<img ui-sref="upload" src="/img/upload-arrow.svg" alt="img_menu">
-		<img src="/img/search.svg" alt="img_menu">
+		<span ng-click="searching = !searching"><ng-include src="'/img/search.svg'" alt="img_menu"></ng-include></span>
+		<ng-include ui-sref="upload" src="'/img/upload-arrow.svg'" alt="img_menu"></ng-include>
 	</span>
 	<span class="desktop-right-icons">
-		<img ui-sref="upload" src="/img/upload-arrow.svg" alt="img_menu">
-		<img src="/img/search.svg" alt="img_menu">
+		<ng-include ui-sref="upload" src="'/img/upload-arrow.svg'" alt="img_menu"></ng-include>
 	</span>
 </header>
 <!--
