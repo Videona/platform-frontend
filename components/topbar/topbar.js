@@ -1,8 +1,13 @@
 angular.module('app')
-	.directive('topbar', Topbar);
+	.directive('topbar', ['search', Topbar]);
 
-function Topbar() {
+function Topbar(search) {
 	return {
-		templateUrl: 'components/topbar/topbar.view.html'
+		templateUrl: 'components/topbar/topbar.view.html',
+		link: {
+			pre: function (scope) {
+				scope.search = search;
+			}
+		}
 	};
 }

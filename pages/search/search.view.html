@@ -7,15 +7,12 @@
 		<p>&nbsp;</p>
 		<p>&nbsp;</p>
 
-		<input type="text" name="searchBox" ng-model="Search.searchBox" on-enter="Search.search()" />
-		<button ng-click="Search.search()">Search</button>
-
-		<div ng-if='Search.loading'>
+		<div ng-if='Search.service.loading'>
 			<loading></loading>
 		</div>
-		<section class="gallery-section-nonFeatured" ng-if="!Search.loading">
-			<video-list section-class="gallery-nonFeatured" query="::Search.searchBox"
-						infinite-scroll-enabled="true"></video-list>
+		<section class="gallery-section-nonFeatured" ng-if="!Search.service.loading">
+			Mostrando {{Search.meta.count}} resultados
+			<video-list section-class="gallery-nonFeatured" query="::Search.service.searchTerm" meta="Search.meta" "infinite-scroll-enabled="true"></video-list>
 		</section>
 	</article>
 </div>

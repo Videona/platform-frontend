@@ -1,24 +1,12 @@
 angular.module('app')
-	.controller('SearchController', ['$timeout', '$state', '$stateParams', SearchController]);
+	.controller('SearchController', ['search', '$stateParams', SearchController]);
 
-function SearchController($timeout, $state, $stateParams) {
+function SearchController(search, $stateParams) {
 	var self = this;
 
-	self.loading = false;
-	self.searchBox = $stateParams.q || '';
-	self.search = search;
+	self.meta ={
+		count: 0
+	};
 
-	var lastSearchTerm = $stateParams.q || '';
-
-	function search() {
-		if(lastSearchTerm !== self.searchBox) {
-			lastSearchTerm = self.searchBox;
-			$state.go('.', {q: self.searchBox}, {notify: false});
-
-			self.loading = true;
-			$timeout(function () {
-				self.loading = false;
-			}, 0);
-		}
-	}
+	self.service = search;
 }

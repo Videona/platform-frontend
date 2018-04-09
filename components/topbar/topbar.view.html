@@ -5,6 +5,10 @@
 	<span class="logo">
 		<img ui-sref="gallery" src="/img/brand/logo_low.png" alt="logo">
 	</span>
+	<span>
+		<input type="text" name="searchBox" ng-model="search.searchBox" on-enter="search.search()">
+		<button ng-click="search.search()">Search</button>
+	</span>
 	<span class="mobile-icons">
 		<img ui-sref="upload" src="/img/upload-arrow.svg" alt="img_menu">
 		<img src="/img/search.svg" alt="img_menu">
