@@ -1,14 +1,15 @@
 angular.module('app')
 	.controller('VideoDetailEditController', ['$stateParams', '$mdConstant', 'session', 'video', 'gmapsApiKey',
-		'$sce', '$state', '$mdToast', VideoDetailEditController]);
+		'$sce', '$state', '$mdToast', 'NgMap', '$scope', VideoDetailEditController]);
 
-function VideoDetailEditController($stateParams, $mdConstant, session, video, gmapsApiKey, $sce, $state, $mdToast) {
+function VideoDetailEditController($stateParams, $mdConstant, session, video, gmapsApiKey, $sce, $state, $mdToast,
+                                   NgMap, $scope) {
 	var self = this;
 
 	self.session = session;
 	self.videoService = video;
 	// TODO(jliarte): should move to main controller?
-	self.gmapsApiKey = $sce.trustAsResourceUrl('https://maps.googleapis.com/maps/api/js?key=' + gmapsApiKey);
+	self.gmapsApiURL = $sce.trustAsResourceUrl('https://maps.googleapis.com/maps/api/js?key=' + gmapsApiKey);
 	self.id = $stateParams.id;
 	self.loading = true;
 	self.actionsDisabled = true;
@@ -21,6 +22,38 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, gm
 
 	self.resetVideoFile = function () {
 		self.newFile = undefined;
+	};
+
+	self.placeChanged = function() {
+		self.place = this.getPlace();
+		setLocation({name: self.place.name, latLng: self.place.geometry.location});
+		self.map.setCenter(self.place.geometry.location);
+	};
+
+	function setLocation(selectedLocation) {
+		if (selectedLocation) {
+			self.video.location = selectedLocation.name;
+			self.marker = { position: [selectedLocation.latLng.lat(), selectedLocation.latLng.lng()], name: selectedLocation.name};
+		} else {
+			delete self.marker;
+			delete self.video.location;
+		}
+	}
+
+	self.mapClick = function ($event) {
+		self.geocoder = new google.maps.Geocoder();
+		self.geocoder.geocode({ 'latLng': $event.latLng }, function (results, status) {
+			if (status === google.maps.GeocoderStatus.OK) {
+				let address_parts = [];
+				address_parts = address_parts.concat(results[0].address_components.filter(addr => (addr.types[0]=='locality')));
+				address_parts = address_parts.concat(results[0].address_components.filter(addr => (addr.types[0]=='country')));
+				setLocation({name: address_parts.map(item => item.long_name).join(", "), latLng: $event.latLng});
+			} else {
+				setLocation({name: '', latLng: $event.latLng});
+			}
+			$scope.$apply();
+		});
+
 	};
 
 	self.update = function () {
@@ -46,6 +79,7 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, gm
 	// init
 	initSelectMaps();
 	getVideo();
+	initGMaps();
 
 	// Private selfish methods
 	function showMessage(message) {
@@ -54,6 +88,15 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, gm
 				.textContent(message)
 				.hideDelay(3000)
 		);
+	}
+
+	function initGMaps() {
+		NgMap.getMap().then(function (map) {
+			self.map = map;
+		});
+		self.placeTypes = ['(cities)', '(regions)'];
+		// self.placeLang = session.currentLang;
+		self.placeLang = 'es-ES';
 	}
 
 	function sanitizeVideoFields() {

@@ -1,9 +1,11 @@
 (function () {
 	angular.module('app')
-		.controller('MainControler', ['page', MainController]);
+		.controller('MainControler', ['page', 'gmapsApiKey', 'session', MainController]);
 
-	function MainController(page) {
+	function MainController(page, gmapsApiKey, session) {
 		var self = this;
 		self.page = page;
+		self.gmapsApiKey = gmapsApiKey;
+		self.currentLang = session.currentLang;
 	}
 }());
