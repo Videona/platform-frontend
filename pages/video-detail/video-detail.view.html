@@ -13,7 +13,7 @@
 	</div>
 	
 	<article ng-if="Video.video.data && !Video.video.data.error">
-		<section>
+		<section class="card-video-detail">
 			<div>
 				<video controls ng-src="{{::Video.video.data.video}}" ng-attr-poster="{{::Video.video.data.poster}}" preload="metadata" controlsList="nodownload"></video>
 				<!-- Only if desktop >>> -->
@@ -24,7 +24,7 @@
 						<span>{{'USER_PROFFESSIONAL' | translate}}</span>
 					</div>
 					<div>
-						<p><strong>{{'VIDEO_AUTHOR' | translate}}:</strong>{{Video.user.data.username}}</p>
+						<p><strong>{{Video.user.data.username}}</strong></p>
 						<!-- TO-DO: Make published videos dynamic -->
 						<p><strong>{{'PUBLISHED_VIDEOS' | translate}}</strong>{{Video.user.data.videoCount || 0}}</p>
 
@@ -58,11 +58,11 @@
 						</a>
 					</div>
 					
-					<div class="video-detail-show-info" ng-click="showDetails = !showDetails">
+					<div class="video-detail-show-info" ng-click="showDetails = !showDetails" ng-init="showDetails = true">
 						<span ng-show="showDetails">{{'HIDE_VIDEO_DETAILS' | translate}}</span>
 						<span ng-hide="showDetails">{{'SHOW_VIDEO_DETAILS' | translate}}</span>
-					</div>
-					
+					</div> 
+
 					<div class="video-detail-info" ng-show="showDetails">
 						<p>
 							<strong>{{'VIDEO_DETAIL_DATETIME' | translate}}:</strong> {{Video.video.data.date | date: 'dd/MM/yyyy HH:mm' || '-'}}
