@@ -25,13 +25,12 @@ function videoService(api) {
 
 	function update(video) {
 		return new Promise((resolve, reject) => {
-			// TODO(jliarte): route should be /video/id
-			api.put(api.url + '/video/', video, function (result, status) {
+			api.put(api.url + '/video/' + video.id + '/', video, function (result, status) {
 				if (status < 400) {
 					resolve(result);
+				} else {
+					reject(status);
 				}
-				console.log("result is ", result);
-				console.log("status is ", status);
 			})
 		});
 	}

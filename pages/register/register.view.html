@@ -34,11 +34,13 @@
 				<li ng-repeat="err in Register.error"> {{err}} </li>
 			</ul>
 
-			<button>
-				<span ng-if="Register.activeView.credentials" ng-click="Register.validateRegister()">{{'REGISTER_ACTION' | translate }}</span>
-				<span ng-if="Register.activeView.terms" ng-click="Register.submit()">{{'COMPLETED' | translate }}</span>
+			<button ng-if="Register.activeView.credentials" ng-click="Register.validateRegister()">
+				<span>{{'REGISTER_ACTION' | translate }}</span>
 			</button>
-
+			<button ng-if="Register.activeView.terms" ng-click="Register.submit()">
+				<span >{{'COMPLETED' | translate }}</span>
+			</button>
+	
 		</section>
 
 		<section class="mobile-apps">

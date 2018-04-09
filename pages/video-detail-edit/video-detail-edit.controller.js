@@ -1,14 +1,15 @@
 angular.module('app')
 	.controller('VideoDetailEditController', ['$stateParams', '$mdConstant', 'session', 'video', 'gmapsApiKey',
-		'$sce', '$state', VideoDetailEditController]);
+		'$sce', '$state', '$mdToast', 'NgMap', '$scope', VideoDetailEditController]);
 
-function VideoDetailEditController($stateParams, $mdConstant, session, video, gmapsApiKey, $sce, $state) {
+function VideoDetailEditController($stateParams, $mdConstant, session, video, gmapsApiKey, $sce, $state, $mdToast,
+                                   NgMap, $scope) {
 	var self = this;
 
 	self.session = session;
 	self.videoService = video;
 	// TODO(jliarte): should move to main controller?
-	self.gmapsApiKey = $sce.trustAsResourceUrl('https://maps.googleapis.com/maps/api/js?key=' + gmapsApiKey);
+	self.gmapsApiURL = $sce.trustAsResourceUrl('https://maps.googleapis.com/maps/api/js?key=' + gmapsApiKey);
 	self.id = $stateParams.id;
 	self.loading = true;
 	self.actionsDisabled = true;
@@ -23,14 +24,51 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, gm
 		self.newFile = undefined;
 	};
 
+	self.placeChanged = function() {
+		self.place = this.getPlace();
+		setLocation({name: self.place.name, latLng: self.place.geometry.location});
+		self.map.setCenter(self.place.geometry.location);
+	};
+
+	function setLocation(selectedLocation) {
+		if (selectedLocation) {
+			self.video.location = selectedLocation.name;
+			self.marker = { position: [selectedLocation.latLng.lat(), selectedLocation.latLng.lng()], name: selectedLocation.name};
+		} else {
+			delete self.marker;
+			delete self.video.location;
+		}
+	}
+
+	self.mapClick = function ($event) {
+		self.geocoder = new google.maps.Geocoder();
+		self.geocoder.geocode({ 'latLng': $event.latLng }, function (results, status) {
+			if (status === google.maps.GeocoderStatus.OK) {
+				let address_parts = [];
+				address_parts = address_parts.concat(results[0].address_components.filter(addr => (addr.types[0]=='locality')));
+				address_parts = address_parts.concat(results[0].address_components.filter(addr => (addr.types[0]=='country')));
+				setLocation({name: address_parts.map(item => item.long_name).join(", "), latLng: $event.latLng});
+			} else {
+				setLocation({name: '', latLng: $event.latLng});
+			}
+			$scope.$apply();
+		});
+
+	};
+
 	self.update = function () {
 		self.actionsDisabled = true;
-		self.video.tag = self.tags.join(",");
-		self.video.productType = self.productType.join(",");
+		sanitizeVideoFields();
 		console.log("video to update is ", self.video);
-		video.id = self.id;
-		video.update(self.video).then( result => {
-			self.actionsDisabled = false;
+		self.videoService.update(self.video).then( result => {
+			showMessage('Video updated!');
+			resetForm();
+			self.videoService.reset();
+			getVideo();
+		}).catch( error => {
+			console.log("error in request ", error);
+			showMessage('Error updating video!');
+			resetForm();
 		});
 	};
 
@@ -41,10 +79,48 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, gm
 	// init
 	initSelectMaps();
 	getVideo();
+	initGMaps();
 
 	// Private selfish methods
+	function showMessage(message) {
+		$mdToast.show(
+			$mdToast.simple()
+				.textContent(message)
+				.hideDelay(3000)
+		);
+	}
+
+	function initGMaps() {
+		NgMap.getMap().then(function (map) {
+			self.map = map;
+		});
+		self.placeTypes = ['(cities)', '(regions)'];
+		// self.placeLang = session.currentLang;
+		self.placeLang = 'es-ES';
+	}
+
+	function sanitizeVideoFields() {
+		self.video.tag = self.tags.join(",");
+		self.video.productType = self.productType.join(",");
+		self.video.files = [];
+		if (self.newPoster) {
+			self.video.files.push({name: 'newPoster', file: self.newPoster});
+		}
+		if (self.newFile) {
+			self.video.files.push({name: 'newFile', file: self.newFile});
+		}
+		self.video.categories = self.category.join(",");
+		self.video.id = self.id;
+	}
+
+	function resetForm() {
+		self.actionsDisabled = false;
+		self.resetVideoFile();
+		self.resetVideoPoster();
+	}
+
 	function checkEditAccess(video) {
-		if (video !== undefined && video.owner == self.session.id) {
+		if (video !== undefined && video.owner === self.session.id) {
 			if (self.session.role === 'editor') {
 				self.editorRole = true;
 			}
@@ -56,12 +132,36 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, gm
 	}
 
 	function initSelectMaps() {
-		video.getVideoLangs().then(langs => self.langs = langs );
-		video.getProductTypes().then(productTypes => self.productTypes = productTypes );
+		self.videoService.getVideoLangs().then(langs => self.langs = langs );
+		self.videoService.getProductTypes().then(productTypes => self.productTypes = productTypes );
 		// TODO(jliarte): get them from backend
 		self.categories = ['Economía', 'Nacional', 'Internacional'].map(function (category) {
 			return {name: category};
 		});
+	}
+
+	function initVideoFields() {
+		if (self.video.date == {}) {
+			delete self.video.date;
+		}
+		self.video.quality = self.video.quality || 0;
+		self.video.credibility = self.video.credibility || 0;
+		self.video.priceStd = self.video.priceStd || 0;
+		self.video.priceCountry = self.video.priceCountry || 0;
+		self.video.priceContinent = self.video.priceContinent || 0;
+		self.video.priceWorld = self.video.priceWorld || 0;
+		self.tags = [];
+		self.productType = [];
+		self.category = [];
+		if (self.video.tag) {
+			self.tags = self.video.tag.trim().split(',').filter(item => item);
+		}
+		if (self.video.productType) {
+			self.productType = self.video.productType.trim().split(',').filter(item => item);
+		}
+		if (self.video.categories) {
+			self.category = self.video.categories.trim().split(',').filter(item => item);
+		}
 	}
 
 	function getVideo() {
@@ -71,15 +171,9 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, gm
 
 		self.videoService.get(self.id, function () {
 			self.video = self.videoService.data;
+			console.log("retrieved video is ", self.video);
 			checkEditAccess(self.video);
-
-			self.video.quality = self.video.quality || 0;
-			self.video.credibility = self.video.credibility || 0;
-			// TODO(jliarte): initialize prices also?
-			self.tags = self.video.tag.trim().split(',').filter(item => item);
-			self.productType = self.video.productType.trim().split(',').filter(item => item);
-			// TODO(jliarte): self.categories =
-
+			initVideoFields();
 			self.loading = false;
 			self.actionsDisabled = false;
 		});

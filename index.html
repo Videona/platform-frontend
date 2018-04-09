@@ -8,6 +8,7 @@
 
 -->
 
+<!DOCTYPE html>
 <html ng-app="app" ng-controller="MainControler as Main">
 	<head>
 		<meta charset="utf-8" />
@@ -36,7 +37,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.17.0/angular-translate.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/ngInfiniteScroll/1.3.0/ng-infinite-scroll.min.js"></script>
 		<!-- No CDN avaliable modules -->
-		<script src="modules/modules.js"></script> 
+		<script src="modules/modules.js"></script>
 
 
 <!-- 
@@ -45,9 +46,7 @@
 -->
 
 		<!-- google maps -->
-		<!--<script async defer src="https://maps.googleapis.com/maps/api/js?key{{gmapsApiKey}}"-->
-		<script async defer src="https://maps.googleapis.com/maps/api/js?key=apikey"
-				type="text/javascript"></script>
+		<script ng-src="{{ 'https://maps.googleapis.com/maps/api/js?key=' + Main.gmapsApiKey + '&language=' + Main.currentLang + '&libraries=geometry,places' | trustAsResourceUrl }}"></script>
 
 		<!-- Angular Material requires Angular.js Libraries -->
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
@@ -69,6 +68,7 @@
 		<!-- Filters -->
 		<script type="text/javascript" src="filters/product-type.js"></script>
 		<script type="text/javascript" src="filters/trust-as-html.js"></script>
+		<script type="text/javascript" src="filters/trust-as-resource.js"></script>
 		<script type="text/javascript" src="filters/to-mb.js"></script>
 		<script type="text/javascript" src="filters/time.js"></script>
 		<script type="text/javascript" src="filters/locale-date.js"></script>
@@ -99,6 +99,7 @@
 		<script type="text/javascript" src="components/bottombar/bottombar.js"></script>
 
 		<!-- Pages -->
+		<script type="text/javascript" src="pages/home/home.controller.js"></script>
 		<script type="text/javascript" src="pages/login/login.controller.js"></script>
 		<script type="text/javascript" src="pages/login/login.service.js"></script>
 		<script type="text/javascript" src="pages/register/register.controller.js"></script>

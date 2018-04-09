@@ -8,15 +8,6 @@
 		<span class="logo">
 			<img ui-sref="gallery" src="/img/brand/logo_low.png" alt="logo">
 		</span>
-		<!--<span class="mobile-icons">-->
-		<!--<img ui-sref="upload" src="/img/upload-arrow.svg" alt="img_menu">-->
-		<!--<img src="/img/search.svg" alt="img_menu">-->
-	<!--</span>-->
-		<!--<span class="desktop-right-icons">-->
-		<!--<img ui-sref="upload" src="/img/upload-arrow.svg" alt="img_menu">-->
-		<!--<img src="/img/search.svg" alt="img_menu">-->
-	<!--</span>-->
-
 		<h2 md-truncate flex></h2>
 
 		<md-icon ui-sref="upload" md-svg-src="/img/upload-arrow.svg" class="upload-drop-icon" aria-label="Upload"></md-icon>
@@ -28,162 +19,56 @@
 	<error404 ng-if="!EditCtrl.video && !EditCtrl.loading" title="{{'VIDEO_ERROR' | translate}}" message="{{'VIDEO_NOT_FOUND' | translate}}"></error404>
 
 	<loading-card ng-if="!EditCtrl.video && EditCtrl.loading"></loading-card>
-	<div ng-if="!EditCtrl.loading && EditCtrl.video" layout="row" flex-gt-md="80" flex-offset-gt-md="10" layout-wrap="auto" class="video-edit-page__main-details">
-		<div flex-gt-sm="60" flex="100">
-			<ng-include src="'pages/video-detail-edit/partials/main-player.html'"></ng-include>
-		</div>
+	<div ng-if="!EditCtrl.loading && EditCtrl.video" flex-gt-md="80" flex-offset-gt-md="10" class="video-edit-page__main-details">
+		<form name="videoForm" novalidate ng-submit="videoForm.$valid && EditCtrl.update()" layout="row" layout-wrap flex="100">
+			<div flex-gt-sm="60" flex="100">
+				<ng-include src="'pages/video-detail-edit/partials/main-player.html'"></ng-include>
+			</div>
 
-		<div flex-gt-sm="40" flex="100">
-			<ng-include src="'pages/video-detail-edit/partials/basic-details.html'"></ng-include>
-		</div>
+			<div flex-gt-sm="40" flex="100">
+				<ng-include src="'pages/video-detail-edit/partials/basic-details.html'"></ng-include>
+			</div>
 
-		<div flex="100">
-			<ng-include src="'pages/video-detail-edit/partials/aditional-details.html'"></ng-include>
-		</div>
+			<div flex="100">
+				<ng-include src="'pages/video-detail-edit/partials/aditional-details.html'"></ng-include>
+			</div>
 
-		<div flex="100">
-			<ng-include src="'pages/video-detail-edit/partials/video-file.html'"></ng-include>
-		</div>
+			<div flex="100">
+				<ng-include src="'pages/video-detail-edit/partials/video-file.html'"></ng-include>
+			</div>
 
-		<div flex="100">
-			<ng-include src="'pages/video-detail-edit/partials/video-map.html'"></ng-include>
-		</div>
-		<div flex="100">
-			<md-card layout="row" layout-wrap="auto" class="video-edit-page__edit-actions">
-				<div flex="50" class="actions-delete">
-					<md-button ng-click="!EditCtrl.actionsDisabled && EditCtrl.delete()"
-							   ng-disabed="EditCtrl.actionsDisabled" class="md-raised vertical-middle">
-						<i class="material-icons">delete</i>
-						Eliminar
-					</md-button>
-				</div>
-				<div flex="50" class="actions-save">
-					<md-button ui-sref="videoPreview({id: EditCtrl.id})" ng-disabed="EditCtrl.actionsDisabled"
-							   class="md-raised">Cancelar</md-button>
-					<md-button hide-sm hide-xs ng-click="!EditCtrl.actionsDisabled && EditCtrl.update()"
-							   ng-disabed="EditCtrl.actionsDisabled" class="md-raised md-primary cta">
-						<md-progress-circular ng-show="EditCtrl.actionsDisabled" class="md-hue-2 md-inline" md-diameter="20px"></md-progress-circular>
-						Guardar
-					</md-button>
-				</div>
-				<div flex="100" hide-gt-sm class="vertical-middle horizontal-center">
-					<md-button ng-click="!EditCtrl.actionsDisabled && EditCtrl.update()"
-							   ng-disabed="EditCtrl.actionsDisabled" class="md-raised md-primary cta">
-						<md-progress-circular ng-show="EditCtrl.actionsDisabled" class="md-hue-2 md-inline" md-diameter="20px"></md-progress-circular>
-						Guardar
-					</md-button>
-				</div>
-			</md-card>
-		</div>
+			<div flex="100">
+				<ng-include src="'pages/video-detail-edit/partials/video-map.html'"></ng-include>
+			</div>
+			<div flex="100">
+				<md-card layout="row" layout-wrap="auto" class="video-edit-page__edit-actions">
+					<div flex="50" class="actions-delete">
+						<md-button ng-click="!EditCtrl.actionsDisabled && EditCtrl.delete()"
+								   ng-disabed="EditCtrl.actionsDisabled" class="md-raised vertical-middle">
+							<i class="material-icons">delete</i>
+							{{ 'VIDEO_DELETE' | translate}}
+						</md-button>
+					</div>
+					<div flex="50" class="actions-save">
+						<md-button ui-sref="videoPreview({id: EditCtrl.id})" ng-disabed="EditCtrl.actionsDisabled"
+								   class="md-raised">{{ 'VIDEO_CANCEL' | translate }}</md-button>
+						<md-button hide-sm hide-xs type="submit" ng-disabed="EditCtrl.actionsDisabled"
+								   class="md-raised md-primary cta">
+							<md-progress-circular ng-show="EditCtrl.actionsDisabled" class="md-hue-2 md-inline"
+												  md-diameter="20px"></md-progress-circular>
+							{{ 'VIDEO_SAVE' | translate }}
+						</md-button>
+					</div>
+					<div flex="100" hide-gt-sm class="vertical-middle horizontal-center">
+						<md-button type="submit" ng-disabed="EditCtrl.actionsDisabled" class="md-raised md-primary cta">
+							<md-progress-circular ng-show="EditCtrl.actionsDisabled" class="md-hue-2 md-inline"
+												  md-diameter="20px"></md-progress-circular>
+							{{ 'VIDEO_SAVE' | translate }}
+						</md-button>
+					</div>
+				</md-card>
+			</div>
+		</form>
 	</div> <!-- // .zero div row layout -->
 
 </div> <!-- // VideoDetailEditController div -->
-
-<!-- google maps -->
-<script async defer ng-src=""
-		type="text/javascript"></script>
-
-
-	<!-- Screen loading directive -->
-
-	<!--<div ng-if="Video.video.error && !Video.loading" class="headers-info-videoDetail">-->
-		<!--<h1 class="header">{{'VIDEO_ERROR' | translate}}</h1>-->
-		<!--<div>{{'VIDEO_NOT_FOUND' | translate}}</div>-->
-	<!--</div>-->
-	<!---->
-	<!--<article ng-if="Video.video && !Video.video.error">-->
-		<!--<section>-->
-			<!--<div>-->
-				<!--<video controls ng-src="{{::Video.video.video}}" ng-attr-poster="{{::Video.video.poster}}" preload="metadata" controlsList="nodownload"></video>-->
-				<!--&lt;!&ndash; Only if desktop >>> &ndash;&gt;-->
-				<!--<section class="card-user-info card-user-info-desktop">-->
-					<!--<div>-->
-						<!--<img ng-if="Video.user.data.pic" ng-src="{{Video.user.data.pic}}">-->
-						<!--<ng-include ng-if="!Video.user.data.pic" src="'/img/no-user.svg'" ui-sref="userGallery({userId: Video.user.data.owner})"></ng-include>-->
-						<!--<span>{{'USER_PROFFESSIONAL' | translate}}</span>-->
-					<!--</div>-->
-					<!--<div>-->
-						<!--<p><strong>{{'VIDEO_AUTHOR' | translate}}:</strong>{{Video.user.data.username}}</p>-->
-						<!--&lt;!&ndash; TO-DO: Make published videos dynamic &ndash;&gt;-->
-						<!--<p><strong>{{'PUBLISHED_VIDEOS' | translate}}</strong>50</p>-->
-
-					<!--</div>-->
-				<!--</section>-->
-				<!--&lt;!&ndash; <<<<<<< &ndash;&gt;-->
-			<!--</div>-->
-			<!--<section class="card-video-info">-->
-				<!--<div>-->
-					<!--<h1 ng-bind="Video.video.title"></h1>-->
-					<!--<p ng-bind="Video.video.description"></p>-->
-					<!--<div><input type="button" value="+ {{'BUTTON_READ_ALL' | translate}}"/></div>-->
-				<!--</div>-->
-				<!--<hr>-->
-				<!--<div>-->
-					<!--<div class="video-detail-verified">-->
-						<!--<img src="../../img/checked.svg" alt="video-verified" />-->
-						<!--<p>{{'VIDEO_VERIFIED' | translate}}</p>-->
-					<!--</div>-->
-					<!--<div class="video-detail-show-info" ng-click="showDetails = !showDetails">-->
-						<!--<span ng-show="showDetails">{{'HIDE_VIDEO_DETAILS' | translate}}</span>-->
-						<!--<span ng-hide="showDetails">{{'SHOW_VIDEO_DETAILS' | translate}}</span>-->
-					<!--</div>-->
-					<!--<div class="video-detail-info" ng-show="showDetails">-->
-						<!--<p ng-if="!Video.video.added">-->
-							<!--<strong>{{'VIDEO_DETAIL_DATETIME' | translate}}:</strong> {{Video.video.date | date: 'dd/MM/yyyy HH:mm'}}-->
-						<!--</p>-->
-						<!--<p ng-if="!Video.video.tag">-->
-							<!--<strong>{{'VIDEO_DETAIL_CATEGORIES' | translate}}:</strong> {{Video.video.tag}}-->
-						<!--</p>-->
-						<!--<p ng-if="!Video.video.productType">-->
-							<!--<strong>{{'VIDEO_DETAIL_PRODUCT_TYPE' | translate}}:</strong> {{Video.video.productType}}-->
-						<!--</p>-->
-						<!--<p>-->
-							<!--<strong>{{'VIDEO_DETAIL_LENGTH' | translate}}:</strong> {{Video.video.length || 'desconocido'}}-->
-						<!--</p>-->
-						<!--<p>-->
-							<!--<strong>{{'VIDEO_DETAIL_LANGUAGE' | translate}}:</strong> {{Video.video.language || '-'}}-->
-						<!--</p>-->
-						<!--<p>-->
-							<!--<strong>{{'VIDEO_DETAIL_QUALITY' | translate}}:</strong>-->
-							<!--{{Video.video.quality || '-'}}-->
-						<!--</p>-->
-						<!--<p>-->
-							<!--<strong>{{'VIDEO_DETAIL_CREDIBILITY' | translate}}:</strong> {{Video.video.credibility || '-'}}-->
-						<!--</p>-->
-						<!--<p>-->
-							<!--<strong>{{'VIDEO_DETAIL_TECHNICAL_DETAILS' | translate}}:</strong> {{Video.video.size || 0 }} Mb | {{Video.video.format}} | {{Video.video.dimensions}} | {{Video.video.ratio}}-->
-						<!--</p>-->
-						<!--<p>-->
-							<!--<strong>{{'VIDEO_DETAIL_TAGS' | translate}}:</strong> {{Video.video.tag}}-->
-						<!--</p>-->
-						<!--<div class="video-detail-edit-info">-->
-							<!--<a ui-sref="download({id: Video.video._id})">{{'BUTTON_EDIT' | translate}}</a>-->
-						<!--</div>-->
-					<!--</div>-->
-				<!--</div>-->
-				<!--<section class="navigate">&lt;!&ndash;TODO: is there a class for button only??&ndash;&gt;-->
-					<!--<div class="video-detail-edit-info button">-->
-						<!--<a ui-sref="videoDownload({id: Video.video._id})">{{'DOWNLOAD_VIDEO' | translate}}</a>-->
-					<!--</div>-->
-					<!--<div class="video-detail-edit-info button">-->
-						<!--<a ui-sref="gallery">{{'BACK_TO_GALLERY' | translate}}</a>-->
-					<!--</div>-->
-				<!--</section>-->
-
-			<!--</section>-->
-		<!--</section>-->
-		<!--<section class="card-user-info">-->
-			<!--<div>-->
-				<!--<img ng-if="Video.user.data.pic" ng-src="{{Video.user.data.pic}}">-->
-				<!--<ng-include ng-if="!Video.user.data.pic" src="'/img/no-user.svg'" ui-sref="userGallery({userId: Video.user.data.owner})"></ng-include>-->
-				<!--<span>{{'USER_PROFFESSIONAL' | translate}}</span>-->
-			<!--</div>-->
-			<!--<div>-->
-				<!--<p><strong>{{'VIDEO_AUTHOR' | translate}}:</strong>{{Video.user.data.username}}</p>-->
-				<!--<p><strong>{{'PUBLISHED_VIDEOS' | translate}}</strong>50</p>-->
-			<!--</div>-->
-		<!--</section>-->
-		<!---->
-	<!--</article>-->
-	<!---->
-<!--</div>-->

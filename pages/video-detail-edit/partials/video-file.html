@@ -1,6 +1,6 @@
 <md-card layout="row" layout-wrap class="video-edit-page__video-file">
 	<div flex-gt-sm="20" flex="100" class="vertical-middle">
-		Fichero de vídeo
+		{{ 'VIDEO_EDIT_VIDEO_FILE' | translate }}
 	</div>
 	<div flex-gt-sm="30" flex-gt-xs="50" flex="100" class="vertical-middle">
 		<div ng-if="!EditCtrl.newFile" class="new-video-input">
@@ -8,7 +8,8 @@
 				 ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="false"
 				 accept="video/*"
 				 ngf-pattern="'video/*'">
-				{{'Arrastra uno nuevo o haz click para sustituir.' | translate}}
+				{{ 'VIDEO_EDIT_VIDEO_FILE_HINT' | translate}}
+				<md-tooltip>{{ 'VIDEO_EDIT_VIDEO_FILE_HINT' | translate}}</md-tooltip>
 			</div>
 		</div>
 		<div ng-if="EditCtrl.newFile" class="new-video-preview">
@@ -21,7 +22,7 @@
 			<div>
 				<input type="file" accept="video/*" file-model="EditCtrl.newFile"/>
 			</div>
-			<div class="hint">Tamaño máximo del vídeo: xxxxMb</div>
+			<div class="hint">{{ 'VIDEO_EDIT_VIDEO_FILE_MAX_SIZE' | translate }} xxxxMb</div>
 
 			<!--<div ng-messages="userForm.social.$error" ng-if="!showHints">-->
 			<!--<div ng-message="pattern">###-##-#### - Please enter a valid SSN.</div>-->

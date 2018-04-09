@@ -1,13 +1,13 @@
 <md-card layout="column" class="video-edit-page__aditional-details">
 	<div flex>
-		<md-checkbox ng-model="EditCtrl.video.featured" ng-init="EditCtrl.video.featured=true" ng-disabled="!EditCtrl.editorRole">
+		<md-checkbox ng-model="EditCtrl.video.featured" ng-disabled="!EditCtrl.editorRole">
 			<span class="vertical-middle">
-			Destacar <i class="material-icons feature-icon">star_rate</i>
+			{{ 'VIDEO_EDIT_FEATURE' | translate }} <i class="material-icons feature-icon">star_rate</i>
 			</span>
 		</md-checkbox>
-		<md-checkbox ng-model="EditCtrl.video.verified" ng-init="EditCtrl.video.verified=true" ng-disabled="!EditCtrl.editorRole">
+		<md-checkbox ng-model="EditCtrl.video.verified" ng-disabled="!EditCtrl.editorRole">
 			<span class="vertical-middle">
-			Verificar <i class="material-icons verify-icon">check_circle</i>
+			{{ 'VIDEO_EDIT_VERIFY' | translate }} <i class="material-icons verify-icon">check_circle</i>
 			</span>
 		</md-checkbox>
 	</div>
@@ -15,38 +15,38 @@
 		<div flex-gt-sm="50" flex="100" layout="column">
 			<div>
 				<md-input-container class="md-inline half-sized-input">
-					<label>Credibilidad</label>
+					<label>{{ 'VIDEO_DETAIL_CREDIBILITY' | translate }}</label>
 					<input ng-model="EditCtrl.video.credibility" type="number" min="0" max="5" step="1" ng-disabled="!EditCtrl.editorRole">
 				</md-input-container>
 				<md-input-container class="md-inline">
-					<label>Calidad</label>
+					<label>{{ 'VIDEO_DETAIL_QUALITY' | translate }}</label>
 					<input ng-model="EditCtrl.video.quality" type="number" min="0" max="5" step="1" ng-disabled="!EditCtrl.editorRole">
 				</md-input-container>
 			</div>
 			<div>
 				<md-input-container class="md-inline half-sized-input">
-					<label>Precio de emisión estándar</label>
+					<label>{{ 'VIDEO_DETAIL_PRICE_STD' | translate }}</label>
 					<input ng-model="EditCtrl.video.priceStd" type="number" min="0"  step="1" ng-disabled="!EditCtrl.editorRole">
 				</md-input-container>
 				<md-input-container class="md-inline half-sized-input">
-					<label>Precio de antena en país</label>
+					<label>{{ 'VIDEO_DETAIL_PRICE_COUNTRY' | translate }}</label>
 					<input ng-model="EditCtrl.video.priceCountry" type="number" min="0"  step="1" ng-disabled="!EditCtrl.editorRole">
 				</md-input-container>
 			</div>
 			<div>
 				<md-input-container class="md-inline half-sized-input">
-					<label>Precio de antena continental</label>
+					<label>{{ 'VIDEO_DETAIL_PRICE_CONTINENT' | translate }}</label>
 					<input ng-model="EditCtrl.video.priceContinent" type="number" min="0"  step="1" ng-disabled="!EditCtrl.editorRole">
 				</md-input-container>
 				<md-input-container class="md-inline half-sized-input">
-					<label>Precio de antena mundial</label>
+					<label>{{ 'VIDEO_DETAIL_PRICE_WORLD' | translate }}</label>
 					<input ng-model="EditCtrl.video.priceWorld" type="number" min="0"  step="1" ng-disabled="!EditCtrl.editorRole">
 				</md-input-container>
 			</div>
 		</div>
 		<div flex-gt-sm="50" flex="100">
 			<md-input-container class="md-block">
-				<label>Idioma</label>
+				<label>{{ 'VIDEO_DETAIL_LANGUAGE' | translate }}</label>
 				<md-select ng-model="EditCtrl.video.language">
 					<md-option ng-repeat="lang in EditCtrl.langs" value="{{lang.lang}}">
 						{{ "VIDEO_LANG_" + lang.lang | translate}}
@@ -54,7 +54,7 @@
 				</md-select>
 			</md-input-container>
 			<md-input-container class="md-block">
-				<label>Tipos de producto</label>
+				<label>{{ 'VIDEO_DETAIL_PRODUCT_TYPE_LONG' | translate }}</label>
 				<md-select ng-model="EditCtrl.productType" multiple="true">
 					<md-option ng-repeat="productType in EditCtrl.productTypes" value="{{productType.productType}}">
 						{{ "PRODUCT_TYPE_" + productType.productType | translate }}

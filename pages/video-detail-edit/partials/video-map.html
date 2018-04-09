@@ -1,11 +1,18 @@
 <md-card class="video-edit-page__video-location">
 	<div>
-		Haz click en el mapa para indicar la posición exacta del vídeo
+		{{ 'VIDEO_EDIT_CLICK_MAP_HINT' | translate }}
 	</div>
-	<ng-map default-style="true" center="current-location" zoom="6">
+	<input places-auto-complete size=80
+		   ng-model="EditCtrl.video.location"
+		   language="EditCtrl.placeLang"
+		   types="EditCtrl.placeTypes"
+		   on-place-changed="EditCtrl.placeChanged()" /> <br/>
+	<ng-map default-style="true" center="current-location" on-click="EditCtrl.mapClick($event)">
 		<info-window position="current-location">
 			<span>Location found using HTML5.</span>
 		</info-window>
+		<marker ng-if="EditCtrl.marker" position="{{ EditCtrl.marker.position }}"
+				title="{{ EditCtrl.marker.name }}" centered="true"></marker>
 	</ng-map>
 
 </md-card> <!-- // .aditional-details md-card -->
