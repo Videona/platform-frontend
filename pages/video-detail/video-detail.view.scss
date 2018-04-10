@@ -145,7 +145,7 @@ strong {
 		}
 		img, svg {
 			@include border-radius(50%);
-			margin: $cardMargin 25px 5px $cardMargin;
+			margin: $cardMargin $cardMargin 5px $cardMargin;
 			width: 65px;
 			height: 65px;
 		}
