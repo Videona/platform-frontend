@@ -22,7 +22,7 @@
 			<div>
 				<input type="file" accept="video/*" file-model="EditCtrl.newFile"/>
 			</div>
-			<div class="hint">{{ 'VIDEO_EDIT_VIDEO_FILE_MAX_SIZE' | translate }} xxxxMb</div>
+			<div ng-if="EditCtrl.maxVideoUploadSize" class="hint">{{ 'VIDEO_EDIT_VIDEO_FILE_MAX_SIZE' | translate }} {{ EditCtrl.maxVideoUploadSize }}Mb</div>
 
 			<!--<div ng-messages="userForm.social.$error" ng-if="!showHints">-->
 			<!--<div ng-message="pattern">###-##-#### - Please enter a valid SSN.</div>-->

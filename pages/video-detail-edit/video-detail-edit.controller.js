@@ -1,18 +1,17 @@
 angular.module('app')
-	.controller('VideoDetailEditController', ['$stateParams', '$mdConstant', 'session', 'video', 'gmapsApiKey',
-		'$sce', '$state', '$mdToast', 'NgMap', '$scope', VideoDetailEditController]);
+	.controller('VideoDetailEditController', ['$stateParams', '$mdConstant', 'session', 'video', 'maxVideoUploadByteSize',
+		'$state', '$mdToast', 'NgMap', '$scope', VideoDetailEditController]);
 
-function VideoDetailEditController($stateParams, $mdConstant, session, video, gmapsApiKey, $sce, $state, $mdToast,
-                                   NgMap, $scope) {
+function VideoDetailEditController($stateParams, $mdConstant, session, video, maxVideoUploadByteSize,
+                                   $state, $mdToast, NgMap, $scope) {
 	var self = this;
 
 	self.session = session;
 	self.videoService = video;
-	// TODO(jliarte): should move to main controller?
-	self.gmapsApiURL = $sce.trustAsResourceUrl('https://maps.googleapis.com/maps/api/js?key=' + gmapsApiKey);
 	self.id = $stateParams.id;
 	self.loading = true;
 	self.actionsDisabled = true;
+	self.maxVideoUploadSize = maxVideoUploadByteSize / 1000;
 	self.tagsKeys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA];
 
 	// selfish Methods
