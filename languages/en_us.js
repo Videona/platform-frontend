@@ -93,6 +93,9 @@
 			BUTTON_READ_LESS: 'Read less',
 			BUTTON_EDIT: 'Edit',
 
+			// Search page
+			SHOWING_RESULTS_FOR: 'Showing {{count}} results for',
+
 			// User Gallery page
 			USER_GALLERY_USER_VIDEOS: '{{username}} videos',
 			USER_GALLERY_USER_NOT_FOUND_TITLE: 'User not found',
