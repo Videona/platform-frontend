@@ -3,7 +3,7 @@
 	<section class="video-info">
 		<h2>{{::title}} <ng-include ng-if="tag === 'featured'" src="'/img/checked.svg'"></ng-include></h2>
 		<h3 ng-bind="author"></h3>
-		<h4>Uploaded <span am-time-ago="date"></span></h4>
+		<h4 class="capital_first_letter" am-time-ago="date"></h4>
 		<h3 ng-bind="productType"></h3>
 	</section>
 	<section class="video-isVerified" ng-if="isVerified">

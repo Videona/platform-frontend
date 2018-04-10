@@ -20,6 +20,8 @@
 		default:
 			lang = 'es_es';
 		}
+		
+		moment.lang(navigator.language);
 
 		$translateProvider.useSanitizeValueStrategy('escape');
 		$translateProvider.preferredLanguage(lang);

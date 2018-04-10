@@ -44,3 +44,7 @@ video-card {
 		}
 	}
 }
+
+.capital_first_letter:first-letter {
+	text-transform: capitalize;
+}
