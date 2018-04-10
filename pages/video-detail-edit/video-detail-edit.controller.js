@@ -159,6 +159,9 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, gm
 		if (self.video.categories) {
 			self.category = self.video.categories.trim().split(',').filter(item => item);
 		}
+		self.video.title = self.video.title || '';
+		self.video.description = self.video.description || '';
+		self.video.notes = self.video.notes || '';
 	}
 
 	function getVideo() {
