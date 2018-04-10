@@ -33,10 +33,9 @@
 	  height: 56vw;
 	  width: 100%;
 		@include desktop {
-			max-width: 608px;
-			max-height: 342px;
+			max-height: 337px;
 	    height: 28.12vw;
-			width: 50vw;
+			width: 50%;
 		}
 	
 		.upload-form-file {
