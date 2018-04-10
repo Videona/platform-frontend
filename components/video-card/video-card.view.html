@@ -1,15 +1,13 @@
-<div ng-style="{'width':size.width}" class="card-container">
-	<img ng-src="{{poster}}" onerror="this.src = '/img/no-video.svg'" alt="title" ng-style="size" />
+<div class="card-container">
+	<article ng-style="{'background-image':'url(' + poster + ')'}" class="video-image"></article>
 	<section class="video-info">
-		<h2 ng-bind="title"></h2>
-		<h4>{{productType | productType}}</h4>
+		<h2>{{::title}} <ng-include ng-if="tag === 'featured'" src="'/img/checked.svg'"></ng-include></h2>
+		<h3 ng-bind="author"></h3>
+		<h4>Uploaded <span am-time-ago="date"></span></h4>
+		<h3 ng-bind="productType"></h3>
 	</section>
 	<section class="video-isVerified" ng-if="isVerified">
 		<img src="../../img/checked.svg" alt="video_verified" />
 		<p>{{'VIDEO_VERIFIED' | translate}}</p>
-	</section>
-	<section class="video-isVerified" ng-if="!isVerified">
-		<img src="../../img/unchecked.svg" alt="video_not_verified" />
-		<p>{{'VIDEO_NOT_VERIFIED' | translate}}</p>
 	</section>
 </div>

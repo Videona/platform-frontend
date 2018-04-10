@@ -1,6 +1,6 @@
 (function () {
 	// App
-	angular.module('app', ['app.config', 'app.flavour', 'ui.router', 'pascalprecht.translate', 'infinite-scroll', 'ngFileUpload'])
+	angular.module('app', ['app.config', 'app.flavour', 'ui.router', 'pascalprecht.translate', 'infinite-scroll', 'ngFileUpload', 'angularMoment'])
 		.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$translateProvider', conf]);
 
 	function conf($locationProvider, $stateProvider, $urlRouterProvider, $translateProvider) {
