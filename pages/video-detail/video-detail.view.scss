@@ -12,6 +12,7 @@
 		}
 	}
 	.card-user-info-desktop {
+		cursor: pointer;
 		display: none;
 	}
 	@include desktop {
@@ -35,6 +36,10 @@
 			margin: 5px;
 		}
 	}
+}
+
+.card-video-detail {
+	padding: 10px;
 }
 
 .card-video-info {
