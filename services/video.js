@@ -9,6 +9,7 @@ function videoService(api) {
 		update,
 		getVideoLangs,
 		getProductTypes,
+		getVideoCategories,
 	};
 
 	return video;
@@ -51,6 +52,17 @@ function videoService(api) {
 			api.get(api.url + '/video/product_type', function (productTypes, status) {
 				if (productTypes != undefined && status <= 400) {
 					resolve(productTypes);
+				}
+				reject(status);
+			});
+		});
+	}
+
+	function getVideoCategories() {
+		return new Promise((resolve, reject) => {
+			api.get(api.url + '/video/category', function (videoCategories, status) {
+				if (videoCategories != undefined && status <= 400) {
+					resolve(videoCategories);
 				}
 				reject(status);
 			});

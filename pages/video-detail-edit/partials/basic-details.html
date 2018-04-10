@@ -10,8 +10,8 @@
 	<md-input-container flex>
 		<label>{{ 'VIDEO_DETAIL_CATEGORIES' | translate }}</label>
 		<md-select ng-model="EditCtrl.category" multiple="true">
-			<md-option ng-repeat="category in EditCtrl.categories" value="{{category.name}}">
-				{{category.name}}
+			<md-option ng-repeat="category in EditCtrl.categories" value="{{category.category}}">
+				{{ "VIDEO_CATEGORY_" + category.category | translate }}
 			</md-option>
 		</md-select>
 	</md-input-container>

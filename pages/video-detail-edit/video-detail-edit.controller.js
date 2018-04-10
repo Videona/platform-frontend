@@ -134,10 +134,7 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, gm
 	function initSelectMaps() {
 		self.videoService.getVideoLangs().then(langs => self.langs = langs );
 		self.videoService.getProductTypes().then(productTypes => self.productTypes = productTypes );
-		// TODO(jliarte): get them from backend
-		self.categories = ['Economía', 'Nacional', 'Internacional'].map(function (category) {
-			return {name: category};
-		});
+		self.videoService.getVideoCategories().then(videoCategories => self.categories = videoCategories );
 	}
 
 	function initVideoFields() {
