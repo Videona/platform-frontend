@@ -26,12 +26,47 @@
     @include border-radius($cardRadius);
     padding: 13px;
     md-input-container {
-      margin: 10px 0;
+      margin: 10px 2px;
     }
     input, select, textarea, md-select-value {
       border: 1px solid $lightGrey;
       padding: 5px;
     }
+    .hint {
+      color: $lightGrey;
+    }
+  }
+
+  md-input-container {
+    padding: 10px 0 0 0;
+  }
+
+  .new-thumbnail-input {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    .drop-box {
+      width: 100%;
+      color: $grey;
+      flex-grow: 1;
+      flex-direction: column;
+      background-color: $ultraLightGray;
+      @include border-radius(5px);
+      height: 100%;
+      text-align: center;
+      padding: 5% 0;
+      .upload-drop-icon {
+        width: 32px;
+        display: inline-block;
+        margin-bottom: 16px;
+      }
+      i {
+        position: relative;
+        display: inline-block;
+        background-color: none;
+      }
+    }
+
   }
 }
 
@@ -42,7 +77,7 @@
   .new-thumbnail-preview {
     position: relative;
   }
-  i {
+  i.remove-icon {
     background-color: #fff;
     color: $mainColor;
     position: absolute;
@@ -53,25 +88,6 @@
   .custom-thumbnail {
     display: flex;
     flex-direction: column;
-    .new-thumbnail-input {
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
-  }
-  .drop-box {
-    flex-grow: 1;
-    flex-direction: column;
-    background-color: $lightGrey;
-    @include border-radius(5px);
-    height: 100%;
-    text-align: center;
-    padding: 5% 0;
-    .upload-drop-icon {
-      width: 32px;
-      display: inline-block;
-      margin-bottom: 16px;
-    }
   }
   .new-thumbnail-preview {
     width: 100%;
@@ -79,9 +95,14 @@
 }
 
 .video-edit-page__aditional-details {
-  //.half-sized-input {
-  //  width: 100px;
-  //}
+  .first-row {
+    padding: 10px 4px;
+  }
+
+  .medium-sized-input {
+    // TODO(jliarte): check responsiveness
+    width: 214px;
+  }
   .feature-icon {
     color: yellow;
   }
@@ -91,13 +112,6 @@
 }
 
 .video-edit-page__video-file {
-  .drop-box {
-    border: 3px dashed $lightGrey;
-    @include border-radius(5px);
-    margin: 10px;
-    text-align: center;
-    padding: 5% 0;
-  }
   input {
     height: 40px;
   }
@@ -137,8 +151,8 @@
       border: 0;
     }
     &.cta {
-      padding: 10px 40px;
-      font-size: 120%;
+      //padding: 10px 40px;
+      //font-size: 120%;
       font-weight: bold;
     }
     md-progress-circular {
@@ -168,4 +182,8 @@ md-toolbar {
     margin: $cardMargin;
     cursor: pointer;
   }
+}
+
+md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) {
+  background-color: white;
 }

@@ -1,24 +1,24 @@
 <md-card layout="column" class="video-edit-page__aditional-details">
-	<div flex>
+	<div flex class="first-row">
 		<md-checkbox ng-model="EditCtrl.video.featured" ng-disabled="!EditCtrl.editorRole">
 			<span class="vertical-middle">
-			{{ 'VIDEO_EDIT_FEATURE' | translate }} <i class="material-icons feature-icon">star_rate</i>
+			{{ 'VIDEO_EDIT_FEATURE' | translate }}
 			</span>
 		</md-checkbox>
 		<md-checkbox ng-model="EditCtrl.video.verified" ng-disabled="!EditCtrl.editorRole">
 			<span class="vertical-middle">
-			{{ 'VIDEO_EDIT_VERIFY' | translate }} <i class="material-icons verify-icon">check_circle</i>
+			{{ 'VIDEO_EDIT_VERIFY' | translate }}
 			</span>
 		</md-checkbox>
 	</div>
 	<div flex layout="row" layout-wrap>
 		<div flex-gt-sm="50" flex="100" layout="column">
 			<div>
-				<md-input-container class="md-inline half-sized-input">
+				<md-input-container class="md-inline medium-sized-input">
 					<label>{{ 'VIDEO_DETAIL_CREDIBILITY' | translate }}</label>
 					<input ng-model="EditCtrl.video.credibility" type="number" min="0" max="5" step="1" ng-disabled="!EditCtrl.editorRole">
 				</md-input-container>
-				<md-input-container class="md-inline">
+				<md-input-container class="md-inline medium-sized-input">
 					<label>{{ 'VIDEO_DETAIL_QUALITY' | translate }}</label>
 					<input ng-model="EditCtrl.video.quality" type="number" min="0" max="5" step="1" ng-disabled="!EditCtrl.editorRole">
 				</md-input-container>
@@ -45,30 +45,36 @@
 			</div>
 		</div>
 		<div flex-gt-sm="50" flex="100">
-			<md-input-container class="md-block">
-				<label>{{ 'VIDEO_DETAIL_LANGUAGE' | translate }}</label>
-				<md-select ng-model="EditCtrl.video.language">
-					<md-option ng-repeat="lang in EditCtrl.langs" value="{{lang.lang}}">
-						{{ "VIDEO_LANG_" + lang.lang | translate }}
-					</md-option>
-				</md-select>
-			</md-input-container>
-			<md-input-container class="md-block">
-				<label>{{ 'VIDEO_DETAIL_PRODUCT_TYPE_LONG' | translate }}</label>
-				<md-select ng-model="EditCtrl.productType" multiple="true">
-					<md-option ng-repeat="productType in EditCtrl.productTypes" value="{{productType.productType}}">
-						{{ "PRODUCT_TYPE_" + productType.productType | translate }}
-					</md-option>
-				</md-select>
-			</md-input-container>
-			<!--<md-input-container class="md-block">-->
-			<!--<label>Etiquetas</label>-->
-			<md-chips
-					ng-model="EditCtrl.tags"
-					md-separator-keys="EditCtrl.tagsKeys"
-					placeholder="Enter a tag"
-					secondary-placeholder="Comma separated tags"></md-chips>
-			<!--</md-input-container>-->
+			<div>
+				<md-input-container class="md-inline">
+					<label>{{ 'VIDEO_DETAIL_LANGUAGE' | translate }}</label>
+					<md-select ng-model="EditCtrl.video.language">
+						<md-option ng-repeat="lang in EditCtrl.langs" value="{{lang.lang}}">
+							{{ "VIDEO_LANG_" + lang.lang | translate }}
+						</md-option>
+					</md-select>
+				</md-input-container>
+			</div>
+			<div>
+				<md-input-container class="md-inline">
+					<label>{{ 'VIDEO_DETAIL_PRODUCT_TYPE_LONG' | translate }}</label>
+					<md-select ng-model="EditCtrl.productType" multiple="true">
+						<md-option ng-repeat="productType in EditCtrl.productTypes" value="{{productType.productType}}">
+							{{ "PRODUCT_TYPE_" + productType.productType | translate }}
+						</md-option>
+					</md-select>
+				</md-input-container>
+			</div>
+			<div>
+				<md-input-container class="md-inline">
+				<!--<label>Etiquetas</label>-->
+				<md-chips class="md-inline"
+						ng-model="EditCtrl.tags"
+						md-separator-keys="EditCtrl.tagsKeys"
+						placeholder="Enter a tag"
+						secondary-placeholder="Comma separated tags"></md-chips>
+				</md-input-container>
+			</div>
 		</div>
 	</div>
 </md-card> <!-- // .aditional-details md-card -->

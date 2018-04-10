@@ -2,11 +2,13 @@
 	<div>
 		{{ 'VIDEO_EDIT_CLICK_MAP_HINT' | translate }}
 	</div>
-	<input places-auto-complete size=80
-		   ng-model="EditCtrl.video.location"
-		   language="EditCtrl.placeLang"
-		   types="EditCtrl.placeTypes"
-		   on-place-changed="EditCtrl.placeChanged()" /> <br/>
+	<md-input-container>
+		<input places-auto-complete size=80
+			   ng-model="EditCtrl.video.location"
+			   language="EditCtrl.placeLang"
+			   types="EditCtrl.placeTypes"
+			   on-place-changed="EditCtrl.placeChanged()">
+	</md-input-container>
 	<ng-map default-style="true" center="current-location" on-click="EditCtrl.mapClick($event)">
 		<info-window position="current-location">
 			<span>Location found using HTML5.</span>

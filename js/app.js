@@ -115,7 +115,7 @@
 		});
 
 		$mdThemingProvider.theme('default')
-			.primaryPalette('vimojo');
+			.primaryPalette('blue');
 	}
 
 	function setupDateLocale(lang, $mdDateLocaleProvider) {

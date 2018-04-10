@@ -7,19 +7,15 @@
 		<div layout="row" layout-margin="10" class="video-edit-page__thumbnails">
 			<div flex-gt-xs="10" flex="0"></div>
 			<div flex-gt-xs="40" flex="50" layout="column">
-				<div>{{ 'VIDEO_EDIT_THUMBNAIL_DEFAULT' | translate }}</div>
 				<img ng-if="EditCtrl.video.poster" ng-src="{{EditCtrl.video.poster}}">
+				<md-tooltip>{{ 'VIDEO_EDIT_THUMBNAIL_DEFAULT' | translate}}</md-tooltip>
 			</div>
-			<div flex-gt-xs="40" flex="50" layout="column" class="custom-thumbnail">
-				<div>
-					{{ 'VIDEO_EDIT_THUMBNAIL_CUSTOM' | translate }}
-				</div>
-				<div ng-if="!EditCtrl.newPoster" class="new-thumbnail-input">
+			<div flex-gt-xs="40" flex="50" class="custom-thumbnail" layout-align="center center" >
+				<div ng-if="!EditCtrl.newPoster" class="new-thumbnail-input" layout-fill layout-align="center center" >
 					<div ngf-drop ngf-select ng-model="EditCtrl.newPoster" class="drop-box vertical-middle"
 						 ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="false"
-						 accept="image/*"
-						 ngf-pattern="'image/*'">
-						<img class="upload-drop-icon" src="/img/upload-arrow.svg" alt="img_menu"><br/>
+						 accept="image/*" ngf-pattern="'image/*'">
+						<i class="material-icons">file_upload</i><br />
 						<span hide-xs>{{ 'VIDEO_EDIT_THUMBNAIL_CUSTOM_HINT' | translate}}</span>
 						<md-tooltip>{{ 'VIDEO_EDIT_THUMBNAIL_CUSTOM_HINT' | translate}}</md-tooltip>
 					</div>
