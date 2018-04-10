@@ -8,11 +8,9 @@
 	</div>
 
 	<div ng-if="VideoDownload.video.data.error && !VideoDownload.loading" class="headers-info-videoDownload">
-			<!-- TO-DO: Set translation -->
-		<h1 class="header">Video erróneo</h1>
+		<h1 class="header">{{'ERROR_DOWNLOAD_VIDEO' | translate}}</h1>
 		<div>
-			<!-- TO-DO: Set translation -->
-			No hemos podido encontrar ese video. Por favor, comprueba que el enlace es correcto, y prueba de nuevo.
+			{{'ERROR_DOWNLOAD_VIDEO_NOT_EXISTS' | translate}}
 		</div>
 	</div>
 
