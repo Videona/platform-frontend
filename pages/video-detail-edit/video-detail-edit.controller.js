@@ -31,11 +31,11 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, ma
 
 	function setLocation(selectedLocation) {
 		if (selectedLocation) {
-			self.video.location = selectedLocation.name;
+			self.video.locationName = selectedLocation.name;
 			self.marker = { position: [selectedLocation.latLng.lat(), selectedLocation.latLng.lng()], name: selectedLocation.name};
 		} else {
 			delete self.marker;
-			delete self.video.location;
+			delete self.video.locationName;
 		}
 	}
 
@@ -52,10 +52,12 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, ma
 			}
 			$scope.$apply();
 		});
-
 	};
 
-	self.update = function () {
+	self.update = function (isValidForm) {
+		if (!isValidForm) {
+			return showMessage('There are errors processing your form, please check.');
+		}
 		self.actionsDisabled = true;
 		sanitizeVideoFields();
 		console.log("video to update is ", self.video);
@@ -110,6 +112,9 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, ma
 		}
 		self.video.categories = self.category.join(",");
 		self.video.id = self.id;
+		if (self.marker) {
+			self.video.location = JSON.stringify({lat: self.marker.position[0], lng: self.marker.position[1]});
+		}
 	}
 
 	function resetForm() {
@@ -161,6 +166,10 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, ma
 		self.video.title = self.video.title || '';
 		self.video.description = self.video.description || '';
 		self.video.notes = self.video.notes || '';
+		self.video.locationName = self.video.locationName || '';
+		if (self.video.location) {
+			setLocation({name: self.video.locationName, latLng: new google.maps.LatLng(self.video.location) });
+		}
 	}
 
 	function getVideo() {

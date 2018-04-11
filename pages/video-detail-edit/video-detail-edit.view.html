@@ -20,7 +20,7 @@
 
 	<loading-card ng-if="!EditCtrl.video && EditCtrl.loading"></loading-card>
 	<div ng-if="!EditCtrl.loading && EditCtrl.video" flex-gt-md="80" flex-offset-gt-md="10" class="video-edit-page__main-details">
-		<form name="videoForm" novalidate ng-submit="videoForm.$valid && EditCtrl.update()" layout="row" layout-wrap flex="100">
+		<form name="videoForm" novalidate ng-submit="EditCtrl.update(videoForm.$valid)" layout="row" layout-wrap flex="100">
 			<div flex-gt-sm="60" flex="100">
 				<ng-include src="'pages/video-detail-edit/partials/main-player.html'"></ng-include>
 			</div>

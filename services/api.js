@@ -25,9 +25,7 @@
 			if (data.files != undefined && data.files.length > 0) {
 				let uploadFiles = data.files;
 				delete data.files;
-				delete data.file;
 				let req = buildRequestForFileUpload('PUT', url, data);
-				let i = 0;
 				uploadFiles.forEach(file => {
 					req.data.append(file.name, file.file);
 				});
