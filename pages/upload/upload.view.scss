@@ -30,11 +30,11 @@
 	}
 
 	.left-preview {	
-	    height: 56vw;
-	    width: 100%;
-
+	  height: 56vw;
+	  width: 100%;
 		@include desktop {
-	    	height: 23vw;
+			max-height: 287.6px;
+	    height: 22.5vw;
 			width: 50%;
 		}
 	
@@ -113,7 +113,7 @@
 				margin: 16px 4px;
 				padding: 8px 32px;
 				width: 100%;
-
+				@include border-radius($cardRadius);
 				@include desktop {
 					width: auto;
 				}
@@ -147,6 +147,7 @@
 	/* Upload drop box */
 	.drop-box {
 	    background: $lightGrey;
+			color: #8b8b8b;
 	    border: 3px solid $lightGrey;
 	    border-radius: 5px;
 		box-sizing: border-box;

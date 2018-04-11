@@ -1,3 +1,5 @@
+<topbar></topbar>
+
 <div ng-controller="VideoDownloadController as VideoDownload" class="download-page">
 
 	<!-- Screen loading directive -->
@@ -6,14 +8,14 @@
 	</div>
 
 	<div ng-if="VideoDownload.video.data.error && !VideoDownload.loading" class="headers-info-videoDownload">
-		<h1 class="header">Video erróneo</h1>
+		<h1 class="header">{{'ERROR_DOWNLOAD_VIDEO' | translate}}</h1>
 		<div>
-			No hemos podido encontrar ese video. Por favor, comprueba que el enlace es correcto, y prueba de nuevo.
+			{{'ERROR_DOWNLOAD_VIDEO_NOT_EXISTS' | translate}}
 		</div>
 	</div>
 
 	<article ng-if="VideoDownload.video.data && !VideoDownload.video.data.error">
-		<video controls ng-src="{{::VideoDownload.video.data.video}}" ng-attr-poster="{{::VideoDownload.video.data.poster}}" preload="metadata" controlsList="nodownload" class="video-download-page"></video>
+		<video controls ng-src="{{::VideoDownload.video.data.video}}" ng-attr-poster="{{::VideoDownload.video.data.poster || '/img/no-video.svg'}}" preload="metadata" controlsList="nodownload" class="video-download-page"></video>
 		<section class="info-download-video">
 			<div>
 				<div class="headers-info-videoDownload">
@@ -25,14 +27,14 @@
 					<img src="../../img/checked.svg" alt="video-verified" />
 					<p>{{'VIDEO_VERIFIED' | translate}}</p>
 				</div>
-				<div class="download-video-code">
+				<div class="download-video-code" ng-if="VideoDownload.session.id !== VideoDownload.video.data.owner">
 					<p>{{'DOWNLOAD_CODE' | translate}}</p>
 					<div class="code-error" ng-if="VideoDownload.error" ng-bind="VideoDownload.error"></div>
 					<div ng-if="VideoDownload.loading" class="loading">{{'LOADING' | translate}}</div>
 					<input type="text" ng-model="VideoDownload.code">
 				</div>
 				<div class="videoDownload-button">
-					<button ng-class="VideoDownload.code ? '' : 'disabled'" ng-click="VideoDownload.download()" target="_blank">{{'DOWNLOAD_VIDEO' | translate}}</button>
+					<button ng-class="VideoDownload.code || VideoDownload.session.id === VideoDownload.video.data.owner ? '' : 'disabled'" ng-click="VideoDownload.download()" target="_blank">{{'DOWNLOAD_VIDEO' | translate}}</button>
 				</div>
 			</div>
 			<div class="videoDownload-go-back-mobile">

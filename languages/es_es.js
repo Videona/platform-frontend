@@ -1,5 +1,5 @@
 (function () {
-	// English
+	// Spanish
 	angular.module('app').config(['$translateProvider', translate]);
 
 	function translate($translateProvider) {
@@ -50,6 +50,8 @@
 			VIDEO_NOT_VERIFIED: 'No verificado',
 			DOWNLOAD_CODE: 'Introduce un código de descarga',
 			DOWNLOAD_VIDEO: 'Descargar vídeo',
+			ERROR_DOWNLOAD_VIDEO: 'Vídeo erróneo',
+			ERROR_DOWNLOAD_VIDEO_NOT_EXISTS: 'No hemos podido encontrar ese video. Por favor, comprueba que el enlace es correcto, y prueba de nuevo.',
 			BACK_TO_GALLERY: 'Volver a la galería',
 			ERROR_WRONG_DOWNLOAD_CODE: 'Código de descarga inválido',
 

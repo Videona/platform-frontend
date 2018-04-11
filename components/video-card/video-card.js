@@ -1,5 +1,5 @@
 angular.module('app')
-	.directive('videoCard', videoCardDirective);
+	.directive('videoCard', ['moment', videoCardDirective]);
 
 function videoCardDirective() {
 	
@@ -7,20 +7,16 @@ function videoCardDirective() {
 		scope._id = scope.video._id;
 		scope.title = scope.video.title;
 		scope.poster = scope.video.poster;
+		scope.author = scope.video.ownerData.username;
+		scope.date = scope.video.date;
+		scope.tag = scope.video.tag;
 		scope.productType = scope.video.productType;
 		scope.isVerified = scope.video.isVerified;
-		
-		scope.size = {
-			width: scope.width,
-			height: scope.height
-		}
 	}
 	
 	return {
 		scope: {
-			video: '<',
-			width: '<',
-			height: '<'
+			video: '<'
 		},
 		link: link,
 		templateUrl: 'components/video-card/video-card.view.html'

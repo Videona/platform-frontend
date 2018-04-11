@@ -5,26 +5,27 @@ video-card {
 		background-color: white;
 		cursor: pointer;
 		@include border-radius($cardRadius);
-		img {
-			@include border-radius($cardRadius);
-			width: 100%;
-		}
 		.video-info {
 			@extend %display-flex;
 			@extend %flex-direction-column;
-			margin: 12px 7px 0 12px;
-			h2, h4 {
+			margin: 12px 7px 12px 12px;
+			svg {
+				width: 12px;
+			}
+			h2, h3, h4 {
 				white-space: nowrap;
 				overflow: hidden;
 				text-overflow: ellipsis;
+				line-height: normal;
 			}
 			h2 {
-				font-size: 15px;
+				font-size: 16px;
 				color: $text;
+				margin-bottom: 5px;
 			}
-			h4 {
-				margin-top: 4px;
+			h3, h4 {
 				font-size: 12px;
+				margin-top: 4px;
 				color: $grey;
 			}
 		}
@@ -43,4 +44,8 @@ video-card {
 			}
 		}
 	}
+}
+
+.capital_first_letter:first-letter {
+	text-transform: capitalize;
 }

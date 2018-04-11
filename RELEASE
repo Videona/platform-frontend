@@ -1,2 +1,4 @@
-v0.4.2
-- Product types refactored to service in order to display names consistently 
+v0.5.0
+Improve images, colors, sizes & other stuff.
+It is possible right now to download a video if you are the owner.
+It is possible right now to register being logged in.

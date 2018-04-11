@@ -1,13 +1,14 @@
 angular.module('app')
-	.controller('VideoDownloadController', ['$stateParams', 'video', 'videoDownload', '$translate', VideoDownload]);
+	.controller('VideoDownloadController', ['$stateParams', 'video', 'videoDownload', '$translate', 'session', VideoDownload]);
 
-function VideoDownload($stateParams, video, videoDownload, $translate) {
+function VideoDownload($stateParams, video, videoDownload, $translate, session) {
 	var self = this;
 
 	self.id = $stateParams.id;
 	self.code = '';
 	self.loading = true;
 	self.error = null;
+	self.session = session;
 
 	self.video = video;
 

@@ -5,7 +5,7 @@
 	function productType(productType)	{
 		return function (typesStr) {
 			if (!typesStr) {
-				return '-';
+				return '';
 			}
 
 			var types = typesStr.split(',');
@@ -18,7 +18,7 @@
 				}
 			}
 
-			return typesLang || '-';
+			return typesLang || '';
 		};
 
 		function find(id) {
