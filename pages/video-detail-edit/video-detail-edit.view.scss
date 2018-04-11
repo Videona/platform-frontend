@@ -32,6 +32,18 @@
       border: 1px solid $lightGrey;
       padding: 5px;
     }
+    .md-chips {
+      padding: 0;
+    }
+    .md-chips .md-chip-input-container {
+      margin: 4px 8px 0 0;
+      margin: 0;
+      padding: 0;
+      height: 50px;
+    }
+    //.md-chips .md-chip-input-container:not(:first-child) {
+    //  margin: 8px 8px 0 0;
+    //}
     .hint {
       color: $lightGrey;
     }
