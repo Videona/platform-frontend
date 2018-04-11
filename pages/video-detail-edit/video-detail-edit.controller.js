@@ -5,6 +5,7 @@ angular.module('app')
 function VideoDetailEditController($stateParams, $mdConstant, session, video, maxVideoUploadByteSize,
                                    $state, $mdToast, NgMap, $scope, $translate) {
 	var self = this;
+	const INITIAL_MAP_ZOOM = 6;
 
 	self.session = session;
 	self.videoService = video;
@@ -26,7 +27,7 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, ma
 	self.placeChanged = function() {
 		self.place = this.getPlace();
 		setLocation({name: self.place.name, latLng: self.place.geometry.location});
-		self.map.setCenter(self.place.geometry.location);
+		centerMap(self.place.geometry.location);
 	};
 
 	function setLocation(selectedLocation) {
@@ -94,10 +95,13 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, ma
 	function initGMaps() {
 		NgMap.getMap().then(function (map) {
 			self.map = map;
+			if (self.video && self.video.location) {
+				centerMap(new google.maps.LatLng(self.video.location));
+				self.map.setZoom(INITIAL_MAP_ZOOM);
+			}
 		});
 		self.placeTypes = ['(cities)', '(regions)'];
-		// self.placeLang = session.currentLang;
-		self.placeLang = 'es-ES';
+		self.placeLang = session.currentLang;
 	}
 
 	function sanitizeVideoFields() {
@@ -139,6 +143,14 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, ma
 		self.videoService.getVideoLangs().then(langs => self.langs = langs );
 		self.videoService.getProductTypes().then(productTypes => self.productTypes = productTypes );
 		self.videoService.getVideoCategories().then(videoCategories => self.categories = videoCategories );
+	}
+
+	function centerMap(latLng) {
+		console.log("centering map in ", latLng);
+		console.log("map is ", self.map);
+		if (self.map) {
+			self.map.setCenter(latLng);
+		}
 	}
 
 	function initVideoFields() {
