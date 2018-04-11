@@ -26,10 +26,20 @@
 
 		// Internal functions
 		function onInit() {
+			if (!self.videos) {
+				self.videos = [];
+			}
 			if (self.tagFilter instanceof Array && self.tagFilter.length > 0) {
 			  createTagFilter(self.tagFilter);
 			}
+			if (typeof self.query === 'string' && self.query.trim() !== '') {
+				createQueryFilter(self.query);
+			}
 			getVideoList();
+		}
+
+		function createQueryFilter(query) {
+			self.queryParams.q = query;
 		}
 
 		function createTagFilter(tagFilter) {
@@ -55,6 +65,10 @@
 					if (status < 400 && data.length > 0) {
 						self.loading = false;
 						self.videos = self.videos.concat(data);
+						if(self.meta) {
+							self.meta.count = self.videos.length;
+						}
+						console.log(self.videos);
 						self.queryParams.offset += data.length;
 					}
 				});

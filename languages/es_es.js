@@ -94,6 +94,9 @@
 			BUTTON_READ_LESS: 'Ver menos',
 			BUTTON_EDIT: 'Editar',
 
+			// Search page
+			SHOWING_RESULTS_FOR: 'Mostrando {{count}} resultados para',
+
 			// User Gallery page
 			USER_GALLERY_USER_VIDEOS: 'Vídeos de {{username}}',
 			USER_GALLERY_USER_NOT_FOUND_TITLE: 'Usuario no encontrado',
