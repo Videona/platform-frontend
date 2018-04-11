@@ -1,9 +1,9 @@
 angular.module('app')
 	.controller('VideoDetailEditController', ['$stateParams', '$mdConstant', 'session', 'video', 'maxVideoUploadByteSize',
-		'$state', '$mdToast', 'NgMap', '$scope', VideoDetailEditController]);
+		'$state', '$mdToast', 'NgMap', '$scope', '$translate', VideoDetailEditController]);
 
 function VideoDetailEditController($stateParams, $mdConstant, session, video, maxVideoUploadByteSize,
-                                   $state, $mdToast, NgMap, $scope) {
+                                   $state, $mdToast, NgMap, $scope, $translate) {
 	var self = this;
 
 	self.session = session;
@@ -56,19 +56,19 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, ma
 
 	self.update = function (isValidForm) {
 		if (!isValidForm) {
-			return showMessage('There are errors processing your form, please check.');
+			return showMessage($translate.instant('VIDEO_EDIT_MSG_INVALID_FORM'));
 		}
 		self.actionsDisabled = true;
 		sanitizeVideoFields();
 		console.log("video to update is ", self.video);
 		self.videoService.update(self.video).then( result => {
-			showMessage('Video updated!');
+			showMessage($translate.instant('VIDEO_EDIT_MSG_VIDEO_UPDATED'));
 			resetForm();
 			self.videoService.reset();
 			getVideo();
 		}).catch( error => {
 			console.log("error in request ", error);
-			showMessage('Error updating video!');
+			showMessage($translate.instant('VIDEO_EDIT_MSG_ERROR_UPDATING_VIDEO'));
 			resetForm();
 		});
 	};
