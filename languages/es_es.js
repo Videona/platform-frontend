@@ -11,7 +11,8 @@
 			DEFAULT404_ERROR_TITLE: 'Página no encontrada',
 			DEFAULT404_ERROR_MESSAGE: 'Esta página no ha podido ser encontrada, por favor comprueba la dirección de la página.',
 
-			LOADING: 'cargando...',
+			LOADING: 'Cargando...',
+			LOADING_WAIT: 'Cargando la página. Por favor, espere',
 
 			LOGIN: 'Acceder',
 			REGISTER: 'Registro',
@@ -108,6 +109,9 @@
 			VIDEO_EDIT_VIDEO_FILE_MAX_SIZE: 'Tamaño máximo del vídeo:',
 			VIDEO_EDIT_CLICK_MAP_HINT: 'Escribe una dirección o haz click en el mapa para indicar la posición exacta del vídeo',
 			VIDEO_EDIT_LOCATION_HINT: 'Usa el mapa de abajo para establecer la ubicación del vídeo.',
+			VIDEO_EDIT_GOT_BROWSER_LOCATION: 'Usando la localización de su navegador',
+			VIDEO_EDIT_TAG_HINT: 'Escribe una etiqueta',
+			VIDEO_EDIT_TAG_HINT_SECONDARY: 'Etiquetas separadas por comas',
 			VIDEO_DETAIL_PRICE_STD: 'Precio de emisión estándar',
 			VIDEO_DETAIL_PRICE_COUNTRY: 'Precio de antena en país',
 			VIDEO_DETAIL_PRICE_CONTINENT: 'Precio de antena continental',

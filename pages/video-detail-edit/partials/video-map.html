@@ -11,7 +11,7 @@
 	</md-input-container>
 	<ng-map default-style="true" center="current-location" on-click="EditCtrl.mapClick($event)">
 		<info-window position="current-location">
-			<span>Location found using HTML5.</span>
+			<span>{{ 'VIDEO_EDIT_GOT_BROWSER_LOCATION' | translate }}</span>
 		</info-window>
 		<marker ng-if="EditCtrl.marker" position="{{ EditCtrl.marker.position }}"
 				title="{{ EditCtrl.marker.name }}" centered="true"></marker>
