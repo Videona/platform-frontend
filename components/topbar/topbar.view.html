@@ -7,11 +7,11 @@
 	</span>
 	<span class="search-bar" ng-show="searching">
 		<span ng-click="searching = !searching"><ng-include src="'/img/close.svg'" class="close-search"></ng-include></span>
-		<input type="text" name="searchBox" ng-model="search.searchBox" on-enter="search.search()">
+		<input id="searchField" type="text" name="searchBox" ng-model="search.searchBox" on-enter="search.search()">
 		<ng-include src="'/img/search.svg'" alt="img_menu" ng-click="search.search()" class="search-button"></ng-include>
 	</span>
 	<span class="mobile-icons">
-		<span ng-click="searching = !searching"><ng-include src="'/img/search.svg'" alt="img_menu"></ng-include></span>
+		<span ng-click="searching = !searching; focus();"><ng-include src="'/img/search.svg'" alt="img_menu"></ng-include></span>
 		<ng-include ui-sref="upload" src="'/img/upload-arrow.svg'" alt="img_menu"></ng-include>
 	</span>
 	<span class="desktop-right-icons">
