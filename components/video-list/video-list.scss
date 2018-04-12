@@ -29,19 +29,22 @@
 	@extend %display-flex;
 	@extend %flex-wrap-wrap;
 	video-card {
-		margin: $cardMargin $cardMargin 0 0;
-		width: calc(33.3vw - 17.33px);
+		margin: $cardMargin 0 0 0;
+		width: 100vw;
 		@include tablet {
-			width: calc(25vw - 16.25px);
+			width: calc(33.3vw - 17.33px);
+			margin: $cardMargin $cardMargin 0 0;
+			/* width: calc(25vw - 16.25px); */
 		}
 		@include desktop {
 			width: calc(20vw - 15.6px);
 		}
 		article {
-			height: calc(18.73vw - 9.75px);
+			height: calc(56.25vw);
 			@include border-radius($cardRadius);
 			@include tablet {
-				height: calc(14.06vw - 9.14px);
+				height: calc(18.73vw - 9.75px);
+				/* height: calc(14.06vw - 9.14px); */
 			}
 			@include desktop {
 				height: calc(11.25vw - 8.77px);
@@ -55,11 +58,12 @@
 		margin-right: 0;
 	}
 	@include tablet {
-		video-card:nth-child(3n),
+		/* video-card:nth-child(3n), */
 		video-card:nth-child(5n) {
 			margin: $cardMargin $cardMargin 0 0;
 		}
-		video-card:nth-child(4n) {
+		/* video-card:nth-child(4n) { */
+		video-card:nth-child(3n) {
 			margin-right: 0;
 		}
 	}
