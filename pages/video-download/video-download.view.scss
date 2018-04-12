@@ -30,6 +30,17 @@ a:hover {
 			height: auto;
 		}
 	}
+
+	.align-center {
+		text-align: center;
+		
+		.video-detail-edit-info {
+			display: inline-block;
+			float: none;
+			margin-top: 32px;
+		}
+
+	}
 }
 
 .video-download-page {
