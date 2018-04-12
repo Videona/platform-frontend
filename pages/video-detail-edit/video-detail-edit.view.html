@@ -15,7 +15,7 @@
 	</div>
 </md-toolbar>
 
-<div ng-controller="VideoDetailEditController as EditCtrl" class="video-edit-page" layout flex layout-fill>
+<div ng-controller="VideoDetailEditController as EditCtrl" class="video-edit-page" layout flex layout-fill" id="toast-container">
 	<error404 ng-if="!EditCtrl.video && !EditCtrl.loading" title="{{'VIDEO_ERROR' | translate}}" message="{{'VIDEO_NOT_FOUND' | translate}}"></error404>
 
 	<loading-card ng-if="!EditCtrl.video && EditCtrl.loading"></loading-card>
@@ -40,8 +40,8 @@
 			<div flex="100">
 				<ng-include src="'pages/video-detail-edit/partials/video-map.html'"></ng-include>
 			</div>
-			<div flex="100">
-				<md-card layout="row" layout-wrap="auto" class="video-edit-page__edit-actions">
+			<md-content flex="100">
+				<md-card layout="row" layout-wrap="auto" class="video-edit-page__edit-actions" layout-fill>
 					<div flex="50" class="actions-delete">
 						<md-button ng-click="!EditCtrl.actionsDisabled && EditCtrl.delete()"
 								   ng-disabed="EditCtrl.actionsDisabled" class="md-raised vertical-middle">
@@ -67,7 +67,7 @@
 						</md-button>
 					</div>
 				</md-card>
-			</div>
+			</md-content>
 		</form>
 	</div> <!-- // .zero div row layout -->
 

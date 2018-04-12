@@ -41,9 +41,6 @@
       padding: 0;
       height: 50px;
     }
-    //.md-chips .md-chip-input-container:not(:first-child) {
-    //  margin: 8px 8px 0 0;
-    //}
     .hint {
       color: $lightGrey;
     }
@@ -56,7 +53,7 @@
   .new-thumbnail-input {
     flex-grow: 1;
     display: flex;
-    @include flex-direction-column;
+    flex-direction: column;
     .drop-box {
       width: 100%;
       color: $grey;
@@ -199,3 +196,24 @@ md-toolbar {
 md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) {
   background-color: white;
 }
+
+
+// TODO: move upper!
+md-toast, .mojofy-toast {
+  z-index: 100000;
+  position: fixed;
+  top: $topbarHeight + 4px;
+}
+
+.md-fixed-top {
+  position: fixed;
+  top: 66px; // size of my navbar + 16px
+}
+
+.md-fixed-right {
+  position: fixed;
+  right: 16px;
+}
+
+
+

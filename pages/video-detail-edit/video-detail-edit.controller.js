@@ -85,10 +85,13 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, ma
 
 	// Private selfish methods
 	function showMessage(message) {
+		let toastParentElement = angular.element(document.getElementById("toast-container"));
 		$mdToast.show(
 			$mdToast.simple()
 				.textContent(message)
-				.hideDelay(3000)
+				.parent(toastParentElement)
+				.toastClass("mojofy-toast")
+				.position("fixed-top right")
 		);
 	}
 
