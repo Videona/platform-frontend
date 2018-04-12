@@ -1,7 +1,10 @@
 .video-page {
 	background-color: $background;
 	margin-top: $topbarHeight;
-	height: 100%;
+	min-height: 100%;
+	article {
+		padding-bottom: 13px;
+	}
 	video {
 		width: 100%;
 		height: 56.25vw;
@@ -39,14 +42,15 @@
 }
 
 .card-video-detail {
-	padding: 10px;
+	padding: 10px 10px 0 10px;
 }
 
 .card-video-info {
 	@extend %display-flex;
 	@extend %flex-direction-column;
 	background-color: $backgroundLight;
-	margin: $cardMargin;
+	padding: $cardMargin;
+	margin-top: $cardMargin;
 	@include border-radius($cardRadius);
 	@include desktop {
 		flex-direction: row;
@@ -139,7 +143,8 @@ strong {
 .card-user-info {
 	@extend %display-flex;
 	background-color: $backgroundLight;
-	margin: $cardMargin;
+	margin: $cardMargin $cardMargin 0 $cardMargin;
+	padding: $cardMargin;
 	@include border-radius($cardRadius);
 	div:first-child {
 		@extend %display-flex;
