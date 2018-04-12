@@ -29,7 +29,7 @@
 				</div>
 				<div class="download-video-code" ng-if="VideoDownload.session.id !== VideoDownload.video.data.owner">
 					<p>{{'DOWNLOAD_CODE' | translate}}</p>
-					<div class="code-error" ng-if="VideoDownload.error" ng-bind="VideoDownload.error"></div>
+					<div class="code-error" ng-if="VideoDownload.error" ng-bind="VideoDownload.error"></div><br/>
 					<div ng-if="VideoDownload.loading" class="loading">{{'LOADING' | translate}}</div>
 					<input type="text" ng-model="VideoDownload.code">
 				</div>

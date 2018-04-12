@@ -21,7 +21,7 @@
 			lang = 'es_es';
 		}
 		
-		moment.lang(navigator.language);
+		moment.locale(navigator.language);
 
 		$translateProvider.useSanitizeValueStrategy('escape');
 		$translateProvider.preferredLanguage(lang);
