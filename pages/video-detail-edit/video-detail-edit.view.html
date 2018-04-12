@@ -42,25 +42,17 @@
 			</div>
 			<div flex="100">
 				<md-card layout="row" layout-wrap="auto" class="video-edit-page__edit-actions">
-					<div flex="50" class="actions-delete">
+					<div flex="20" class="actions-delete">
 						<md-button ng-click="!EditCtrl.actionsDisabled && EditCtrl.delete()"
 								   ng-disabed="EditCtrl.actionsDisabled" class="md-raised vertical-middle">
 							<i class="material-icons">delete</i>
-							{{ 'VIDEO_DELETE' | translate}}
+							<span>{{ 'VIDEO_DELETE' | translate}}</span>
 						</md-button>
 					</div>
-					<div flex="50" class="actions-save">
+					<div flex="80" class="actions-save">
 						<md-button ui-sref="videoPreview({id: EditCtrl.id})" ng-disabed="EditCtrl.actionsDisabled"
 								   class="md-raised">{{ 'VIDEO_CANCEL' | translate }}</md-button>
-						<md-button hide-sm hide-xs type="submit" ng-disabed="EditCtrl.actionsDisabled"
-								   class="spinner-button md-raised md-primary cta">
-							<md-progress-circular ng-show="EditCtrl.actionsDisabled" class="md-hue-3 md-inline"
-												  md-diameter="20px"></md-progress-circular>
-							{{ 'VIDEO_SAVE' | translate }}
-						</md-button>
-					</div>
-					<div flex="100" hide-gt-sm class="vertical-middle horizontal-center">
-						<md-button type="submit" ng-disabled="EditCtrl.actionsDisabled"
+						<md-button type="submit" ng-disabed="EditCtrl.actionsDisabled"
 								   class="spinner-button md-raised md-primary cta">
 							<md-progress-circular ng-show="EditCtrl.actionsDisabled" class="md-hue-3 md-inline"
 												  md-diameter="20px"></md-progress-circular>
