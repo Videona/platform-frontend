@@ -164,6 +164,13 @@
       //font-size: 120%;
       font-weight: bold;
     }
+    &.spinner-button {
+      display: inline-flex;
+      justify-content: center;
+      md-progress-circular {
+        margin: 0 4px;
+      }
+    }
     md-progress-circular {
       display: inline-block;
     }
