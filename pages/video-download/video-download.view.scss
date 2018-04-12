@@ -8,7 +8,7 @@ a:hover {
 
 .download-page {
 	background-color: $background;
-	min-height: calc(100% - $topbarHeight);
+	min-height: calc(100% - 52px);
 	margin-top: $topbarHeight;
 	width: 100%;
 	@extend %display-flex;
@@ -29,6 +29,17 @@ a:hover {
 			align-items: flex-start;
 			height: auto;
 		}
+	}
+
+	.align-center {
+		text-align: center;
+		
+		.video-detail-edit-info {
+			display: inline-block;
+			float: none;
+			margin-top: 32px;
+		}
+
 	}
 }
 
@@ -62,13 +73,6 @@ a:hover {
 		width: 90%;
 		@include desktop {
 			margin-top: 0;
-		}
-	}
-	& > div:last-child {
-		height: 8%;
-		margin-bottom: 5vw;
-		@include desktop {
-			display: none;
 		}
 	}
 }
@@ -137,11 +141,18 @@ a:hover {
 		@include desktop {
 			background-color: $mainColor;
 			font-size: 24px;
-			height: 48px;
+			height: 48px;    
 		}
 	}
 	button.disabled {
 		background-color: $mainColorDisabled;
+	}
+}
+
+.download-button .button {
+	@include desktop {
+		line-height: 32px;
+		font-size: 24px;
 	}
 }
 

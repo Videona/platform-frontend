@@ -1,5 +1,2 @@
-v0.6.1
-Fix visual issues in video detail, video upload.
-Fix itunes link in home.
-Fix topbar. On search click, focus the input and open the keyboard.
-Fix an issue at moment library
+v0.6.2
+Fix visual issues
