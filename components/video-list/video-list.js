@@ -6,6 +6,8 @@
 			userId: '=',
 			tagFilter: '=',
 			featured: '=',
+			query: '=',
+			meta: '=',
 			infiniteScrollEnabled: '=',
 		},
 		controller: 'VideoListController',

@@ -27,11 +27,6 @@
 		self.validateRegister = validateRegister;
 		self.submit = submit;
 
-		// On Run...
-		if (session.id > 0) {
-			redirect();
-		}
-
 		// Internal functions
 		function validateRegister() {
 			self.loading = true;

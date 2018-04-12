@@ -9,6 +9,19 @@
 		@include desktop {
 			width: calc(25vw - 16.25px);
 		}
+		article {
+			height: 23.625vw;
+			@include border-radius($cardRadius);
+			@include tablet {
+				height: 18.748vw;
+			}
+			@include desktop {
+				height: calc(14.06vw - 9.14px);
+			}
+			background-size: cover; /*scaling down large image to a div*/
+			background-repeat: no-repeat;
+			background-position: center;
+		}
 	}
 }
 
@@ -23,6 +36,19 @@
 		}
 		@include desktop {
 			width: calc(20vw - 15.6px);
+		}
+		article {
+			height: calc(18.73vw - 9.75px);
+			@include border-radius($cardRadius);
+			@include tablet {
+				height: calc(14.06vw - 9.14px);
+			}
+			@include desktop {
+				height: calc(11.25vw - 8.77px);
+			}
+			background-size: cover; /*scaling down large image to a div*/
+			background-repeat: no-repeat;
+			background-position: center;
 		}
 	}
 	video-card:nth-child(3n) {
