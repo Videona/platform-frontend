@@ -118,7 +118,7 @@
 			VIDEO_DETAIL_PRICE_WORLD: 'Precio de antena mundial',
 			VIDEO_DETAIL_PRODUCT_TYPE_LONG: 'Tipo de producto',
 			VIDEO_DETAIL_TITLE: 'Título',
-			VIDEO_DETAIL_SUMMARY: 'Sumario',
+			VIDEO_DETAIL_SUMMARY: 'Descripción',
 			VIDEO_DETAIL_LOCATION: 'Ubicación',
 			VIDEO_DETAIL_NOTES: 'Observaciones',
 
