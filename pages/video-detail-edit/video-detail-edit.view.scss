@@ -56,7 +56,7 @@
   .new-thumbnail-input {
     flex-grow: 1;
     display: flex;
-    flex-direction: column;
+    @include flex-direction-column;
     .drop-box {
       width: 100%;
       color: $grey;

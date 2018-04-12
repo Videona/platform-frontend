@@ -10,7 +10,7 @@
 			upload: upload,
 			get: get,
 			post: post,
-			put,
+			put: put,
 			del: del,
 			setToken: setToken,
 		};
