@@ -8,7 +8,7 @@ a:hover {
 
 .download-page {
 	background-color: $background;
-	min-height: calc(100% - $topbarHeight);
+	min-height: calc(100% - 52px);
 	margin-top: $topbarHeight;
 	width: 100%;
 	@extend %display-flex;
