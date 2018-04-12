@@ -1,0 +1,14 @@
+<topbar></topbar>
+<div ng-controller="SearchController as Search" class="gallery search-gallery">
+	<article>
+		<div ng-if='Search.service.loading'>
+			<loading></loading>
+		</div>
+		<section class="gallery-section-nonFeatured" ng-if="!Search.service.loading">
+			<span class="search-result-meta">
+				{{'SHOWING_RESULTS_FOR' | translate:Search.meta}} <strong>{{::Search.service.searchBox}}</strong>
+			</span>
+			<video-list section-class="gallery-nonFeatured" query="::Search.service.searchTerm" meta="Search.meta" "infinite-scroll-enabled="true"></video-list>
+		</section>
+	</article>
+</div>

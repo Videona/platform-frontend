@@ -1,7 +1,7 @@
 (function () {
 	// App
 	angular.module('app', ['app.config', 'app.flavour', 'ui.router', 'pascalprecht.translate', 'infinite-scroll',
-		'ngFileUpload', 'ngMaterial', 'ngMap'])
+		'ngFileUpload', 'angularMoment', 'ngMaterial', 'ngMap'])
 		.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$translateProvider', '$mdThemingProvider',
 			'$mdDateLocaleProvider', conf]);
 
@@ -23,8 +23,10 @@
 		default:
 			lang = 'es_es';
 		}
+		
 		setupDateLocale(shortLang, $mdDateLocaleProvider);
 		setupMaterialTheming($mdThemingProvider);
+		moment.lang(navigator.language);
 
 		$translateProvider.useSanitizeValueStrategy('escape');
 		$translateProvider.preferredLanguage(lang);
@@ -61,6 +63,10 @@
 			.state('gallery', {
 				url: '/gallery',
 				templateUrl: 'pages/gallery/gallery.view.html',
+			})
+			.state('search', {
+				url: '/search?:q',
+				templateUrl: 'pages/search/search.view.html',
 			})
 			.state('upload', {
 				url: '/upload',

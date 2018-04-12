@@ -12,6 +12,7 @@
 		}
 	}
 	.card-user-info-desktop {
+		cursor: pointer;
 		display: none;
 	}
 	@include desktop {
@@ -35,6 +36,10 @@
 			margin: 5px;
 		}
 	}
+}
+
+.card-video-detail {
+	padding: 10px;
 }
 
 .card-video-info {
@@ -145,7 +150,7 @@ strong {
 		}
 		img, svg {
 			@include border-radius(50%);
-			margin: $cardMargin 25px 5px $cardMargin;
+			margin: $cardMargin $cardMargin 5px $cardMargin;
 			width: 65px;
 			height: 65px;
 		}
