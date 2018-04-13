@@ -1,12 +1,9 @@
 (function () {
 	// App
-	angular.module('app', ['app.config', 'app.flavour', 'ui.router', 'pascalprecht.translate', 'infinite-scroll',
-		'ngFileUpload', 'angularMoment', 'ngMaterial', 'ngMap'])
-		.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$translateProvider', '$mdThemingProvider',
-			'$mdDateLocaleProvider', conf]);
+	angular.module('app', ['app.config', 'app.flavour', 'ui.router', 'pascalprecht.translate', 'infinite-scroll', 'ngFileUpload', 'angularMoment'])
+		.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$translateProvider', conf]);
 
-	function conf($locationProvider, $stateProvider, $urlRouterProvider, $translateProvider, $mdThemingProvider,
-	              $mdDateLocaleProvider) {
+	function conf($locationProvider, $stateProvider, $urlRouterProvider, $translateProvider) {
 		// Get browser lang and set this var
 		var shortLang = navigator.language.split('-')[0];
 		var lang;
@@ -23,10 +20,10 @@
 		default:
 			lang = 'es_es';
 		}
-		
+
 		setupDateLocale(shortLang, $mdDateLocaleProvider);
-		setupMaterialTheming($mdThemingProvider);
-		moment.lang(navigator.language);
+		setupMaterialTheming($mdThemingProvider);		
+		moment.locale(navigator.language);
 
 		$translateProvider.useSanitizeValueStrategy('escape');
 		$translateProvider.preferredLanguage(lang);
