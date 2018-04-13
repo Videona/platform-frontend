@@ -131,7 +131,7 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, ma
 	}
 
 	function checkEditAccess(video) {
-		if (video !== undefined && video.owner == self.session.id) {
+		if (video !== undefined && (video.owner == self.session.id || self.session.role === 'editor')) {
 			if (self.session.role === 'editor') {
 				self.editorRole = true;
 			}
