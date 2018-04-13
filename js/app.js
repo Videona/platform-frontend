@@ -1,7 +1,7 @@
 (function () {
 	// App
 	angular.module('app', ['app.config', 'app.flavour', 'ui.router', 'pascalprecht.translate', 'infinite-scroll',
-		'ngFileUpload', 'angularMoment', 'ngMaterial'])
+		'ngFileUpload', 'angularMoment', 'ngMaterial', 'ngMap'])
 		.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$translateProvider', '$mdThemingProvider',
 			'$mdDateLocaleProvider', conf]);
 
