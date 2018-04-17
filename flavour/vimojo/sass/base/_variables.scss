@@ -3,7 +3,8 @@
 /* Main Color */
 $mainColor: #f14b51;
 $mainColorLight: #F23260;
-$mainColorDark: #f14b51;
+//$mainColorDark: #f14b51;
+$mainColorDark: #D54348;
 $mainColorDisabled: #fac5c7;
 
 /* Secondary Color */
@@ -15,6 +16,7 @@ $secondaryColorDisabled: #000000;
 /* Grey */
 $grey: #5A6978;
 $lightGrey: #B6B6B6;
+$ultraLightGray: #ededed;
 
 /* Background Color */
 $background: #f3f3f3;
@@ -33,6 +35,11 @@ $topbarImgHeight: 24px;
 // Card
 $cardMargin: 13px;
 $cardRadius: 5px;
+
+// Button
+$buttonMargin: 13px;
+$buttonRadius: 5px;
+$buttonMargin: 2px;
 
 /* Status Colors */
 $success: #00ff00;

@@ -10,15 +10,17 @@
 // COMPONENTS
 
 @import
-'components/topbar/topbar',
-'components/video-card/video-card',
-'components/video-list/video-list';
+'../components/404/error404.view',
+'../components/topbar/topbar',
+'../components/video-card/video-card',
+'../components/video-list/video-list';
 
 @import
 'base/reset',
 '../pages/register/register.view',
 '../pages/login/login.view',
 '../pages/video-detail/video-detail.view',
+'../pages/video-detail-edit/video-detail-edit.view',
 '../pages/video-download/video-download.view',
 '../pages/gallery/gallery.view',
 '../pages/search/search.view',

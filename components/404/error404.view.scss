@@ -1,0 +1,14 @@
+.error404-page {
+  margin-top: $topbarHeight + 10px;
+  img {
+    width: 100%;
+  }
+
+  md-card {
+    @include border-radius($cardRadius);
+    padding: 13px;
+    md-input-container {
+      margin: 1px 0;
+    }
+  }
+}

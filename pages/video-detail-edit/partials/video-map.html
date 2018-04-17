@@ -1,0 +1,20 @@
+<md-card class="video-edit-page__video-location">
+	<div>
+		{{ 'VIDEO_EDIT_CLICK_MAP_HINT' | translate }}
+	</div>
+	<md-input-container>
+		<input places-auto-complete size=80
+			   ng-model="EditCtrl.video.locationName"
+			   language="EditCtrl.placeLang"
+			   types="EditCtrl.placeTypes"
+			   on-place-changed="EditCtrl.placeChanged()">
+	</md-input-container>
+	<ng-map default-style="true" center="current-location" on-click="EditCtrl.mapClick($event)">
+		<info-window position="current-location">
+			<span>{{ 'VIDEO_EDIT_GOT_BROWSER_LOCATION' | translate }}</span>
+		</info-window>
+		<marker ng-if="EditCtrl.marker" position="{{ EditCtrl.marker.position }}"
+				title="{{ EditCtrl.marker.name }}" centered="true"></marker>
+	</ng-map>
+
+</md-card> <!-- // .aditional-details md-card -->

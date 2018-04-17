@@ -19,15 +19,16 @@ function VideoDetail($stateParams, session, video, user, $timeout) {
 		self.video.reset();
 	}
 	
-	// ToDo: Check invalid video :S
 	self.video.get(self.id, function() {
 		self.loading = false;
-		self.user.get(self.video.data.owner, function() {
-			self.loadingAuthor = false;
-		});
-		$timeout(function() {
-			self.showMore = showMore();
-		}, 100);
+		if (self.video.data != undefined) {
+			self.user.get(self.video.data.owner, function() {
+				self.loadingAuthor = false;
+			});
+			$timeout(function() {
+				self.showMore = showMore();
+			}, 100);
+		}
 	});
 
 	function showMore() {

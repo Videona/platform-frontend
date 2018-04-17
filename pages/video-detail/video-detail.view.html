@@ -7,11 +7,14 @@
 		<loading></loading>
 	</div>
 
-	<div ng-if="Video.video.data.error && !Video.loading" class="headers-info-videoDetail">
-		<h1 class="header">{{'VIDEO_ERROR' | translate}}</h1>
-		<div>{{'VIDEO_NOT_FOUND' | translate}}</div>
-	</div>
-	
+	<!--<div ng-if="Video.video.data.error && !Video.loading" class="headers-info-videoDetail">-->
+		<!--<h1 class="header">{{'VIDEO_ERROR' | translate}}</h1>-->
+		<!--<div>{{'VIDEO_NOT_FOUND' | translate}}</div>-->
+	<!--</div>-->
+
+	<!--<error404 ng-if="Video.video.data.error && !Video.loading" title="{{'VIDEO_ERROR' | translate}}" message="{{'VIDEO_NOT_FOUND' | translate}}"></error404>-->
+	<error404 ng-if="Video.video.data.error && !Video.loading" ></error404>
+
 	<article ng-if="Video.video.data && !Video.video.data.error">
 		<section class="card-video-detail">
 			<div>
@@ -104,7 +107,7 @@
 				</section>
 				<section class="navigate"><!--TODO: is there a class for button only??-->
 					<div class="video-detail-edit-info" ng-if="Video.session.id == Video.video.data.owner">
-						<a ui-sref="download({id: Video.video.data._id})">{{'BUTTON_EDIT' | translate}}</a>
+						<a ui-sref="videoDetailEdit({id: Video.video.data._id})">{{'BUTTON_EDIT' | translate}}</a>
 					</div>
 				</section>
 
