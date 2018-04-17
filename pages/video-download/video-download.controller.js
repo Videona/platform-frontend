@@ -9,6 +9,7 @@ function VideoDownload($stateParams, video, videoDownload, $translate, session) 
 	self.loading = true;
 	self.error = null;
 	self.session = session;
+	self.amIOwner = amIOwner;
 
 	self.video = video;
 
@@ -34,5 +35,9 @@ function VideoDownload($stateParams, video, videoDownload, $translate, session) 
 				self.error = $translate.instant('ERROR_WRONG_DOWNLOAD_CODE');
 			}
 		});
+	}
+
+	function amIOwner() {
+		return (self.session.id === self.video.data.owner);
 	}
 }
