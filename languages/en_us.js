@@ -54,6 +54,7 @@
 			ERROR_DOWNLOAD_VIDEO_NOT_EXISTS: 'We can not find this video. Please, check that this resource is correct and try again.',
 			BACK_TO_GALLERY: 'Back to gallery',
 			ERROR_WRONG_DOWNLOAD_CODE: 'Invalid download code',
+			ERROR_UNABLE_TO_DOWNLOAD: 'Unable to download this video',
 
 			UPLOADED_AT: 'Uploaded at',
 			SHOW_VIDEO_DETAILS: 'Show video details',
