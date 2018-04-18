@@ -31,10 +31,14 @@
 			display: flex;
 		}
 	}
-	.navigate {
-		.button {
-			margin: 5px;
-		}
+
+	.md-button * {
+		vertical-align: middle;
+	}
+
+	.md-button.btn-border {
+		border: 1px solid $mainColor;
+		color: $mainColor;
 	}
 }
 
@@ -150,8 +154,9 @@ strong {
 		ng-include {
 			fill: $text;
 		}
-		img, svg {
+		img, svg, i {
 			@include border-radius(50%);
+			font-size: 65px;
 			margin: $cardMargin $cardMargin 5px $cardMargin;
 			width: 65px;
 			height: 65px;
@@ -173,11 +178,18 @@ strong {
 	}
 }
 
+.navigate {
+	text-align: center;
+	@include desktop {
+		text-align: right;
+	}
+}
+
 .video-detail-edit-info {
-	margin: $cardMargin 0;
+	margin: 5px 0;
 	text-align: right;
-	padding: 7px 45px;
-	float: right;
+	padding: 11px 40px;
+	display: inline-block;
 	@include border-radius(4px);
 	background-color: $mainColor;
 	border: 1px solid $mainColor;
