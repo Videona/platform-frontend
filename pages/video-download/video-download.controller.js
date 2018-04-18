@@ -9,6 +9,7 @@ function VideoDownload($stateParams, video, videoDownload, $translate, session) 
 	self.loading = true;
 	self.error = null;
 	self.session = session;
+	self.amIOwner = amIOwner;
 
 	self.video = video;
 
@@ -30,9 +31,15 @@ function VideoDownload($stateParams, video, videoDownload, $translate, session) 
 		videoDownload.get(self.id, self.code, function (status) {
 			self.loading = false;
 			console.log(status);
-			if (status !== 200) {
+			if (status === 403 && !amIOwner()) {
 				self.error = $translate.instant('ERROR_WRONG_DOWNLOAD_CODE');
+			} else if(status !== 200) {
+				self.error = $translate.instant('ERROR_UNABLE_TO_DOWNLOAD');
 			}
 		});
+	}
+
+	function amIOwner() {
+		return (self.session.id === self.video.data.owner);
 	}
 }
