@@ -12,7 +12,7 @@ function UploadController(api, session, $state, $translate, productType) {
 
 	self.error = null;
 	self.file;
-	self.data
+	self.data;
 	self.loading = false;
 	self.productTypes = productType;
 

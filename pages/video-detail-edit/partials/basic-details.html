@@ -1,0 +1,33 @@
+<md-card layout-wrap="auto" layout="column" class="video-edit-page__basic-details">
+	<md-input-container flex>
+		<label>{{ 'VIDEO_DETAIL_TITLE' | translate }}</label>
+		<input ng-model="EditCtrl.video.title" required>
+	</md-input-container>
+	<md-input-container flex>
+		<label>{{ 'VIDEO_DETAIL_SUMMARY' | translate }}</label>
+		<textarea ng-model="EditCtrl.video.description" required></textarea>
+	</md-input-container>
+	<md-input-container flex>
+		<label>{{ 'VIDEO_DETAIL_CATEGORIES' | translate }}</label>
+		<md-select ng-model="EditCtrl.category" multiple="true">
+			<md-option ng-repeat="category in EditCtrl.categories" value="{{category.category}}">
+				{{ "VIDEO_CATEGORY_" + category.category | translate }}
+			</md-option>
+		</md-select>
+	</md-input-container>
+	<md-input-container flex>
+		<md-tooltip md-direction="top">{{ 'VIDEO_EDIT_LOCATION_HINT' | translate }}</md-tooltip>
+		<label>{{ 'VIDEO_DETAIL_LOCATION' | translate }}</label>
+		<input ng-model="EditCtrl.video.locationName" disabled>
+	</md-input-container>
+	<md-input-container flex>
+		<label>{{ 'VIDEO_EDIT_PICK_DATE' | translate }}</label>
+		<md-datepicker ng-model="EditCtrl.video.date"></md-datepicker>
+	</md-input-container>
+	<!-- TODO: add time picker -->
+	<md-input-container flex>
+		<label>{{ 'VIDEO_DETAIL_NOTES' | translate }}</label>
+		<textarea ng-model="EditCtrl.video.notes"></textarea>
+	</md-input-container>
+
+</md-card> <!-- // .basic-details md-card -->

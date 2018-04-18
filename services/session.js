@@ -1,8 +1,8 @@
 (function () {
 	angular.module('app')
-		.factory('session', ['api', sessionService]);
+		.factory('session', ['api', '$translate', sessionService]);
 
-	function sessionService(api) {
+	function sessionService(api, $translate) {
 		var session = {
 			id: -1,
 			name: '',
@@ -10,6 +10,7 @@
 			role: '',
 			verified: false,
 			token: null,
+			currentLang: $translate.use(),
 			set: setSession,
 			get: getSession,
 			logout: logout,

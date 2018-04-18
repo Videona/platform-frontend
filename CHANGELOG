@@ -1,20 +1,23 @@
+v0.6.2
+- Fix visual issues
+
 v0.6.1
-Fix visual issues in video detail, video upload.
-Fix itunes link in home.
-Fix topbar. On search click, focus the input and open the keyboard.
-Fix an issue at moment library
+- Fix visual issues in video detail, video upload.
+- Fix itunes link in home.
+- Fix topbar. On search click, focus the input and open the keyboard.
+- Fix an issue at moment library
 
 v0.6.0
-Add video search functionality
+- Add video search functionality
 
 v0.4.7
-Fix register button is broken in firefox
+- Fix register button is broken in firefox
 
 v0.4.6
-Update mobile version, itunes badge go to vimojo app instead of videona app
+- Update mobile version, itunes badge go to vimojo app instead of videona app
 
 v0.4.5
-Fix, if user is logged in home page, redirect to gallery
+- Fix, if user is logged in home page, redirect to gallery
 
 v0.4.4
 - Fix colors and styles in download page

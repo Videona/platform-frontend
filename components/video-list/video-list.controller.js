@@ -10,6 +10,7 @@
 		self.userId;
 		self.tagFilter;
 		self.infiniteScrollEnabled;
+		self.featured;
 
 		// Properties
 		self.loading = false;
@@ -32,9 +33,10 @@
 			if (self.tagFilter instanceof Array && self.tagFilter.length > 0) {
 			  createTagFilter(self.tagFilter);
 			}
-			if (typeof self.query === 'string' && self.query.trim() !== '') {
-				createQueryFilter(self.query);
+				if(typeof self.featured !== 'undefined') {
+				createFeaturedFilter(self.featured);
 			}
+
 			getVideoList();
 		}
 
@@ -49,6 +51,10 @@
 				}).map(item => item.substring(1));
 		}
 
+		function createFeaturedFilter(featured) {
+			self.queryParams.featured = featured;
+		}
+
 		function getQuery() {
 			var baseQuery = '/video?';
 			if (self.userId !== undefined) {
@@ -59,7 +65,7 @@
 
 		function getVideoList() {
 			if(!self.loading) {
-				// console.log('query url is ', api.url + getQuery());
+				console.log('query url is ', api.url + getQuery());
 				self.loading = true;
 				api.get(api.url + getQuery(), function (data, status) {
 					if (status < 400 && data.length > 0) {

@@ -8,6 +8,7 @@ js/config.js
 dist/*
 !dist/index.html
 modules/*
+css/style.css
 
 # Flavour generated files
 img/brand

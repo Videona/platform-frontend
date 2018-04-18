@@ -1,0 +1,226 @@
+.video-edit-page {
+  margin-top: $topbarHeight + 10px;
+  background-color: $background;
+  width: 100%;
+  @media (max-width: 600px) {
+    margin-bottom: 200px;
+  }
+
+  video {
+    width: 100%;
+  }
+
+  // TODO: move upper!
+  .vertical-middle {
+    display: flex;
+    align-items: center;
+  }
+
+  // TODO: move upper!
+  .horizontal-center {
+    justify-content: center;
+  }
+
+  // TODO: move upper!
+  md-card {
+    @include border-radius($cardRadius);
+    padding: 13px;
+    md-input-container {
+      margin: 10px 2px;
+    }
+    input, select, textarea, md-select-value {
+      border: 1px solid $lightGrey;
+      padding: 5px;
+    }
+    .md-chips {
+      padding: 0;
+    }
+    .md-chips .md-chip-input-container {
+      margin: 4px 8px 0 0;
+      margin: 0;
+      padding: 0;
+      height: 50px;
+    }
+    .hint {
+      color: $lightGrey;
+    }
+  }
+
+  md-input-container {
+    padding: 10px 0 0 0;
+  }
+
+  .new-thumbnail-input {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    .drop-box {
+      width: 100%;
+      color: $grey;
+      flex-grow: 1;
+      flex-direction: column;
+      background-color: $ultraLightGray;
+      @include border-radius(5px);
+      height: 100%;
+      text-align: center;
+      padding: 5% 0;
+      .upload-drop-icon {
+        width: 32px;
+        display: inline-block;
+        margin-bottom: 16px;
+      }
+      i {
+        position: relative;
+        display: inline-block;
+        background-color: none;
+      }
+    }
+
+  }
+}
+
+.video-edit-page__thumbnails {
+  img {
+    width: 100%;
+  }
+  .new-thumbnail-preview {
+    position: relative;
+  }
+  i.remove-icon {
+    background-color: #fff;
+    color: $mainColor;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 90;
+  }
+  .custom-thumbnail {
+    display: flex;
+    flex-direction: column;
+  }
+  .new-thumbnail-preview {
+    width: 100%;
+  }
+}
+
+.video-edit-page__aditional-details {
+  .first-row {
+    padding: 10px 4px;
+  }
+
+  .medium-sized-input {
+    // TODO(jliarte): check responsiveness
+    width: 214px;
+  }
+  .feature-icon {
+    color: yellow;
+  }
+  .verify-icon {
+    color: greenyellow;
+  }
+}
+
+.video-edit-page__video-file {
+  input {
+    height: 40px;
+  }
+}
+
+.video-edit-page__video-file .new-video-preview {
+  position: relative;
+  i {
+    color: $mainColor;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 90;
+  }
+}
+
+.video-edit-page__edit-actions {
+  @media (max-width: 600px) {
+    margin: 0;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    z-index: 100;
+  }
+  button {
+    @include border-radius($buttonRadius);
+    margin: $buttonMargin;
+    &.md-raised {
+      border: $buttonMargin solid $mainColor;
+      color: $mainColor;
+    }
+    i {
+      color: $mainColor;
+    }
+    &.md-primary {
+      background-color: $mainColor;
+      border: 0;
+    }
+    &.cta {
+      //padding: 10px 40px;
+      //font-size: 120%;
+      font-weight: bold;
+    }
+    &.spinner-button {
+      display: inline-flex;
+      justify-content: center;
+      md-progress-circular {
+        margin: 0 4px;
+      }
+    }
+    md-progress-circular {
+      display: inline-block;
+    }
+  }
+  .actions-save {
+    text-align: right;
+  }
+}
+
+
+
+////////////////
+md-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  background-color: white;
+  box-shadow: 0px 0px 1px 1px #e8e8e8;
+  z-index: 999;
+  height: $topbarHeight;
+
+  md-icon, img {
+    height: $topbarImgHeight;
+    margin: $cardMargin;
+    cursor: pointer;
+  }
+}
+
+md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) {
+  background-color: white;
+}
+
+
+// TODO: move upper!
+md-toast, .mojofy-toast {
+  z-index: 100000;
+  position: fixed;
+  top: $topbarHeight + 4px;
+}
+
+.md-fixed-top {
+  position: fixed;
+  top: 66px; // size of my navbar + 16px
+}
+
+.md-fixed-right {
+  position: fixed;
+  right: 16px;
+}
+
+
+

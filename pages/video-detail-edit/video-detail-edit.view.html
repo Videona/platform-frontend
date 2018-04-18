@@ -1,0 +1,67 @@
+<!--<topbar></topbar>-->
+
+<md-toolbar  md-scroll-shrink="true" layout="row" flex >
+	<div class="md-toolbar-tools">
+		<!--<span class="mobile-menu">-->
+			<!--<img src="/img/menu.svg" alt="img_menu">-->
+		<!--</span>-->
+		<span class="logo">
+			<img ui-sref="gallery" src="/img/brand/logo_low.png" alt="logo">
+		</span>
+		<h2 md-truncate flex></h2>
+
+		<md-icon ui-sref="upload" md-svg-src="/img/upload-arrow.svg" class="upload-drop-icon" aria-label="Upload"></md-icon>
+		<md-icon md-svg-src="/img/search.svg" class="search-drop-icon" aria-label="Search"></md-icon>
+	</div>
+</md-toolbar>
+
+<div ng-controller="VideoDetailEditController as EditCtrl" class="video-edit-page" layout flex layout-fill" id="toast-container">
+	<error404 ng-if="!EditCtrl.video && !EditCtrl.loading" title="{{'VIDEO_ERROR' | translate}}" message="{{'VIDEO_NOT_FOUND' | translate}}"></error404>
+
+	<loading-card ng-if="!EditCtrl.video && EditCtrl.loading"></loading-card>
+	<div ng-if="!EditCtrl.loading && EditCtrl.video" flex-gt-md="80" flex-offset-gt-md="10" class="video-edit-page__main-details">
+		<form name="videoForm" novalidate ng-submit="EditCtrl.update(videoForm.$valid)" layout="row" layout-wrap flex="100">
+			<div flex-gt-sm="60" flex="100">
+				<ng-include src="'pages/video-detail-edit/partials/main-player.html'"></ng-include>
+			</div>
+
+			<div flex-gt-sm="40" flex="100">
+				<ng-include src="'pages/video-detail-edit/partials/basic-details.html'"></ng-include>
+			</div>
+
+			<div flex="100">
+				<ng-include src="'pages/video-detail-edit/partials/aditional-details.html'"></ng-include>
+			</div>
+
+			<div flex="100">
+				<ng-include src="'pages/video-detail-edit/partials/video-file.html'"></ng-include>
+			</div>
+
+			<div flex="100">
+				<ng-include src="'pages/video-detail-edit/partials/video-map.html'"></ng-include>
+			</div>
+			<div flex="100">
+				<md-card layout="row" layout-wrap="auto" class="video-edit-page__edit-actions">
+					<div flex="20" class="actions-delete">
+						<md-button ng-click="!EditCtrl.actionsDisabled && EditCtrl.delete()"
+								   ng-disabed="EditCtrl.actionsDisabled" class="md-raised vertical-middle">
+							<i class="material-icons">delete</i>
+							<span>{{ 'VIDEO_DELETE' | translate}}</span>
+						</md-button>
+					</div>
+					<div flex="80" class="actions-save">
+						<md-button ui-sref="videoPreview({id: EditCtrl.id})" ng-disabed="EditCtrl.actionsDisabled"
+								   class="md-raised">{{ 'VIDEO_CANCEL' | translate }}</md-button>
+						<md-button type="submit" ng-disabed="EditCtrl.actionsDisabled"
+								   class="spinner-button md-raised md-primary cta">
+							<md-progress-circular ng-show="EditCtrl.actionsDisabled" class="md-hue-3 md-inline"
+												  md-diameter="20px"></md-progress-circular>
+							{{ 'VIDEO_SAVE' | translate }}
+						</md-button>
+					</div>
+				</md-card>
+			</div>
+		</form>
+	</div> <!-- // .zero div row layout -->
+
+</div> <!-- // VideoDetailEditController div -->
