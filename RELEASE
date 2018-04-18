@@ -1,2 +1,4 @@
-v0.7.2
-- Fix search video list
+v0.7.3
+- Add material icons
+- Back to gallery button with icon
+- Person pin icon for users with no picture
