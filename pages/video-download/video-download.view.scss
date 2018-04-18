@@ -40,6 +40,11 @@ a:hover {
 			margin-top: 32px;
 		}
 
+		.video-detail-edit-info.disabled {
+			background-color: $mainColorDisabled;
+			border-color: $mainColorDisabled;
+		}
+
 	}
 }
 
