@@ -160,7 +160,7 @@ strong {
 		ng-include {
 			fill: $text;
 		}
-		img, svg, i {
+		img, i {
 			@include border-radius(50%);
 			font-size: 65px;
 			margin: $cardMargin $cardMargin 5px $cardMargin;
