@@ -37,11 +37,13 @@
 					<div class="video-detail-edit-info button">
 						<a ui-sref="videoDownload({id: Video.video.data._id})">{{'DOWNLOAD_VIDEO' | translate}}</a>
 					</div>
+					<br>
 				</div>
 				<div class="align-center">
-					<div class="video-detail-edit-info button button-empty">
-						<a ui-sref="gallery">{{'BACK_TO_GALLERY' | translate}}</a>
-					</div>
+					<md-button class="btn-border" ui-sref="gallery">
+						<i class="material-icons">reply</i>
+						<span>{{'BACK_TO_GALLERY' | translate}}</span>
+					</md-button>
 				</div>
 			</div>
 		</section>
