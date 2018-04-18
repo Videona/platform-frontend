@@ -65,6 +65,8 @@
 					<div class="video-detail-show-info" ng-click="showDetails = !showDetails" ng-init="showDetails = true">
 						<span ng-show="showDetails">{{'HIDE_VIDEO_DETAILS' | translate}}</span>
 						<span ng-hide="showDetails">{{'SHOW_VIDEO_DETAILS' | translate}}</span>
+						<i ng-show="showDetails" class="material-icons">keyboard_arrow_up</i>
+						<i ng-hide="showDetails" class="material-icons">keyboard_arrow_down</i>
 					</div> 
 
 					<div class="video-detail-info" ng-show="showDetails">
