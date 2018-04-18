@@ -1,3 +1,8 @@
+v0.7.0
+- Added video detail edition page to allow users to update their video information
+- Enabled edit link in video detail page if user owns that video
+- Added support for editor role to edit privileged fields of videos
+
 v0.6.2
 - Fix visual issues
 
