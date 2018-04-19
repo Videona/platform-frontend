@@ -29,7 +29,8 @@
 				<md-card layout="row" layout-wrap="auto" class="video-edit-page__edit-actions">
 					<div flex="20" class="actions-delete">
 						<md-button ng-click="!EditCtrl.actionsDisabled && EditCtrl.delete()"
-								   ng-disabed="EditCtrl.actionsDisabled" class="md-raised vertical-middle">
+								   ng-disabed="EditCtrl.actionsDisabled" class="md-raised vertical-middle"
+								   ng-if="false">
 							<i class="material-icons">delete</i>
 							<span>{{ 'VIDEO_DELETE' | translate}}</span>
 						</md-button>
