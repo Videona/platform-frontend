@@ -14,6 +14,7 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, ma
 	self.actionsDisabled = true;
 	self.maxVideoUploadSize = maxVideoUploadByteSize / 1000;
 	self.tagsKeys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA];
+	self.maxVideoDate = new Date();
 
 	// selfish Methods
 	self.resetVideoPoster = function () {
