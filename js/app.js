@@ -1,7 +1,9 @@
 (function () {
 	// App
 	angular.module('app', ['app.config', 'app.flavour', 'ui.router', 'pascalprecht.translate', 'infinite-scroll',
-		'ngFileUpload', 'angularMoment', 'ngMaterial', 'ngMap'])
+		'ngFileUpload', 'angularMoment', 'ngMaterial', 'ngMap', 'ngSanitize', 'com.2fdevs.videogular',
+		'com.2fdevs.videogular.plugins.controls', 'com.2fdevs.videogular.plugins.overlayplay',
+		'com.2fdevs.videogular.plugins.poster'])
 		.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$translateProvider', '$mdThemingProvider',
 			'$mdDateLocaleProvider', conf]);
 
