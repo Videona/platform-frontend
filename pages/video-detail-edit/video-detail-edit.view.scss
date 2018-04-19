@@ -31,6 +31,7 @@
     input, select, textarea, md-select-value {
       border: 1px solid $lightGrey;
       padding: 5px;
+      max-width: 85vw;
     }
     .md-chips {
       padding: 0;
