@@ -5,12 +5,37 @@
 				   preload="metadata" controlsList="nodownload"></video>
 		</div>
 		<div layout="row" layout-margin="10" class="video-edit-page__thumbnails">
+
+			<div class="center full-width">
+				<div class="panoramic">
+					<img ng-if="EditCtrl.video.poster" ng-src="{{EditCtrl.video.poster}}">
+					<md-tooltip>{{ 'VIDEO_EDIT_THUMBNAIL_DEFAULT' | translate}}</md-tooltip>
+				</div>
+				<div class="panoramic">
+					<div ng-if="!EditCtrl.newPoster" class="new-thumbnail-input" layout-fill layout-align="center center" >
+						<div ngf-drop ngf-select ng-model="EditCtrl.newPoster" class="drop-box vertical-middle"
+							 ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="false"
+							 accept="image/*" ngf-pattern="'image/*'">
+							<i class="material-icons">file_upload</i><br />
+							<span hide-xs>{{ 'VIDEO_EDIT_THUMBNAIL_CUSTOM_HINT' | translate}}</span>
+							<md-tooltip>{{ 'VIDEO_EDIT_THUMBNAIL_CUSTOM_HINT' | translate}}</md-tooltip>
+						</div>
+					</div>
+					<div ng-if="EditCtrl.newPoster" class="new-thumbnail-preview">
+						<i ng-if="EditCtrl.newPoster" ng-click="EditCtrl.resetVideoPoster()" class="material-icons remove-icon">remove_circle_outline</i>
+						<img ngf-src="EditCtrl.newPoster"/>
+					</div>
+				</div>
+			</div>
+				
+			<!-- 
+
 			<div flex-gt-xs="10" flex="0"></div>
 			<div flex-gt-xs="40" flex="50" layout="column">
 				<img ng-if="EditCtrl.video.poster" ng-src="{{EditCtrl.video.poster}}">
 				<md-tooltip>{{ 'VIDEO_EDIT_THUMBNAIL_DEFAULT' | translate}}</md-tooltip>
 			</div>
-			<div flex-gt-xs="40" flex="50" class="custom-thumbnail" layout-align="center center" >
+			<div flex-gt-xs="40" flex="50" class="custom-thumbnail panoramic" layout-align="center center" >
 				<div ng-if="!EditCtrl.newPoster" class="new-thumbnail-input" layout-fill layout-align="center center" >
 					<div ngf-drop ngf-select ng-model="EditCtrl.newPoster" class="drop-box vertical-middle"
 						 ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="false"
@@ -26,6 +51,8 @@
 				</div>
 			</div>
 			<div flex-gt-xs="10" flex="0"></div>
+
+			-->
 		</div>
 	</div>
 </md-card> <!-- // .video-player md-card -->

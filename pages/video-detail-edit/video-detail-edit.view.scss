@@ -77,6 +77,31 @@
     }
 
   }
+
+  .center {
+    text-align: center;
+  }
+
+  .full-width {
+    width: 100%;
+  }
+
+  .panoramic {
+    background: $ultraLightGray;
+    display: inline-block;
+    margin: 0 4px;
+    height: 11.05vw;
+    width: 20vw;
+    vertical-align: middle;
+    
+    @media screen and (max-width: 959px) {
+      height: 22.1vw;
+      width: 40vw;
+    }
+    @media screen and (max-width: 520px) {
+      margin-top: 8px;
+    }
+  }
 }
 
 .video-edit-page__thumbnails {
