@@ -14,7 +14,7 @@
 				<ng-include src="'pages/video-detail-edit/partials/basic-details.html'"></ng-include>
 			</div>
 
-			<div flex="100">
+			<div flex="100" ng-if="EditCtrl.editorRole">
 				<ng-include src="'pages/video-detail-edit/partials/aditional-details.html'"></ng-include>
 			</div>
 

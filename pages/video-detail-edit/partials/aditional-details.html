@@ -44,37 +44,5 @@
 				</md-input-container>
 			</div>
 		</div>
-		<div flex-gt-sm="50" flex="100">
-			<div>
-				<md-input-container class="md-inline">
-					<label>{{ 'VIDEO_DETAIL_LANGUAGE' | translate }}</label>
-					<md-select ng-model="EditCtrl.video.language">
-						<md-option ng-repeat="lang in EditCtrl.langs" value="{{lang.lang}}">
-							{{ "VIDEO_LANG_" + lang.lang | translate }}
-						</md-option>
-					</md-select>
-				</md-input-container>
-			</div>
-			<div>
-				<md-input-container class="md-inline">
-					<label>{{ 'VIDEO_DETAIL_PRODUCT_TYPE_LONG' | translate }}</label>
-					<md-select ng-model="EditCtrl.productType" multiple="true">
-						<md-option ng-repeat="productType in EditCtrl.productTypes" value="{{productType.productType}}">
-							{{ "PRODUCT_TYPE_" + productType.productType | translate }}
-						</md-option>
-					</md-select>
-				</md-input-container>
-			</div>
-			<div>
-				<md-input-container class="md-inline">
-				<!--<label>Etiquetas</label>-->
-				<md-chips class="md-inline"
-						ng-model="EditCtrl.tags"
-						md-separator-keys="EditCtrl.tagsKeys"
-						placeholder="{{ 'VIDEO_EDIT_TAG_HINT' | translate }}"
-						secondary-placeholder="{{ 'VIDEO_EDIT_TAG_HINT_SECONDARY' | translate }}"></md-chips>
-				</md-input-container>
-			</div>
-		</div>
 	</div>
 </md-card> <!-- // .aditional-details md-card -->
