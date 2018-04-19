@@ -2,8 +2,7 @@
 	background-color: $background;
 	margin-top: $topbarHeight;
 	min-height: 100%;
-	/* video, */
-	.video-player {
+	video {
 		width: 100%;
 		height: 56.25vw;
 		@include desktop {
