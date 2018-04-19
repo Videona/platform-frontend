@@ -15,8 +15,6 @@
 	</div>
 
 	<article ng-if="VideoDownload.video.data && !VideoDownload.video.data.error">
-		<!-- <video controls ng-src="{{::VideoDownload.video.data.video}}" ng-attr-poster="{{::VideoDownload.video.data.poster || '/img/no-video.svg'}}" preload="metadata" controlsList="nodownload" class="video-download-page"></video> -->
-
 		<player video="VideoDownload.video.data.video" poster="VideoDownload.video.data.poster" class="video-download-page"></player>
 
 		<section class="info-download-video">

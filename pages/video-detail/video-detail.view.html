@@ -18,7 +18,6 @@
 				<section class="card-user-info card-user-info-desktop" ui-sref="userGallery({userId: Video.user.data._id})">
 					<div>
 						<img ng-if="Video.user.data.pic" ng-src="{{Video.user.data.pic}}">
-						<!--<ng-include ng-if="!Video.user.data.pic" src="'/img/no-user.svg'"></ng-include>-->
 						<i ng-if="!Video.user.data.pic" class="material-icons">person_pin</i>
 						<span>{{'USER_PROFFESSIONAL' | translate}}</span>
 					</div>
