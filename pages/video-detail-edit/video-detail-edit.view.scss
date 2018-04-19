@@ -104,6 +104,10 @@
     }
   }
 
+  .inline-block {
+    display: inline-block;
+  }
+
   .flex {
     display: flex;
   }
@@ -138,6 +142,9 @@
     padding: 10px 4px;
   }
 
+  .small-sized-input {
+    width: 114px;
+  }
   .medium-sized-input {
     // TODO(jliarte): check responsiveness
     width: 214px;
@@ -147,6 +154,10 @@
   }
   .verify-icon {
     color: greenyellow;
+  }
+
+  .margin {
+    margin: 8px;
   }
 }
 
