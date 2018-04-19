@@ -1,3 +1,16 @@
+.video-edit-page__main-details {
+	width: 100%;
+}
+
+.video-edit-video-details {
+	@extend %display-flex;
+	@extend %flex-direction-column;
+	@include desktop {
+		-webkit-flex-direction: row;
+		flex-direction: row;
+	}
+}
+
 .video-edit-page {
   margin-top: $topbarHeight;
   background-color: $background;
@@ -12,13 +25,13 @@
 
   // TODO: move upper!
   .vertical-middle {
-    display: flex;
-    align-items: center;
+    @extend %display-flex;
+    @extend %align-items-center;
   }
 
   // TODO: move upper!
   .horizontal-center {
-    justify-content: center;
+		@extend %justify-content-center;
   }
 
   // TODO: move upper!
@@ -53,13 +66,13 @@
 
   .new-thumbnail-input {
     flex-grow: 1;
-    display: flex;
-    flex-direction: column;
+    @extend %display-flex;
+		@extend %flex-direction-column;
     .drop-box {
       width: 100%;
       color: $grey;
       flex-grow: 1;
-      flex-direction: column;
+			@extend %flex-direction-column;
       background-color: $ultraLightGray;
       @include border-radius(5px);
       height: 100%;
@@ -103,13 +116,17 @@
       margin-top: 8px;
     }
   }
+	
+	.video-edit-page-file {
+		@extend %display-flex;
+	}
 
   .inline-block {
     display: inline-block;
   }
 
   .flex {
-    display: flex;
+    @extend %display-flex;
   }
 }
 
@@ -129,8 +146,8 @@
     z-index: 90;
   }
   .custom-thumbnail {
-    display: flex;
-    flex-direction: column;
+    @extend %display-flex;
+    @extend %flex-direction-column;
   }
   .new-thumbnail-preview {
     width: 100%;
@@ -206,8 +223,8 @@
       font-weight: bold;
     }
     &.spinner-button {
-      display: inline-flex;
-      justify-content: center;
+      @extend %display-inline-flex;
+      @extend %justify-content-center;
       md-progress-circular {
         margin: 0 4px;
       }
