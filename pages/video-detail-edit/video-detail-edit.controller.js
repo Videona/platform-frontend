@@ -57,6 +57,10 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, ma
 	};
 
 	self.update = function (isValidForm) {
+		var backdrop = document.querySelector('md-backdrop');
+		if(backdrop) {
+			backdrop.click();
+		}
 		if (!isValidForm) {
 			return showMessage($translate.instant('VIDEO_EDIT_MSG_INVALID_FORM'));
 		}
