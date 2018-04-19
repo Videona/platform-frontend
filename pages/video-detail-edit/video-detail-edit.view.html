@@ -1,19 +1,4 @@
-<!--<topbar></topbar>-->
-
-<md-toolbar  md-scroll-shrink="true" layout="row" flex >
-	<div class="md-toolbar-tools">
-		<!--<span class="mobile-menu">-->
-			<!--<img src="/img/menu.svg" alt="img_menu">-->
-		<!--</span>-->
-		<span class="logo">
-			<img ui-sref="gallery" src="/img/brand/logo_low.png" alt="logo">
-		</span>
-		<h2 md-truncate flex></h2>
-
-		<md-icon ui-sref="upload" md-svg-src="/img/upload-arrow.svg" class="upload-drop-icon" aria-label="Upload"></md-icon>
-		<md-icon md-svg-src="/img/search.svg" class="search-drop-icon" aria-label="Search"></md-icon>
-	</div>
-</md-toolbar>
+<topbar></topbar>
 
 <div ng-controller="VideoDetailEditController as EditCtrl" class="video-edit-page" layout flex layout-fill" id="toast-container">
 	<error404 ng-if="!EditCtrl.video && !EditCtrl.loading" title="{{'VIDEO_ERROR' | translate}}" message="{{'VIDEO_NOT_FOUND' | translate}}"></error404>
