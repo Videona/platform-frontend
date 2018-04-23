@@ -23,7 +23,8 @@
 				<section class="card-user-info card-user-info-desktop" ui-sref="userGallery({userId: Video.user.data._id})">
 					<div>
 						<img ng-if="Video.user.data.pic" ng-src="{{Video.user.data.pic}}">
-						<ng-include ng-if="!Video.user.data.pic" src="'/img/no-user.svg'"></ng-include>
+						<!--<ng-include ng-if="!Video.user.data.pic" src="'/img/no-user.svg'"></ng-include>-->
+						<i ng-if="!Video.user.data.pic" class="material-icons">person_pin</i>
 						<span>{{'USER_PROFFESSIONAL' | translate}}</span>
 					</div>
 					<div>
@@ -64,6 +65,8 @@
 					<div class="video-detail-show-info" ng-click="showDetails = !showDetails" ng-init="showDetails = true">
 						<span ng-show="showDetails">{{'HIDE_VIDEO_DETAILS' | translate}}</span>
 						<span ng-hide="showDetails">{{'SHOW_VIDEO_DETAILS' | translate}}</span>
+						<i ng-show="showDetails" class="material-icons">keyboard_arrow_up</i>
+						<i ng-hide="showDetails" class="material-icons">keyboard_arrow_down</i>
 					</div> 
 
 					<div class="video-detail-info" ng-show="showDetails">
@@ -71,7 +74,7 @@
 							<strong>{{'VIDEO_DETAIL_DATETIME' | translate}}:</strong> {{Video.video.data.date | date: 'dd/MM/yyyy HH:mm' || '-'}}
 						</p>
 						<p>
-							<strong>{{'VIDEO_DETAIL_CATEGORIES' | translate}}:</strong> {{Video.video.data.categories || '-'}}
+							<strong>{{'VIDEO_DETAIL_CATEGORIES' | translate}}:</strong> {{Video.video.data.categories | commaSeparated:'-'}}
 						</p>
 						<p>
 							<strong>{{'VIDEO_DETAIL_PRODUCT_TYPE' | translate}}:</strong> {{Video.video.data.productType | productType}}
@@ -93,16 +96,20 @@
 							<strong>{{'VIDEO_DETAIL_TECHNICAL_DETAILS' | translate}}:</strong> {{Video.video.data.size | toMB }} MB | {{Video.video.data.format}} | {{Video.video.data.dimensions}} | {{Video.video.data.ratio}}
 						</p>
 						<p>
-							<strong>{{'VIDEO_DETAIL_TAGS' | translate}}:</strong> {{Video.video.data.tag || '-'}}
+							<strong>{{'VIDEO_DETAIL_TAGS' | translate}}:</strong> {{Video.video.data.tag | commaSeparated:'-'}}
 						</p>
 					</div>
 				</div>
 				<section class="navigate"><!--TODO: is there a class for button only??-->
+					<!-- <div class="video-detail-edit-info button button-empty">
+						<a ui-sref="gallery">{{'BACK_TO_GALLERY' | translate}}</a>
+					</div> -->
+					<md-button class="btn-border" ui-sref="gallery">
+						<i class="material-icons">reply</i>
+						<span>{{'BACK_TO_GALLERY' | translate}}</span>
+					</md-button>
 					<div class="video-detail-edit-info button">
 						<a ui-sref="videoDownload({id: Video.video.data._id})">{{'DOWNLOAD_VIDEO' | translate}}</a>
-					</div>
-					<div class="video-detail-edit-info button button-empty">
-						<a ui-sref="gallery">{{'BACK_TO_GALLERY' | translate}}</a>
 					</div>
 				</section>
 				<section class="navigate"><!--TODO: is there a class for button only??-->

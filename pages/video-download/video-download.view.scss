@@ -37,10 +37,48 @@ a:hover {
 		.video-detail-edit-info {
 			display: inline-block;
 			float: none;
-			margin-top: 32px;
+			margin-top: 8px;
+		}
+
+		.video-detail-edit-info.disabled {
+			background-color: $mainColorDisabled;
+			border-color: $mainColorDisabled;
 		}
 
 	}
+
+	.md-button * {
+		vertical-align: middle;
+	}
+
+	.md-button.btn-border {
+		border: 1px solid $mainColor;
+		color: $mainColor;
+	}
+
+	.download-button {
+	    /* margin: 16px 0px; */
+
+		.md-button {
+		    padding: 4px 32px;
+			@include desktop {
+				font-size: 21px;
+			}
+		}
+	}
+
+	/* ------ md-config ------ */
+
+	.md-button.md-default-theme.md-primary.md-fab, .md-button.md-primary.md-fab, .md-button.md-default-theme.md-primary.md-raised, .md-button.md-primary.md-raised {
+		color: rgb(255,255,255);
+		background-color: $mainColor;
+	}
+	.md-button.md-default-theme.md-primary.md-fab:not([disabled]).md-focused, .md-button.md-primary.md-fab:not([disabled]).md-focused, .md-button.md-default-theme.md-primary.md-fab:not([disabled]):hover, .md-button.md-primary.md-fab:not([disabled]):hover, .md-button.md-default-theme.md-primary.md-raised:not([disabled]).md-focused, .md-button.md-primary.md-raised:not([disabled]).md-focused, .md-button.md-default-theme.md-primary.md-raised:not([disabled]):hover, .md-button.md-primary.md-raised:not([disabled]):hover{
+		background-color: rgb(30,136,229);
+	}
+	
+	/* ---- end md-config ---- */
+
 }
 
 .video-download-page {

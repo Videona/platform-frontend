@@ -33,8 +33,13 @@
 			if (self.tagFilter instanceof Array && self.tagFilter.length > 0) {
 			  createTagFilter(self.tagFilter);
 			}
-				if(typeof self.featured !== 'undefined') {
+			
+			if(typeof self.featured !== 'undefined') {
 				createFeaturedFilter(self.featured);
+			}
+
+			if (typeof self.query === 'string' && self.query.trim() !== '') {
+				createQueryFilter(self.query);
 			}
 
 			getVideoList();

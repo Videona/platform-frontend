@@ -59,6 +59,7 @@
 			ERROR_DOWNLOAD_VIDEO_NOT_EXISTS: 'No hemos podido encontrar ese video. Por favor, comprueba que el enlace es correcto, y prueba de nuevo.',
 			BACK_TO_GALLERY: 'Volver a la galería',
 			ERROR_WRONG_DOWNLOAD_CODE: 'Código de descarga inválido',
+			ERROR_UNABLE_TO_DOWNLOAD: 'No se ha podido descargar este vídeo',
 
 			UPLOADED_AT: 'Fecha de subida',
 			SHOW_VIDEO_DETAILS: 'Mostrar detalles del vídeo',
