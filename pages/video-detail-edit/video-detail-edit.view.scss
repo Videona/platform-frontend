@@ -1,5 +1,18 @@
+.video-edit-page__main-details {
+	width: 100%;
+}
+
+.video-edit-video-details {
+	@extend %display-flex;
+	@extend %flex-direction-column;
+	@include desktop {
+		-webkit-flex-direction: row;
+		flex-direction: row;
+	}
+}
+
 .video-edit-page {
-  margin-top: $topbarHeight + 10px;
+  margin-top: $topbarHeight;
   background-color: $background;
   width: 100%;
   @media (max-width: 600px) {
@@ -12,13 +25,13 @@
 
   // TODO: move upper!
   .vertical-middle {
-    display: flex;
-    align-items: center;
+    @extend %display-flex;
+    @extend %align-items-center;
   }
 
   // TODO: move upper!
   .horizontal-center {
-    justify-content: center;
+		@extend %justify-content-center;
   }
 
   // TODO: move upper!
@@ -31,6 +44,7 @@
     input, select, textarea, md-select-value {
       border: 1px solid $lightGrey;
       padding: 5px;
+      max-width: 85vw;
     }
     .md-chips {
       padding: 0;
@@ -52,13 +66,13 @@
 
   .new-thumbnail-input {
     flex-grow: 1;
-    display: flex;
-    flex-direction: column;
+    @extend %display-flex;
+		@extend %flex-direction-column;
     .drop-box {
       width: 100%;
       color: $grey;
       flex-grow: 1;
-      flex-direction: column;
+			@extend %flex-direction-column;
       background-color: $ultraLightGray;
       @include border-radius(5px);
       height: 100%;
@@ -76,6 +90,43 @@
       }
     }
 
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .full-width {
+    width: 100%;
+  }
+
+  .panoramic {
+    background: $ultraLightGray;
+    display: inline-block;
+    margin: 0 4px;
+    height: 11.05vw;
+    width: 20vw;
+    vertical-align: middle;
+    
+    @media screen and (max-width: 959px) {
+      height: 22.1vw;
+      width: 40vw;
+    }
+    @media screen and (max-width: 520px) {
+      margin-top: 8px;
+    }
+  }
+	
+	.video-edit-page-file {
+		@extend %display-flex;
+	}
+
+  .inline-block {
+    display: inline-block;
+  }
+
+  .flex {
+    @extend %display-flex;
   }
 }
 
@@ -95,8 +146,8 @@
     z-index: 90;
   }
   .custom-thumbnail {
-    display: flex;
-    flex-direction: column;
+    @extend %display-flex;
+    @extend %flex-direction-column;
   }
   .new-thumbnail-preview {
     width: 100%;
@@ -108,6 +159,9 @@
     padding: 10px 4px;
   }
 
+  .small-sized-input {
+    width: 114px;
+  }
   .medium-sized-input {
     // TODO(jliarte): check responsiveness
     width: 214px;
@@ -117,6 +171,10 @@
   }
   .verify-icon {
     color: greenyellow;
+  }
+
+  .margin {
+    margin: 8px;
   }
 }
 
@@ -165,8 +223,8 @@
       font-weight: bold;
     }
     &.spinner-button {
-      display: inline-flex;
-      justify-content: center;
+      @extend %display-inline-flex;
+      @extend %justify-content-center;
       md-progress-circular {
         margin: 0 4px;
       }
