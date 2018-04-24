@@ -1,6 +1,6 @@
-.video-edit-page__main-details {
-	width: 100%;
-}
+//.video-edit-page__main-details {
+//	width: 100%;
+//}
 
 .video-edit-video-details {
 	@extend %display-flex;
@@ -23,6 +23,10 @@
     width: 100%;
   }
 
+	md-select {
+		width: 100%;
+	}
+	
   // TODO: move upper!
   .vertical-middle {
     @extend %display-flex;
