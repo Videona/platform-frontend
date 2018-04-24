@@ -1,5 +1,5 @@
-<md-card layout="row" layout-wrap class="video-edit-page__video-file" layout-align="center center" >
-	<div flex-gt-sm="20" flex="100">
+<md-card layout="row" layout-wrap class="video-edit-page__video-file center" layout-align="center center" >
+	<div flex-gt-sm="20" flex="100" layout-align="center center">
 		{{ 'VIDEO_EDIT_VIDEO_FILE' | translate }}
 	</div>
 	<div flex-gt-sm="40" flex-gt-xs="50" flex="100" class="custom-thumbnail" layout-align="center center" >
@@ -8,8 +8,8 @@
 			<div ngf-drop ngf-select ng-model="EditCtrl.newFile" class="drop-box"
 				 ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="false"
 				 accept="video/*" ngf-pattern="'video/*'">
-				<i class="material-icons">file_upload</i><br/>
-				{{ 'VIDEO_EDIT_VIDEO_FILE_HINT' | translate}}
+				<i class="material-icons">file_upload</i>
+				<span hide-xs>{{ 'VIDEO_EDIT_VIDEO_FILE_HINT' | translate}}</span>
 				<md-tooltip>{{ 'VIDEO_EDIT_VIDEO_FILE_HINT' | translate}}</md-tooltip>
 			</div>
 		</div>

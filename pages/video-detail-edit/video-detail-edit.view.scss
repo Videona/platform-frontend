@@ -77,7 +77,11 @@
       @include border-radius(5px);
       height: 100%;
       text-align: center;
-      padding: 5% 0;
+      padding: 10px;
+			box-sizing: border-box;
+			@extend %display-flex;
+			@extend %flex-direction-column;
+			@extend %justify-content-center;
       .upload-drop-icon {
         width: 32px;
         display: inline-block;
@@ -98,19 +102,22 @@
 
   .full-width {
     width: 100%;
+		@extend %display-flex;
+		@extend %justify-content-center;
   }
 
   .panoramic {
     background: $ultraLightGray;
     display: inline-block;
     margin: 0 4px;
-    height: 11.05vw;
-    width: 20vw;
+    height: 8.4375vw;
+    width: 15vw;
     vertical-align: middle;
+		
     
     @media screen and (max-width: 959px) {
-      height: 22.1vw;
-      width: 40vw;
+      height: 19.6875vw;
+      width: 35vw;
     }
     @media screen and (max-width: 520px) {
       margin-top: 8px;
@@ -182,6 +189,9 @@
   input {
     height: 40px;
   }
+	> div {
+		margin: 4px 0;
+	}
 }
 
 .video-edit-page__video-file .new-video-preview {
