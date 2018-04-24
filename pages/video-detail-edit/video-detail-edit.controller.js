@@ -188,7 +188,10 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, ma
 		self.video.notes = self.video.notes || '';
 		self.video.locationName = self.video.locationName || '';
 		if (self.video.location) {
-			setLocation({name: self.video.locationName, latLng: new google.maps.LatLng(self.video.location) });
+			// TODO:(DevStarlight) 24/04/18 Prevent google.maps not to be loaded in index.html.
+			setTimeout(function () {
+				setLocation({name: self.video.locationName, latLng: new google.maps.LatLng(self.video.location) });
+			}, 0);
 		}
 	}
 
