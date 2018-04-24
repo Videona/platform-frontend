@@ -57,10 +57,7 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, ma
 	};
 
 	self.update = function (isValidForm) {
-		var backdrop = document.querySelector('md-backdrop');
-		if(backdrop) {
-			backdrop.click();
-		}
+		closeSelectFields();
 		if (!isValidForm) {
 			return showMessage($translate.instant('VIDEO_EDIT_MSG_INVALID_FORM'));
 		}
@@ -89,6 +86,13 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, ma
 	initGMaps();
 
 	// Private selfish methods
+	function closeSelectFields() {
+		let backdrop = document.querySelector('md-backdrop');
+		if (backdrop) {
+			backdrop.click();
+		}
+	}
+
 	function showMessage(message) {
 		let toastParentElement = angular.element(document.getElementById("toast-container"));
 		$mdToast.show(
