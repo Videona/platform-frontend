@@ -51,6 +51,13 @@ a:hover {
 		vertical-align: middle;
 	}
 
+	.md-button {
+		md-progress-circular {
+			display: inline-block;
+			margin-right: 12px;
+		}
+	}
+
 	.md-button.btn-border {
 		border: 1px solid $mainColor;
 		color: $mainColor;
@@ -66,19 +73,6 @@ a:hover {
 			}
 		}
 	}
-
-	/* ------ md-config ------ */
-
-	.md-button.md-default-theme.md-primary.md-fab, .md-button.md-primary.md-fab, .md-button.md-default-theme.md-primary.md-raised, .md-button.md-primary.md-raised {
-		color: rgb(255,255,255);
-		background-color: $mainColor;
-	}
-	.md-button.md-default-theme.md-primary.md-fab:not([disabled]).md-focused, .md-button.md-primary.md-fab:not([disabled]).md-focused, .md-button.md-default-theme.md-primary.md-fab:not([disabled]):hover, .md-button.md-primary.md-fab:not([disabled]):hover, .md-button.md-default-theme.md-primary.md-raised:not([disabled]).md-focused, .md-button.md-primary.md-raised:not([disabled]).md-focused, .md-button.md-default-theme.md-primary.md-raised:not([disabled]):hover, .md-button.md-primary.md-raised:not([disabled]):hover{
-		background-color: rgb(30,136,229);
-	}
-	
-	/* ---- end md-config ---- */
-
 }
 
 .video-download-page {

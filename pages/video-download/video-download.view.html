@@ -40,11 +40,10 @@
 				</div>
 
 				<div class="download-button align-center">
-					<div class="video-detail-edit-info button" 
-					ng-class="(VideoDownload.code || VideoDownload.amIOwner()) ? '' : 'disabled'" ng-click="VideoDownload.download()" target="_blank">
-						<a>{{'DOWNLOAD_VIDEO' | translate}}</a>
-					</div>
-					<br>
+					<md-button type="submit" ng-disabed="!(VideoDownload.code || VideoDownload.amIOwner())" class="spinner-button md-raised md-primary cta" ng-click="VideoDownload.download()">
+						<md-progress-circular ng-show="VideoDownload.loading" class="md-hue-3 md-inline" md-diameter="20px"></md-progress-circular>
+						{{ 'DOWNLOAD_VIDEO' | translate }}
+					</md-button>
 				</div>
 			</div>
 		</section>
