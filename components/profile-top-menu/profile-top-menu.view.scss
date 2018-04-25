@@ -1,0 +1,31 @@
+.profile-top-menu-floating {
+	background: white;
+	border-radius: 4px;
+	box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2),
+		0 13px 19px 2px rgba(0, 0, 0, 0.14),
+		0 5px 24px 4px rgba(0, 0, 0, 0.12);
+	width: 256px;
+
+	.profile-top-menu-item {
+		align-items: center;
+		cursor: pointer;
+		display: flex;
+		position: relative;
+		transition: background 0.15s linear;
+		width: auto;
+
+		md-icon {
+		    /* margin: 0 12px 0 24px; */
+		    margin: 0;
+		}
+	}
+	.profile-top-menu-item.no-pointer {
+		cursor: auto;
+		background-color: $background;
+	}
+
+	.profile-top-menu-item:hover,
+	.profile-top-menu-item:focus {
+		background-color: $background;
+	}
+}
