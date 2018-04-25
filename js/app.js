@@ -46,6 +46,10 @@
 			})
 			.state('home', {
 				url: '/',
+				controller: function ($state) { $state.go('gallery'); },
+			})
+			.state('signin', {
+				url: '/sign-in',
 				templateUrl: './pages/home/home.view.html',
 			})
 			.state('login', {
