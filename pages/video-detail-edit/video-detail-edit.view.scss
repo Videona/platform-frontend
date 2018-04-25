@@ -1,5 +1,18 @@
+//.video-edit-page__main-details {
+//	width: 100%;
+//}
+
+.video-edit-video-details {
+	@extend %display-flex;
+	@extend %flex-direction-column;
+	@include desktop {
+		-webkit-flex-direction: row;
+		flex-direction: row;
+	}
+}
+
 .video-edit-page {
-  margin-top: $topbarHeight + 10px;
+  margin-top: $topbarHeight;
   background-color: $background;
   width: 100%;
   @media (max-width: 600px) {
@@ -10,15 +23,19 @@
     width: 100%;
   }
 
+	md-select, md-input-container, .md-resize-wrapper {
+		width: 100%;
+	}
+	
   // TODO: move upper!
   .vertical-middle {
-    display: flex;
-    align-items: center;
+    @extend %display-flex;
+    @extend %align-items-center;
   }
 
   // TODO: move upper!
   .horizontal-center {
-    justify-content: center;
+		@extend %justify-content-center;
   }
 
   // TODO: move upper!
@@ -31,6 +48,7 @@
     input, select, textarea, md-select-value {
       border: 1px solid $lightGrey;
       padding: 5px;
+      max-width: 85vw;
     }
     .md-chips {
       padding: 0;
@@ -52,18 +70,22 @@
 
   .new-thumbnail-input {
     flex-grow: 1;
-    display: flex;
-    flex-direction: column;
+    @extend %display-flex;
+		@extend %flex-direction-column;
     .drop-box {
       width: 100%;
       color: $grey;
       flex-grow: 1;
-      flex-direction: column;
+			@extend %flex-direction-column;
       background-color: $ultraLightGray;
       @include border-radius(5px);
       height: 100%;
       text-align: center;
-      padding: 5% 0;
+      padding: 10px;
+			box-sizing: border-box;
+			@extend %display-flex;
+			@extend %flex-direction-column;
+			@extend %justify-content-center;
       .upload-drop-icon {
         width: 32px;
         display: inline-block;
@@ -76,6 +98,48 @@
       }
     }
 
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .full-width {
+    width: 100%;
+		@extend %display-flex;
+		@extend %justify-content-center;
+  }
+
+  .panoramic {
+    background: $ultraLightGray;
+    display: inline-block;
+    margin: 0 4px;
+    height: 8.4375vw;
+    width: 15vw;
+    vertical-align: middle;
+    // TODO:(jliarte) check with design
+    overflow: hidden;
+		
+    
+    @media screen and (max-width: 959px) {
+      height: 19.6875vw;
+      width: 35vw;
+    }
+    @media screen and (max-width: 520px) {
+      margin-top: 8px;
+    }
+  }
+	
+	.video-edit-page-file {
+		@extend %display-flex;
+	}
+
+  .inline-block {
+    display: inline-block;
+  }
+
+  .flex {
+    @extend %display-flex;
   }
 }
 
@@ -95,8 +159,8 @@
     z-index: 90;
   }
   .custom-thumbnail {
-    display: flex;
-    flex-direction: column;
+    @extend %display-flex;
+    @extend %flex-direction-column;
   }
   .new-thumbnail-preview {
     width: 100%;
@@ -108,6 +172,9 @@
     padding: 10px 4px;
   }
 
+  .small-sized-input {
+    width: 114px;
+  }
   .medium-sized-input {
     // TODO(jliarte): check responsiveness
     width: 214px;
@@ -118,12 +185,19 @@
   .verify-icon {
     color: greenyellow;
   }
+
+  .margin {
+    margin: 8px;
+  }
 }
 
 .video-edit-page__video-file {
   input {
     height: 40px;
   }
+	> div {
+		margin: 4px 0;
+	}
 }
 
 .video-edit-page__video-file .new-video-preview {
@@ -165,8 +239,8 @@
       font-weight: bold;
     }
     &.spinner-button {
-      display: inline-flex;
-      justify-content: center;
+      @extend %display-inline-flex;
+      @extend %justify-content-center;
       md-progress-circular {
         margin: 0 4px;
       }
