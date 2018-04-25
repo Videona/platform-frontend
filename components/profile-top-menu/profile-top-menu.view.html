@@ -1,4 +1,5 @@
 <span>
-	<i ng-if="session.id > -1" ng-click="switch();" class="material-icons">person_pin</i>
+	<i ng-if="session.id > -1 && !Video.user.data.pic" ng-click="switch();" class="material-icons">person_pin</i>
+	<img ng-if="session.id > -1 && Video.user.data.pic" class="profile-top-image" ng-src="{{Video.user.data.pic}}">
 	<md-button ng-if="session.id === -1" ui-sref="signin">Sign in</md-button>
 </span>
