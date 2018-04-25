@@ -31,6 +31,7 @@ function profileTopMenuDirective(session, $mdPanel) {
 			position: panelPosition,
 			// animation: panelAnimation,
 			// targetEvent: $event,
+			controller: ['$scope', ProfileTopPanelController],
 			templateUrl: 'components/profile-top-menu/dialog.html',
 			clickOutsideToClose: true,
 			escapeToClose: true,
@@ -63,5 +64,9 @@ function profileTopMenuDirective(session, $mdPanel) {
 		if(panelRef) {
 			panelRef.close();
 		}
+	}
+
+	function ProfileTopPanelController($scope) {
+		$scope.session = session;
 	}
 }

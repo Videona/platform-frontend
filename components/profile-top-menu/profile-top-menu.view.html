@@ -1,1 +1,4 @@
-<i ng-click="switch();" class="material-icons">person_pin</i>
+<span>
+	<i ng-if="session.id > -1" ng-click="switch();" class="material-icons">person_pin</i>
+	<md-button ng-if="session.id === -1">Sign in</md-button>
+</span>

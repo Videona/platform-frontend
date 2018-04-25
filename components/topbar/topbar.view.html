@@ -5,19 +5,31 @@
 	<span class="logo">
 		<img ui-sref="gallery" src="/img/brand/logo_low.png" alt="logo">
 	</span>
-	<span class="search-bar" ng-show="searching">
-		<span ng-click="searching = !searching"><ng-include src="'/img/close.svg'" class="close-search"></ng-include></span>
-		<input id="searchField" type="text" name="searchBox" ng-model="search.searchBox" on-enter="search.search()">
-		<ng-include src="'/img/search.svg'" alt="img_menu" ng-click="search.search()" class="search-button"></ng-include>
-	</span>
-	<span class="mobile-icons">
-		<span ng-click="searching = !searching; focus();"><ng-include src="'/img/search.svg'" alt="img_menu"></ng-include></span>
-		<ng-include ui-sref="upload" src="'/img/upload-arrow.svg'" alt="img_menu"></ng-include>
-		<profile-top-menu></profile-top-menu>
-	</span>
-	<span class="desktop-right-icons">
-		<ng-include ui-sref="upload" src="'/img/upload-arrow.svg'" alt="img_menu"></ng-include>
-		<profile-top-menu></profile-top-menu>
+	<span class="items-container">
+		<span class="search-bar" ng-show="searching">
+			<span ng-click="searching = !searching">
+				<md-icon class="close-search">close</md-icon>
+			</span>
+			<input id="searchField" type="text" name="searchBox" ng-model="search.searchBox" on-enter="search.search()">
+			<ng-include src="'/img/search.svg'" alt="img_menu" ng-click="search.search()" class="search-button"></ng-include>
+		</span>
+		
+		<span class="mobile-icons">
+			<span ng-click="searching = !searching; focus();">
+				<md-icon>search</md-icon>
+			</span>
+			<span ng-if="session.id !== -1" ui-sref="upload">
+				<md-icon>file_upload</md-icon>
+			</span>
+			<profile-top-menu></profile-top-menu>
+		</span>
+		
+		<span class="desktop-right-icons">
+			<span ui-sref="upload">
+				<md-icon>file_upload</md-icon>
+			</span>
+			<profile-top-menu></profile-top-menu>
+		</span>
 	</span>
 </header>
 <!--
