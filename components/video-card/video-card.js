@@ -10,7 +10,7 @@ function videoCardDirective() {
 		scope.author = scope.video.ownerData.username;
 		scope.date = scope.video.date;
 		scope.tag = scope.video.tag;
-		scope.productType = scope.video.productType;
+		scope.categories = scope.video.categories;
 		scope.isVerified = scope.video.isVerified;
 	}
 	

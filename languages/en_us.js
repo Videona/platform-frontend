@@ -113,7 +113,7 @@
 			VIDEO_EDIT_CLICK_MAP_HINT: 'Enter address or click on the map to set the video location',
 			VIDEO_EDIT_LOCATION_HINT: 'Use the map below to update the video location',
 			VIDEO_EDIT_GOT_BROWSER_LOCATION: 'Using your browser location.',
-			VIDEO_EDIT_TAG_HINT: 'Enter a tag',
+			VIDEO_EDIT_TAG_HINT: 'Tags',
 			VIDEO_EDIT_TAG_HINT_SECONDARY: 'Comma separated tags',
 			VIDEO_DETAIL_PRICE_STD: 'Standard broadcast price',
 			VIDEO_DETAIL_PRICE_COUNTRY: 'Country broadcast price',

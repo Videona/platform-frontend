@@ -1,13 +1,19 @@
-<div class="card-container">
-	<article ng-style="{'background-image':'url(' + poster + ')'}" class="video-image"></article>
+<md-card class="card-container">
+	<article ng-style="{'background-image':'url(' + poster + ')'}"></article>
 	<section class="video-info">
 		<h2>{{::title}} <ng-include ng-if="tag === 'featured'" src="'/img/checked.svg'"></ng-include></h2>
-		<h3 ng-bind="author"></h3>
+		<a ui-sref="userGallery({userId: author})" ng-click="$event.stopPropagation()"><h3 ng-bind="author"></h3></a>
 		<h4 class="capital_first_letter" am-time-ago="date"></h4>
 		<h3>{{productType | productType}}</h3>
+		<h3>
+			<a ng-repeat="category in categories.split(',')" ui-sref="search({q: category})" ng-click="$event.stopPropagation()">
+				<span ng-if="!$last">{{::category}},</span>
+				<span ng-if="$last">{{::category}}</span>
+			</a>
+		</h3>
 	</section>
 	<section class="video-isVerified" ng-if="isVerified">
 		<img src="../../img/checked.svg" alt="video_verified" />
 		<p>{{'VIDEO_VERIFIED' | translate}}</p>
 	</section>
-</div>
+</md-card>

@@ -19,11 +19,6 @@
   -webkit-border-radius: $radius-top $radius-right $radius-bottom $radius-left;
   -ms-border-radius: $radius-top $radius-right $radius-bottom $radius-left;
   border-radius: $radius-top $radius-right $radius-bottom $radius-left;
-  @include media(SM) {
-    -webkit-border-radius: $radius-top+1px $radius-right+1px $radius-bottom+1px $radius-left+1px;
-    -ms-border-radius: $radius-top+1px $radius-right+1px $radius-bottom+1px $radius-left+1px;
-    border-radius: $radius-top+1px $radius-right+1px $radius-bottom+1px $radius-left+1px;
-  }
 }
 
 @mixin flex-order($order) {
