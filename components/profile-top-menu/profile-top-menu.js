@@ -68,5 +68,6 @@ function profileTopMenuDirective(session, $mdPanel) {
 
 	function ProfileTopPanelController($scope) {
 		$scope.session = session;
+		$scope.close = closePanel;
 	}
 }

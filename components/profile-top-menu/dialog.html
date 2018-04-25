@@ -5,11 +5,11 @@
 			<span ng-bind="session.email"></span>
 		</div>
 	</md-list-item>
-	<md-list-item class="profile-top-menu-item" role="option" ui-sref="userGallery({userId: session.id})">
+	<md-list-item class="profile-top-menu-item" role="option" ui-sref="userGallery({userId: session.id})" ng-click="close();">
 		<md-icon>person</md-icon>
 		<span>Mis videos</span>
 	</md-list-item>
-	<md-list-item class="profile-top-menu-item" role="option" ng-click="session.logout()" ui-sref="gallery">
+	<md-list-item class="profile-top-menu-item" role="option" ng-click="session.logout(); close()" ui-sref="gallery">
 		<md-icon>person</md-icon>
 		<span>Logout</span>
 	</md-list-item>
