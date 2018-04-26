@@ -26,11 +26,8 @@ function profileTopMenuDirective(session, $mdPanel) {
 			.right('8px');
 
 		var config = {
-			// attachTo: angular.element(document.getElementById('openProfileTopMenuItem')),
 			attachTo: angular.element(document.body),
 			position: panelPosition,
-			// animation: panelAnimation,
-			// targetEvent: $event,
 			controller: ['$scope', ProfileTopPanelController],
 			templateUrl: 'components/profile-top-menu/dialog.html',
 			clickOutsideToClose: true,
@@ -40,7 +37,6 @@ function profileTopMenuDirective(session, $mdPanel) {
 
 		$mdPanel.open(config).then(function(result) {
 			panelRef = result;
-			console.log(panelRef);
 		});
 	}
 
