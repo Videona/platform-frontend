@@ -11,7 +11,7 @@ function videoCardDirective() {
 		scope.date = scope.video.date;
 		scope.tag = scope.video.tag;
 		scope.productType = scope.video.productType;
-		scope.isVerified = scope.video.isVerified;
+		scope.verified = scope.video.verified;
 	}
 	
 	return {
