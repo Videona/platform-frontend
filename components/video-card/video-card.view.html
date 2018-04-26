@@ -13,6 +13,7 @@
 				<span ng-if="!$last">{{::category}},</span>
 				<span ng-if="$last">{{::category}}</span>
 			</a>
+			<span ng-if="!categories">&nbsp;</span>
 		</h3>
 	</section>
 	<section class="video-isVerified" ng-if="isVerified">
