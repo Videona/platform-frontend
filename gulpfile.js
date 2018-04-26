@@ -59,7 +59,6 @@ var sourceDeps = [
 	'../node_modules/videogular-buffering/vg-buffering.min.js',
 	'../node_modules/videogular-controls/vg-controls.min.js',
 	'../node_modules/videogular-overlay-play/vg-overlay-play.min.js',
-	// '../node_modules/videogular-poster/vg-poster.min.js',
 	'./js/custom-vg-poster.js',
 ];
 gulp.task('join-dependencies', ['make-config', 'flavour'], function () {
