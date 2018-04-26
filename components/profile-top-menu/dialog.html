@@ -1,7 +1,7 @@
 <div class="profile-top-menu-floating md-2-line" role="listbox">
 	<md-list-item class="profile-top-menu-item no-pointer" role="option">
 		<div class="md-list-item-text" layout="column">
-			<span ng-bind="session.username"></span><br>
+			<span>{{session.username || session.name}}</span><br>
 			<span ng-bind="session.email"></span>
 		</div>
 	</md-list-item>
