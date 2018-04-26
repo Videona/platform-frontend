@@ -4,11 +4,11 @@
 	<div class="container">
 		<div class="left-preview">
 			<div class="upload-form-file" ng-if="!Upload.file">
-			    <div ngf-drop ngf-select ng-model="Upload.file" class="drop-box" 
+			    <div ngf-drop ngf-select ng-model="Upload.file" class="drop-box panoramic"
 			        ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="false"
 			        accept="video/*" 
 			        ngf-pattern="'video/*'">
-			        <img class="upload-drop-icon" src="/img/upload-arrow.svg" alt="img_menu"><br>
+					<md-icon class="upload-drop-icon">file_upload</md-icon><br>
 			    	{{'DROP_VIDEO' | translate}}
 			    </div>
 			    <div ngf-no-file-drop>
