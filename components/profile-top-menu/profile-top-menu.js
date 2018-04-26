@@ -22,8 +22,8 @@ function profileTopMenuDirective(session, $mdPanel) {
 	function createPanel() {
 		var panelPosition = $mdPanel.newPanelPosition()
 			.absolute()
-			.top('16px')
-			.right('8px');
+			.top('64px')
+			.right('28px');
 
 		var config = {
 			attachTo: angular.element(document.body),

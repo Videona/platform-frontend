@@ -23,13 +23,26 @@
 		    /* margin: 0 12px 0 24px; */
 		    margin: 0;
 		}
+
+		.username {
+			font-weight: bold;
+		}
+
+		.email {
+			color: $textLight;
+		}
 	}
 	.profile-top-menu-item.no-pointer {
-		cursor: auto;
 		background-color: $background;
+		cursor: auto;
 		height: 72px;
-
+		line-height: .8em;
 	}
+
+	.profile-top-menu-item:not(.no-pointer) .md-list-item-inner span {
+		margin-top: 2px;
+	}
+		
 
 	.profile-top-menu-item:hover,
 	.profile-top-menu-item:focus {
