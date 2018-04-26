@@ -1,5 +1,8 @@
 <div class="card-container">
-	<article ng-style="{'background-image':'url(' + poster + ')'}" class="video-image"></article>
+	<article ng-style="{'background-image':'url(' + poster + ')'}" class="video-image">
+		<!-- Image pixel to detect failure and set error poster -->
+		<img ng-src="{{poster}}" class="pixel" onerror="this.parentNode.style.backgroundImage = 'url(\'/img/no-video.svg\')'" />
+	</article>
 	<section class="video-info">
 		<h2>{{::title}} <ng-include ng-if="tag === 'featured'" src="'/img/checked.svg'"></ng-include></h2>
 		<h3 ng-bind="author"></h3>

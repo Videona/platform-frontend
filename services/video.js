@@ -18,6 +18,7 @@ function videoService(api, $q) {
 	function get(videoId, callback) {
 		api.get(api.url + '/video/' + videoId, function (data, status) {
 			video.data = data;
+
 			if (callback && typeof callback === 'function') {
 				callback(data, status);
 			}

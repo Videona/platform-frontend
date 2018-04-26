@@ -1,4 +1,3 @@
-v0.7.3
-- Add material icons
-- Back to gallery button with icon
-- Person pin icon for users with no picture
+v0.7.6
+ - Updated search box color and size
+ - Fixed an issue that didn't allows you to search twice the same term

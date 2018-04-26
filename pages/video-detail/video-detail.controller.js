@@ -31,14 +31,16 @@ function VideoDetail($stateParams, session, video, user, $timeout) {
 		}
 	});
 
+	/**
+	 * Detects if description field needs the "show more +" functionality
+	 * and set the variables to make it possible
+	 */
 	function showMore() {
 		var el = document.getElementById('video-description');
 
 		if (el && el.scrollHeight > el.clientHeight) { 
-			console.log('is bigger than shown');
 			return true;
 		} else {
-			console.log('full shown');
 			return false;
 		}
 	}

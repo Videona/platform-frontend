@@ -14,6 +14,7 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, ma
 	self.actionsDisabled = true;
 	self.maxVideoUploadSize = maxVideoUploadByteSize / 1000;
 	self.tagsKeys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA];
+	self.maxVideoDate = new Date();
 
 	// selfish Methods
 	self.resetVideoPoster = function () {
@@ -56,6 +57,7 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, ma
 	};
 
 	self.update = function (isValidForm) {
+		closeSelectFields();
 		if (!isValidForm) {
 			return showMessage($translate.instant('VIDEO_EDIT_MSG_INVALID_FORM'));
 		}
@@ -84,6 +86,13 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, ma
 	initGMaps();
 
 	// Private selfish methods
+	function closeSelectFields() {
+		let backdrop = document.querySelector('md-backdrop');
+		if (backdrop) {
+			backdrop.click();
+		}
+	}
+
 	function showMessage(message) {
 		let toastParentElement = angular.element(document.getElementById("toast-container"));
 		$mdToast.show(
@@ -131,7 +140,7 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, ma
 	}
 
 	function checkEditAccess(video) {
-		if (video !== undefined && video.owner == self.session.id) {
+		if (video !== undefined && (video.owner == self.session.id || self.session.role === 'editor')) {
 			if (self.session.role === 'editor') {
 				self.editorRole = true;
 			}
@@ -183,7 +192,10 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, ma
 		self.video.notes = self.video.notes || '';
 		self.video.locationName = self.video.locationName || '';
 		if (self.video.location) {
-			setLocation({name: self.video.locationName, latLng: new google.maps.LatLng(self.video.location) });
+			// TODO:(DevStarlight) 24/04/18 Prevent google.maps not to be loaded in index.html.
+			setTimeout(function () {
+				setLocation({name: self.video.locationName, latLng: new google.maps.LatLng(self.video.location) });
+			}, 0);
 		}
 	}
 
