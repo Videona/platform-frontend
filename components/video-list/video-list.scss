@@ -29,12 +29,12 @@
 	@extend %flex-wrap-wrap;
 	video-card {
 		margin: $cardMargin 0 0 0;
-		width: 100vw;
+		width: 100%;
 		@include tablet {
-			width: calc(33.3vw - 8.5px);
+			width: 33.3%;
 		}
 		@include desktop {
-			width: calc(20vw - 5.2px);
+			width: 20%;
 		}
 		article {
 			height: 56.25vw;

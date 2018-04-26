@@ -56,6 +56,10 @@ var sourceDeps = [
 	'../node_modules/ng-file-upload/dist/ng-file-upload.min.js',
 	'../node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js',
 	'../node_modules/ngmap/build/scripts/ng-map.min.js',
+	'../node_modules/videogular-buffering/vg-buffering.min.js',
+	'../node_modules/videogular-controls/vg-controls.min.js',
+	'../node_modules/videogular-overlay-play/vg-overlay-play.min.js',
+	'./js/custom-vg-poster.js',
 ];
 gulp.task('join-dependencies', ['make-config', 'flavour'], function () {
 	return gulp.src(sourceDeps)
@@ -80,6 +84,7 @@ gulp.task('dependencies', ['join-dependencies'], function () {
 // Build app js
 var sourceJs = [
 	'./js/**/**.js',
+	'!./js/custom-vg-poster.js',
 	'./languages/**/**.js',
 	'./services/**/**.js',
 	'./services/**.js',
@@ -157,9 +162,15 @@ gulp.task('images', ['flavour'], function () {
 		.pipe(gulp.dest('./dist/img'));
 });
 
+gulp.task('fonts', ['flavour'], function () {
+	gulp.src('./fonts/**/**')
+		.pipe(debug({ title: 'Move fonts:' }))
+		.pipe(gulp.dest('./dist/fonts'));
+});
+
 
 // Perform a complete build
-gulp.task('build', ['make-config', 'flavour', 'dependencies', 'js', 'images', 'html', 'tests', 'sass']);
+gulp.task('build', ['make-config', 'flavour', 'dependencies', 'js', 'images', 'fonts', 'html', 'tests', 'sass']);
 
 
 /**

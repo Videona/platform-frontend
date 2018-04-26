@@ -54,7 +54,7 @@
 			VIDEO_VERIFIED: 'Verified',
 			VIDEO_NOT_VERIFIED: 'Not verified',
 			DOWNLOAD_CODE: 'Enter your download code',
-			DOWNLOAD_VIDEO: 'Download Video',
+			DOWNLOAD_VIDEO: 'Download',
 			ERROR_DOWNLOAD_VIDEO: 'Error downloading video',
 			ERROR_DOWNLOAD_VIDEO_NOT_EXISTS: 'We can not find this video. Please, check that this resource is correct and try again.',
 			BACK_TO_GALLERY: 'Back to gallery',
