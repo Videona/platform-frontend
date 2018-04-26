@@ -38,3 +38,9 @@
     height: 100%;
     background-size: cover;
 }
+videogular vg-poster .vg-poster-fill.pause,
+  videogular vg-poster .vg-poster-fill.play, [videogular] vg-poster .vg-poster-fill.pause,
+  [videogular] vg-poster .vg-poster-fill.play {
+    display: none; }
+  videogular vg-poster .vg-poster-fill.stop, [videogular] vg-poster .vg-poster-fill.stop {
+    display: block; }
