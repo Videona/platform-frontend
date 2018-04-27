@@ -1,6 +1,8 @@
 <md-card class="card-container">
 	<article ng-style="{'background-image':'url(' + poster + ')', 'position':'relative'}">
 		<span class="video-timer">{{::time | time : false}}</span>
+		<!-- Image pixel to detect failure and set error poster -->
+		<img ng-src="{{poster}}" class="pixel" onerror="this.parentNode.style.backgroundImage = 'url(\'/img/no-video.svg\')'" />
 	</article>
 	<section class="video-info">
 		<h2>{{::title}} <ng-include ng-if="tag === 'featured'" src="'/img/checked.svg'"></ng-include></h2>
@@ -12,6 +14,7 @@
 				<span ng-if="!$last">{{::category}},</span>
 				<span ng-if="$last">{{::category}}</span>
 			</a>
+			<span ng-if="!categories">&nbsp;</span>
 		</h3>
 	</section>
 	<section class="video-isVerified" ng-if="isVerified">
