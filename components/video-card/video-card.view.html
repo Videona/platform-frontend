@@ -8,10 +8,11 @@
 		<h2>{{::title}} <md-icon ng-if="verified == true || verified == 'true'">check_circle</md-icon></h2>
 		<a ui-sref="userGallery({userId: authorId})" ng-click="$event.stopPropagation()"><h3 ng-bind="author"></h3></a>
 		<h4 class="capital_first_letter" am-time-ago="date"></h4>
-		<h3>{{productType | productType}}</h3>
+<!--		<h3>{{productType | productType}}</h3>-->
 		<h3>
 			<span ng-repeat="category in categories.split(',')">
-				<a ui-sref="search({q: category})" ng-click="$event.stopPropagation()">{{::category}}</a><span ng-if="!$last">, </span></span>
+<!--				<a ui-sref="search({q: category})" ng-click="$event.stopPropagation()">{{::category}}</a><span ng-if="!$last">, </span></span>-->
+				{{::category}}<span ng-if="!$last">, </span></span>
 			<span ng-if="!categories">&nbsp;</span>
 		</h3>
 	</section>
