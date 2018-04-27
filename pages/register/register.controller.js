@@ -98,9 +98,9 @@
 
 			if (self.username === '') {
 				self.error.push($translate.instant('ERROR_USERNAME_EMPTY'));
-			} else if (self.username.length < 5) {
+			} else if (self.username.length < 1) {
 				self.error.push($translate.instant('ERROR_USERNAME_MIN_LENGTH'));
-			} else if (self.username.length > 30) {
+			} else if (self.username.length > 32) {
 				self.error.push($translate.instant('ERROR_USERNAME_MAX_LENGTH'));
 			}
 
@@ -116,7 +116,7 @@
 				self.error.push($translate.instant('ERROR_EMAIL_EMPTY'));
 			} else if (self.email.length < 5) {
 				self.error.push($translate.instant('ERROR_EMAIL_MIN_LENGTH'));
-			} else if (self.email.length > 30) {
+			} else if (self.email.length > 60) {
 				self.error.push($translate.instant('ERROR_EMAIL_MAX_LENGTH'));
 			} else if (!EMAIL_REGEXP.test(self.email)) {
 				self.error.push($translate.instant('ERROR_EMAIL_NOT_VALID'));

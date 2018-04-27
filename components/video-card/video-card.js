@@ -9,6 +9,7 @@ function videoCardDirective() {
 		scope.poster = scope.video.poster;
 		scope.time = scope.video.length;
 		scope.author = scope.video.ownerData.username;
+		scope.authorId = scope.video.ownerData._id;
 		scope.date = scope.video.date;
 		scope.tag = scope.video.tag;
 		scope.categories = scope.video.categories;

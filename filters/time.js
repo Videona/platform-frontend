@@ -3,7 +3,10 @@
 		.filter('time', [time]);
 
 	function time()	{
-		return function (seconds, show_ms) {
+		return function (seconds, showMs) {
+			if (typeof showMs === undefined) {
+				showMs = true;
+			}
 			// Gotten from
 			// https://gist.github.com/edwinwebb/1376880
 			var ms = Math.floor((seconds * 1000) % 1000);
@@ -12,7 +15,7 @@
 			
 			var strFormat = 'MM:SS.XX';
 			
-			if (show_ms === false) {
+			if (!showMs) {
 				strFormat = 'MM:SS';
 			}
 			
