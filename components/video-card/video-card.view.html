@@ -5,7 +5,7 @@
 		<img ng-src="{{poster}}" class="pixel" onerror="this.parentNode.style.backgroundImage = 'url(\'/img/no-video.svg\')'" />
 	</article>
 	<section class="video-info">
-		<h2>{{::title}} <ng-include ng-if="tag === 'featured'" src="'/img/checked.svg'"></ng-include></h2>
+		<h2>{{::title}} <md-icon ng-if="verified == true || verified == 'true'">check_circle</md-icon></h2>
 		<a ui-sref="userGallery({userId: author})" ng-click="$event.stopPropagation()"><h3 ng-bind="author"></h3></a>
 		<h4 class="capital_first_letter" am-time-ago="date"></h4>
 		<h3>{{productType | productType}}</h3>
@@ -18,7 +18,7 @@
 		</h3>
 	</section>
 	<section class="video-isVerified" ng-if="isVerified">
-		<img src="../../img/checked.svg" alt="video_verified" />
+		<md-icon>check_circle</md-icon>
 		<p>{{'VIDEO_VERIFIED' | translate}}</p>
 	</section>
 </md-card>

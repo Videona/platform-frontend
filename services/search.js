@@ -14,7 +14,7 @@
 		return self;
 
 		function search() {
-			if(lastSearchTerm !== self.searchBox) {
+			if($state.current.name !== 'search' || lastSearchTerm !== self.searchBox) {
 				lastSearchTerm = self.searchBox;
 				self.searchTerm = self.searchBox.toLowerCase();
 				goToSearch();

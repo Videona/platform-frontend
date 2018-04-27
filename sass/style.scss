@@ -28,6 +28,8 @@
 '../pages/upload/upload.view',
 '../pages/user-gallery/user-gallery.view';
 
+
+// TODO: extract these directives to a common style file
 .background-wrapper {
 	background-color: $background;
 }
@@ -44,3 +46,23 @@ videogular vg-poster .vg-poster-fill.pause,
     display: none; }
   videogular vg-poster .vg-poster-fill.stop, [videogular] vg-poster .vg-poster-fill.stop {
     display: block; }
+
+.panoramic {
+  background: $ultraLightGray;
+  display: inline-block;
+  margin: 0 4px;
+  height: 8.4375vw;
+  width: 15vw;
+  vertical-align: middle;
+  // TODO:(jliarte) check with design
+  overflow: hidden;
+
+
+  @media screen and (max-width: 959px) {
+    height: 19.6875vw;
+    width: 35vw;
+  }
+  @media screen and (max-width: 520px) {
+    margin-top: 8px;
+  }
+}

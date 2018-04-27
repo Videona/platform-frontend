@@ -36,6 +36,14 @@ video-card {
 				font-weight: 700;
 				height: 2.1em;
 				overflow: hidden;
+				md-icon {
+					color: $lightGrey;
+					line-height: 24px;
+					vertical-align: middle;
+					font-size: 14px;
+					width: 14px;
+					height: 14px;
+				}
 			}
 			h2:after {
 				content: "";
