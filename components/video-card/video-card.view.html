@@ -1,5 +1,7 @@
 <md-card class="card-container">
-	<article ng-style="{'background-image':'url(' + poster + ')'}"></article>
+	<article ng-style="{'background-image':'url(' + poster + ')', 'position':'relative'}">
+		<span class="video-timer">{{::time | time : false}}</span>
+	</article>
 	<section class="video-info">
 		<h2>{{::title}} <ng-include ng-if="tag === 'featured'" src="'/img/checked.svg'"></ng-include></h2>
 		<a ui-sref="userGallery({userId: author})" ng-click="$event.stopPropagation()"><h3 ng-bind="author"></h3></a>

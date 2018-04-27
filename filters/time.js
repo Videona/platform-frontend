@@ -3,14 +3,19 @@
 		.filter('time', [time]);
 
 	function time()	{
-		return function (seconds) {
+		return function (seconds, show_ms) {
 			// Gotten from
 			// https://gist.github.com/edwinwebb/1376880
 			var ms = Math.floor((seconds * 1000) % 1000);
 			var s = Math.floor(seconds % 60);
 			var m = Math.floor((seconds * 1000 / (1000 * 60)) % 60);
+			
 			var strFormat = 'MM:SS.XX';
-
+			
+			if (show_ms === false) {
+				strFormat = 'MM:SS';
+			}
+			
 			if (s < 10) s = '0' + s;
 			if (m < 10) m = '0' + m;
 			if (ms < 100) ms = '0' + ms;

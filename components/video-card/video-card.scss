@@ -5,6 +5,17 @@ video-card {
 		background-color: white;
 		cursor: pointer;
 		@include border-radius($cardRadius);
+		.video-timer {
+			position: absolute;
+			bottom: 4px;
+			right: 8px;
+			color: white;
+			background: #000000a3;
+			border-radius: 3px;
+			padding: 2px 4px;
+			font-weight: bold;
+			font-size: 18px;
+		}
 		.video-info {
 			@extend %display-flex;
 			@extend %flex-direction-column;
