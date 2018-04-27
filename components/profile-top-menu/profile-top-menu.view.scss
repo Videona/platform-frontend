@@ -1,28 +1,28 @@
-.topbar img.profile-top-image {
-	height: 36px;
-    border-radius: 50%;
+.toolbar-user-menu {
+	img.profile-top-image {
+		margin: 0;
+		height: 24px;
+		border-radius: 50%;
+	}
+
+	md-menu {
+		md-icon, i {
+			margin: 0;
+		}
+	}
 }
 
-.profile-top-menu-floating {
-	background: white;
-	border-radius: 4px;
-	box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2),
-		0 13px 19px 2px rgba(0, 0, 0, 0.14),
-		0 5px 24px 4px rgba(0, 0, 0, 0.12);
-	width: 256px;
+md-menu-content.toolbar-user-menu__menu-content {
+	padding: 0;
 
-	.profile-top-menu-item {
-		align-items: center;
-		cursor: pointer;
+	.profile-top-menu-header {
 		display: flex;
-		position: relative;
-		transition: background 0.15s linear;
-		width: auto;
-
-		md-icon {
-		    /* margin: 0 12px 0 24px; */
-		    margin: 0;
-		}
+		align-items: center;
+		height: 72px;
+		padding: 0 16px;
+		background-color: $background;
+		cursor: auto;
+		line-height: .8em;
 
 		.username {
 			font-weight: bold;
@@ -31,21 +31,5 @@
 		.email {
 			color: $textLight;
 		}
-	}
-	.profile-top-menu-item.no-pointer {
-		background-color: $background;
-		cursor: auto;
-		height: 72px;
-		line-height: .8em;
-	}
-
-	.profile-top-menu-item:not(.no-pointer) .md-list-item-inner span {
-		margin-top: 2px;
-	}
-		
-
-	.profile-top-menu-item:hover,
-	.profile-top-menu-item:focus {
-		background-color: $background;
 	}
 }

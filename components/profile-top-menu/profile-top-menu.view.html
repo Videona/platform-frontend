@@ -1,5 +1,33 @@
-<span>
-	<i ng-if="session.id > -1 && !Video.user.data.pic" ng-click="switch();" class="material-icons">person_pin</i>
-	<img ng-if="session.id > -1 && Video.user.data.pic" class="profile-top-image" ng-src="{{Video.user.data.pic}}">
+<span class="toolbar-user-menu">
+	<md-menu ng-if="session.id > -1" md-offset="0 64px">
+		<md-button aria-label="Open user menu" class="md-icon-button" ng-click="openMenu($mdMenu, $event)">
+			<md-icon ng-if="!session.pic" md-menu-origin>person_pin</md-icon>
+			<img ng-if="session.pic" class="profile-top-image" ng-src="{{session.pic}}">
+		</md-button>
+		<md-menu-content class="toolbar-user-menu__menu-content" width="4">
+			<md-menu-item class="profile-top-menu-header">
+				<div class="md-list-item-text">
+					<span class="username">{{session.username || session.name}}</span><br>
+					<span class="email" ng-bind="session.email"></span>
+				</div>
+			</md-menu-item>
+			<!--<md-menu-divider></md-menu-divider>-->
+			<md-menu-item>
+				<md-button ui-sref="userGallery({userId: session.id})">
+					<md-icon>video_library</md-icon>
+					<!--TODO: translate-->
+					Mis videos
+				</md-button>
+			</md-menu-item>
+			<md-menu-item>
+				<md-button ng-click="session.logout()" ui-sref="gallery">
+					<md-icon>exit_to_app</md-icon>
+					<!--TODO: translate-->
+					Logout
+				</md-button>
+			</md-menu-item>
+		</md-menu-content>
+	</md-menu>
+
 	<md-button ng-if="session.id === -1" ui-sref="signin">Sign in</md-button>
 </span>
