@@ -1,3 +1,7 @@
+v0.7.6
+- Updated search box color and size
+- Fixed an issue that didn't allows you to search twice the same term
+
 v0.7.5
  - Updated player
  - UI/UX improvements
