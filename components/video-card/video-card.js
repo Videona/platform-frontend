@@ -12,6 +12,7 @@ function videoCardDirective() {
 		scope.authorId = scope.video.ownerData._id;
 		scope.date = scope.video.date;
 		scope.tag = scope.video.tag;
+		scope.locationName = scope.video.locationName;
 		scope.categories = scope.video.categories;
 		scope.productType = scope.video.productType;
 		scope.verified = scope.video.verified;

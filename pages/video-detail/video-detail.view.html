@@ -47,12 +47,13 @@
 				<div class="padding">
 					<p ng-class="{'block-ellipsis': !readMore}" ng-bind="Video.video.data.description" id="video-description"></p>
 					
-					<div class="padding" ng-show="Video.showMore">
+					<div class="padding view-all" ng-show="Video.showMore">
 						<a ng-click="readMore = !readMore" class="read-more">
 							<span ng-hide="readMore">+ {{'BUTTON_READ_ALL' | translate}}</span>
 							<span ng-show="readMore">- {{'BUTTON_READ_LESS' | translate}}</span>
 						</a>
 					</div>
+					<div class="padding view-all" ng-hide="Video.showMore">&nbsp;</div>
 
 					<p>
 						<strong>{{'VIDEO_DETAIL_QUALITY' | translate}}:</strong> <stars value="{{Video.video.data.quality}}"></stars>
