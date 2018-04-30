@@ -81,7 +81,9 @@
 							<strong>{{'VIDEO_DETAIL_LENGTH' | translate}}:</strong> {{Video.video.data.length | time}}
 						</p>
 						<p>
-							<strong>{{'VIDEO_DETAIL_LANGUAGE' | translate}}:</strong> {{ "VIDEO_LANG_" + Video.video.data.language | translate }}
+							<strong>{{'VIDEO_DETAIL_LANGUAGE' | translate}}:</strong> 
+							<span ng-if="Video.video.data.language">{{ "VIDEO_LANG_" + Video.video.data.language | translate }}</span>
+							<span ng-if="!Video.video.data.language"> - </span>
 						</p>
 						<p>
 							<strong>{{'VIDEO_DETAIL_TECHNICAL_DETAILS' | translate}}:</strong> {{Video.video.data.size | toMB }} MB | {{Video.video.data.format}} | {{Video.video.data.dimensions}} | {{Video.video.data.ratio}}
@@ -90,12 +92,15 @@
 							<strong>{{'VIDEO_DETAIL_TAGS' | translate}}:</strong> {{Video.video.data.tag | commaSeparated:'-'}}
 						</p>
 						<p>
-							<strong>{{'VIDEO_DETAIL_NOTES' | translate}}:</strong> {{Video.video.data.notes}}
+							<strong>{{'VIDEO_DETAIL_NOTES' | translate}}:</strong> {{Video.video.data.notes || ' - '}}
 						</p>
 					</div>
 				</div>
-				<section class="navigate button-bar"><!--TODO: is there a class for button only??-->
-					<md-button class="button md-raised md-primary" ui-sref="videoDownload({id: Video.video.data._id})">
+				
+				<section ui-view="download" class="video-download-view"></section>
+
+				<section class="navigate button-bar">
+					<md-button ng-hide="Video.state.current.name === 'videoDownload' && Video.stateParams.autoDownload !== 'true'" class="button md-raised md-primary" ui-sref="videoDownload({id: Video.video.data._id, autoDownload: Video.session.id == Video.video.data.owner})">
 						<span>{{'DOWNLOAD_VIDEO' | translate}}</span>
 					</md-button>
 					<md-button class="button md-raised" ng-if="Video.session.id == Video.video.data.owner" ui-sref="videoDetailEdit({id: Video.video.data._id})">

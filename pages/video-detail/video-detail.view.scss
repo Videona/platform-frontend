@@ -90,6 +90,8 @@
 	@include desktop {
 		flex-direction: column;
 	}
+	width: 100%;
+	
 	> div:first-child {
 		margin: $cardMargin $cardMargin 0 0;
 		h1 {
@@ -145,6 +147,10 @@
 
 	.read-more {
 		cursor: pointer;
+	}
+
+	.video-download-view {
+		width: 100%;
 	}
 }
 

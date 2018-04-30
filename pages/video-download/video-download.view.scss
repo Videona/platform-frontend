@@ -7,9 +7,6 @@ a:hover {
 }
 
 .download-page {
-	background-color: $background;
-	min-height: calc(100% - 52px);
-	margin-top: $topbarHeight;
 	width: 100%;
 	@extend %display-flex;
 	@extend %flex-direction-column;
@@ -144,7 +141,6 @@ a:hover {
 }
 
 .download-video-code {
-	margin-top: 30px;
 	color: $grey;
 	text-align: center;
 	input {

@@ -6,23 +6,19 @@ function VideoDownload($stateParams, video, videoDownload, $translate, session) 
 
 	self.id = $stateParams.id;
 	self.code = '';
-	self.loading = true;
+	self.loading = false;
 	self.error = null;
 	self.session = session;
 	self.amIOwner = amIOwner;
+	self.$stateParams = $stateParams;
 
 	self.video = video;
 
 	self.download = download;
 
-	if (self.video && self.video.data && self.video.data.id !== self.id) {
-		self.video.reset();
+	if ($stateParams.autoDownload === 'true') {
+		download();
 	}
-
-	// ToDo: Check invalid video :S
-	self.video.get(self.id, function () {
-		self.loading = false;
-	});
 
 
 	function download() {

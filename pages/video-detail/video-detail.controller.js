@@ -1,14 +1,16 @@
 angular.module('app')
-	.controller('VideoDetailController', ['$stateParams', 'session', 'video', 'user', '$timeout', VideoDetail]);
+	.controller('VideoDetailController', ['$stateParams', '$state', 'session', 'video', 'user', '$timeout', VideoDetail]);
 
-function VideoDetail($stateParams, session, video, user, $timeout) {
+function VideoDetail($stateParams, $state, session, video, user, $timeout) {
 	var self = this;
 
 	self.id = $stateParams.id;
 	self.code = '';
 	self.loading = true;
 	self.loadingAuthor = true;
-	self.session = session; 
+	self.session = session;
+	self.state = $state; 
+	self.stateParams = $stateParams; 
 
 	self.video = video;
 	self.user = user;
