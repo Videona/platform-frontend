@@ -14,6 +14,16 @@
 			<div>
 				<player video="Video.video.data.video" poster="Video.video.data.poster"></player>
 
+				<div class="video-detail-map">
+					<ng-map default-style="true" center="Video.mapMarker" ng-if="Video.mapMarker.length > 0">
+						<marker ng-if="Video.video.data.location" position="{{ Video.mapMarker }}"
+								title="{{ Video.video.data.locationName }}" centered="true"></marker>
+					</ng-map>
+					<div ng-if="Video.mapMarker.length === 0" class="no-map">
+						No location selected
+					</div>
+				</div>
+
 			</div>
 			<section class="card-video-info">
 				<div>
@@ -81,7 +91,7 @@
 						</p>
 					</div>
 				</div>
-				<section class="navigate"><!--TODO: is there a class for button only??-->
+				<section class="navigate button-bar"><!--TODO: is there a class for button only??-->
 					<md-button class="button md-raised md-primary" ui-sref="videoDownload({id: Video.video.data._id})">
 						<span>{{'DOWNLOAD_VIDEO' | translate}}</span>
 					</md-button>

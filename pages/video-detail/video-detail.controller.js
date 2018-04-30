@@ -14,6 +14,7 @@ function VideoDetail($stateParams, session, video, user, $timeout) {
 	self.user = user;
 
 	self.showMore = showMore();
+	self.mapMarker = []; 
 
 	if(self.video && self.video.data && self.video.data.id !== self.id) {
 		self.video.reset();
@@ -28,6 +29,11 @@ function VideoDetail($stateParams, session, video, user, $timeout) {
 			$timeout(function() {
 				self.showMore = showMore();
 			}, 100);
+
+			if (self.video.data.location) {
+				self.mapMarker = [self.video.data.location.lat, self.video.data.location.lng];
+				console.warn(self.mapMarker);
+			}
 		}
 	});
 

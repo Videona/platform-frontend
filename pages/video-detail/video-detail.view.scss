@@ -40,6 +40,36 @@
 		border: 1px solid $mainColor;
 		color: $mainColor;
 	}
+
+	.video-detail-map {
+		box-sizing: border-box;
+		padding: $cardMargin;
+		width: 100%;
+
+		.no-map {
+		    background: $ultraLightGray;
+			color: $textLight;
+			height: 150px;
+			display: inline-block;
+			width: 100%;
+			text-align: center;
+			line-height: 150px;
+		}
+	}
+
+	.button-bar {
+		background: $backgroundLight;
+		bottom: 0;
+		left: 0;
+		padding: 4px 0;
+		position: fixed;
+		width: 100%;
+
+		@include desktop {
+			background: transparent;
+			position: static;
+		}
+	}
 }
 
 .card-video-detail {
@@ -52,6 +82,7 @@
 	background-color: $backgroundLight;
 	padding: 7px 24px;
     margin-top: 16px;
+    margin-bottom: 52px;
 	@include border-radius($cardRadius);
 	@include desktop {
 		flex-direction: row;
