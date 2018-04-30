@@ -43,12 +43,14 @@
 
 		$stateProvider
 			.state('root', {
-				controller: function (session) {},
+				controller: ['session', function (session) {}],
 				abstract: true,
 			})
 			.state('home', {
 				url: '/',
-				controller: function ($state) { $state.go('gallery'); },
+				controller: ['$state', function ($state) { 
+					$state.go('gallery'); 
+				}],
 			})
 			.state('signin', {
 				url: '/sign-in',
@@ -88,6 +90,12 @@
 				url: '/video/:id',
 				parent: 'root',
 				templateUrl: 'pages/video-detail/video-detail.view.html',
+			})
+			.state('videoDownloadRedirect', {
+				url: '/download/:id',
+				controller: ['$state', '$stateParams', function ($state, $stateParams) { 
+					$state.go('videoDownload', {id: $stateParams.id}); 
+				}],
 			})
 			.state('videoDownload', {
 				parent: 'videoPreview',
