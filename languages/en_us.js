@@ -57,6 +57,7 @@
 			GALLERY_VIEW_ALL: 'View all',
 			GALLERY_ORDER_BY: 'Order by',
 			GALLERY_ORDER_BY_SELECTOR_RELEVANCE: 'Relevance',
+			VIDEO_FEATURED: 'Featured',
 			VIDEO_VERIFIED: 'Verified',
 			VIDEO_NOT_VERIFIED: 'Not verified',
 			DOWNLOAD_CODE: 'Enter your download code',

@@ -26,6 +26,10 @@
 							<md-tooltip md-delay="1000">{{ 'VIDEO_VERIFIED' | translate }}</md-tooltip>
 							check_circle
 						</md-icon>
+						<md-icon ng-if="Video.video.data.featured == true || Video.video.data.featured == 'true'">
+							<md-tooltip md-delay="1000">{{ 'VIDEO_FEATURED' | translate }}</md-tooltip>
+							star
+						</md-icon>
 					</h1>
 				</div>
 				
@@ -82,23 +86,14 @@
 					</div>
 				</div>
 				<section class="navigate"><!--TODO: is there a class for button only??-->
-					<!-- <div class="video-detail-edit-info button button-empty">
-						<a ui-sref="gallery">{{'BACK_TO_GALLERY' | translate}}</a>
-					</div> -->
-					<md-button class="btn-border" ui-sref="gallery">
-						<i class="material-icons">reply</i>
-						<span>{{'BACK_TO_GALLERY' | translate}}</span>
+					<md-button class="button md-raised md-primary" ui-sref="videoDownload({id: Video.video.data._id})">
+						<span>{{'DOWNLOAD_VIDEO' | translate}}</span>
 					</md-button>
-					<div class="video-detail-edit-info button">
-						<a ui-sref="videoDownload({id: Video.video.data._id})">{{'DOWNLOAD_VIDEO' | translate}}</a>
-					</div>
+					<md-button class="button md-raised" ng-if="Video.session.id == Video.video.data.owner" ui-sref="videoDetailEdit({id: Video.video.data._id})">
+						<md-icon>edit</md-icon>
+						<span>{{'BUTTON_EDIT' | translate}}</span>
+					</md-button>
 				</section>
-				<section class="navigate"><!--TODO: is there a class for button only??-->
-					<div class="video-detail-edit-info" ng-if="Video.session.id == Video.video.data.owner">
-						<a ui-sref="videoDetailEdit({id: Video.video.data._id})">{{'BUTTON_EDIT' | translate}}</a>
-					</div>
-				</section>
-
 			</section>
 		</section>
 

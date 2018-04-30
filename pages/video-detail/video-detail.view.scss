@@ -33,6 +33,15 @@
 		}
 	}
 
+	.md-button {
+		padding: 0px 24px;
+
+		md-icon {
+			font-size: 16px;
+			line-height: 24px;
+		}
+	}
+
 	.md-button * {
 		vertical-align: middle;
 	}
