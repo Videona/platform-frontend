@@ -1,9 +1,9 @@
 (function () {
 	angular.module('app')
-		.filter('commaSeparated', [commaSeparated]);
+		.filter('commaSeparated', ['$translate', commaSeparated]);
 
-	function commaSeparated()	{
-		return function (commaStr, empty) {
+	function commaSeparated($translate)	{
+		return function (commaStr, empty, translate) {
 			if (!commaStr) {
 				return empty || '';
 			}
@@ -15,7 +15,13 @@
 				if (i > 0) {
 					commaStrUpdated += ', ';
 				}
-				commaStrUpdated += commaArray[i].trim();
+
+				var str = commaArray[i].trim();
+				if (translate) {
+					str = $translate.instant(translate + str);
+				}
+
+				commaStrUpdated += str;
 			}
 			
 			if (commaArray.length == 0) {

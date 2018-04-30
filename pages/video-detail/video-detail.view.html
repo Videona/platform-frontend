@@ -72,7 +72,7 @@
 
 					<div class="video-detail-info" ng-show="showDetails">
 						<p>
-							<strong>{{'VIDEO_DETAIL_CATEGORIES' | translate}}:</strong> {{Video.video.data.categories | commaSeparated:'-'}}
+							<strong>{{'VIDEO_DETAIL_CATEGORIES' | translate}}:</strong> {{Video.video.data.categories | commaSeparated:'-':'VIDEO_CATEGORY_'}}
 						</p>
 						<p>
 							<strong>{{'VIDEO_DETAIL_PRODUCT_TYPE' | translate}}:</strong> {{Video.video.data.productType | productType}}
@@ -81,7 +81,7 @@
 							<strong>{{'VIDEO_DETAIL_LENGTH' | translate}}:</strong> {{Video.video.data.length | time}}
 						</p>
 						<p>
-							<strong>{{'VIDEO_DETAIL_LANGUAGE' | translate}}:</strong> {{Video.video.data.language || '-'}}
+							<strong>{{'VIDEO_DETAIL_LANGUAGE' | translate}}:</strong> {{ "VIDEO_LANG_" + Video.video.data.language | translate }}
 						</p>
 						<p>
 							<strong>{{'VIDEO_DETAIL_TECHNICAL_DETAILS' | translate}}:</strong> {{Video.video.data.size | toMB }} MB | {{Video.video.data.format}} | {{Video.video.data.dimensions}} | {{Video.video.data.ratio}}
