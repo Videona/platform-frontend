@@ -16,13 +16,13 @@ md-menu-content.toolbar-user-menu__menu-content {
 	padding: 0;
 
 	.profile-top-menu-header {
+		line-height: 1.4;
 		display: flex;
 		align-items: center;
 		height: 72px;
 		padding: 0 16px;
 		background-color: $background;
 		cursor: auto;
-		line-height: .8em;
 
 		.username {
 			font-weight: bold;
