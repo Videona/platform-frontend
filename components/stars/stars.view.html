@@ -1,0 +1,18 @@
+<span ng-if="!value || value == ''"> - </span>
+
+<span ng-if="value && value !== ''">
+	<md-icon ng-if="value >= 1">star</md-icon>
+	<md-icon ng-if="value < 1">star_border</md-icon>
+
+	<md-icon ng-if="value >= 2">star</md-icon>
+	<md-icon ng-if="value < 2">star_border</md-icon>
+
+	<md-icon ng-if="value >= 3">star</md-icon>
+	<md-icon ng-if="value < 3">star_border</md-icon>
+
+	<md-icon ng-if="value >= 4">star</md-icon>
+	<md-icon ng-if="value < 4">star_border</md-icon>
+
+	<md-icon ng-if="value >= 5">star</md-icon>
+	<md-icon ng-if="value < 5">star_border</md-icon>
+</span>

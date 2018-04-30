@@ -12,10 +12,6 @@
 			margin: $cardMargin;
 		}
 	}
-	.card-user-info-desktop {
-		cursor: pointer;
-		display: none;
-	}
 	@include desktop {
 		article {
 			background-color: $backgroundLight;
@@ -24,12 +20,6 @@
 			> section {
 				display: flex;
 			}
-		}
-		.card-user-info {
-			display: none;
-		}
-		.card-user-info-desktop {
-			display: flex;
 		}
 	}
 

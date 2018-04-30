@@ -14,9 +14,6 @@
 			<div>
 				<player video="Video.video.data.video" poster="Video.video.data.poster"></player>
 
-				<!-- Only if desktop >>> -->
-				<user-card class="card-user-info-desktop" user="Video.user.data"></user-card>
-				<!--" <<<<<<< -->
 			</div>
 			<section class="card-video-info">
 				<div>
@@ -34,7 +31,7 @@
 				</div>
 				
 				<div class="padding">
-					{{'UPLOADED_AT' | translate}} {{Video.video.data.date | localeDate}}
+					<span ng-if="Video.video.data.locationName">{{Video.video.data.locationName}}, </span>{{Video.video.data.date | localeDate}}
 				</div>
 				
 				<div class="padding">
@@ -46,8 +43,17 @@
 							<span ng-show="readMore">- {{'BUTTON_READ_LESS' | translate}}</span>
 						</a>
 					</div>
+
+					<p>
+						<strong>{{'VIDEO_DETAIL_QUALITY' | translate}}:</strong> <stars value="{{Video.video.data.quality}}"></stars>
+					</p>
+					<p>
+						<strong>{{'VIDEO_DETAIL_CREDIBILITY' | translate}}:</strong> <stars value="{{Video.video.data.credibility}}"></stars>
+					</p>
+				
+					<user-card user="Video.user.data"></user-card>
 					
-					<div class="video-detail-show-info" ng-click="showDetails = !showDetails" ng-init="showDetails = true">
+					<div class="video-detail-show-info" ng-click="showDetails = !showDetails" ng-init="showDetails = false">
 						<span ng-show="showDetails">{{'HIDE_VIDEO_DETAILS' | translate}}</span>
 						<span ng-hide="showDetails">{{'SHOW_VIDEO_DETAILS' | translate}}</span>
 						<i ng-show="showDetails" class="material-icons">keyboard_arrow_up</i>
@@ -55,9 +61,6 @@
 					</div> 
 
 					<div class="video-detail-info" ng-show="showDetails">
-						<p>
-							<strong>{{'VIDEO_DETAIL_DATETIME' | translate}}:</strong> {{Video.video.data.date | date: 'dd/MM/yyyy HH:mm' || '-'}}
-						</p>
 						<p>
 							<strong>{{'VIDEO_DETAIL_CATEGORIES' | translate}}:</strong> {{Video.video.data.categories | commaSeparated:'-'}}
 						</p>
@@ -69,13 +72,6 @@
 						</p>
 						<p>
 							<strong>{{'VIDEO_DETAIL_LANGUAGE' | translate}}:</strong> {{Video.video.data.language || '-'}}
-						</p>
-						<p>
-							<strong>{{'VIDEO_DETAIL_QUALITY' | translate}}:</strong>
-							{{Video.video.data.quality || '-'}}
-						</p>
-						<p>
-							<strong>{{'VIDEO_DETAIL_CREDIBILITY' | translate}}:</strong> {{Video.video.data.credibility || '-'}}
 						</p>
 						<p>
 							<strong>{{'VIDEO_DETAIL_TECHNICAL_DETAILS' | translate}}:</strong> {{Video.video.data.size | toMB }} MB | {{Video.video.data.format}} | {{Video.video.data.dimensions}} | {{Video.video.data.ratio}}
@@ -97,7 +93,6 @@
 			</section>
 		</section>
 
-		<user-card class="card-user-info" user="Video.user.data"></user-card>
 		<div>&nbsp;</div>
 		
 	</article>
