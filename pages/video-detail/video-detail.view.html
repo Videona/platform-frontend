@@ -22,7 +22,10 @@
 				<div>
 					<h1>
 						{{ ::Video.video.data.title }}
-						<md-icon ng-if="Video.video.data.verified == true || Video.video.data.verified == 'true'">check_circle</md-icon>
+						<md-icon ng-if="Video.video.data.verified == true || Video.video.data.verified == 'true'">
+							<md-tooltip md-delay="1000">{{ 'VIDEO_VERIFIED' | translate }}</md-tooltip>
+							check_circle
+						</md-icon>
 					</h1>
 				</div>
 				
