@@ -148,43 +148,6 @@ strong {
 	padding-right: 7px;
 }
 
-.card-user-info {
-	@extend %display-flex;
-	background-color: $backgroundLight;
-	margin: $cardMargin;
-	@include border-radius($cardRadius);
-	padding-bottom: $cardMargin;
-	div:first-child {
-		@extend %display-flex;
-		@extend %flex-direction-column;
-		@extend %align-items-center;
-		ng-include {
-			fill: $text;
-		}
-		img, i {
-			@include border-radius(50%);
-			font-size: 65px;
-			margin: $cardMargin $cardMargin 5px $cardMargin;
-			width: 65px;
-			height: 65px;
-		}
-		span {
-			color: $text;
-			font-size: 12px;
-		}
-	}
-	div:last-child {
-		margin-top: $cardMargin;
-		p:first-child {
-			color: red;
-		}
-		p {
-			line-height: 1.5;
-			color: $text;
-		}
-	}
-}
-
 .navigate {
 	text-align: center;
 	@include desktop {

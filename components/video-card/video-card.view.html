@@ -1,16 +1,23 @@
-<div class="card-container">
-	<article ng-style="{'background-image':'url(' + poster + ')'}" class="video-image">
+<md-card class="card-container">
+	<article ng-style="{'background-image':'url(' + poster + ')', 'position':'relative'}">
+		<span class="video-timer">{{::time | time : false}}</span>
 		<!-- Image pixel to detect failure and set error poster -->
 		<img ng-src="{{poster}}" class="pixel" onerror="this.parentNode.style.backgroundImage = 'url(\'/img/no-video.svg\')'" />
 	</article>
 	<section class="video-info">
 		<h2>{{::title}} <md-icon ng-if="verified == true || verified == 'true'">check_circle</md-icon></h2>
-		<h3 ng-bind="author"></h3>
+		<a ui-sref="userGallery({userId: authorId})" ng-click="$event.stopPropagation()"><h3 ng-bind="author"></h3></a>
 		<h4 class="capital_first_letter" am-time-ago="date"></h4>
-		<h3>{{productType | productType}}</h3>
+<!--		<h3>{{productType | productType}}</h3>-->
+		<h3>
+			<span ng-repeat="category in categories.split(',')">
+<!--				<a ui-sref="search({q: category})" ng-click="$event.stopPropagation()">{{::category}}</a><span ng-if="!$last">, </span></span>-->
+				{{::category}}<span ng-if="!$last">, </span></span>
+			<span ng-if="!categories">&nbsp;</span>
+		</h3>
 	</section>
 	<section class="video-isVerified" ng-if="isVerified">
 		<md-icon>check_circle</md-icon>
 		<p>{{'VIDEO_VERIFIED' | translate}}</p>
 	</section>
-</div>
+</md-card>

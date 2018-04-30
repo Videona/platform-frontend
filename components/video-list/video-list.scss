@@ -1,22 +1,21 @@
 .gallery-featured {
 	@extend %display-inline-flex;
 	video-card {
-		margin-right: $cardMargin;
 		width: 42vw;
 		@include tablet {
 			width: 33.33vw;
 		}
 		@include desktop {
-			width: calc(25vw - 16.25px);
+			width: calc(25vw - 6.5px);
 		}
 		article {
 			height: 23.625vw;
-			@include border-radius($cardRadius);
+			@include border-radius-full(5px, 5px, 0px, 0px);
 			@include tablet {
-				height: 18.748vw;
+				height: 17.83vw;
 			}
 			@include desktop {
-				height: calc(14.06vw - 9.14px);
+				height: 13.225vw;
 			}
 			background-size: cover; /*scaling down large image to a div*/
 			background-repeat: no-repeat;
@@ -30,50 +29,25 @@
 	@extend %flex-wrap-wrap;
 	video-card {
 		margin: $cardMargin 0 0 0;
-		width: 100vw;
+		width: 100%;
 		@include tablet {
-			width: calc(33.3vw - 17.33px);
-			margin: $cardMargin $cardMargin 0 0;
-			/* width: calc(25vw - 16.25px); */
+			width: 33.3%;
 		}
 		@include desktop {
-			width: calc(20vw - 15.6px);
+			width: 20%;
 		}
 		article {
-			height: calc(56.25vw);
-			@include border-radius($cardRadius);
+			height: 56.25vw;
+			@include border-radius-full(5px, 5px, 0px, 0px);
 			@include tablet {
 				height: calc(18.73vw - 9.75px);
-				/* height: calc(14.06vw - 9.14px); */
 			}
 			@include desktop {
-				height: calc(11.25vw - 8.77px);
+				height: 10.462vw;
 			}
 			background-size: cover; /*scaling down large image to a div*/
 			background-repeat: no-repeat;
 			background-position: center;
-		}
-	}
-	video-card:nth-child(3n) {
-		margin-right: 0;
-	}
-	@include tablet {
-		/* video-card:nth-child(3n), */
-		video-card:nth-child(5n) {
-			margin: $cardMargin $cardMargin 0 0;
-		}
-		/* video-card:nth-child(4n) { */
-		video-card:nth-child(3n) {
-			margin-right: 0;
-		}
-	}
-	@include desktop {
-		video-card:nth-child(3n),
-		video-card:nth-child(4n) {
-			margin: $cardMargin $cardMargin 0 0;
-		}
-		video-card:nth-child(5n) {
-			margin-right: 0;
 		}
 	}
 }

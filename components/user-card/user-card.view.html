@@ -1,0 +1,13 @@
+<section class="card-user-info" ui-sref="userGallery({userId: user._id})">
+	<div>
+		<img ng-if="user.pic" ng-src="{{user.pic}}">
+		<i ng-if="!user.pic" class="material-icons">person_pin</i>
+		<!-- <span>{{'USER_PROFFESSIONAL' | translate}}</span> -->
+	</div>
+	<div>
+		<p><strong>{{user.username}}</strong></p>
+		<!-- TO-DO: Make published videos dynamic -->
+		<p><strong>{{'PUBLISHED_VIDEOS' | translate}}</strong>{{user.videoCount || 0}}</p>
+
+	</div>
+</section>

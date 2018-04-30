@@ -1,10 +1,21 @@
 video-card {
-	div.card-container {
+	.card-container {
 		@extend %display-flex;
 		@extend %flex-direction-column;
 		background-color: white;
 		cursor: pointer;
 		@include border-radius($cardRadius);
+		.video-timer {
+			position: absolute;
+			bottom: 4px;
+			right: 8px;
+			color: white;
+			background: #000000a3;
+			border-radius: 3px;
+			padding: 2px 4px;
+			font-weight: bold;
+			font-size: 18px;
+		}
 		.video-info {
 			@extend %display-flex;
 			@extend %flex-direction-column;
@@ -12,7 +23,7 @@ video-card {
 			svg {
 				width: 12px;
 			}
-			h2, h3, h4 {
+			h3, h4 {
 				white-space: nowrap;
 				overflow: hidden;
 				text-overflow: ellipsis;
@@ -22,6 +33,9 @@ video-card {
 				font-size: 16px;
 				color: $text;
 				margin-bottom: 5px;
+				font-weight: 700;
+				height: 2.2em;
+				overflow: hidden;
 				md-icon {
 					color: $lightGrey;
 					line-height: 24px;
@@ -30,6 +44,12 @@ video-card {
 					width: 14px;
 					height: 14px;
 				}
+			}
+			h2:after {
+				content: "";
+				text-align: right;
+				width: 70%;
+				height: 1.2em;
 			}
 			h3, h4 {
 				font-size: 12px;
@@ -62,3 +82,4 @@ video-card {
 .capital_first_letter:first-letter {
 	text-transform: capitalize;
 }
+	

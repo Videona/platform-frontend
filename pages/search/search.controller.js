@@ -9,4 +9,6 @@ function SearchController(search, $stateParams) {
 	};
 
 	self.service = search;
+	
+	self.service.search();
 }

@@ -119,7 +119,7 @@
 			VIDEO_EDIT_CLICK_MAP_HINT: 'Escribe una dirección o haz click en el mapa para indicar la posición exacta del vídeo',
 			VIDEO_EDIT_LOCATION_HINT: 'Usa el mapa de abajo para establecer la ubicación del vídeo.',
 			VIDEO_EDIT_GOT_BROWSER_LOCATION: 'Usando la localización de su navegador',
-			VIDEO_EDIT_TAG_HINT: 'Escribe una etiqueta',
+			VIDEO_EDIT_TAG_HINT: 'Etiquetas',
 			VIDEO_EDIT_TAG_HINT_SECONDARY: 'Etiquetas separadas por comas',
 			VIDEO_DETAIL_PRICE_STD: 'Precio de emisión estándar',
 			VIDEO_DETAIL_PRICE_COUNTRY: 'Precio de antena en país',
@@ -143,7 +143,7 @@
 			UPLOAD_ERROR_DATA: 'Vídeo no seleccionado, o información no rellenada',
 
 			PRODUCT_TYPE_LIVE_ON_TAPE: 'Falso directo',
-			PRODUCT_TYPE_B_ROLL: 'Vídeo en bruto',
+			PRODUCT_TYPE_B_ROLL: 'Brutos',
 			PRODUCT_TYPE_NAT_VO: 'Colas',
 			PRODUCT_TYPE_INTERVIEW: 'Total',
 			PRODUCT_TYPE_GRAPHICS: 'Gráfico',

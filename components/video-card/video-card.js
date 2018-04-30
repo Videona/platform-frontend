@@ -7,9 +7,12 @@ function videoCardDirective() {
 		scope._id = scope.video._id;
 		scope.title = scope.video.title;
 		scope.poster = scope.video.poster;
+		scope.time = scope.video.length;
 		scope.author = scope.video.ownerData.username;
+		scope.authorId = scope.video.ownerData._id;
 		scope.date = scope.video.date;
 		scope.tag = scope.video.tag;
+		scope.categories = scope.video.categories;
 		scope.productType = scope.video.productType;
 		scope.verified = scope.video.verified;
 	}
