@@ -7,7 +7,7 @@ function UploadController(api, session, $state, $translate, productType) {
 	// On Run...
 	if (session.id <= 0) {
 		console.log('Session not found! Redirecting...');
-		$state.go('home');
+		$state.go('signin');
 	}
 
 	self.error = null;

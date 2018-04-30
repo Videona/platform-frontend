@@ -142,7 +142,7 @@ var sourceSass = [
 	'./sass/*.scss',
 	'./pages/**/**.scss',
 	'./pages/**/*.scss',
-	'./components/**/**.scss',
+	'./components/**/*.scss',
 ];
 gulp.task('sass', ['flavour'], function () {
 	gulp.src('./sass/style.scss')

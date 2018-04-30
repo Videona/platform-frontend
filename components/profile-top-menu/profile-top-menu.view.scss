@@ -1,0 +1,35 @@
+.toolbar-user-menu {
+	img.profile-top-image {
+		margin: 0;
+		height: 24px;
+		border-radius: 50%;
+	}
+
+	md-menu {
+		md-icon, i {
+			margin: 0;
+		}
+	}
+}
+
+md-menu-content.toolbar-user-menu__menu-content {
+	padding: 0;
+
+	.profile-top-menu-header {
+		line-height: 1.4;
+		display: flex;
+		align-items: center;
+		height: 72px;
+		padding: 0 16px;
+		background-color: $background;
+		cursor: auto;
+
+		.username {
+			font-weight: bold;
+		}
+
+		.email {
+			color: $textLight;
+		}
+	}
+}

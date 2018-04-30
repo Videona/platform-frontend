@@ -47,6 +47,12 @@
 			ERROR_AGE_WRONG: 'La edad tiene que ser válida.',
 			ERROR_TERMS_EMPTY: 'Tienes que aceptar los términos y condiciones de uso.',
 			ERROR_RECAPTCHA_NOT_CHECKED: 'En esta aplicación solo aceptamos humanos ¿Acaso eres un robot?',
+
+			// user profile menu in topbar
+			PROFILE_MENU_ARIA_HINT: 'Abrir menú de usuario',
+			PROFILE_MENU_MY_VIDEOS: 'Mis videos',
+			PROFILE_MENU_LOGOUT: 'Cerrar sesión',
+
 			GALLERY_FEATURED_VIDEOS: 'Featured videos',
 			GALLERY_VIEW_ALL: 'Ver todo',
 			GALLERY_ORDER_BY: 'Ordenar por',

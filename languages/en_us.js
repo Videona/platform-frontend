@@ -47,6 +47,12 @@
 			ERROR_AGE_WRONG: 'The age must be valid',
 			ERROR_TERMS_EMPTY: 'You must accept the terms and conditions of the service',
 			ERROR_RECAPTCHA_NOT_CHECKED: 'This app only is able to be used by humans. Aren\'t you human?',
+
+			// user profile menu in topbar
+			PROFILE_MENU_ARIA_HINT: 'Open user menu',
+			PROFILE_MENU_MY_VIDEOS: 'My videos',
+			PROFILE_MENU_LOGOUT: 'Logout',
+
 			GALLERY_FEATURED_VIDEOS: 'Featured videos',
 			GALLERY_VIEW_ALL: 'View all',
 			GALLERY_ORDER_BY: 'Order by',

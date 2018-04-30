@@ -6,6 +6,7 @@
 		var session = {
 			id: -1,
 			name: '',
+			username: '',
 			email: '',
 			role: '',
 			verified: false,
@@ -25,6 +26,7 @@
 		function setSession(newSession) {
 			session.id = newSession._id || newSession.id || -1;
 			session.name = newSession.name || '';
+			session.username = newSession.username || '';
 			session.email = newSession.email || '';
 			session.role = newSession.role || '';
 			session.verified = newSession.verified || false;
