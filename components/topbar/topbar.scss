@@ -11,13 +11,27 @@
 	@extend %align-items-center;
 	background-color: white;
 	box-shadow: 0px 0px 1px 1px #e8e8e8;
-	z-index: 999;
+	z-index: 50;
+
+	.items-container {
+		width: 100%;
+		text-align: right;
+	}
 	
 	img, svg {
+		cursor: pointer;
 		fill: $textLight;
 		height: $topbarImgHeight;
 		margin: $cardMargin;
+		vertical-align: middle;
+	}
+
+	i, md-icon {
+		color: $textLight;
 		cursor: pointer;
+		font-size: 24px;
+		margin: 13px;
+		vertical-align: middle;
 	}
 
 	.desktop-right-icons {
@@ -25,14 +39,17 @@
 	}
 
 	.search-bar {
-		text-align: right;
-		position: absolute;
-		width: 100%;
 		background: white;
-		height: 52px;
-		display: flex;
-		justify-content: center;
 		box-sizing: border-box;
+		display: flex;
+		height: 52px;
+		justify-content: center;
+		left: 0;
+		position: absolute;
+		text-align: right;
+		top: 0;
+		width: 100%;
+		z-index: 1;
 
 		* {
 			vertical-align: middle;
@@ -58,8 +75,10 @@
 		}
 
 		.search-bar {
+			display: inline-block !important;
+			margin-right: 8px;
 			position: static;	
-			display: block !important;
+			width: auto;
 
 			.close-search {
 				display: none !important;
