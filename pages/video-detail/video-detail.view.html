@@ -20,18 +20,14 @@
 			</div>
 			<section class="card-video-info">
 				<div>
-					<h1 ng-bind="Video.video.data.title"></h1>
+					<h1>
+						{{ ::Video.video.data.title }}
+						<md-icon ng-if="Video.video.data.verified == true || Video.video.data.verified == 'true'">check_circle</md-icon>
+					</h1>
 				</div>
 				
 				<div class="padding">
 					{{'UPLOADED_AT' | translate}} {{Video.video.data.date | localeDate}}
-				</div>
-
-				<div class="padding">
-					<div class="video-detail-verified">
-						<img src="../../img/checked.svg" alt="video-verified" />
-						<p>{{'VIDEO_VERIFIED' | translate}}</p>
-					</div>
 				</div>
 				
 				<div class="padding">
