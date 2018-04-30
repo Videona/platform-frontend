@@ -30,7 +30,7 @@ gulp.task('make-config', function () {
 	var json = JSON.stringify({
 		nodeEnv: process.env.NODE_ENV || 'development',
 		backendApiUrl: process.env.BACKEND_API_URL || 'http://localhost:3000',
-		gmapsApiKey: process.env.GMAPS_API_KEY || 'provideGmapsApiKey',
+		gmapsApiKey: 'AIzaSyAI2S63HZG3woQHvfSdaz82woxq-uWsBik', // process.env.GMAPS_API_KEY || 'provideGmapsApiKey',
 		maxVideoUploadByteSize: process.env.MAX_VIDEO_UPLOAD_BYTE_SIZE || '1500000',
 	});
 
