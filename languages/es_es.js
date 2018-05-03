@@ -14,6 +14,7 @@
 			LOADING: 'Cargando...',
 			LOADING_WAIT: 'Cargando la página. Por favor, espere',
 
+			SIGN_IN: 'Iniciar sesión',
 			LOGIN: 'Acceder',
 			REGISTER: 'Registro',
 			USERNAME: 'Usuario',
@@ -53,10 +54,11 @@
 			PROFILE_MENU_MY_VIDEOS: 'Mis videos',
 			PROFILE_MENU_LOGOUT: 'Cerrar sesión',
 
-			GALLERY_FEATURED_VIDEOS: 'Featured videos',
+			GALLERY_FEATURED_VIDEOS: 'Vídeos destacados',
 			GALLERY_VIEW_ALL: 'Ver todo',
 			GALLERY_ORDER_BY: 'Ordenar por',
 			GALLERY_ORDER_BY_SELECTOR_RELEVANCE: 'Relevancia',
+			VIDEO_FEATURED: 'Destacado',
 			VIDEO_VERIFIED: 'Verificado',
 			VIDEO_NOT_VERIFIED: 'No verificado',
 			DOWNLOAD_CODE: 'Introduce tu código de descarga',
@@ -68,8 +70,8 @@
 			ERROR_UNABLE_TO_DOWNLOAD: 'No se ha podido descargar este vídeo',
 
 			UPLOADED_AT: 'Fecha de subida',
-			SHOW_VIDEO_DETAILS: 'Mostrar detalles del vídeo',
-			HIDE_VIDEO_DETAILS: 'Ocultar detalles del vídeo',
+			SHOW_VIDEO_DETAILS: 'Detalles técnicos',
+			HIDE_VIDEO_DETAILS: 'Ocultar detalles técnicos',
 
 			USER_PROFFESSIONAL: 'Profesional',
 			PUBLISHED_VIDEOS: 'Vídeos publicados',
@@ -149,8 +151,8 @@
 			PRODUCT_TYPE_GRAPHICS: 'Gráfico',
 			PRODUCT_TYPE_PIECE: 'Pieza',
 			
-			BUTTON_READ_ALL: 'Ver todo',
-			BUTTON_READ_LESS: 'Ver menos',
+			BUTTON_READ_ALL: 'Leer todo',
+			BUTTON_READ_LESS: 'Leer menos',
 			BUTTON_EDIT: 'Editar',
 
 			// Search page

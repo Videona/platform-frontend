@@ -15,11 +15,11 @@
 			<div class="inline-block">
 				<md-input-container class="md-inline small-sized-input margin">
 					<label>{{ 'VIDEO_DETAIL_CREDIBILITY' | translate }}</label>
-					<input ng-model="EditCtrl.video.credibility" type="number" min="0" max="5" step="1" ng-disabled="!EditCtrl.editorRole">
+					<input ng-model="EditCtrl.video.credibility" type="number" min="1" max="5" step="1" ng-disabled="!EditCtrl.editorRole">
 				</md-input-container>
 				<md-input-container class="md-inline small-sized-input margin">
 					<label>{{ 'VIDEO_DETAIL_QUALITY' | translate }}</label>
-					<input ng-model="EditCtrl.video.quality" type="number" min="0" max="5" step="1" ng-disabled="!EditCtrl.editorRole">
+					<input ng-model="EditCtrl.video.quality" type="number" min="1" max="5" step="1" ng-disabled="!EditCtrl.editorRole">
 				</md-input-container>
 			</div>
 			<div class="inline-block">

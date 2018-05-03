@@ -1,7 +1,7 @@
 .gallery-featured {
 	@extend %display-inline-flex;
 	video-card {
-		width: 42vw;
+		width: 84vw;
 		@include tablet {
 			width: 33.33vw;
 		}
@@ -9,7 +9,7 @@
 			width: calc(25vw - 6.5px);
 		}
 		article {
-			height: 23.625vw;
+			height: 47.25vw;
 			@include border-radius-full(5px, 5px, 0px, 0px);
 			@include tablet {
 				height: 17.83vw;

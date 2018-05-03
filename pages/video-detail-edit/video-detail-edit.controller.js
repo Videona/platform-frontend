@@ -147,7 +147,7 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, ma
 			console.log("User is allowed to edit this video");
 		} else {
 			// TODO(jliarte): should show an error instead of redirecting?
-			$state.go("videoPreview", {id: self.id});
+			$state.go("videoDetail", {id: self.id});
 		}
 	}
 

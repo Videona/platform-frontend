@@ -7,7 +7,7 @@
 	<section class="video-info">
 		<h2>{{::title}} <md-icon ng-if="verified == true || verified == 'true'">check_circle</md-icon></h2>
 		<a ui-sref="userGallery({userId: authorId})" ng-click="$event.stopPropagation()"><h3 ng-bind="author"></h3></a>
-		<h4 class="capital_first_letter" am-time-ago="date"></h4>
+		<h4 class="capital_first_letter"><span ng-if="locationName">{{locationName}}, </span><span am-time-ago="date"></span></h4>
 <!--		<h3>{{productType | productType}}</h3>-->
 		<h3>
 			<span ng-repeat="category in categories.split(',')">

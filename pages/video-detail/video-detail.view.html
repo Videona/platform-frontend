@@ -14,37 +14,57 @@
 			<div>
 				<player video="Video.video.data.video" poster="Video.video.data.poster"></player>
 
-				<!-- Only if desktop >>> -->
-				<user-card class="card-user-info-desktop" user="Video.user.data"></user-card>
-				<!--" <<<<<<< -->
+				<div class="video-detail-map only-desktop">
+					<ng-map default-style="false" center="Video.mapMarker" ng-if="Video.mapMarker.length > 0">
+						<marker ng-if="Video.video.data.location" position="{{ Video.mapMarker }}"
+								title="{{ Video.video.data.locationName }}" centered="true"></marker>
+					</ng-map>
+					<div ng-if="Video.mapMarker.length === 0" class="no-map">
+						No location selected
+					</div>
+				</div>
+
 			</div>
 			<section class="card-video-info">
 				<div>
-					<h1 ng-bind="Video.video.data.title"></h1>
+					<h1>
+						{{ ::Video.video.data.title }}
+						<md-icon ng-if="Video.video.data.verified == true || Video.video.data.verified == 'true'">
+							<md-tooltip md-delay="1000">{{ 'VIDEO_VERIFIED' | translate }}</md-tooltip>
+							check_circle
+						</md-icon>
+						<md-icon ng-if="Video.video.data.featured == true || Video.video.data.featured == 'true'">
+							<md-tooltip md-delay="1000">{{ 'VIDEO_FEATURED' | translate }}</md-tooltip>
+							star
+						</md-icon>
+					</h1>
 				</div>
 				
-				<div class="padding">
-					{{'UPLOADED_AT' | translate}} {{Video.video.data.date | localeDate}}
-				</div>
-
-				<div class="padding">
-					<div class="video-detail-verified">
-						<img src="../../img/checked.svg" alt="video-verified" />
-						<p>{{'VIDEO_VERIFIED' | translate}}</p>
-					</div>
+				<div class="padding video-detail-date">
+					<span ng-if="Video.video.data.locationName">{{Video.video.data.locationName}}, </span>{{Video.video.data.date | localeDate}}
 				</div>
 				
 				<div class="padding">
 					<p ng-class="{'block-ellipsis': !readMore}" ng-bind="Video.video.data.description" id="video-description"></p>
 					
-					<div class="padding" ng-show="Video.showMore">
+					<div class="padding view-all" ng-show="Video.showMore">
 						<a ng-click="readMore = !readMore" class="read-more">
-							<span ng-hide="readMore">+ {{'BUTTON_READ_ALL' | translate}}</span>
-							<span ng-show="readMore">- {{'BUTTON_READ_LESS' | translate}}</span>
+							<span ng-hide="readMore">{{'BUTTON_READ_ALL' | translate}} +</span>
+							<span ng-show="readMore">{{'BUTTON_READ_LESS' | translate}} -</span>
 						</a>
 					</div>
+					<div class="padding view-all" ng-hide="Video.showMore">&nbsp;</div>
+
+					<p class="star-container">
+						<span class="star-label">{{'VIDEO_DETAIL_QUALITY' | translate}}:</span> <stars value="{{Video.video.data.quality}}"></stars>
+					</p>
+					<p>
+						<span>{{'VIDEO_DETAIL_CREDIBILITY' | translate}}:</span> <stars value="{{Video.video.data.credibility}}"></stars>
+					</p>
+				
+					<user-card user="Video.user.data"></user-card>
 					
-					<div class="video-detail-show-info" ng-click="showDetails = !showDetails" ng-init="showDetails = true">
+					<div class="video-detail-show-info" ng-click="showDetails = !showDetails" ng-init="showDetails = false">
 						<span ng-show="showDetails">{{'HIDE_VIDEO_DETAILS' | translate}}</span>
 						<span ng-hide="showDetails">{{'SHOW_VIDEO_DETAILS' | translate}}</span>
 						<i ng-show="showDetails" class="material-icons">keyboard_arrow_up</i>
@@ -53,10 +73,7 @@
 
 					<div class="video-detail-info" ng-show="showDetails">
 						<p>
-							<strong>{{'VIDEO_DETAIL_DATETIME' | translate}}:</strong> {{Video.video.data.date | date: 'dd/MM/yyyy HH:mm' || '-'}}
-						</p>
-						<p>
-							<strong>{{'VIDEO_DETAIL_CATEGORIES' | translate}}:</strong> {{Video.video.data.categories | commaSeparated:'-'}}
+							<strong>{{'VIDEO_DETAIL_CATEGORIES' | translate}}:</strong> {{Video.video.data.categories | commaSeparated:'-':'VIDEO_CATEGORY_'}}
 						</p>
 						<p>
 							<strong>{{'VIDEO_DETAIL_PRODUCT_TYPE' | translate}}:</strong> {{Video.video.data.productType | productType}}
@@ -65,14 +82,9 @@
 							<strong>{{'VIDEO_DETAIL_LENGTH' | translate}}:</strong> {{Video.video.data.length | time}}
 						</p>
 						<p>
-							<strong>{{'VIDEO_DETAIL_LANGUAGE' | translate}}:</strong> {{Video.video.data.language || '-'}}
-						</p>
-						<p>
-							<strong>{{'VIDEO_DETAIL_QUALITY' | translate}}:</strong>
-							{{Video.video.data.quality || '-'}}
-						</p>
-						<p>
-							<strong>{{'VIDEO_DETAIL_CREDIBILITY' | translate}}:</strong> {{Video.video.data.credibility || '-'}}
+							<strong>{{'VIDEO_DETAIL_LANGUAGE' | translate}}:</strong> 
+							<span ng-if="Video.video.data.language">{{ "VIDEO_LANG_" + Video.video.data.language | translate }}</span>
+							<span ng-if="!Video.video.data.language"> - </span>
 						</p>
 						<p>
 							<strong>{{'VIDEO_DETAIL_TECHNICAL_DETAILS' | translate}}:</strong> {{Video.video.data.size | toMB }} MB | {{Video.video.data.format}} | {{Video.video.data.dimensions}} | {{Video.video.data.ratio}}
@@ -80,32 +92,35 @@
 						<p>
 							<strong>{{'VIDEO_DETAIL_TAGS' | translate}}:</strong> {{Video.video.data.tag | commaSeparated:'-'}}
 						</p>
+						<p>
+							<strong>{{'VIDEO_DETAIL_NOTES' | translate}}:</strong> {{Video.video.data.notes || ' - '}}
+						</p>
 					</div>
 				</div>
-				<section class="navigate"><!--TODO: is there a class for button only??-->
-					<!-- <div class="video-detail-edit-info button button-empty">
-						<a ui-sref="gallery">{{'BACK_TO_GALLERY' | translate}}</a>
-					</div> -->
-					<md-button class="btn-border" ui-sref="gallery">
-						<i class="material-icons">reply</i>
-						<span>{{'BACK_TO_GALLERY' | translate}}</span>
+
+				<div class="video-detail-map only-mobile">
+					<ng-map default-style="false" center="Video.mapMarker" ng-if="Video.mapMarker.length > 0">
+						<marker ng-if="Video.video.data.location" position="{{ Video.mapMarker }}"
+								title="{{ Video.video.data.locationName }}" centered="true"></marker>
+					</ng-map>
+					<div ng-if="Video.mapMarker.length === 0" class="no-map">
+						No location selected
+					</div>
+				</div>
+				
+				<section ui-view="download" class="video-download-view"></section>
+
+				<section class="navigate button-bar">
+					<md-button class="button md-raised" ng-if="Video.session.id == Video.video.data.owner" ui-sref="videoDetailEdit({id: Video.video.data._id})">
+						<md-icon>edit</md-icon>
+						<span>{{'BUTTON_EDIT' | translate}}</span>
 					</md-button>
-					<div class="video-detail-edit-info button">
-						<a ui-sref="videoDownload({id: Video.video.data._id})">{{'DOWNLOAD_VIDEO' | translate}}</a>
-					</div>
+					<md-button ng-hide="Video.state.current.name === 'videoDownload' && Video.stateParams.autoDownload !== 'true'" class="button md-raised md-primary" ui-sref="videoDownload({id: Video.video.data._id, autoDownload: Video.session.id == Video.video.data.owner})">
+						<span>{{'DOWNLOAD_VIDEO' | translate}}</span>
+					</md-button>
 				</section>
-				<section class="navigate"><!--TODO: is there a class for button only??-->
-					<div class="video-detail-edit-info" ng-if="Video.session.id == Video.video.data.owner">
-						<a ui-sref="videoDetailEdit({id: Video.video.data._id})">{{'BUTTON_EDIT' | translate}}</a>
-					</div>
-				</section>
-
 			</section>
-		</section>
-
-		<user-card class="card-user-info" user="Video.user.data"></user-card>
-		<div>&nbsp;</div>
-		
+		</section>		
 	</article>
 	
 </div>

@@ -1,52 +1,19 @@
-<topbar></topbar>
-
-<div ng-controller="VideoDownloadController as VideoDownload" class="download-page">
-
-	<!-- Screen loading directive -->
-	<div ng-if="!VideoDownload.video.data && VideoDownload.loading" class="loading">
-		<loading></loading>
+<div ng-controller="VideoDownloadController as VideoDownload" class="download-page">				
+	<div class="download-video-code" ng-if="!VideoDownload.amIOwner()">
+		<p>{{'DOWNLOAD_CODE' | translate}}</p>
+		<div class="code-error" ng-if="VideoDownload.error" ng-bind="VideoDownload.error"></div><br/>
+		<div ng-if="VideoDownload.loading" class="loading">{{'LOADING' | translate}}</div>
+		<input type="text" ng-model="VideoDownload.code">
 	</div>
 
-	<div ng-if="VideoDownload.video.data.error && !VideoDownload.loading" class="headers-info-videoDownload">
-		<h1 class="header">{{'ERROR_DOWNLOAD_VIDEO' | translate}}</h1>
-		<div>
-			{{'ERROR_DOWNLOAD_VIDEO_NOT_EXISTS' | translate}}
-		</div>
+	<div class="download-video-code" ng-if="VideoDownload.amIOwner()">
+		<div class="code-error" ng-if="VideoDownload.error" ng-bind="VideoDownload.error"></div><br/>
 	</div>
 
-	<article ng-if="VideoDownload.video.data && !VideoDownload.video.data.error">
-		<player video="VideoDownload.video.data.video" poster="VideoDownload.video.data.poster" class="video-download-page"></player>
-
-		<section class="info-download-video">
-			<div>
-				<div class="headers-info-videoDownload">
-					<h1 ng-bind="VideoDownload.video.data.title"></h1>
-					<h2 ng-bind="VideoDownload.video.data.productType | productType"></h2>
-					<div ng-bind="VideoDownload.video.data.description"></div>
-				</div>
-				<div ng-if="!VideoDownload.video.data.isVerified" class="videoDownload-isVerified">
-					<img src="../../img/checked.svg" alt="video-verified" />
-					<p>{{'VIDEO_VERIFIED' | translate}}</p>
-				</div>
-				
-				<div class="download-video-code" ng-if="!VideoDownload.amIOwner()">
-					<p>{{'DOWNLOAD_CODE' | translate}}</p>
-					<div class="code-error" ng-if="VideoDownload.error" ng-bind="VideoDownload.error"></div><br/>
-					<div ng-if="VideoDownload.loading" class="loading">{{'LOADING' | translate}}</div>
-					<input type="text" ng-model="VideoDownload.code">
-				</div>
-				<div class="download-video-code" ng-if="VideoDownload.amIOwner()">
-					<div class="code-error" ng-if="VideoDownload.error" ng-bind="VideoDownload.error"></div><br/>
-				</div>
-
-				<div class="download-button align-center">
-					<md-button type="submit" ng-disabed="!(VideoDownload.code || VideoDownload.amIOwner())" class="spinner-button md-raised md-primary cta" ng-click="VideoDownload.download()">
-						<md-progress-circular ng-show="VideoDownload.loading" class="md-hue-3 md-inline" md-diameter="20px"></md-progress-circular>
-						{{ 'DOWNLOAD_VIDEO' | translate }}
-					</md-button>
-				</div>
-			</div>
-		</section>
-	</article>
-
+	<div class="download-button align-center" ng-if="!(VideoDownload.amIOwner() && VideoDownload.$stateParams.autoDownload == 'true')">
+		<md-button type="submit" ng-disabed="!(VideoDownload.code || VideoDownload.amIOwner())" class="spinner-button md-raised md-primary cta" ng-click="VideoDownload.download()">
+			<md-progress-circular ng-show="VideoDownload.loading" class="md-hue-3 md-inline" md-diameter="20px"></md-progress-circular>
+			{{ 'DOWNLOAD_VIDEO' | translate }}
+		</md-button>
+	</div>
 </div>

@@ -1,21 +1,24 @@
 .card-user-info {
+	cursor: pointer;
 	align-items: center;
 	@extend %display-flex;
 	background-color: $backgroundLight;
-	margin: $cardMargin;
+	margin: 0px;
 	@include border-radius($cardRadius);
 	padding-bottom: $cardMargin;
 	div:first-child {
 		@extend %display-flex;
 		@extend %flex-direction-column;
 		@extend %align-items-center;
+		
 		ng-include {
 			fill: $text;
 		}
+
 		img, i {
 			@include border-radius(50%);
 			font-size: 65px;
-			margin: $cardMargin $cardMargin 5px $cardMargin;
+			margin: $cardMargin $cardMargin 5px 0px;
 			width: 65px;
 			height: 65px;
 		}
@@ -24,14 +27,19 @@
 			font-size: 12px;
 		}
 	}
+
 	div:last-child {
 		
 		p:first-child {
 			color: red;
 		}
 		p {
-			line-height: 1.5;
+			line-height: 1.3;
 			color: $text;
 		}
+	}
+
+	.user-name {
+		font-size: 1.3em;	
 	}
 }
