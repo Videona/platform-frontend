@@ -14,7 +14,7 @@
 			<div>
 				<player video="Video.video.data.video" poster="Video.video.data.poster"></player>
 
-				<div class="video-detail-map">
+				<div class="video-detail-map only-desktop">
 					<ng-map default-style="false" center="Video.mapMarker" ng-if="Video.mapMarker.length > 0">
 						<marker ng-if="Video.video.data.location" position="{{ Video.mapMarker }}"
 								title="{{ Video.video.data.locationName }}" centered="true"></marker>
@@ -95,6 +95,16 @@
 						<p>
 							<strong>{{'VIDEO_DETAIL_NOTES' | translate}}:</strong> {{Video.video.data.notes || ' - '}}
 						</p>
+					</div>
+				</div>
+
+				<div class="video-detail-map only-mobile">
+					<ng-map default-style="false" center="Video.mapMarker" ng-if="Video.mapMarker.length > 0">
+						<marker ng-if="Video.video.data.location" position="{{ Video.mapMarker }}"
+								title="{{ Video.video.data.locationName }}" centered="true"></marker>
+					</ng-map>
+					<div ng-if="Video.mapMarker.length === 0" class="no-map">
+						No location selected
 					</div>
 				</div>
 				

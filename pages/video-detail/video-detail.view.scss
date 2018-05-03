@@ -43,8 +43,10 @@
 
 	.video-detail-map {
 		box-sizing: border-box;
-		padding: $cardMargin;
 		width: 100%;
+		@include desktop {
+			padding: $cardMargin;
+		}
 
 		ng-map {
 			height: 200px;
@@ -58,6 +60,20 @@
 			width: 100%;
 			text-align: center;
 			line-height: 200px;
+		}
+	}
+
+	.only-desktop {
+		display: none;
+		@include desktop {
+			display: initial;
+		}
+	}
+
+	.only-mobile {
+		display: initial;
+		@include desktop {
+			display: none;
 		}
 	}
 
@@ -78,7 +94,12 @@
 }
 
 .card-video-detail {
-	padding: 10px;
+	padding: $cardMargin;
+	margin-bottom: 52px;
+
+	@include desktop {
+		margin-bottom: 0;
+	}
 }
 
 .card-video-info {
