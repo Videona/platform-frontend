@@ -81,6 +81,7 @@
 	@extend %flex-direction-column;
 	background-color: $backgroundLight;
 	box-sizing: border-box;
+	color: $textLight;
     margin-top: 16px;
     margin-bottom: 52px;
 	padding: 7px 24px;
@@ -131,7 +132,7 @@
 	}
 
 	.padding {
-		padding: 8px 0;
+		padding: 6px 0;
 	}
 
 	#video-description {
@@ -155,6 +156,7 @@
 	}
 
 	.view-all {
+		margin-top: 8px;
 		margin-bottom: 47px;
 		text-align: right;
 	}

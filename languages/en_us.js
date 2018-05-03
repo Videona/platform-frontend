@@ -14,6 +14,7 @@
 			LOADING: 'Loading...',
 			LOADING_WAIT: 'Loading your page, please wait',
 
+			SIGN_IN: 'Sign in',
 			LOGIN: 'Login',
 			REGISTER: 'Register',
 			USERNAME: 'Username',

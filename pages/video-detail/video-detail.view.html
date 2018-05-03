@@ -49,17 +49,17 @@
 					
 					<div class="padding view-all" ng-show="Video.showMore">
 						<a ng-click="readMore = !readMore" class="read-more">
-							<span ng-hide="readMore">+ {{'BUTTON_READ_ALL' | translate}}</span>
-							<span ng-show="readMore">- {{'BUTTON_READ_LESS' | translate}}</span>
+							<span ng-hide="readMore">{{'BUTTON_READ_ALL' | translate}} +</span>
+							<span ng-show="readMore">{{'BUTTON_READ_LESS' | translate}} -</span>
 						</a>
 					</div>
 					<div class="padding view-all" ng-hide="Video.showMore">&nbsp;</div>
 
 					<p>
-						<strong>{{'VIDEO_DETAIL_QUALITY' | translate}}:</strong> <stars value="{{Video.video.data.quality}}"></stars>
+						<span>{{'VIDEO_DETAIL_QUALITY' | translate}}:</span> <stars value="{{Video.video.data.quality}}"></stars>
 					</p>
 					<p>
-						<strong>{{'VIDEO_DETAIL_CREDIBILITY' | translate}}:</strong> <stars value="{{Video.video.data.credibility}}"></stars>
+						<span>{{'VIDEO_DETAIL_CREDIBILITY' | translate}}:</span> <stars value="{{Video.video.data.credibility}}"></stars>
 					</p>
 				
 					<user-card user="Video.user.data"></user-card>

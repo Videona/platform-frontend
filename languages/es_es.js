@@ -14,6 +14,7 @@
 			LOADING: 'Cargando...',
 			LOADING_WAIT: 'Cargando la página. Por favor, espere',
 
+			SIGN_IN: 'Iniciar sesión',
 			LOGIN: 'Acceder',
 			REGISTER: 'Registro',
 			USERNAME: 'Usuario',
@@ -150,8 +151,8 @@
 			PRODUCT_TYPE_GRAPHICS: 'Gráfico',
 			PRODUCT_TYPE_PIECE: 'Pieza',
 			
-			BUTTON_READ_ALL: 'Ver todo',
-			BUTTON_READ_LESS: 'Ver menos',
+			BUTTON_READ_ALL: 'Leer todo',
+			BUTTON_READ_LESS: 'Leer menos',
 			BUTTON_EDIT: 'Editar',
 
 			// Search page
