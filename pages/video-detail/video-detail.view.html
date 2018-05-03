@@ -15,7 +15,7 @@
 				<player video="Video.video.data.video" poster="Video.video.data.poster"></player>
 
 				<div class="video-detail-map">
-					<ng-map default-style="true" center="Video.mapMarker" ng-if="Video.mapMarker.length > 0">
+					<ng-map default-style="false" center="Video.mapMarker" ng-if="Video.mapMarker.length > 0">
 						<marker ng-if="Video.video.data.location" position="{{ Video.mapMarker }}"
 								title="{{ Video.video.data.locationName }}" centered="true"></marker>
 					</ng-map>
@@ -101,19 +101,16 @@
 				<section ui-view="download" class="video-download-view"></section>
 
 				<section class="navigate button-bar">
-					<md-button ng-hide="Video.state.current.name === 'videoDownload' && Video.stateParams.autoDownload !== 'true'" class="button md-raised md-primary" ui-sref="videoDownload({id: Video.video.data._id, autoDownload: Video.session.id == Video.video.data.owner})">
-						<span>{{'DOWNLOAD_VIDEO' | translate}}</span>
-					</md-button>
 					<md-button class="button md-raised" ng-if="Video.session.id == Video.video.data.owner" ui-sref="videoDetailEdit({id: Video.video.data._id})">
 						<md-icon>edit</md-icon>
 						<span>{{'BUTTON_EDIT' | translate}}</span>
 					</md-button>
+					<md-button ng-hide="Video.state.current.name === 'videoDownload' && Video.stateParams.autoDownload !== 'true'" class="button md-raised md-primary" ui-sref="videoDownload({id: Video.video.data._id, autoDownload: Video.session.id == Video.video.data.owner})">
+						<span>{{'DOWNLOAD_VIDEO' | translate}}</span>
+					</md-button>
 				</section>
 			</section>
-		</section>
-
-		<div>&nbsp;</div>
-		
+		</section>		
 	</article>
 	
 </div>

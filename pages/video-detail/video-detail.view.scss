@@ -46,14 +46,18 @@
 		padding: $cardMargin;
 		width: 100%;
 
+		ng-map {
+			height: 200px;
+		}
+
 		.no-map {
 		    background: $ultraLightGray;
 			color: $textLight;
-			height: 150px;
+			height: 200px;
 			display: inline-block;
 			width: 100%;
 			text-align: center;
-			line-height: 150px;
+			line-height: 200px;
 		}
 	}
 
@@ -68,6 +72,7 @@
 		@include desktop {
 			background: transparent;
 			position: static;
+			margin-top: 24px;
 		}
 	}
 }
@@ -83,7 +88,6 @@
 	box-sizing: border-box;
 	color: $textLight;
     margin-top: 16px;
-    margin-bottom: 52px;
 	padding: 7px 24px;
 	@include border-radius($cardRadius);
 	@include desktop {
@@ -93,6 +97,14 @@
 		flex-direction: column;
 	}
 	width: 100%;
+
+	.card-user-info {
+		color: $textLight;
+
+		strong {
+			color: $textLight;
+		}
+	}
 
 	> div:first-child {
 		margin: $cardMargin $cardMargin 0 0;
