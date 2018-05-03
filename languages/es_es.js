@@ -54,7 +54,7 @@
 			PROFILE_MENU_MY_VIDEOS: 'Mis videos',
 			PROFILE_MENU_LOGOUT: 'Cerrar sesión',
 
-			GALLERY_FEATURED_VIDEOS: 'Featured videos',
+			GALLERY_FEATURED_VIDEOS: 'Vídeos destacados',
 			GALLERY_VIEW_ALL: 'Ver todo',
 			GALLERY_ORDER_BY: 'Ordenar por',
 			GALLERY_ORDER_BY_SELECTOR_RELEVANCE: 'Relevancia',
