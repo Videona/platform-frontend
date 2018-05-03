@@ -54,7 +54,7 @@
 			PROFILE_MENU_MY_VIDEOS: 'Mis videos',
 			PROFILE_MENU_LOGOUT: 'Cerrar sesión',
 
-			GALLERY_FEATURED_VIDEOS: 'Featured videos',
+			GALLERY_FEATURED_VIDEOS: 'Vídeos destacados',
 			GALLERY_VIEW_ALL: 'Ver todo',
 			GALLERY_ORDER_BY: 'Ordenar por',
 			GALLERY_ORDER_BY_SELECTOR_RELEVANCE: 'Relevancia',
@@ -70,8 +70,8 @@
 			ERROR_UNABLE_TO_DOWNLOAD: 'No se ha podido descargar este vídeo',
 
 			UPLOADED_AT: 'Fecha de subida',
-			SHOW_VIDEO_DETAILS: 'Mostrar detalles del vídeo',
-			HIDE_VIDEO_DETAILS: 'Ocultar detalles del vídeo',
+			SHOW_VIDEO_DETAILS: 'Detalles técnicos',
+			HIDE_VIDEO_DETAILS: 'Ocultar detalles técnicos',
 
 			USER_PROFFESSIONAL: 'Profesional',
 			PUBLISHED_VIDEOS: 'Vídeos publicados',
