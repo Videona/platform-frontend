@@ -177,6 +177,10 @@
 		color: $textLight;
 		cursor: pointer;
 	}
+	.read-more:hover {
+		color: $textDark;
+		text-decoration: none;
+	}
 
 	.video-download-view {
 		width: 100%;
@@ -204,7 +208,7 @@
 	}
 }
 .video-detail-show-info:hover {
-	color: $mainColor;
+	color: $textDark;
 }
 
 .video-detail-info {
