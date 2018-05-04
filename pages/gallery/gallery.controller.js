@@ -1,11 +1,12 @@
 angular.module('app')
-	.controller('GalleryController', ['$scope', '$document', '$translate', Gallery]);
+	.controller('GalleryController', ['$scope', '$document', '$translate', 'flavourFeature', Gallery]);
 
-function Gallery($scope, $document, $translate) {
+function Gallery($scope, $document, $translate, flavourFeature) {
 	var self = this;
 
 	self.search = '';
 	self.topbarTransparent = true;
+	self.feature = flavourFeature;
 
 	// Add a scroll listener to enable the header+topbar effect
 	$document.on('scroll', scrolling)
@@ -18,6 +19,10 @@ function Gallery($scope, $document, $translate) {
 	function scrolling(e) {
 		var offset = 56;
 		var header = document.getElementsByClassName('header-box')[0];
-		self.topbarTransparent = window.scrollY < (header.scrollHeight - offset);
+		if(!header) {
+			self.topbarTransparent = false;
+		} else {
+			self.topbarTransparent = window.scrollY < (header.scrollHeight - offset);
+		}
 	}
 }

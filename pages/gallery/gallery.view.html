@@ -1,7 +1,7 @@
 <div ng-controller="GalleryController as Gallery" class="gallery">
 	<topbar transparent="Gallery.topbarTransparent"></topbar>
 
-	<header-box></header-box>
+	<header-box ng-if="Gallery.feature.header"></header-box>
 
 	<article>
 		<section class="gallery-section-featured">
