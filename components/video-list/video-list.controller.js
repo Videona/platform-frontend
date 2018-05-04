@@ -79,14 +79,14 @@
 							self.videos = self.videos.concat(data);
 						} else {
 							self.videoList = self.videos.concat(data);
-							var videoListVerfied = [];
+							var videoListVerified = [];
 							for (var i = 0; i < self.videoList.length; i++) {
 							  if (self.videoList[i].verified == true) {
-							  	videoListVerfied.push(self.videoList[i]);
+							  	videoListVerified.push(self.videoList[i]);
 							  }
 							}
-							self.videos = videoListVerfied;
-							console.log(' videos verified ', videoListVerfied);
+							self.videos = videoListVerified;
+							console.log(' videos verified ', videoListVerified);
 						}
 						if(self.meta) {
 							self.meta.count = self.videos.length;
