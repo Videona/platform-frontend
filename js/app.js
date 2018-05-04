@@ -86,7 +86,7 @@
 				parent: 'root',
 				templateUrl: 'pages/user-gallery/user-gallery.view.html',
 			})
-			.state('videoPreview', {
+			.state('videoDetail', {
 				url: '/video/:id',
 				parent: 'root',
 				templateUrl: 'pages/video-detail/video-detail.view.html',
@@ -98,7 +98,7 @@
 				}],
 			})
 			.state('videoDownload', {
-				parent: 'videoPreview',
+				parent: 'videoDetail',
 				url: '/download?:autoDownload',
 				views: {
 					'download': {
