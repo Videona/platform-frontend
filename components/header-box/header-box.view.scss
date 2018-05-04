@@ -1,39 +1,59 @@
 .header-box-wrapper {
+	background-color: red;
+	overflow: hidden;
 	position: relative;
-	widht: 100%;
+	min-height: 45vh;
+	width: 100%;
+	@include desktop {
+		min-height: 35vh;
+	}
 
 	video {
-		height: 30vh;
 		object-fit: cover;
 		position: absolute;
-		width: 100%;
+		min-height: 100%;
+		min-width: 100%;
 	}
 
 	.header-box {
+		@extend %flex-direction-column;
+	    @extend %align-items-center;
+	    @extend %justify-content-center;
 		color: $backgroundLight;
-		height: 35vh;
+		min-height: 35vh;
 		position: absolute;
 		left: 0;
 		right: 0;
-		widht: 100%;
+		width: 100%;
 		z-index: 0;	
 
 
 		h2 {
-			font-size: 2.5em;
+			font-size: 28px;
 			text-align: center;
 			margin: 16px;
-			margin-top: 100px;
+			margin-top: 64px;
+			@include desktop {
+				font-size: 40px;
+			}
 		}
 
 		p {
-			font-size: 1.3em;
+			font-size: 16px;
 			line-height: 1.3em;
 			text-align: center;
+			@include desktop {
+				font-size: 20px;
+			}
+		}
+
+		.keywords {
+			font-size: .8em;
+			margin: 6px 40px;
 		}
 	}
 
 	.header-box-spacer {
-		height: 35vh;	
+		min-height: 35vh;	
 	}
 }
