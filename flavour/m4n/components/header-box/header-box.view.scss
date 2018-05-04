@@ -25,7 +25,7 @@
 
 
 		h2 {
-			font-size: 28px;
+			font-size: 26px;
 			text-align: center;
 			margin: 16px;
 			margin-top: 72px;
@@ -45,8 +45,12 @@
 		}
 
 		.keywords {
-			font-size: .8em;
-			margin: 6px 40px;
+			display: none;
+			@include tablet {
+				display: block;
+				margin: 6px 40px;
+				font-size: .8em;
+			}
 		}
 	}
 

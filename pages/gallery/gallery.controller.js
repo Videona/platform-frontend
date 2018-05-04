@@ -5,11 +5,11 @@ function Gallery($scope, $document, $translate, flavourFeature) {
 	var self = this;
 
 	self.search = '';
-	self.topbarTransparent = false;
+	self.topbarTransparent = flavourFeature.header;
 	self.feature = flavourFeature;
 
 	// Check initial topbar bg
-	scrolling();
+	// scrolling();
 
 	// Add a scroll listener to enable the header+topbar effect
 	$document.on('scroll', scrolling)
