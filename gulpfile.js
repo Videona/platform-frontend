@@ -40,7 +40,7 @@ gulp.task('make-config', function () {
 });
 
 gulp.task('flavour', function () {
-	var flavour = 'm4n';// process.env.FLAVOUR || 'vimojo';
+	var flavour = process.env.FLAVOUR || 'vimojo';
 	console.log('##############################################');
 	console.log('### Building flavour ' + flavour);
 	console.log('##############################################');
