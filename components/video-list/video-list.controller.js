@@ -1,8 +1,8 @@
 (function () {
 	angular.module('app')
-		.controller('VideoListController', ['api', '$httpParamSerializer', VideoListController]);
+		.controller('VideoListController', ['session', 'api', '$httpParamSerializer', VideoListController]);
 
-	function VideoListController(api, $httpParamSerializer) {
+	function VideoListController(session, api, $httpParamSerializer) {
 		var self = this;
 
 		// Component bindings
@@ -75,11 +75,23 @@
 				api.get(api.url + getQuery(), function (data, status) {
 					if (status < 400 && data.length > 0) {
 						self.loading = false;
-						self.videos = self.videos.concat(data);
+						if (session.role == 'editor' || (session.id === self.userId)) {
+							self.videos = self.videos.concat(data);
+						} else {
+							self.videoList = self.videos.concat(data);
+							var videoListVerfied = [];
+							for (var i = 0; i < self.videoList.length; i++) {
+							  if (self.videoList[i].verified == true) {
+							  	videoListVerfied.push(self.videoList[i]);
+							  }
+							}
+							self.videos = videoListVerfied;
+							console.log(' videos verified ', videoListVerfied);
+						}
 						if(self.meta) {
 							self.meta.count = self.videos.length;
 						}
-						console.log(self.videos);
+						console.log(' videos ', self.videos);
 						self.queryParams.offset += data.length;
 					}
 				});
