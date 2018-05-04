@@ -5,8 +5,11 @@ function Gallery($scope, $document, $translate, flavourFeature) {
 	var self = this;
 
 	self.search = '';
-	self.topbarTransparent = true;
+	self.topbarTransparent = false;
 	self.feature = flavourFeature;
+
+	// Check initial topbar bg
+	scrolling();
 
 	// Add a scroll listener to enable the header+topbar effect
 	$document.on('scroll', scrolling)
@@ -16,7 +19,7 @@ function Gallery($scope, $document, $translate, flavourFeature) {
 		$document.off('scroll', scrolling)
 	});
 
-	function scrolling(e) {
+	function scrolling() {
 		var offset = 56;
 		var header = document.getElementsByClassName('header-box')[0];
 		if(!header) {
