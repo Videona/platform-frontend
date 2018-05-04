@@ -3,9 +3,6 @@
 	position: relative;
 	min-height: 45vh;
 	width: 100%;
-	@include tablet {
-		min-height: 35vh;
-	}
 
 	video {
 		object-fit: cover;
