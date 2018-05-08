@@ -107,6 +107,12 @@
 				text-align: right;
 			}
 
+			md-progress-circular {
+				margin: 0 4px;
+				display: inline-block;
+				vertical-align: middle;
+			}
+
 			a.btn-send {
 				background-color: $mainColor;
 				border: 1px solid $mainColor;
@@ -151,13 +157,14 @@
 	/* Upload drop box */
 	.drop-box {
 	    background: $ultraLightGray;
-		color: #8b8b8b;
 	    border-radius: 5px;
 		box-sizing: border-box;
-	    width: 100%;
+		color: #8b8b8b;
+		cursor: pointer;
 	    height: 100%;
-	    text-align: center;
 	    padding-top: 18%;
+	    text-align: center;
+	    width: 100%;
 	}
 	.drop-box * {
 		box-sizing: border-box;
