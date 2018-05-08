@@ -41,7 +41,7 @@
 		}
 	}
 
-	i, md-icon {
+	i, md-icon, .md-button {
 		color: $topbarColor;
 		cursor: pointer;
 		font-size: 24px;
@@ -59,7 +59,7 @@
 	}
 
 	.search-bar {
-		background: transparent;
+		background: #fff;
 		box-sizing: border-box;
 		display: flex;
 		height: 52px;
@@ -70,6 +70,17 @@
 		top: 0;
 		width: 100%;
 		z-index: 1;
+		@include desktop {
+			background: transparent;
+		}
+
+		md-icon {
+			color: $textLight;
+		}
+
+		.close-bar {
+			line-height: $topbarHeight;
+		}
 
 		* {
 			vertical-align: middle;

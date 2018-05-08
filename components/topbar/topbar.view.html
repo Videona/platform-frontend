@@ -7,7 +7,7 @@
 	</span>
 	<span class="items-container">
 		<span class="search-bar" ng-show="searching">
-			<span ng-click="searching = !searching">
+			<span class="close-bar" ng-click="searching = !searching">
 				<md-icon class="close-search">close</md-icon>
 			</span>
 			<input id="searchField" type="text" name="searchBox" ng-model="search.searchBox" on-enter="search.search()">
