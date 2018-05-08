@@ -1,3 +1,12 @@
+.topbar.transparent {
+	background: transparent;
+	box-shadow: none;	
+	
+	* {
+		color: #fff;
+	}
+}
+
 .topbar {
 	top: 0;
 	left: 0;
@@ -9,9 +18,10 @@
 	@extend %display-flex;
 	@extend %justify-content-space-between;
 	@extend %align-items-center;
-	background-color: white;
+	background-color: $topbarBackground;
 	box-shadow: 0px 0px 1px 1px #e8e8e8;
 	z-index: 50;
+	transition: all .2s ease;
 
 	.items-container {
 		width: 100%;
@@ -21,17 +31,31 @@
 	img, svg {
 		cursor: pointer;
 		fill: $textLight;
-		height: $topbarImgHeight;
+		/*height: $topbarImgHeight;*/
+		height: auto;
 		margin: $cardMargin;
+		max-width: 132px;
 		vertical-align: middle;
+		@include tablet {
+			max-width: 200px;
+		}
 	}
 
 	i, md-icon {
-		color: $textLight;
+		color: $topbarColor;
 		cursor: pointer;
 		font-size: 24px;
-		margin: 13px;
+		margin: 8px;
 		vertical-align: middle;
+	}
+	
+	.md-button {
+		color: $topbarColor;
+	}
+
+	md-menu .md-button.md-icon-button {
+	    margin: 0 6px 0 0px;
+	    padding: 6px;
 	}
 
 	.desktop-right-icons {
@@ -39,7 +63,7 @@
 	}
 
 	.search-bar {
-		background: white;
+		background: #fff;
 		box-sizing: border-box;
 		display: flex;
 		height: 52px;
@@ -50,6 +74,17 @@
 		top: 0;
 		width: 100%;
 		z-index: 1;
+		@include desktop {
+			background: transparent;
+		}
+
+		md-icon {
+			color: $textLight;
+		}
+
+		.close-bar {
+			line-height: $topbarHeight;
+		}
 
 		* {
 			vertical-align: middle;

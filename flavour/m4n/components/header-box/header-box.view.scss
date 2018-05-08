@@ -1,0 +1,60 @@
+.header-box-wrapper {
+	@extend %align-items-center;
+	background-color: $topbarBackground;
+	@extend %display-flex;
+	overflow: hidden;
+	position: relative;
+	min-height: 35vh;
+	width: 100%;
+
+	video {
+		object-fit: cover;
+		position: absolute;
+		min-height: 100%;
+		min-width: 100%;
+	}
+
+	.header-box {
+		@extend %flex-direction-column;
+		@extend %align-items-center;
+		@extend %justify-content-center;
+		color: $backgroundLight;
+		@extend %display-flex;
+		left: 0;
+		min-height: 35vh;
+		padding: 16px;
+		right: 0;
+		width: 100%;
+		z-index: 0;	
+
+
+		h2 {
+			font-size: 26px;
+			text-align: center;
+			margin: 20px;
+			margin-top: 32px;
+			@include tablet {
+				font-size: 40px;
+			}
+
+		}
+
+		p {
+			font-size: 16px;
+			line-height: 1.3em;
+			text-align: center;
+			@include tablet {
+				font-size: 20px;
+			}
+		}
+
+		.keywords {
+			display: none;
+			@include tablet {
+				display: block;
+				margin: 16px 40px 8px;
+				font-size: .8em;
+			}
+		}
+	}
+}

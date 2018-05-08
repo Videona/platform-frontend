@@ -15,10 +15,8 @@
 					<input type="file" accept="video/*" file-model="Upload.file"/>
 			    </div>
 			</div>
-		    <video ng-if="Upload.file" class="upload-form-preview" controls ngf-src="Upload.file"></video>
-		    <div class="file-uploading" ng-show="Upload.loading">
-		    	{{'UPLOADING_FILE' | translate}}
-		    </div>
+		    
+			<video ng-if="Upload.file" class="upload-form-preview" controls ngf-src="Upload.file"></video> 
 		</div>
 
 		<div class="right-form">
@@ -37,7 +35,10 @@
 			</div>
 
 			<div class="form-send-button">
-				<a ng-class="['btn-send', {'disabled': Upload.loading}]" ng-click="Upload.send()">{{'UPLOAD_SEND' | translate}}</a>
+				<md-button ng-disabed="Upload.loading" class="spinner-button md-raised md-primary cta" ng-click="Upload.send()">
+					<md-progress-circular ng-show="Upload.loading" class="md-hue-3 md-inline" md-diameter="20px"></md-progress-circular>
+					{{'UPLOAD_SEND' | translate}}
+				</md-button>
 			</div>
 		</div>
 	</div>
