@@ -1,2 +1,4 @@
-v0.9.0
-- Improved UI/UX in video details, adding new elements like information about location with Google Maps and improving existing ones with translations & little visual updates.
+v0.10.3
+- Updated card verified icon color
+- Added tooltip to card verified icon
+- Updated edit video checkbox colors

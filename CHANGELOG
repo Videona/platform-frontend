@@ -1,3 +1,18 @@
+v0.10.2
+- Added little hand on upload video
+
+v0.10.1
+- Updated video detail view to show edit button if user is editor
+
+v0.10.0
+- Added information header configurable between flavours
+
+v0.9.1
+- Fix an issue for what pic was not being set in session
+
+v0.9.0
+- Improved UI/UX in video details, adding new elements like information about location with Google Maps and improving existing ones with translations & little visual updates.
+
 v0.8.1
 - Improve UI and UX vissual icons, layers & other stuff.
 

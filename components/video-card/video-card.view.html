@@ -5,7 +5,13 @@
 		<img ng-src="{{poster}}" class="pixel" onerror="this.parentNode.style.backgroundImage = 'url(\'/img/no-video.svg\')'" />
 	</article>
 	<section class="video-info">
-		<h2>{{::title}} <md-icon ng-if="verified == true || verified == 'true'">check_circle</md-icon></h2>
+		<h2>
+			{{::title}} 
+			<md-icon ng-if="verified == true || verified == 'true'">
+				<md-tooltip md-delay="1000">{{ 'VIDEO_VERIFIED' | translate }}</md-tooltip>
+				check_circle
+			</md-icon>
+		</h2>
 		<a ui-sref="userGallery({userId: authorId})" ng-click="$event.stopPropagation()"><h3 ng-bind="author"></h3></a>
 		<h4 class="capital_first_letter"><span ng-if="locationName">{{locationName}}, </span><span am-time-ago="date"></span></h4>
 <!--		<h3>{{productType | productType}}</h3>-->
