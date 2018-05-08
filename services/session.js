@@ -29,6 +29,7 @@
 			session.username = newSession.username || '';
 			session.email = newSession.email || '';
 			session.role = newSession.role || '';
+			session.pic = newSession.pic || '',
 			session.verified = newSession.verified || false;
 
 			if (newSession.token) {
@@ -97,6 +98,7 @@
 			session.name = '';
 			session.email = '';
 			session.role = '';
+			session.pic = '';
 			session.verified = false;
 
 			localStorage.removeItem('session');
