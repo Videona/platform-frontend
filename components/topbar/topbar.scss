@@ -41,12 +41,16 @@
 		}
 	}
 
-	i, md-icon, .md-button {
+	i, md-icon {
 		color: $topbarColor;
 		cursor: pointer;
 		font-size: 24px;
 		margin: 8px;
 		vertical-align: middle;
+	}
+	
+	.md-button {
+		color: $topbarColor;
 	}
 
 	md-menu .md-button.md-icon-button {
