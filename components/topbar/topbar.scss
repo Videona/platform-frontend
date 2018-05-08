@@ -31,9 +31,14 @@
 	img, svg {
 		cursor: pointer;
 		fill: $textLight;
-		height: $topbarImgHeight;
+		/*height: $topbarImgHeight;*/
+		height: auto;
 		margin: $cardMargin;
+		max-width: 132px;
 		vertical-align: middle;
+		@include tablet {
+			max-width: 200px;
+		}
 	}
 
 	i, md-icon {

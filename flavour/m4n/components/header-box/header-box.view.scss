@@ -1,7 +1,10 @@
 .header-box-wrapper {
+	@extend %align-items-center;
+	background-color: $mainColor;
+	display: flex;
 	overflow: hidden;
 	position: relative;
-	min-height: 45vh;
+	min-height: 35vh;
 	width: 100%;
 
 	video {
@@ -15,10 +18,11 @@
 		@extend %flex-direction-column;
 	    @extend %align-items-center;
 	    @extend %justify-content-center;
+	    align-self: flex-start;
 		color: $backgroundLight;
-		min-height: 35vh;
-		position: absolute;
 		left: 0;
+		min-height: 35vh;
+		padding: 16px;
 		right: 0;
 		width: 100%;
 		z-index: 0;	
@@ -48,13 +52,9 @@
 			display: none;
 			@include tablet {
 				display: block;
-				margin: 6px 40px;
+				margin: 16px 40px 8px;
 				font-size: .8em;
 			}
 		}
-	}
-
-	.header-box-spacer {
-		min-height: 35vh;	
 	}
 }
