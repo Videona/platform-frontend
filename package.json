@@ -1,6 +1,6 @@
 {
   "name": "vimojo-platform-frontend",
-  "version": "0.10.2",
+  "version": "0.10.3",
   "description": "Frontend for Vimojo Platform",
   "main": "gulpfile.js",
   "scripts": {
