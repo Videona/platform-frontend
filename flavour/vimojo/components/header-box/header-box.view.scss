@@ -16,8 +16,8 @@
 
 	.header-box {
 		@extend %flex-direction-column;
-	    @extend %align-items-center;
-	    @extend %justify-content-center;
+		@extend %align-items-center;
+		@extend %justify-content-center;
 		color: $backgroundLight;
 		min-height: 35vh;
 		position: absolute;

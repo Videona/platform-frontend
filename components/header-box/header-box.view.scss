@@ -1,7 +1,7 @@
 .header-box-wrapper {
 	@extend %align-items-center;
 	background-color: $topbarBackground;
-	display: flex;
+	@extend %display-flex;
 	overflow: hidden;
 	position: relative;
 	min-height: 35vh;
@@ -16,9 +16,8 @@
 
 	.header-box {
 		@extend %flex-direction-column;
-	    @extend %align-items-center;
-	    @extend %justify-content-center;
-	    align-self: flex-start;
+		@extend %align-items-center;
+		@extend %justify-content-center;
 		color: $backgroundLight;
 		left: 0;
 		min-height: 35vh;
