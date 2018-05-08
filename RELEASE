@@ -1,2 +1,2 @@
-v0.10.0
-- Added information header configurable between flavours
+v0.10.1
+- Updated video detail view to show edit button if user is editor
