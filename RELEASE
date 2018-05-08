@@ -1,2 +1,2 @@
-v0.9.1
-- Fix an issue for what pic was not being set in session
+v0.10.0
+- Added information header configurable between flavours

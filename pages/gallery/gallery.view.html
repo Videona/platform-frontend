@@ -1,5 +1,8 @@
-<topbar></topbar>
 <div ng-controller="GalleryController as Gallery" class="gallery">
+	<topbar transparent="Gallery.topbarTransparent"></topbar>
+
+	<header-box ng-if="Gallery.feature.header"></header-box>
+
 	<article>
 		<section class="gallery-section-featured">
 			<div>
