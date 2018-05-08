@@ -1,6 +1,6 @@
 .header-box-wrapper {
 	@extend %align-items-center;
-	background-color: $mainColor;
+	background-color: $topbarBackground;
 	display: flex;
 	overflow: hidden;
 	position: relative;
