@@ -117,6 +117,7 @@
 	@include desktop {
 		margin: 16px 0 0 0;
 		flex-direction: column;
+		max-width: 50%;
 	}
 
 	.card-user-info {
