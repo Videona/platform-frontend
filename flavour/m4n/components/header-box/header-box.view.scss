@@ -20,6 +20,7 @@
 	    @extend %justify-content-center;
 	    align-self: flex-start;
 		color: $backgroundLight;
+		display: flex;
 		left: 0;
 		min-height: 35vh;
 		padding: 16px;
@@ -31,8 +32,8 @@
 		h2 {
 			font-size: 26px;
 			text-align: center;
-			margin: 16px;
-			margin-top: 72px;
+			margin: 20px;
+			margin-top: 32px;
 			@include tablet {
 				font-size: 40px;
 			}
