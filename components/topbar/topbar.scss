@@ -34,10 +34,10 @@
 		/*height: $topbarImgHeight;*/
 		height: auto;
 		margin: $cardMargin;
-		max-width: 132px;
+		max-width: 100px;
 		vertical-align: middle;
 		@include tablet {
-			max-width: 200px;
+			max-width: 137px;
 		}
 	}
 
