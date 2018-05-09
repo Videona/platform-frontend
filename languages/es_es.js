@@ -108,6 +108,7 @@
 			VIDEO_SAVE: 'Guardar',
 			VIDEO_EDIT_FEATURE: 'Destacar',
 			VIDEO_EDIT_VERIFY: 'Verificar',
+			VIDEO_EDIT_PUBLISH: 'Publicar',
 			VIDEO_EDIT_PICK_DATE: 'Fecha',
 			VIDEO_EDIT_THUMBNAIL_DEFAULT: 'Miniatura por defecto',
 			VIDEO_EDIT_THUMBNAIL_CUSTOM: 'Miniatura personalizada',

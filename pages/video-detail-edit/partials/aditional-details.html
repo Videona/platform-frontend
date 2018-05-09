@@ -10,6 +10,11 @@
 			{{ 'VIDEO_EDIT_VERIFY' | translate }}
 			</span>
 		</md-checkbox>
+		<md-checkbox class="md-primary" ng-model="EditCtrl.video.published" ng-disabled="!EditCtrl.editorRole">
+			<span class="vertical-middle">
+			{{ 'VIDEO_EDIT_PUBLISH' | translate }}
+			</span>
+		</md-checkbox>
 	</div>
 	<div flex layout="row" layout-wrap>
 			<div class="inline-block">
