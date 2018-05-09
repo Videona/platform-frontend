@@ -15,10 +15,13 @@ function VideoDownload($stateParams, video, videoDownload, $translate, session) 
 	self.video = video;
 
 	self.download = download;
+	self.focus = focus;
 
 	if ($stateParams.autoDownload === 'true') {
 		download();
 	}
+
+	setTimeout(focus, 500);
 
 
 	function download() {
@@ -33,6 +36,14 @@ function VideoDownload($stateParams, video, videoDownload, $translate, session) 
 				self.error = $translate.instant('ERROR_UNABLE_TO_DOWNLOAD');
 			}
 		});
+	}
+
+	function focus() {
+		// Scroll to .download-video-code
+		window.scrollTo(0, document.getElementsByClassName('download-page')[0].offsetTop);
+
+		// Focus on input
+		document.getElementById('download-code-input').focus();
 	}
 
 	function amIOwner() {
