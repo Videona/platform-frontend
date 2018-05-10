@@ -55,6 +55,11 @@
 					</div>
 					<div class="padding view-all" ng-hide="Video.showMore">&nbsp;</div>
 
+					<div class="published-icon" ng-if="Video.showPublishedIcon"> 
+						<md-icon>cloud_done</md-icon>
+						<span> {{'VIDEO_PUBLISHED_CAPTION' | translate}}</span>
+					</div>
+
 					<p class="star-container">
 						<span class="star-label">{{'VIDEO_DETAIL_QUALITY' | translate}}:</span> <stars value="{{Video.video.data.quality}}"></stars>
 					</p>

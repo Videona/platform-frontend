@@ -85,6 +85,7 @@
 			VIDEO_DETAIL_LANGUAGE: 'Idioma',
 			VIDEO_DETAIL_QUALITY: 'Calidad',
 			VIDEO_DETAIL_CREDIBILITY: 'Credibilidad',
+			VIDEO_PUBLISHED_CAPTION: 'Publicado',
 			VIDEO_AUTHOR: 'Autor/a',
 			'VIDEO_LANG_es-es': 'Español',
 			'VIDEO_LANG_en-en': 'Inglés',

@@ -1,5 +1,6 @@
 <md-card class="card-container">
 	<article ng-style="{'background-image':'url(' + poster + ')', 'position':'relative'}">
+		<span class="video-published" ng-if="showPublishedIcon"><md-icon>cloud_done</md-icon></span>
 		<span class="video-timer">{{::time | time : false}}</span>
 		<!-- Image pixel to detect failure and set error poster -->
 		<img ng-src="{{poster}}" class="pixel" onerror="this.parentNode.style.backgroundImage = 'url(\'/img/no-video.svg\')'" />

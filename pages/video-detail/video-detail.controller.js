@@ -25,6 +25,7 @@ function VideoDetail($stateParams, $state, session, video, user, $timeout) {
 	self.video.get(self.id, function() {
 		self.loading = false;
 		if (self.video.data != undefined) {
+			self.showPublishedIcon = showPublishedIcon();
 			self.user.get(self.video.data.owner, function() {
 				self.loadingAuthor = false;
 			});
@@ -48,6 +49,14 @@ function VideoDetail($stateParams, $state, session, video, user, $timeout) {
 
 		if (el && el.scrollHeight > el.clientHeight) { 
 			return true;
+		} else {
+			return false;
+		}
+	}
+
+	function showPublishedIcon() {
+		if ((self.session.role == 'editor') || (self.video.data.owner == self.session.id) ) {
+			return (self.video.data.published == true || self.video.data.published == 'true');
 		} else {
 			return false;
 		}
