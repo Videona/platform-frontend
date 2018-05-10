@@ -1,7 +1,7 @@
 angular.module('app')
-	.controller('VideoDetailController', ['$stateParams', '$state', 'session', 'video', 'user', '$timeout', VideoDetail]);
+	.controller('VideoDetailController', ['$stateParams', '$state', 'session', 'video', 'user', '$timeout', 'NgMap', VideoDetail]);
 
-function VideoDetail($stateParams, $state, session, video, user, $timeout) {
+function VideoDetail($stateParams, $state, session, video, user, $timeout, NgMap) {
 	var self = this;
 
 	self.id = $stateParams.id;
@@ -36,6 +36,9 @@ function VideoDetail($stateParams, $state, session, video, user, $timeout) {
 
 			if (self.video.data.location) {
 				self.mapMarker = [self.video.data.location.lat, self.video.data.location.lng];
+				NgMap.getMap().then(function (map) {
+					map.setZoom(6);
+				});
 				console.warn(self.mapMarker);
 			}
 		}
