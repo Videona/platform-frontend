@@ -27,6 +27,17 @@ module.exports = function (config) {
 			'../node_modules/ng-infinite-scroll/build/ng-infinite-scroll.js',
 			'../node_modules/ng-file-upload/dist/ng-file-upload.min.js',
 			'../node_modules/angular-mocks/angular-mocks.js',
+			'../node_modules/moment/moment.js',
+			'../node_modules/angular-moment/angular-moment.js',
+			'../node_modules/angular-material/angular-material.js',
+			'../node_modules/angular-animate/angular-animate.js',
+			'../node_modules/angular-aria/angular-aria.js',
+			'../node_modules/ngmap/build/scripts/ng-map.js',
+			'../node_modules/angular-sanitize/angular-sanitize.js',
+			'../node_modules/videogular/dist/videogular/videogular.js',
+			'../node_modules/videogular-controls/vg-controls.js',
+			'../node_modules/videogular-overlay-play/vg-overlay-play.js',
+			'../node_modules/videogular/dist/poster/vg-poster.js',
 			// Angular app
 			'./dist/js/app.min.js',
 			// Tests
