@@ -15,6 +15,10 @@ img/brand
 sass/base/_variables.scss
 js/flavour.js
 
+# Flavour component view/styles
+components/header-box/header-box.view.html
+components/header-box/header-box.view.scss
+
 # SASS generated style
 css/style.css
 

@@ -110,13 +110,12 @@
 	color: $textLight;
 	margin: 16px $cardMargin $cardMargin $cardMargin;
 	padding: 7px 24px;
+	width: 100%;
 	@include border-radius($cardRadius);
 	@include desktop {
 		flex-direction: row;
-	}
-	@include desktop {
-		margin: 16px 0 0 0;
 		flex-direction: column;
+		margin: 16px 0 0 0;
 		max-width: 50%;
 	}
 
@@ -301,4 +300,8 @@ strong {
 	.star-label {
 		vertical-align: middle;
 	}
+}
+
+.video-detail-download-button {
+	@extend %display-inline-flex;
 }
