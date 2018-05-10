@@ -42,7 +42,8 @@ function UploadController(api, session, $state, $translate, productType) {
 			self.loading = true;
 			api.upload(api.url + '/video', self.file, data, function() {
 				self.loading = false;
-				$state.go('gallery');
+				console.log('video updated, redirecting to userGallery');
+				$state.go('userGallery', {userId: session.id});
 			});
 		} else {
 			self.error = $translate.instant('UPLOAD_ERROR_DATA');
