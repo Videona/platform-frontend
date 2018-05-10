@@ -10,7 +10,7 @@
 		<div class="code-error" ng-if="VideoDownload.error" ng-bind="VideoDownload.error"></div><br/>
 	</div>
 
-	<div class="download-button align-center" ng-if="VideoDownload.amIOwner() && VideoDownload.$stateParams.autoDownload !== 'true'">
+	<div class="download-button align-center" ng-if="!VideoDownload.amIOwner() && VideoDownload.$stateParams.autoDownload !== 'true'">
 		<md-button type="submit" ng-disabed="!(VideoDownload.code || VideoDownload.amIOwner())" class="spinner-button md-raised md-primary cta" ng-click="VideoDownload.download()">
 			<md-progress-circular ng-show="VideoDownload.loading" class="md-hue-3 md-inline" md-diameter="20px"></md-progress-circular>
 			{{ 'DOWNLOAD_VIDEO' | translate }}

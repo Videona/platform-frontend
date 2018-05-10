@@ -8,15 +8,17 @@ function VideoDetail($stateParams, $state, session, video, user, $timeout) {
 	self.code = '';
 	self.loading = true;
 	self.loadingAuthor = true;
+	self.downloading = false;
 	self.session = session;
 	self.state = $state; 
-	self.stateParams = $stateParams; 
+	self.stateParams = $stateParams;
 
 	self.video = video;
 	self.user = user;
 
+	self.videoDownload = videoDownload;
 	self.showMore = showMore();
-	self.mapMarker = []; 
+	self.mapMarker = [];
 
 	if(self.video && self.video.data && self.video.data.id !== self.id) {
 		self.video.reset();
@@ -52,4 +54,12 @@ function VideoDetail($stateParams, $state, session, video, user, $timeout) {
 			return false;
 		}
 	}
+	
+	function videoDownload(params) {
+		self.downloading = true;
+		$state.go('videoDownload', params);
+		$timeout(function () {
+			self.downloading = false;
+		}, 1000);
+	}	
 }

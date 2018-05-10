@@ -300,3 +300,7 @@ strong {
 		vertical-align: middle;
 	}
 }
+
+.video-detail-download-button {
+	@extend %display-inline-flex;
+}

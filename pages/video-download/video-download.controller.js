@@ -29,7 +29,6 @@ function VideoDownload($stateParams, video, videoDownload, $translate, session) 
 		self.loading = true;
 		videoDownload.get(self.id, self.code, function (status) {
 			self.loading = false;
-			console.log(status);
 			if (status === 403 && !amIOwner()) {
 				self.error = $translate.instant('ERROR_WRONG_DOWNLOAD_CODE');
 			} else if(status !== 200) {
