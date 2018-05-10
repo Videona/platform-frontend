@@ -119,8 +119,9 @@
 					</md-button>
 					<md-button
 							ng-hide="Video.state.current.name === 'videoDownload' && Video.stateParams.autoDownload !== 'true'"
-							class="button md-raised md-primary"
-							ui-sref="videoDownload({id: Video.video.data._id, autoDownload: Video.session.id == Video.video.data.owner})">
+							class="button md-raised md-primary video-detail-download-button"
+							ng-click="Video.videoDownload({id: Video.video.data._id, autoDownload: Video.session.id == Video.video.data.owner || Video.session.role === 'editor'})">
+						<md-progress-circular ng-show="Video.downloading" class="md-hue-3 md-inline" md-diameter="20px"></md-progress-circular>
 						<span>{{'DOWNLOAD_VIDEO' | translate}}</span>
 					</md-button>
 				</section>
