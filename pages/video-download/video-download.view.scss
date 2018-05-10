@@ -10,6 +10,7 @@ a:hover {
 	width: 100%;
 	@extend %display-flex;
 	@extend %flex-direction-column;
+	margin-top: 16px;
 
 	.md-button * {
 		vertical-align: middle;
@@ -29,6 +30,7 @@ a:hover {
 
 	.download-button {
 	    margin: 24px 0px;
+	    text-align: center;
 
 		.md-button {
 		    padding: 4px 32px;

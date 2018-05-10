@@ -1,2 +1,2 @@
-v0.10.4
-- On video details read all some time disapears
+v0.10.5
+- On Mobile download button UX is confusing (download code input is not visible after click as its in the bottom of the page)
