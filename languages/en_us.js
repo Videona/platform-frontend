@@ -75,6 +75,7 @@
 
 			USER_PROFFESSIONAL: 'Professional',
 			PUBLISHED_VIDEOS: 'Published videos',
+			UPLOADED_VIDEOS: 'Uploaded videos',
 
 			VIDEO_DETAIL_DATETIME: 'Date and time',
 			VIDEO_DETAIL_CATEGORIES: 'Categories',
@@ -85,6 +86,7 @@
 			VIDEO_DETAIL_LANGUAGE: 'Language',
 			VIDEO_DETAIL_QUALITY: 'Quality',
 			VIDEO_DETAIL_CREDIBILITY: 'Credibility',
+			VIDEO_PUBLISHED_CAPTION: 'Published',
 			VIDEO_AUTHOR: 'Autor',
 			'VIDEO_LANG_es-es': 'Spanish',
 			'VIDEO_LANG_en-en': 'English',
@@ -108,6 +110,7 @@
 			VIDEO_SAVE: 'Save',
 			VIDEO_EDIT_FEATURE: 'Feature',
 			VIDEO_EDIT_VERIFY: 'Verify',
+			VIDEO_EDIT_PUBLISH: 'Publish',
 			VIDEO_EDIT_PICK_DATE: 'Pick a date',
 			VIDEO_EDIT_THUMBNAIL_DEFAULT: 'Default thumbnail',
 			VIDEO_EDIT_THUMBNAIL_CUSTOM: 'Custom thumbnail',

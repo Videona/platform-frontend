@@ -75,6 +75,7 @@
 
 			USER_PROFFESSIONAL: 'Profesional',
 			PUBLISHED_VIDEOS: 'Vídeos publicados',
+			UPLOADED_VIDEOS: 'Vídeos subidos',
 
 			VIDEO_DETAIL_DATETIME: 'Fecha y hora',
 			VIDEO_DETAIL_CATEGORIES: 'Categorías',
@@ -85,6 +86,7 @@
 			VIDEO_DETAIL_LANGUAGE: 'Idioma',
 			VIDEO_DETAIL_QUALITY: 'Calidad',
 			VIDEO_DETAIL_CREDIBILITY: 'Credibilidad',
+			VIDEO_PUBLISHED_CAPTION: 'Publicado',
 			VIDEO_AUTHOR: 'Autor/a',
 			'VIDEO_LANG_es-es': 'Español',
 			'VIDEO_LANG_en-en': 'Inglés',
@@ -108,6 +110,7 @@
 			VIDEO_SAVE: 'Guardar',
 			VIDEO_EDIT_FEATURE: 'Destacar',
 			VIDEO_EDIT_VERIFY: 'Verificar',
+			VIDEO_EDIT_PUBLISH: 'Publicar',
 			VIDEO_EDIT_PICK_DATE: 'Fecha',
 			VIDEO_EDIT_THUMBNAIL_DEFAULT: 'Miniatura por defecto',
 			VIDEO_EDIT_THUMBNAIL_CUSTOM: 'Miniatura personalizada',

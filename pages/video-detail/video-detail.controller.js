@@ -27,6 +27,7 @@ function VideoDetail($stateParams, $state, session, video, user, $timeout, NgMap
 	self.video.get(self.id, function() {
 		self.loading = false;
 		if (self.video.data != undefined) {
+			self.showPublishedIcon = showPublishedIcon();
 			self.user.get(self.video.data.owner, function() {
 				self.loadingAuthor = false;
 			});
@@ -57,6 +58,13 @@ function VideoDetail($stateParams, $state, session, video, user, $timeout, NgMap
 			return false;
 		}
 	}
+
+	function showPublishedIcon() {
+		if ((self.session.role == 'editor') || (self.video.data.owner == self.session.id) ) {
+			return (self.video.data.published == true || self.video.data.published == 'true');
+		} 
+		return false;
+	}
 	
 	function videoDownload(params) {
 		self.downloading = true;
@@ -64,5 +72,5 @@ function VideoDetail($stateParams, $state, session, video, user, $timeout, NgMap
 		$timeout(function () {
 			self.downloading = false;
 		}, 1000);
-	}	
+	}
 }

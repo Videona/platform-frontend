@@ -42,7 +42,7 @@ function UploadController(api, session, $state, $translate, productType) {
 			self.loading = true;
 			api.upload(api.url + '/video', self.file, data, function() {
 				self.loading = false;
-				$state.go('gallery');
+				$state.go('userGallery', {userId: session.id});
 			});
 		} else {
 			self.error = $translate.instant('UPLOAD_ERROR_DATA');
