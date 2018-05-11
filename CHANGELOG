@@ -1,3 +1,17 @@
+v0.10.7
+- Change maps position in video edit details
+
+v0.10.6
+- Fix logo size for lower resolutions
+- Fix zoom in map video detail
+- Improve stars container
+
+v0.10.5
+- On Mobile download button UX is confusing (download code input is not visible after click as its in the bottom of the page)
+
+v0.10.4
+- On video details read all some time disapears
+
 v0.10.3
 - Updated card verified icon color
 - Added tooltip to card verified icon

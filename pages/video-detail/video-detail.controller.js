@@ -1,22 +1,24 @@
 angular.module('app')
-	.controller('VideoDetailController', ['$stateParams', '$state', 'session', 'video', 'user', '$timeout', VideoDetail]);
+	.controller('VideoDetailController', ['$stateParams', '$state', 'session', 'video', 'user', '$timeout', 'NgMap', VideoDetail]);
 
-function VideoDetail($stateParams, $state, session, video, user, $timeout) {
+function VideoDetail($stateParams, $state, session, video, user, $timeout, NgMap) {
 	var self = this;
 
 	self.id = $stateParams.id;
 	self.code = '';
 	self.loading = true;
 	self.loadingAuthor = true;
+	self.downloading = false;
 	self.session = session;
 	self.state = $state; 
-	self.stateParams = $stateParams; 
+	self.stateParams = $stateParams;
 
 	self.video = video;
 	self.user = user;
 
+	self.videoDownload = videoDownload;
 	self.showMore = showMore();
-	self.mapMarker = []; 
+	self.mapMarker = [];
 
 	if(self.video && self.video.data && self.video.data.id !== self.id) {
 		self.video.reset();
@@ -35,6 +37,9 @@ function VideoDetail($stateParams, $state, session, video, user, $timeout) {
 
 			if (self.video.data.location) {
 				self.mapMarker = [self.video.data.location.lat, self.video.data.location.lng];
+				NgMap.getMap().then(function (map) {
+					map.setZoom(6);
+				});
 				console.warn(self.mapMarker);
 			}
 		}
@@ -60,5 +65,13 @@ function VideoDetail($stateParams, $state, session, video, user, $timeout) {
 		} else {
 			return false;
 		}
+	}
+	
+	function videoDownload(params) {
+		self.downloading = true;
+		$state.go('videoDownload', params);
+		$timeout(function () {
+			self.downloading = false;
+		}, 1000);
 	}
 }
