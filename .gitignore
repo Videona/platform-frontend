@@ -13,6 +13,7 @@ css/style.css
 # Flavour generated files
 img/brand
 sass/base/_variables.scss
+sass/base/flavour.scss
 js/flavour.js
 
 # Flavour component view/styles
