@@ -1,2 +1,4 @@
-v0.10.5
-- On Mobile download button UX is confusing (download code input is not visible after click as its in the bottom of the page)
+v0.10.6
+- Fix logo size for lower resolutions
+- Fix zoom in map video detail
+- Improve stars container
