@@ -24,9 +24,8 @@ function videoCardDirective(session, $state) {
 	function showPublishedIcon(owner, published) {
 		if (session.role === 'editor' || (owner === session.id && $state.current.name === 'userGallery')) {
 			return (published === true || published === 'true');
-		} else {
-			return false;
 		}
+		return false;
 	}
 	
 	return {

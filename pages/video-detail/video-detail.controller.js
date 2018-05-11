@@ -57,8 +57,7 @@ function VideoDetail($stateParams, $state, session, video, user, $timeout) {
 	function showPublishedIcon() {
 		if ((self.session.role == 'editor') || (self.video.data.owner == self.session.id) ) {
 			return (self.video.data.published == true || self.video.data.published == 'true');
-		} else {
-			return false;
-		}
+		} 
+		return false;
 	}
 }

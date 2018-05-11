@@ -75,6 +75,7 @@
 
 			USER_PROFFESSIONAL: 'Profesional',
 			PUBLISHED_VIDEOS: 'Vídeos publicados',
+			UPLOADED_VIDEOS: 'Vídeos subidos',
 
 			VIDEO_DETAIL_DATETIME: 'Fecha y hora',
 			VIDEO_DETAIL_CATEGORIES: 'Categorías',

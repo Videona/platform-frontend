@@ -75,6 +75,7 @@
 
 			USER_PROFFESSIONAL: 'Professional',
 			PUBLISHED_VIDEOS: 'Published videos',
+			UPLOADED_VIDEOS: 'Uploaded videos',
 
 			VIDEO_DETAIL_DATETIME: 'Date and time',
 			VIDEO_DETAIL_CATEGORIES: 'Categories',
