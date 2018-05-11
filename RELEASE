@@ -1,4 +1,2 @@
-v0.10.6
-- Fix logo size for lower resolutions
-- Fix zoom in map video detail
-- Improve stars container
+v0.10.7
+- Change maps position in video edit details

@@ -13,6 +13,10 @@
 			<div flex-gt-sm="40" flex="100">
 				<ng-include src="'pages/video-detail-edit/partials/basic-details.html'"></ng-include>
 			</div>
+			
+			<div flex="100" class="video-detail-edit-map">
+				<ng-include src="'pages/video-detail-edit/partials/video-map.html'"></ng-include>
+			</div>
 
 			<div flex="100" ng-if="EditCtrl.editorRole">
 				<ng-include src="'pages/video-detail-edit/partials/aditional-details.html'"></ng-include>
@@ -22,9 +26,6 @@
 				<ng-include src="'pages/video-detail-edit/partials/video-file.html'"></ng-include>
 			</div>
 
-			<div flex="100" class="video-detail-edit-map">
-				<ng-include src="'pages/video-detail-edit/partials/video-map.html'"></ng-include>
-			</div>
 			<div flex="100">
 				<md-card layout="row" layout-wrap="auto" class="video-edit-page__edit-actions">
 					<div flex="20" class="actions-delete">
