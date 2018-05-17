@@ -25,9 +25,7 @@
 		padding: 16px;
 		right: 0;
 		width: 100%;
-		z-index: 0;	
-
-
+		z-index: 0;
 		h2 {
 			font-size: 26px;
 			text-align: center;
@@ -38,7 +36,6 @@
 			}
 
 		}
-
 		p {
 			font-size: 16px;
 			line-height: 1.3em;
@@ -47,7 +44,6 @@
 				font-size: 20px;
 			}
 		}
-
 		.keywords {
 			display: none;
 			@include tablet {
@@ -55,6 +51,22 @@
 				margin: 16px 40px 8px;
 				font-size: .8em;
 			}
+		}
+	}
+	
+	.header-actions {
+		@extend %display-flex;
+		margin-top: 20px;
+		font-size: 21px;
+		background-color: white;
+		padding: 7px;
+		cursor: pointer;
+		@include border-radius(4px);
+		a {
+			text-decoration: none;
+		}
+		div {
+			color: #354f8a;
 		}
 	}
 }
