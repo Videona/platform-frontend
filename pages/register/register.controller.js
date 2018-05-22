@@ -1,11 +1,12 @@
 (function () {
-	angular.module('app').controller('RegisterController', ['register', 'login', 'session', 'nodeEnv', '$state', '$stateParams', '$translate', RegisterController]);
+	angular.module('app').controller('RegisterController', ['register', 'login', 'session', 'nodeEnv', '$state', '$stateParams', '$translate', 'flavourString', RegisterController]);
 
-	function RegisterController(register, login, session, nodeEnv, $state, $stateParams, $translate) {
+	function RegisterController(register, login, session, nodeEnv, $state, $stateParams, $translate, flavourString) {
 		var self = this;
 
 		// Service binding
 		self.service = register;
+		self.flavour = flavourString;
 
 		// Properties
 		self.username = '';
