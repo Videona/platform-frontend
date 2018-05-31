@@ -1,5 +1,5 @@
 <span class="toolbar-user-menu">
-	<md-menu ng-if="session.id > -1" md-offset="-28px 64px" md-position-mode="target-right target">
+	<md-menu ng-if="session.id !== -1" md-offset="-28px 64px" md-position-mode="target-right target">
 		<md-button aria-label="{{ 'PROFILE_MENU_ARIA_HINT' | translate }}" class="md-icon-button"
 				   ng-click="openMenu($mdMenu, $event)">
 			<md-icon ng-if="!session.pic" md-menu-origin>person_pin</md-icon>
