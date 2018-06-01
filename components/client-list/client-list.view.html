@@ -1,0 +1,8 @@
+<md-list>
+	<md-list-item ng-repeat="client in clients.list">
+		<md-checkbox class="md-secondary" ng-model="selected[client._id]"></md-checkbox>
+		<p> {{ client.name }} </p>
+	</md-list-item>
+</md-list>
+
+<p>{{selected}}</p>

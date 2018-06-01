@@ -76,3 +76,8 @@ videogular vg-poster .vg-poster-fill.stop,
     margin-top: 8px;
   }
 }
+
+// Modal position fixes
+.md-dialog-is-showing {
+  overflow: initial;
+}

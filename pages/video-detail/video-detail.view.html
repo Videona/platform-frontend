@@ -75,6 +75,10 @@
 						<i ng-hide="showDetails" class="material-icons">keyboard_arrow_down</i>
 					</div> 
 
+					<div>
+						<distribute></distribute>
+					</div>
+
 					<div class="video-detail-info" ng-show="showDetails">
 						<p>
 							<strong>{{'VIDEO_DETAIL_CATEGORIES' | translate}}:</strong> {{Video.video.data.categories | commaSeparated:'-':'VIDEO_CATEGORY_'}}
