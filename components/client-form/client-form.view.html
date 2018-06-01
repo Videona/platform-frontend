@@ -1,0 +1,48 @@
+<form>
+	<h2>Usuario</h2>
+	<md-input-container class="md-block" flex-gt-sm>
+		<label>Name</label>
+		<input ng-model="editData.name">
+	</md-input-container>
+
+	<h2>FTP</h2>
+	<div layout-gt-sm="row">
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Host</label>
+			<input ng-model="editData.ftp.host">
+		</md-input-container>
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Username</label>
+			<input ng-model="editData.ftp.user">
+		</md-input-container>
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Password</label>
+			<input type="password" ng-model="editData.ftp.password">
+		</md-input-container>
+	</div>
+	<div layout-gt-sm="row">
+		<md-input-container class="md-block" flex-gt-sm>
+			<md-checkbox ng-model="editData.ftp.secure">
+				SFTP
+			</md-checkbox>
+		</md-input-container>
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Containig Folder A</label>
+			<input ng-model="editData.ftp.folderRaw">
+		</md-input-container>
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Contaninig Folder B</label>
+			<input ng-model="editData.ftp.folderEdited">
+		</md-input-container>
+	</div>
+
+	<div>
+		<md-button ng-click="exit()" ng-if="onExit">
+			Cancel
+		</md-button>
+		<md-button class="spinner-button md-primary md-raised" ng-click="add()">
+			<md-progress-circular ng-show="loading" class="md-hue-3 md-inline" md-diameter="20px"></md-progress-circular>
+			Save!!
+		</md-button>
+	</div>
+</form>

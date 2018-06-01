@@ -1,4 +1,4 @@
-<md-dialog aria-label="Mango (Fruit)" ng-controller="DistributionController as Distribution">
+<md-dialog ng-controller="DistributionController as Distribution">
 	<form ng-cloak>
 <!-- 		<md-toolbar>
 			<div class="md-toolbar-tools">
@@ -14,16 +14,18 @@
 			<div class="md-dialog-content">
 				<client-list selection="Distribution.clientList"></client-list>
 
-				<div>AQUI METEREMOS EL ADD CLIENT FORM ^^</div>
+				<div ng-show="Distribution.addingClient">
+					<client-form on-exit="Distribution.hideAddClient"></client-form>
+				</div>
 			</div>
 		</md-dialog-content>
 
-		<md-dialog-actions layout="row">
-			<md-button>
+		<md-dialog-actions layout="row" ng-hide="Distribution.addingClient">
+			<md-button ng-click="Distribution.addingClient = true">
 				Add client
 			</md-button>
 			<span flex></span>
-			<md-button class="md-primary md-raised" ng-click="answer('useful')" md-autofocus>
+			<md-button class="md-primary md-raised" ng-click="Distribution.hide()" md-autofocus>
 				Distribute
 			</md-button>
 		</md-dialog-actions>

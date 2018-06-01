@@ -14,21 +14,69 @@ function clientListDirective(clients) {
 		},
 		link: {
 			pre: function (scope) {
-				clients.get();
+				if(typeof scope.selection !== 'object') {
+					scope.selection = [];
+				}
+				scope.selected = {};
+				scope.editing = [];
+
+				clients.get(function(data) {
+					// Select All
+					selectAll(clients.list, scope.selection);
+				});
 				scope.clients = clients;
+
 
 				scope.selectClient = selectClient;
 				scope.deselectClient = deselectClient;
+				scope.select = function (i) {
+					var cli = clients.list[i];
+					if (scope.selected[cli._id]) {
+						selectClient(cli, scope.selection);
+					} else {
+						deselectClient(cli, scope.selection);
+					}
+				};
+				scope.edit = function (i) {
+					scope.editing[i] = true;
+				}
+				scope.closeEdit = function (data) {
+					var i = search(data, clients.list);
+					scope.editing[i] = false;
+				}
+		
+				function selectAll(data) {
+					for (var i = 0; i < data.length; i++) {
+						scope.selected[data[i]._id] = true;
+						selectClient(data[i], scope.selection);
+					}
+				}
 			}
 		}
 	};
 
-	function selectClient(client) {
-		selection.push(client);
+
+	function selectClient(client, selection) {
+		if(search(client, selection) === -1) {
+			selection.push(client);
+		}
 	}
 
-	function deselectClient(client) {
-		var i = selection.indexOf(client);
-		console.log(i);
+	function deselectClient(client, selection) {
+		var position = search(client, selection);
+		if(position !== -1) {
+			selection.splice(position, 1);
+		}
+		
+	}
+
+	function search(elem, arr) {
+		for (var i = 0; i < arr.length; i++) {
+			if (arr[i]._id == elem._id) {
+				return i;
+			}
+		}
+
+		return -1;
 	}
 }

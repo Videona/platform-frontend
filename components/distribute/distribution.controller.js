@@ -1,10 +1,17 @@
 angular.module('app')
-	.controller('DistributionController', ['distribute', '$stateParams', DistributionController]);
+	.controller('DistributionController', ['$mdDialog', 'distribute', '$stateParams', DistributionController]);
 
-function DistributionController(distribute, $stateParams) {
+function DistributionController($mdDialog, distribute, $stateParams) {
 	var self = this;
 
 	self.send = send;
+	self.hide = function() {
+		$mdDialog.hide();
+	};
+	self.addingClient = false;
+	self.hideAddClient = function () {
+		self.addingClient = false;
+	}
 
 	distribute.get($stateParams.id, function (data) {
 		console.log(data);

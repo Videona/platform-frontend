@@ -1,8 +1,13 @@
 <md-list>
 	<md-list-item ng-repeat="client in clients.list">
-		<md-checkbox class="md-secondary" ng-model="selected[client._id]"></md-checkbox>
-		<p> {{ client.name }} </p>
+		<md-checkbox ng-click="select($index)" ng-model="selected[client._id]" ng-hide="editing[$index]"></md-checkbox>
+		<p ng-hide="editing[$index]"> {{ client.name }}</p>
+		<md-button class="md-secondary md-icon-button" ng-hide="editing[$index]" ng-click="edit($index)">
+			<md-icon aria-label="Edit">edit</md-icon>
+		</md-button>
+		<md-button class="md-secondary md-icon-button" ng-hide="editing[$index]">
+			<md-icon aria-label="Delete">delete</md-icon>
+		</md-button>
+		<client-form ng-show="editing[$index]" data="client" on-exit="closeEdit"></client-form>
 	</md-list-item>
 </md-list>
-
-<p>{{selected}}</p>

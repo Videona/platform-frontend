@@ -160,7 +160,11 @@
 			var values = Object.values(obj);
 
 			for (let i = 0; i <= keys.length; i += 1) {
-				str.push(encodeURIComponent(keys[i]) + '=' + encodeURIComponent(values[i]));
+				if (typeof values[i] == 'object') {
+					str.push(encodeURIComponent(keys[i]) + '=' + encodeURIComponent(JSON.stringify(values[i])));
+				} else {
+					str.push(encodeURIComponent(keys[i]) + '=' + encodeURIComponent(values[i]));
+				}
 			}
 
 			return str.join('&');
