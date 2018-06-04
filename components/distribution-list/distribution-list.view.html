@@ -1,0 +1,12 @@
+<div>
+	<md-list flex>
+		<md-list-item ng-repeat="item in list">
+			<div class="md-list-item-text">
+				<h3>{{item.client_name}}</h3>
+			</div>
+			<span class="md-secondary">
+				<p>{{item.date | date}}</p>
+			</span>
+		</md-list-item>
+	</md-list>
+</div>

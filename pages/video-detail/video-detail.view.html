@@ -75,10 +75,6 @@
 						<i ng-hide="showDetails" class="material-icons">keyboard_arrow_down</i>
 					</div> 
 
-					<div>
-						<distribute></distribute>
-					</div>
-
 					<div class="video-detail-info" ng-show="showDetails">
 						<p>
 							<strong>{{'VIDEO_DETAIL_CATEGORIES' | translate}}:</strong> {{Video.video.data.categories | commaSeparated:'-':'VIDEO_CATEGORY_'}}
@@ -103,6 +99,18 @@
 						<p>
 							<strong>{{'VIDEO_DETAIL_NOTES' | translate}}:</strong> {{Video.video.data.notes || ' - '}}
 						</p>
+					</div>
+
+					<div>
+						<distribute></distribute>
+						
+						<div class="video-detail-show-info" ng-click="showDistribution = !showDistribution" ng-init="showDistribution = false">
+							<span ng-show="showDistribution">{{'HIDE_VIDEO_DISTRIBUTION' | translate}}</span>
+							<span ng-hide="showDistribution">{{'SHOW_VIDEO_DISTRIBUTION' | translate}}</span>
+							<i ng-show="showDistribution" class="material-icons">keyboard_arrow_up</i>
+							<i ng-hide="showDistribution" class="material-icons">keyboard_arrow_down</i>
+						</div> 
+						<distribution-list ng-show="showDistribution"></distribution-list>
 					</div>
 				</div>
 
