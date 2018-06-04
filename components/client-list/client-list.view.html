@@ -1,6 +1,6 @@
 <md-list>
 	<md-list-item ng-repeat="client in clients.list">
-		<md-checkbox ng-click="select($index)" ng-model="selected[client._id]" ng-hide="editing[$index]"></md-checkbox>
+		<md-checkbox ng-model="selected[client._id]" ng-hide="editing[$index]" ng-click="select($index)"></md-checkbox>
 		<p ng-hide="editing[$index]"> {{ client.name }}</p>
 		<md-button class="md-secondary md-icon-button" ng-hide="editing[$index]" ng-click="edit($index)">
 			<md-icon aria-label="Edit">edit</md-icon>

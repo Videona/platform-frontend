@@ -2,7 +2,7 @@
 	<form ng-cloak>
 <!-- 		<md-toolbar>
 			<div class="md-toolbar-tools">
-				<h2>Mango (Fruit)</h2>
+				<h2>Client list</h2>
 				<span flex></span>
 				<md-button class="md-icon-button" ng-click="cancel()">
 					<md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
@@ -25,7 +25,8 @@
 				Add client
 			</md-button>
 			<span flex></span>
-			<md-button class="md-primary md-raised" ng-click="Distribution.hide()" md-autofocus>
+			<md-button class="md-primary md-raised" ng-click="Distribution.send(Distribution.clientList)" md-autofocus>
+				<md-progress-circular ng-show="Distribution.loading" class="md-hue-3 md-inline" md-diameter="20px"></md-progress-circular>
 				Distribute
 			</md-button>
 		</md-dialog-actions>

@@ -36,9 +36,9 @@ function clientListDirective(clients) {
 				scope.select = function (i) {
 					var cli = clients.list[i];
 					if (scope.selected[cli._id]) {
-						selectClient(cli, scope.selection);
-					} else {
 						deselectClient(cli, scope.selection);
+					} else {
+						selectClient(cli, scope.selection);
 					}
 				};
 				scope.edit = function (i) {
@@ -69,9 +69,11 @@ function clientListDirective(clients) {
 	}
 
 	function deselectClient(client, selection) {
+		console.log('deselecting...')
 		var position = search(client, selection);
 		if(position !== -1) {
 			selection.splice(position, 1);
+			console.log('deselected ' + position);
 		}
 		
 	}
