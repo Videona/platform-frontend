@@ -1,11 +1,11 @@
-angular.module('app').directive('clientList', ['clients', clientListDirective]);
+angular.module('app').directive('clientList', ['clients', '$translate', clientListDirective]);
 
 /*
  - EDIT CUSTOMER BUTTON
  - DELETE CUSTOMER BUTTON
 */
 
-function clientListDirective(clients) {
+function clientListDirective(clients, $translate) {
 	return {
 		restrict: 'E',
 		templateUrl: 'components/client-list/client-list.view.html',
@@ -15,10 +15,10 @@ function clientListDirective(clients) {
 		},
 		link: {
 			pre: function (scope) {
-				if(typeof scope.selection !== 'object') {
+				if (typeof scope.selection !== 'object') {
 					scope.selection = [];
 				}
-				if(typeof scope.status !== 'object') {
+				if (typeof scope.status !== 'object') {
 					scope.status = {};
 				}
 				scope.selected = {};
@@ -50,6 +50,12 @@ function clientListDirective(clients) {
 					scope.editing[i] = false;
 					scope.status.isFormOpen = false;
 				}
+
+				scope.delete = function(i) {
+					if (confirm($translate.instant('CLIENT_REMOVE_CONFIRM'))) {
+						clients.delete(clients.list[i]._id);
+					}
+				}
 		
 				function selectAll(data) {
 					for (var i = 0; i < data.length; i++) {
@@ -63,7 +69,7 @@ function clientListDirective(clients) {
 
 
 	function selectClient(client, selection) {
-		if(search(client, selection) === -1) {
+		if (search(client, selection) === -1) {
 			selection.push(client);
 		}
 	}
@@ -71,7 +77,7 @@ function clientListDirective(clients) {
 	function deselectClient(client, selection) {
 		console.log('deselecting...')
 		var position = search(client, selection);
-		if(position !== -1) {
+		if (position !== -1) {
 			selection.splice(position, 1);
 			console.log('deselected ' + position);
 		}

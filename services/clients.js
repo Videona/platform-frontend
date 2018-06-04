@@ -8,7 +8,7 @@
 			get: get,
 			add: add,
 			update: update,
-			// delete: remove,
+			delete: remove,
 			reset: reset
 		};
 
@@ -86,6 +86,24 @@
 				}
 				callback(data);
 			});
+		}
+
+		function remove(id, callback) {
+
+			console.log('Removing ' + id);
+
+			api.del(api.url + '/client/' + id, {}, function (data) {
+				if(data) {
+					for (var i = 0; i < client.list.length; i++) {
+						if (client.list[i]._id === id) {
+							client.list.splice(i, 1);
+							break;
+						}
+					}
+				}
+
+				typeof callback === 'function' && callback(data);
+			})
 		}
 
 		function reset() {

@@ -165,6 +165,25 @@
 			USER_GALLERY_USER_VIDEOS: 'Vídeos de {{username}}',
 			USER_GALLERY_USER_NOT_FOUND_TITLE: 'Usuario no encontrado',
 			USER_GALLERY_USER_NOT_FOUND_DESCRIPTION: 'No hemos podido encontrar este usuario. Por favor, comprueba que el enlace es correcto, y prueba de nuevo.',
+		
+			// Clients
+			ADD_CLIENT: 'Añadir cliente',
+			CLIENT_NAME: 'Nombre',
+			CLIENT_HOST: 'Host',
+			CLIENT_USERNAME: 'Usuario',
+			CLIENT_PASSWORD: 'Contraseña',
+			CLIENT_SFTP: 'SFTP',
+			CLIENT_RAW_FOLDER: 'Carpeta de brutos',
+			CLIENT_EDITED_FOLDER: 'Carpeta de editados',
+			CLIENT_CANCEL: 'Cancelar',
+			CLIENT_SAVE: 'Guardar',
+			CLIENT_REMOVE_CONFIRM: '¿Seguro que quieres eliminar el cliente? Esta acción es permanente, y no se puede deshacer.',
+
+			// Distribution
+			DISTRIBUTE: 'Distribuir',
+			VIDEO_NOT_DISTRIBUTED_YET: 'Éste vídeo no se ha distribuido por FTP',
+			SHOW_VIDEO_DISTRIBUTION: 'Mostrar distrbución',
+			HIDE_VIDEO_DISTRIBUTION: 'Ocultar distrbución',
 		});
 	}
 }());

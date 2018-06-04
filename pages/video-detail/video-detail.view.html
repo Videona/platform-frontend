@@ -101,7 +101,7 @@
 						</p>
 					</div>
 
-					<div>
+					<div ng-if="Video.session.role == 'editor'"> 
 						<distribute></distribute>
 						
 						<div class="video-detail-show-info" ng-click="showDistribution = !showDistribution" ng-init="showDistribution = false">

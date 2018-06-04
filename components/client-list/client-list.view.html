@@ -5,7 +5,7 @@
 		<md-button class="md-secondary md-icon-button" ng-hide="editing[$index]" ng-click="edit($index)">
 			<md-icon aria-label="Edit">edit</md-icon>
 		</md-button>
-		<md-button class="md-secondary md-icon-button" ng-hide="editing[$index]">
+		<md-button class="md-secondary md-icon-button" ng-hide="editing[$index]" ng-click="delete($index)">
 			<md-icon aria-label="Delete">delete</md-icon>
 		</md-button>
 		<div ng-show="editing[$index]" class="client-edit-form">

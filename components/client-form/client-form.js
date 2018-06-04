@@ -45,6 +45,8 @@ function clientDirective(clients) {
 				// Do things before going out...
 				if(typeof scope.onExit === 'function') {
 					scope.onExit(scope.data || scope.editData || null);
+				} else {
+					console.log('hehehe');
 				}
 			};
 		}

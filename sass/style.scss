@@ -82,3 +82,9 @@ videogular vg-poster .vg-poster-fill.stop,
 .md-dialog-is-showing {
   overflow: initial;
 }
+
+button md-progress-circular {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 4px;
+}

@@ -12,11 +12,11 @@ function distributeDirective($mdDialog) {
 						clickOutsideToClose: true,
 						fullscreen: false // Only for -xs, -sm breakpoints.
 					})
-					.then(function(answer) {
-						console.log('You distributed the video!');
-					}, function() {
-						console.log('You cancelled the dialog.');
-					});
+					// .then(function(answer) {
+					// 	console.log('You distributed the video!');
+					// }, function() {
+					// 	console.log('You cancelled the dialog.');
+					// });
 				};
 			}
 		}

@@ -12,8 +12,10 @@ function distributeDirective(distribute, $stateParams) {
 				var id = scope.id || $stateParams.id || null;
 
 				scope.list = [];
+				scope.loading = true;
 				
 				distribute.get(id, function (data) {
+					scope.loading = false;
 					scope.list = data
 				})
 			}

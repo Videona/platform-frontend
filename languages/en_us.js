@@ -137,7 +137,7 @@
 			VIDEO_DETAIL_NOTES: 'Notes',
 
 
-		VIDEO_ERROR: 'Error in video',
+			VIDEO_ERROR: 'Error in video',
 			VIDEO_NOT_FOUND: 'We couldn\'t find that video. Please, check that the link is correct and try again.',
 
 			DROP_VIDEO: 'Drop your video here or click to upload',
@@ -165,6 +165,25 @@
 			USER_GALLERY_USER_VIDEOS: '{{username}} videos',
 			USER_GALLERY_USER_NOT_FOUND_TITLE: 'User not found',
 			USER_GALLERY_USER_NOT_FOUND_DESCRIPTION: 'We could not find this user. Please, check that link is correct and try again.',
+
+			// Clients
+			ADD_CLIENT: 'Add client',
+			CLIENT_NAME: 'Name',
+			CLIENT_HOST: 'Host',
+			CLIENT_USERNAME: 'Username',
+			CLIENT_PASSWORD: 'Password',
+			CLIENT_SFTP: 'SFTP',
+			CLIENT_RAW_FOLDER: 'Raw folder',
+			CLIENT_EDITED_FOLDER: 'Edited folder',
+			CLIENT_CANCEL: 'Cancel',
+			CLIENT_SAVE: 'Save',
+			CLIENT_REMOVE_CONFIRM: 'Do you really want to remove this client? This action is permantent.',
+
+			// Distribution
+			DISTRIBUTE: 'Distribute',
+			VIDEO_NOT_DISTRIBUTED_YET: 'This video have not been distributed yet.',
+			SHOW_VIDEO_DISTRIBUTION: 'Show distrbution details',
+			HIDE_VIDEO_DISTRIBUTION: 'Hide distrbution details',
 		});
 	}
 }());

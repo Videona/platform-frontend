@@ -9,10 +9,11 @@ function DistributionController($mdDialog, $mdToast, distribute, $stateParams) {
 		$mdDialog.hide();
 	};
 	self.status = {
+		isAddingClient: false,
 		isFormOpen: false
 	};
 	self.hideAddClient = function () {
-		self.status.isFormOpen = false;
+		self.status.isAddingClient = false;
 	}
 
 	distribute.get($stateParams.id, function (data) {
@@ -22,6 +23,13 @@ function DistributionController($mdDialog, $mdToast, distribute, $stateParams) {
 	function send(clientList) {
 		var results = 0;
 		self.loading = true;
+
+		if (clientList.length === 0) {
+			self.loading = false;
+			self.hide();
+			return false;
+		}
+
 		for (var i = 0; i < clientList.length; i++) {
 			console.log($stateParams.id, clientList[i]._id)
 			distribute.add($stateParams.id, clientList[i]._id, function (addData) {
