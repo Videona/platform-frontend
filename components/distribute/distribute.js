@@ -13,7 +13,7 @@ function distributeDirective($mdDialog) {
 						fullscreen: false // Only for -xs, -sm breakpoints.
 					})
 					.then(function(answer) {
-						console.log('You said the information was "' + answer + '".');
+						console.log('You distributed the video!');
 					}, function() {
 						console.log('You cancelled the dialog.');
 					});

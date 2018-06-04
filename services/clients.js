@@ -7,7 +7,7 @@
 			list: null,
 			get: get,
 			add: add,
-			// update: update,
+			update: update,
 			// delete: remove,
 			reset: reset
 		};
@@ -24,14 +24,20 @@
 			});
 		}
 
-		function add(name, host, user, pass, secure, folderRaw, folderEdited, callback) {
-			if(!name || !host || !user || !pass || !folderRaw || !folderEdited) {
-				console.log(name, host, user, pass, folderRaw, folderEdited)
-				return false;
+		function add(name, host, user, pass, secure, folderRaw, folderEdited, id, callback) {
+			if (!name || !host || !user || !pass || !folderRaw || !folderEdited) {
+				console.error(name, host, user, pass, folderRaw, folderEdited)
 				callback(null);
+				return false;
+			}
+
+			if (typeof id === 'function') {
+				callback = id;
+				id = undefined;
 			}
 
 			var data = {
+				_id: id,
 				name: name,
 				ftp: {
 					host: host,
@@ -48,6 +54,38 @@
 				}
 				callback(data);
 			})
+		}
+
+		function update(name, host, user, pass, secure, folderRaw, folderEdited, id, callback) {
+			if (!name || !host || !user || !pass || !folderRaw || !folderEdited || !id) {
+				console.error(name, host, user, pass, folderRaw, folderEdited, id)
+				callback(null);
+				return false;
+			}
+
+			var data = {
+				_id: id,
+				name: name,
+				ftp: {
+					host: host,
+					user: user,
+					password: pass,
+					secure: secure || false,
+					folderRaw: folderRaw,
+					folderEdited: folderEdited
+				}
+			};
+			api.put(api.url + '/client', data, function (data) {
+				if (data && typeof data._id !== 'undefined') {
+					for (var i = 0; i < client.list.length; i++) {
+						if (client.list[i]._id === data._id) {
+							client.list[i] = data;
+							break;
+						}
+					}
+				}
+				callback(data);
+			});
 		}
 
 		function reset() {

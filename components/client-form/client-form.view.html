@@ -1,23 +1,21 @@
 <form>
-	<h2>Usuario</h2>
 	<md-input-container class="md-block" flex-gt-sm>
 		<label>Name</label>
 		<input ng-model="editData.name">
 	</md-input-container>
 
-	<h2>FTP</h2>
 	<div layout-gt-sm="row">
 		<md-input-container class="md-block" flex-gt-sm>
 			<label>Host</label>
-			<input ng-model="editData.ftp.host">
+			<input required ng-model="editData.ftp.host">
 		</md-input-container>
 		<md-input-container class="md-block" flex-gt-sm>
 			<label>Username</label>
-			<input ng-model="editData.ftp.user">
+			<input required ng-model="editData.ftp.user">
 		</md-input-container>
 		<md-input-container class="md-block" flex-gt-sm>
 			<label>Password</label>
-			<input type="password" ng-model="editData.ftp.password">
+			<input required type="password" ng-model="editData.ftp.password">
 		</md-input-container>
 	</div>
 	<div layout-gt-sm="row">
@@ -28,13 +26,15 @@
 		</md-input-container>
 		<md-input-container class="md-block" flex-gt-sm>
 			<label>Containig Folder A</label>
-			<input ng-model="editData.ftp.folderRaw">
+			<input required ng-model="editData.ftp.folderRaw">
 		</md-input-container>
 		<md-input-container class="md-block" flex-gt-sm>
 			<label>Contaninig Folder B</label>
-			<input ng-model="editData.ftp.folderEdited">
+			<input required ng-model="editData.ftp.folderEdited">
 		</md-input-container>
 	</div>
+
+	<div class="error">{{error}}</div>
 
 	<div>
 		<md-button ng-click="exit()" ng-if="onExit">

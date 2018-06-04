@@ -8,9 +8,11 @@ function DistributionController($mdDialog, distribute, $stateParams) {
 	self.hide = function() {
 		$mdDialog.hide();
 	};
-	self.addingClient = false;
+	self.status = {
+		isFormOpen: false
+	};
 	self.hideAddClient = function () {
-		self.addingClient = false;
+		self.status.isFormOpen = false;
 	}
 
 	distribute.get($stateParams.id, function (data) {

@@ -12,16 +12,16 @@
 
 		<md-dialog-content>
 			<div class="md-dialog-content">
-				<client-list selection="Distribution.clientList"></client-list>
+				<client-list selection="Distribution.clientList" status="Distribution.status"></client-list>
 
-				<div ng-show="Distribution.addingClient">
+				<div ng-show="Distribution.status.isAddingClient">
 					<client-form on-exit="Distribution.hideAddClient"></client-form>
 				</div>
 			</div>
 		</md-dialog-content>
 
-		<md-dialog-actions layout="row" ng-hide="Distribution.addingClient">
-			<md-button ng-click="Distribution.addingClient = true">
+		<md-dialog-actions layout="row" ng-hide="Distribution.status.isAddingClient || Distribution.status.isFormOpen">
+			<md-button ng-click="Distribution.status.isAddingClient = true">
 				Add client
 			</md-button>
 			<span flex></span>

@@ -10,12 +10,16 @@ function clientListDirective(clients) {
 		restrict: 'E',
 		templateUrl: 'components/client-list/client-list.view.html',
 		scope: {
-			selection: '='
+			selection: '=',
+			status: '=',
 		},
 		link: {
 			pre: function (scope) {
 				if(typeof scope.selection !== 'object') {
 					scope.selection = [];
+				}
+				if(typeof scope.status !== 'object') {
+					scope.status = {};
 				}
 				scope.selected = {};
 				scope.editing = [];
@@ -39,10 +43,12 @@ function clientListDirective(clients) {
 				};
 				scope.edit = function (i) {
 					scope.editing[i] = true;
+					scope.status.isFormOpen = true;
 				}
 				scope.closeEdit = function (data) {
 					var i = search(data, clients.list);
 					scope.editing[i] = false;
+					scope.status.isFormOpen = false;
 				}
 		
 				function selectAll(data) {

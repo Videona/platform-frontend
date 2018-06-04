@@ -8,6 +8,9 @@
 		<md-button class="md-secondary md-icon-button" ng-hide="editing[$index]">
 			<md-icon aria-label="Delete">delete</md-icon>
 		</md-button>
-		<client-form ng-show="editing[$index]" data="client" on-exit="closeEdit"></client-form>
+		<div ng-show="editing[$index]" class="client-edit-form">
+			<h3 ng-bind="client.name"></h3>
+			<client-form data="client" on-exit="closeEdit"></client-form>
+		</div>
 	</md-list-item>
 </md-list>
