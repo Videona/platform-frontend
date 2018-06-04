@@ -3,7 +3,7 @@
 	
 	function pageService(flavourString) {
 		var page = {
-			title: 'Vimojo Platform',
+			title: 'Home',
 			pageTitle: getPageTitle 
 		};
 
