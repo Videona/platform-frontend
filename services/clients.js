@@ -37,7 +37,6 @@
 			}
 
 			var data = {
-				_id: id,
 				name: name,
 				ftp: {
 					host: host,
@@ -48,6 +47,9 @@
 					folderEdited: folderEdited
 				}
 			};
+			if (typeof id != 'undefined' && id) {
+				data._id = id;
+			}
 			api.post(api.url + '/client', data, function (data) {
 				if(data && typeof data._id !== 'undefined') {
 					client.list.push(data);
