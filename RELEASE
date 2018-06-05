@@ -1,4 +1,4 @@
-v0.12.1
-- Update page title
-- Add M4N favicon
-- Real spinner for download button
+v0.12.2
+- Reduce m4n video header weight
+- Fixed title in navigator tab
+- Solved problem with livereload
