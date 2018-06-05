@@ -1,9 +1,11 @@
 (function () {
 	angular.module('app')
-		.controller('HomeController', ['session', '$state', '$stateParams', Home]);
+		.controller('HomeController', ['session', '$state', '$stateParams', 'flavourString', Home]);
 
-	function Home(session, $state, $stateParams) {
+	function Home(session, $state, $stateParams, flavourString) {
 		var self = this;
+
+		self.flavour = flavourString;
 
 		var userIsLogged = session.id > 0;
 
