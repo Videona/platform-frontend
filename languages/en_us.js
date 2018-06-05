@@ -173,14 +173,16 @@
 			CLIENT_USERNAME: 'Username',
 			CLIENT_PASSWORD: 'Password',
 			CLIENT_SFTP: 'SFTP',
-			CLIENT_RAW_FOLDER: 'Raw folder',
-			CLIENT_EDITED_FOLDER: 'Edited folder',
+			CLIENT_FOLDER: 'Folder',
 			CLIENT_CANCEL: 'Cancel',
 			CLIENT_SAVE: 'Save',
 			CLIENT_REMOVE_CONFIRM: 'Do you really want to remove this client? This action is permantent.',
+			CLIENT_MANDATORY_FIELDS: 'All the fields are mandatory',
+			CLIENT_SAVED: 'Client saved!',
 
 			// Distribution
 			DISTRIBUTE: 'Distribute',
+			DISTRIBUTE_DONE: 'Video distributed',
 			VIDEO_NOT_DISTRIBUTED_YET: 'This video have not been distributed yet.',
 			SHOW_VIDEO_DISTRIBUTION: 'Show distrbution details',
 			HIDE_VIDEO_DISTRIBUTION: 'Hide distrbution details',

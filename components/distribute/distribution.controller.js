@@ -1,7 +1,7 @@
 angular.module('app')
-	.controller('DistributionController', ['$mdDialog', '$mdToast', 'distribute', '$stateParams', DistributionController]);
+	.controller('DistributionController', ['$mdDialog', '$mdToast', '$translate', 'distribute', '$stateParams', DistributionController]);
 
-function DistributionController($mdDialog, $mdToast, distribute, $stateParams) {
+function DistributionController($mdDialog, $mdToast, $translate, distribute, $stateParams) {
 	var self = this;
 
 	self.send = send;
@@ -37,7 +37,7 @@ function DistributionController($mdDialog, $mdToast, distribute, $stateParams) {
 				if(++results === clientList.length) {
 					self.loading = false;
 					self.hide();
-					var message = 'Salvado!!';
+					var message = $translate.instant('DISTRIBUTE_DONE');
 					$mdToast.show(
 						$mdToast.simple()
 							.textContent(message)

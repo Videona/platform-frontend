@@ -4,6 +4,9 @@ function distributeDirective($mdDialog) {
 	return {
 		restrict: 'E',
 		templateUrl: 'components/distribute/distribute.view.html',
+		scope: {
+			onDistribute: '='
+		},
 		link: {
 			pre: function (scope) {
 				scope.showAdvanced = function(ev) {
@@ -12,11 +15,13 @@ function distributeDirective($mdDialog) {
 						clickOutsideToClose: true,
 						fullscreen: false // Only for -xs, -sm breakpoints.
 					})
-					// .then(function(answer) {
+					.then(function(answer) {
 					// 	console.log('You distributed the video!');
-					// }, function() {
+						typeof scope.onDistribute === 'function' && scope.onDistribute(true);
+					}, function() {
 					// 	console.log('You cancelled the dialog.');
-					// });
+						typeof scope.onDistribute === 'function' && scope.onDistribute(false);
+					});
 				};
 			}
 		}

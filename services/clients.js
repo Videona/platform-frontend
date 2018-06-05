@@ -24,9 +24,9 @@
 			});
 		}
 
-		function add(name, host, user, pass, secure, folderRaw, folderEdited, id, callback) {
-			if (!name || !host || !user || !pass || !folderRaw || !folderEdited) {
-				console.error(name, host, user, pass, folderRaw, folderEdited)
+		function add(name, host, user, pass, secure, folder, id, callback) {
+			if (!name || !host || !user || !pass || !folder) {
+				console.error(name, host, user, pass, folder)
 				callback(null);
 				return false;
 			}
@@ -44,8 +44,7 @@
 					user: user,
 					password: pass,
 					secure: secure || false,
-					folderRaw: folderRaw,
-					folderEdited: folderEdited
+					folder: folder,
 				}
 			};
 			api.post(api.url + '/client', data, function (data) {
@@ -56,9 +55,9 @@
 			})
 		}
 
-		function update(name, host, user, pass, secure, folderRaw, folderEdited, id, callback) {
-			if (!name || !host || !user || !pass || !folderRaw || !folderEdited || !id) {
-				console.error(name, host, user, pass, folderRaw, folderEdited, id)
+		function update(name, host, user, pass, secure, folder, id, callback) {
+			if (!name || !host || !user || !pass || !folder || !id) {
+				console.error(name, host, user, pass, folder, id)
 				callback(null);
 				return false;
 			}
@@ -71,8 +70,7 @@
 					user: user,
 					password: pass,
 					secure: secure || false,
-					folderRaw: folderRaw,
-					folderEdited: folderEdited
+					folder: folder,
 				}
 			};
 			api.put(api.url + '/client', data, function (data) {

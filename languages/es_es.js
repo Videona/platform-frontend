@@ -173,14 +173,16 @@
 			CLIENT_USERNAME: 'Usuario',
 			CLIENT_PASSWORD: 'Contraseña',
 			CLIENT_SFTP: 'SFTP',
-			CLIENT_RAW_FOLDER: 'Carpeta de brutos',
-			CLIENT_EDITED_FOLDER: 'Carpeta de editados',
+			CLIENT_FOLDER: 'Carpeta',
 			CLIENT_CANCEL: 'Cancelar',
 			CLIENT_SAVE: 'Guardar',
 			CLIENT_REMOVE_CONFIRM: '¿Seguro que quieres eliminar el cliente? Esta acción es permanente, y no se puede deshacer.',
+			CLIENT_MANDATORY_FIELDS: 'Todos los campos son obligatorios',
+			CLIENT_SAVED: 'Cliente guardado',
 
 			// Distribution
 			DISTRIBUTE: 'Distribuir',
+			DISTRIBUTE_DONE: 'Vídeo distribuido',
 			VIDEO_NOT_DISTRIBUTED_YET: 'Éste vídeo no se ha distribuido por FTP',
 			SHOW_VIDEO_DISTRIBUTION: 'Mostrar distrbución',
 			HIDE_VIDEO_DISTRIBUTION: 'Ocultar distrbución',

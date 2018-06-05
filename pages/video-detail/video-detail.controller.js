@@ -1,7 +1,7 @@
 angular.module('app')
-	.controller('VideoDetailController', ['$stateParams', '$state', 'session', 'video', 'user', '$timeout', 'NgMap', VideoDetail]);
+	.controller('VideoDetailController', ['$timeout', '$stateParams', '$state', 'session', 'video', 'user', '$timeout', 'NgMap', VideoDetail]);
 
-function VideoDetail($stateParams, $state, session, video, user, $timeout, NgMap) {
+function VideoDetail($timeout, $stateParams, $state, session, video, user, $timeout, NgMap) {
 	var self = this;
 
 	self.id = $stateParams.id;
@@ -12,6 +12,7 @@ function VideoDetail($stateParams, $state, session, video, user, $timeout, NgMap
 	self.session = session;
 	self.state = $state; 
 	self.stateParams = $stateParams;
+	self.loadDistributionList = true;
 
 	self.video = video;
 	self.user = user;
@@ -19,6 +20,13 @@ function VideoDetail($stateParams, $state, session, video, user, $timeout, NgMap
 	self.videoDownload = videoDownload;
 	self.showMore = showMore();
 	self.mapMarker = [];
+
+	self.refreshDistributionList = function () {
+		self.loadDistributionList = false;
+		$timeout(function () { 
+			self.loadDistributionList = true;
+		}, 0);
+	}
 
 	if(self.video && self.video.data && self.video.data.id !== self.id) {
 		self.video.reset();

@@ -1,6 +1,6 @@
-angular.module('app').directive('clientForm', ['clients', clientDirective]);
+angular.module('app').directive('clientForm', ['$translate', 'clients', clientDirective]);
 
-function clientDirective(clients) {
+function clientDirective($translate, clients) {
 	return {
 		restrict: 'E',
 		templateUrl: 'components/client-form/client-form.view.html',
@@ -30,10 +30,10 @@ function clientDirective(clients) {
 					id = scope.data._id;
 				}
 
-				action(scope.editData.name, scope.editData.ftp.host, scope.editData.ftp.user, scope.editData.ftp.password, scope.editData.ftp.secure, scope.editData.ftp.folderRaw, scope.editData.ftp.folderEdited, id, function (data) {
+				action(scope.editData.name, scope.editData.ftp.host, scope.editData.ftp.user, scope.editData.ftp.password, scope.editData.ftp.secure, scope.editData.ftp.folder, id, function (data) {
 					scope.loading = false;
 					if(data === null) {
-						scope.error = 'fill all fields, please';
+						scope.error = $translate.instant('CLIENT_MANDATORY_FIELDS');
 						return false;
 					}
 				
@@ -45,8 +45,6 @@ function clientDirective(clients) {
 				// Do things before going out...
 				if(typeof scope.onExit === 'function') {
 					scope.onExit(scope.data || scope.editData || null);
-				} else {
-					console.log('hehehe');
 				}
 			};
 		}
