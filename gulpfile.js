@@ -14,6 +14,16 @@ require('gulp-watch');
 
 gulp.task('serve', function () {
 	gulp.src('./')
+        .pipe(webserver({
+            host: process.env.FRONTEND_HOST || 'localhost',
+            port: process.env.FRONTEND_PORT || 8080,
+            fallback: 'index.html',
+            livereload: false,
+        }));
+});
+
+gulp.task('serve-dev', function () {
+	gulp.src('./')
 		.pipe(webserver({
 			host: process.env.FRONTEND_HOST || 'localhost',
 			port: process.env.FRONTEND_PORT || 8080,
