@@ -3,7 +3,7 @@
 	
 	function pageService(flavourString) {
 		var page = {
-			title: 'Home',
+			title: '',
 			pageTitle: getPageTitle 
 		};
 
