@@ -25,10 +25,14 @@
 		}
 
 		function add(name, host, user, pass, secure, folder, id, callback) {
-			if (!name || !host || !user || !pass || !folder) {
-				console.error(name, host, user, pass, folder)
+			if (!name || !host || !user || !pass) {
+				console.error(name, host, user, pass)
 				callback(null);
 				return false;
+			}
+
+			if(!folder) {
+				folder = '/';
 			}
 
 			if (typeof id === 'function') {
@@ -58,10 +62,14 @@
 		}
 
 		function update(name, host, user, pass, secure, folder, id, callback) {
-			if (!name || !host || !user || !pass || !folder || !id) {
-				console.error(name, host, user, pass, folder, id)
+			if (!name || !host || !user || !pass || !id) {
+				console.error(name, host, user, pass, id);
 				callback(null);
 				return false;
+			}
+
+			if(!folder) {
+				folder = '/';
 			}
 
 			var data = {
