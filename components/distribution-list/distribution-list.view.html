@@ -1,0 +1,16 @@
+<div>
+	<loading ng-show="loading"></loading>
+
+	<p ng-show="!loading && list.length == 0">{{ 'VIDEO_NOT_DISTRIBUTED_YET' | translate}}</p>
+
+	<md-list flex ng-hide="loading">
+		<md-list-item ng-repeat="item in list">
+			<div class="md-list-item-text">
+				<h3>{{item.client_name}}</h3>
+			</div>
+			<span class="md-secondary">
+				<p>{{item.date | localeDate}}</p>
+			</span>
+		</md-list-item>
+	</md-list>
+</div>

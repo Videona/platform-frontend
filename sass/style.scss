@@ -18,7 +18,8 @@
 '../components/topbar/topbar',
 '../components/user-card/user-card.view',
 '../components/video-card/video-card',
-'../components/video-list/video-list';
+'../components/video-list/video-list',
+'../components/client-list/client-list.view';
 
 @import
 'base/reset',
@@ -75,4 +76,15 @@ videogular vg-poster .vg-poster-fill.stop,
   @media screen and (max-width: 520px) {
     margin-top: 8px;
   }
+}
+
+// Modal position fixes
+.md-dialog-is-showing {
+  overflow: initial;
+}
+
+button md-progress-circular {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 4px;
 }

@@ -1,0 +1,17 @@
+<md-list>
+	<md-list-item ng-if="!clients.list || clients.list.length === 0">{{'CLIENT_EMPTY_LIST' | translate}}</md-list-item>
+	<md-list-item ng-repeat="client in clients.list">
+		<md-checkbox ng-model="selected[client._id]" ng-hide="editing[$index]" ng-click="select($index)"></md-checkbox>
+		<p ng-hide="editing[$index]"> {{ client.name }}</p>
+		<md-button class="md-secondary md-icon-button" ng-hide="editing[$index]" ng-click="edit($index)">
+			<md-icon aria-label="Edit">edit</md-icon>
+		</md-button>
+		<md-button class="md-secondary md-icon-button" ng-hide="editing[$index]" ng-click="delete($index)">
+			<md-icon aria-label="Delete">delete</md-icon>
+		</md-button>
+		<div ng-show="editing[$index]" class="client-edit-form">
+			<h3 ng-bind="client.name"></h3>
+			<client-form data="client" on-exit="closeEdit"></client-form>
+		</div>
+	</md-list-item>
+</md-list>

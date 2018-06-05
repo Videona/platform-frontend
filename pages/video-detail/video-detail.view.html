@@ -100,6 +100,18 @@
 							<strong>{{'VIDEO_DETAIL_NOTES' | translate}}:</strong> {{Video.video.data.notes || ' - '}}
 						</p>
 					</div>
+
+					<div ng-if="Video.session.role == 'editor'"> 
+						<distribute on-distribute="Video.refreshDistributionList"></distribute>
+						
+						<div class="video-detail-show-info" ng-click="showDistribution = !showDistribution" ng-init="showDistribution = false">
+							<span ng-show="showDistribution">{{'HIDE_VIDEO_DISTRIBUTION' | translate}}</span>
+							<span ng-hide="showDistribution">{{'SHOW_VIDEO_DISTRIBUTION' | translate}}</span>
+							<i ng-show="showDistribution" class="material-icons">keyboard_arrow_up</i>
+							<i ng-hide="showDistribution" class="material-icons">keyboard_arrow_down</i>
+						</div> 
+						<distribution-list ng-if="Video.loadDistributionList" ng-show="showDistribution"></distribution-list>
+					</div>
 				</div>
 
 				<div class="video-detail-map only-mobile">
