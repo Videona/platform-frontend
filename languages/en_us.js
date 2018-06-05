@@ -168,6 +168,7 @@
 
 			// Clients
 			ADD_CLIENT: 'Add client',
+			CLIENT_EMPTY_LIST: 'There are no clients to distribute. First, add one.',
 			CLIENT_NAME: 'Name',
 			CLIENT_HOST: 'Host',
 			CLIENT_USERNAME: 'Username',

@@ -168,6 +168,7 @@
 		
 			// Clients
 			ADD_CLIENT: 'Añadir cliente',
+			CLIENT_EMPTY_LIST: 'No hay clientes a los que distribuir. Añade uno primero.',
 			CLIENT_NAME: 'Nombre',
 			CLIENT_HOST: 'Host',
 			CLIENT_USERNAME: 'Usuario',
