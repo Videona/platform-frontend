@@ -1,5 +1,6 @@
 .register-page {
 	@extend %align-items-center;
+	background-color: $mainColor;
 	background-image: url('../../img/brand/register-bg.jpg');
 	background-size: cover;
 	background-position: right;

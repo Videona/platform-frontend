@@ -6,7 +6,7 @@ function headerBox() {
 		templateUrl: 'components/header-box/header-box.view.html',
 		link: {
 			pre: function (scope) {
-				console.log('Header box is here!');
+				// console.log('Header box is here!');
 			}
 		}
 	};
