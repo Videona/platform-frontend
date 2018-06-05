@@ -1,8 +1,12 @@
+v0.12.0
+- Target elConfidencial
+
 v0.11.2
 - Improve condition to allow alphabetic indexes
 
 v0.11.1
 - Add newsroom link to M4N header
+>>>>>>> 3d5788f0123fe07aa8571e7fe161dd6c5688d0e0
 
 v0.11.0
 - As Junior I want the gallery to only show published videos
