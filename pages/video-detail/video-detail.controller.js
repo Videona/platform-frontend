@@ -1,7 +1,7 @@
 angular.module('app')
-	.controller('VideoDetailController', ['$timeout', '$stateParams', '$state', 'session', 'video', 'user', '$timeout', 'NgMap', VideoDetail]);
+	.controller('VideoDetailController', ['$timeout', '$stateParams', '$state', 'session', 'video', 'videoDownload', 'user', '$timeout', 'NgMap', VideoDetail]);
 
-function VideoDetail($timeout, $stateParams, $state, session, video, user, $timeout, NgMap) {
+function VideoDetail($timeout, $stateParams, $state, session, video, videoDownload, user, $timeout, NgMap) {
 	var self = this;
 
 	self.id = $stateParams.id;
@@ -17,7 +17,8 @@ function VideoDetail($timeout, $stateParams, $state, session, video, user, $time
 	self.video = video;
 	self.user = user;
 
-	self.videoDownload = videoDownload;
+	self.videoDownloadService = videoDownload;
+	self.videoDownload = goVideoDownload;
 	self.showMore = showMore();
 	self.mapMarker = [];
 
@@ -74,11 +75,19 @@ function VideoDetail($timeout, $stateParams, $state, session, video, user, $time
 		return false;
 	}
 	
-	function videoDownload(params) {
+	function goVideoDownload(params) {
 		self.downloading = true;
 		$state.go('videoDownload', params);
+		isLoading()
+	}
+
+	function isLoading() {
 		$timeout(function () {
-			self.downloading = false;
+			if(self.videoDownloadService.loading === false) {
+				self.downloading = false;
+			} else {
+				isLoading();
+			}
 		}, 1000);
 	}
 }
