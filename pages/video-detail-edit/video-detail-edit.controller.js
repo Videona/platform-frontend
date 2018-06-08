@@ -1,9 +1,9 @@
 angular.module('app')
 	.controller('VideoDetailEditController', ['$stateParams', '$mdConstant', 'session', 'video', 'maxVideoUploadByteSize',
-		'$state', '$mdToast', 'NgMap', '$scope', '$translate', VideoDetailEditController]);
+		'$state', '$mdToast', 'NgMap', '$scope', '$translate', 'page', VideoDetailEditController]);
 
 function VideoDetailEditController($stateParams, $mdConstant, session, video, maxVideoUploadByteSize,
-                                   $state, $mdToast, NgMap, $scope, $translate) {
+                                   $state, $mdToast, NgMap, $scope, $translate, page) {
 	var self = this;
 	const INITIAL_MAP_ZOOM = 6;
 
@@ -187,6 +187,8 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, ma
 		if (self.video.categories) {
 			self.category = self.video.categories.trim().split(',').filter(item => item);
 		}
+		
+		page.setPageTitle(self.video.title);
 		self.video.title = self.video.title || '';
 		self.video.description = self.video.description || '';
 		self.video.notes = self.video.notes || '';

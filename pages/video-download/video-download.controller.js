@@ -23,7 +23,6 @@ function VideoDownload($stateParams, video, videoDownload, $translate, session) 
 
 	setTimeout(focus, 500);
 
-
 	function download() {
 		self.error = null;
 		self.loading = true;

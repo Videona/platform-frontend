@@ -1,7 +1,7 @@
 angular.module('app')
-	.controller('UploadController', ['api', 'session', '$state', '$translate', 'productType', UploadController]);
+	.controller('UploadController', ['api', 'session', '$state', '$translate', 'productType', 'page', UploadController]);
 
-function UploadController(api, session, $state, $translate, productType) {
+function UploadController(api, session, $state, $translate, productType, page) {
 	var self = this;
 
 	// On Run...
@@ -17,6 +17,9 @@ function UploadController(api, session, $state, $translate, productType) {
 	self.productTypes = productType;
 
 	self.send = send;
+	
+	// Setup page title
+	page.setPageTitle($translate.instant('UPLOAD_TITLE'));
 
 	function send() {
 		console.log('sending...');

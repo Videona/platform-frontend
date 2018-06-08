@@ -7,7 +7,6 @@
 
 	function UserGallery($stateParams, $translate, user, page) {
 		var self = this;
-		page.title = 'User gallery - ';
 
 		self.userService = user;
 		self.userId = $stateParams.userId;
@@ -18,7 +17,6 @@
 		};
 
 		function handleNoUserError() {
-			page.title = 'User gallery - ';
 			// TODO(jliarte): 404?
 		}
 
@@ -26,7 +24,7 @@
 			self.userService.get(self.userId, function (userDetails) {
 				if (userDetails) {
 					self.user = userDetails;
-					page.title = self.user.username + ' ' + page.title;
+					page.setPageTitle(self.user.username)
 					self.userGalleryTitle = $translate.instant('USER_GALLERY_USER_VIDEOS', { username: self.user.username })
 				} else {
 					handleNoUserError();

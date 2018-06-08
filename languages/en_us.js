@@ -141,6 +141,7 @@
 			VIDEO_NOT_FOUND: 'We couldn\'t find that video. Please, check that the link is correct and try again.',
 
 			DROP_VIDEO: 'Drop your video here or click to upload',
+			UPLOAD_TITLE: 'Upload',
 			UPLOADING_FILE: 'Uploading video...',
 			UPLOAD_TITLE_PLACEHOLDER: 'Title',
 			UPLOAD_DESCRIPTION_PLACEHOLDER: 'Description',
@@ -187,6 +188,8 @@
 			VIDEO_NOT_DISTRIBUTED_YET: 'This video have not been distributed yet.',
 			SHOW_VIDEO_DISTRIBUTION: 'Show distrbution details',
 			HIDE_VIDEO_DISTRIBUTION: 'Hide distrbution details',
+			
+			TERMS: 'Terms & conditions'
 		});
 	}
 }());

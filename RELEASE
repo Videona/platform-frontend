@@ -1,2 +1,3 @@
-v0.13.0
-- Added FTP feature
+v0.13.1
+- Fix Vimojo favicon
+- Improve naming in browser tab
