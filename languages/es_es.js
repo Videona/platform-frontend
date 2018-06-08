@@ -141,6 +141,7 @@
 			VIDEO_NOT_FOUND: 'No hemos podido encontrar ese vídeo. Por favor, comprueba que el enlace es correcto, y prueba de nuevo.',
 
 			DROP_VIDEO: 'Arrastra tu vídeo o haz click para subirlo',
+			UPLOAD_TITLE: 'Subida',
 			UPLOADING_FILE: 'Subiendo tu vídeo...',
 			UPLOAD_TITLE_PLACEHOLDER: 'Título',
 			UPLOAD_DESCRIPTION_PLACEHOLDER: 'Descripcion',
@@ -187,6 +188,8 @@
 			VIDEO_NOT_DISTRIBUTED_YET: 'Éste vídeo no se ha distribuido por FTP',
 			SHOW_VIDEO_DISTRIBUTION: 'Mostrar distrbución',
 			HIDE_VIDEO_DISTRIBUTION: 'Ocultar distrbución',
+			
+			TERMS: 'Términos y condiciones de uso'
 		});
 	}
 }());

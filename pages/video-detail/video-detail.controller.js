@@ -1,7 +1,7 @@
 angular.module('app')
-	.controller('VideoDetailController', ['$timeout', '$stateParams', '$state', 'session', 'video', 'videoDownload', 'user', '$timeout', 'NgMap', VideoDetail]);
+	.controller('VideoDetailController', ['$timeout', '$stateParams', '$state', 'session', 'video', 'videoDownload', 'user', '$timeout', 'NgMap', 'page', VideoDetail]);
 
-function VideoDetail($timeout, $stateParams, $state, session, video, videoDownload, user, $timeout, NgMap) {
+function VideoDetail($timeout, $stateParams, $state, session, video, videoDownload, user, $timeout, NgMap, page) {
 	var self = this;
 
 	self.id = $stateParams.id;
@@ -36,6 +36,7 @@ function VideoDetail($timeout, $stateParams, $state, session, video, videoDownlo
 	self.video.get(self.id, function() {
 		self.loading = false;
 		if (self.video.data != undefined) {
+			page.setPageTitle(self.video.data.title);
 			self.showPublishedIcon = showPublishedIcon();
 			self.user.get(self.video.data.owner, function() {
 				self.loadingAuthor = false;

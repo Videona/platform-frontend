@@ -1,7 +1,7 @@
 (function () {
-	angular.module('app').controller('LoginController', ['login', 'session', '$state', '$stateParams', '$translate', LoginController]);
+	angular.module('app').controller('LoginController', ['login', 'session', '$state', '$stateParams', '$translate', 'page', LoginController]);
 
-	function LoginController(login, session, $state, $stateParams, $translate) {
+	function LoginController(login, session, $state, $stateParams, $translate, page) {
 		var self = this;
 
 		// Service binding
@@ -15,7 +15,9 @@
 
 		// Methods
 		self.submit = submit;
-
+		
+		// Setup page title
+		page.setPageTitle($translate.instant('LOGIN'));
 
 		// On Run...
 		if (session.id > 0) {

@@ -1,7 +1,7 @@
 (function () {
-	angular.module('app').controller('RegisterController', ['register', 'login', 'session', 'nodeEnv', '$state', '$stateParams', '$translate', 'flavourString', RegisterController]);
+	angular.module('app').controller('RegisterController', ['register', 'login', 'session', 'nodeEnv', '$state', '$stateParams', '$translate', 'flavourString', 'page', RegisterController]);
 
-	function RegisterController(register, login, session, nodeEnv, $state, $stateParams, $translate, flavourString) {
+	function RegisterController(register, login, session, nodeEnv, $state, $stateParams, $translate, flavourString, page) {
 		var self = this;
 
 		// Service binding
@@ -27,6 +27,9 @@
 		// Methods
 		self.validateRegister = validateRegister;
 		self.submit = submit;
+		
+		// Setup page title
+		page.setPageTitle($translate.instant('REGISTER'));
 
 		// Internal functions
 		function validateRegister() {

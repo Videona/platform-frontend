@@ -1,12 +1,15 @@
 angular.module('app')
-	.controller('GalleryController', ['$scope', '$document', '$translate', 'flavourFeature', Gallery]);
+	.controller('GalleryController', ['$scope', '$document', '$translate', 'flavourFeature', 'page', Gallery]);
 
-function Gallery($scope, $document, $translate, flavourFeature) {
+function Gallery($scope, $document, $translate, flavourFeature, page) {
 	var self = this;
 
 	self.search = '';
 	self.topbarTransparent = flavourFeature.header;
 	self.feature = flavourFeature;
+	
+	// Setup page title
+	page.setPageTitle();
 
 	// Check initial topbar bg
 	// scrolling();
