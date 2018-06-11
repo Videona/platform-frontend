@@ -101,8 +101,9 @@
 		}
 
 		.form-send-button {
-			width: 100%;
+			margin-top: 16px;
 			text-align: center;
+			width: 100%;
 			@include desktop {
 				text-align: right;
 			}
@@ -144,6 +145,10 @@
 				color: $lightGrey;
 			}
 
+		}
+
+		.upload-progress {
+			margin-top: 8px;
 		}
 
 		.upload-error {

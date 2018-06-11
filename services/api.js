@@ -106,7 +106,7 @@
 				});
 		}
 
-		function upload(url, file, data, callback) {
+		function upload(url, file, data, callback, progress) {
 			if(!url || !file) {
 				console.error('API Upload error: file or url was not provided.');
 				return false;
@@ -119,19 +119,29 @@
 				formData = null;
 			}
 
-			let req = buildRequestForFileUpload('POST', url, formData);
+			let req = buildRequestForFileUpload('POST', url, formData, progress);
 			req.data.append('file', file);
 
 			return performHttpRequest(req, callback);
 		}
 
-		function buildRequestForFileUpload(requestMethod, url, formData) {
+		function buildRequestForFileUpload(requestMethod, url, formData, progress) {
 			let req = {
 				method: requestMethod,
 				headers: {'Content-Type': undefined},
 				url: url,
 				data: new FormData(),
-				transformRequest: angular.identity
+				transformRequest: angular.identity,
+				// eventHandlers: {
+				// 	progress: function (c) {
+				// 		console.log('eventProgress', c);
+				// 	}
+				// },
+				uploadEventHandlers: {
+					progress: function (c) {
+						typeof progress === 'function' && progress(c);
+					}
+				}
 			};
 
 			if (api.token !== '') {
