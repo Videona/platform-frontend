@@ -1,7 +1,7 @@
 angular.module('app')
-	.controller('DistributionController', ['$interval', '$mdDialog', '$mdToast', '$translate', 'distribute', '$stateParams', DistributionController]);
+	.controller('DistributionController', ['$interval', '$timeout', '$mdDialog', '$mdToast', '$translate', 'distribute', '$stateParams', DistributionController]);
 
-function DistributionController($interval, $mdDialog, $mdToast, $translate, distribute, $stateParams) {
+function DistributionController($interval, $timeout, $mdDialog, $mdToast, $translate, distribute, $stateParams) {
 	var self = this;
 
 	self.send = send;
@@ -20,7 +20,7 @@ function DistributionController($interval, $mdDialog, $mdToast, $translate, dist
 	self.progressing = {};
 
 	distribute.get($stateParams.id, function (data) {
-		console.log(data);
+		// console.log(data);
 	});
 
 	function send(clientList) {
@@ -38,34 +38,35 @@ function DistributionController($interval, $mdDialog, $mdToast, $translate, dist
 		self.progressing = {};
 
 		for (var i = 0; i < clientList.length; i++) {
-
-			(function () {
-				var client = clientList[i];
-				console.log('Fake progress for client:');
-				console.log(client);
-				fakeProgress(client._id);
-
-				distribute.add($stateParams.id, clientList[i]._id, function (addData) {
-
-					console.log(self.progress);
-					console.log('STOP Fake progress for client:');
-					console.log(client);
-					stopProgress(client._id);
-
-					if(++results === clientList.length) {
+			distributeToClient(clientList[i], function(addData) {
+				if(++results === clientList.length) {
+					// Wait for a short period to let the user feel the completion
+					$timeout(function () {
 						self.loading = false;
 						self.hide();
-						var message = $translate.instant('DISTRIBUTE_DONE');
-						$mdToast.show(
-							$mdToast.simple()
-								.textContent(message)
-								.toastClass("mojofy-toast")
-								.position("fixed-top right")
-						);
-					}
-				});
-			})();
+						distributedToast();
+					}, 500);
+				}
+			});
 		}
+	}
+
+	function distributedToast() {
+		$mdToast.show(
+			$mdToast.simple()
+				.textContent($translate.instant('DISTRIBUTE_DONE'))
+				.toastClass("mojofy-toast")
+				.position("fixed-top right")
+		);
+	}
+
+
+	function distributeToClient(client, callback) {
+		fakeProgress(client._id);
+		distribute.add($stateParams.id, client._id, function (addData) {
+			stopProgress(client._id);
+			callback(addData);
+		});
 	}
 
 	function fakeProgress(id) {
@@ -79,10 +80,6 @@ function DistributionController($interval, $mdDialog, $mdToast, $translate, dist
 		self.progressing[id].interval = $interval(function () {
 			var rand = Math.floor(Math.random() * 10);
 			var shallUpdate = (rand % 2 === 0);
-			console.log('---------------')
-			console.log(self.progressing[id].value)
-			console.log(id)
-			console.log('---------------')
 			if(self.progressing[id].value < maxProgress && shallUpdate) {
 				self.progressing[id].value += maxProgress / maxExpectedTime;
 				self.progress += self.progressing[id].value;
@@ -95,7 +92,6 @@ function DistributionController($interval, $mdDialog, $mdToast, $translate, dist
 
 
 	function stopProgress(id) {
-		console.log('Stop progpagating');
 		var maxProgress = 100 / self.distributing;
 
 		// Stop interval
@@ -104,12 +100,9 @@ function DistributionController($interval, $mdDialog, $mdToast, $translate, dist
 
 		// Update global prorgess with remaining for that request
 		var remaining = maxProgress - self.progressing[id].value;
-		console.log(remaining);
-		console.log(self.progressing[id]);
 		self.progress += remaining
 
 		// Update progress value for the request
 		self.progressing[id].value = maxProgress;
-		console.log(self.progressing[id]);
 	}
 }
