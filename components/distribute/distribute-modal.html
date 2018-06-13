@@ -18,6 +18,7 @@
 					<client-form on-exit="Distribution.hideAddClient"></client-form>
 				</div>
 			</div>
+			<md-progress-linear ng-if="Distribution.loading" md-mode="determinate" value="{{Distribution.progress}}"></md-progress-linear>
 		</md-dialog-content>
 
 		<md-dialog-actions layout="row" ng-hide="Distribution.status.isAddingClient || Distribution.status.isFormOpen">
