@@ -1,3 +1,5 @@
-v0.13.1
-- Fix Vimojo favicon
-- Improve naming in browser tab
+v0.14.0
+- Add upload progress bar
+- Update edit player from narive video to <player> directive
+- On edit, redirect to video detail page
+- Added progress bar in FTP distribution proccess
