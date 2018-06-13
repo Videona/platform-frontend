@@ -146,6 +146,7 @@
 			UPLOAD_TITLE_PLACEHOLDER: 'Título',
 			UPLOAD_DESCRIPTION_PLACEHOLDER: 'Descripcion',
 			UPLOAD_SEND: 'Subir vídeo',
+			UPLOAD_UPLOADING: 'Subiendo',
 			UPLOAD_ERROR_DATA: 'Vídeo no seleccionado, o información no rellenada',
 
 			PRODUCT_TYPE_LIVE_ON_TAPE: 'Falso directo',

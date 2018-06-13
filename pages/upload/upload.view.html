@@ -28,6 +28,7 @@
 					<input type="checkbox" name="product-type-{{type.id}}" ng-model="Upload.data.productType[type.id]" id="product-type-{{type.id}}">
 					<label for="product-type-{{type.id}}">{{type.name}}</label>
 				</span>
+
 			</div>
 
 			<div ng-if="Upload.error" class="upload-error">
@@ -37,8 +38,17 @@
 			<div class="form-send-button">
 				<md-button ng-disabed="Upload.loading" class="spinner-button md-raised md-primary cta" ng-click="Upload.send()">
 					<md-progress-circular ng-show="Upload.loading" class="md-hue-3 md-inline" md-diameter="20px"></md-progress-circular>
-					{{'UPLOAD_SEND' | translate}}
+					<span ng-hide="Upload.loading">{{'UPLOAD_SEND' | translate}}</span>
+					<span ng-show="Upload.loading">
+						{{'UPLOAD_UPLOADING' | translate}} 
+						<span ng-show="Upload.progress">
+							{{ Upload.progress.loaded * 100 / Upload.progress.total | number:0 }}%
+						</span>
+					</span>
 				</md-button>
+				<div ng-if="Upload.progress" class="upload-progress">
+					<md-progress-linear md-mode="determinate" value="{{Upload.progress.loaded * 100 / Upload.progress.total}}"></md-progress-linear>
+				</div>
 			</div>
 		</div>
 	</div>

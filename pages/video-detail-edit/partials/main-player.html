@@ -1,8 +1,9 @@
 <md-card layout-wrap="auto" class="video-player">
 	<div flex layout="column">
 		<div>
-			<video controls ng-src="{{EditCtrl.video.video}}" ng-attr-poster="{{EditCtrl.video.poster}}"
-				   preload="metadata" controlsList="nodownload"></video>
+<!-- 			<video controls ng-src="{{EditCtrl.video.video}}" ng-attr-poster="{{EditCtrl.video.poster}}"
+				   preload="metadata" controlsList="nodownload"></video> -->
+			<player video="EditCtrl.video.video" poster="EditCtrl.video.poster"></player>
 		</div>
 		<div layout="row" layout-margin="10" class="video-edit-page__thumbnails">
 

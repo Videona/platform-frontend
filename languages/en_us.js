@@ -146,6 +146,7 @@
 			UPLOAD_TITLE_PLACEHOLDER: 'Title',
 			UPLOAD_DESCRIPTION_PLACEHOLDER: 'Description',
 			UPLOAD_SEND: 'Upload video',
+			UPLOAD_UPLOADING: 'Uploading',
 			UPLOAD_ERROR_DATA: 'File not selected or data not setted.',
 
 			PRODUCT_TYPE_LIVE_ON_TAPE: 'Live on tape',

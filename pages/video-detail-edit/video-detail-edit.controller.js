@@ -66,8 +66,9 @@ function VideoDetailEditController($stateParams, $mdConstant, session, video, ma
 		console.log("video to update is ", self.video);
 		self.videoService.update(self.video).then( result => {
 			showMessage($translate.instant('VIDEO_EDIT_MSG_VIDEO_UPDATED'));
-			resetForm();
-			self.videoService.reset();
+			$state.go('videoDetail', {id: self.id});
+			// resetForm();
+			// self.videoService.reset();
 			getVideo();
 		}).catch( error => {
 			console.log("error in request ", error);

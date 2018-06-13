@@ -11,6 +11,7 @@ function UploadController(api, session, $state, $translate, productType, page) {
 	}
 
 	self.error = null;
+	self.progress = null;
 	self.file;
 	self.data;
 	self.loading = false;
@@ -43,9 +44,12 @@ function UploadController(api, session, $state, $translate, productType, page) {
 			data.productType = data.productType.toString();
 
 			self.loading = true;
-			api.upload(api.url + '/video', self.file, data, function() {
+			api.upload(api.url + '/video', self.file, data, function () {
 				self.loading = false;
 				$state.go('userGallery', {userId: session.id});
+			}, function (c) {
+				console.log(c);
+				self.progress = c;
 			});
 		} else {
 			self.error = $translate.instant('UPLOAD_ERROR_DATA');
