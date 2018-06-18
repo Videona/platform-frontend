@@ -9,7 +9,7 @@
 			   types="EditCtrl.placeTypes"
 			   on-place-changed="EditCtrl.placeChanged()">
 	</md-input-container>
-	<ng-map default-style="true" center="current-location" on-click="EditCtrl.mapClick($event)">
+	<ng-map default-style="true" center="current-location" geo-fallback-center="[40.41, -3.70]" on-click="EditCtrl.mapClick($event)">
 		<info-window position="current-location">
 			<span>{{ 'VIDEO_EDIT_GOT_BROWSER_LOCATION' | translate }}</span>
 		</info-window>
