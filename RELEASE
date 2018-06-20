@@ -1,5 +1,2 @@
-v0.14.0
-- Add upload progress bar
-- Update edit player from narive video to <player> directive
-- On edit, redirect to video detail page
-- Added progress bar in FTP distribution proccess
+v0.14.1
+- Set fallback location on video edit map
