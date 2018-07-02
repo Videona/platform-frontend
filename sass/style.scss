@@ -88,3 +88,13 @@ button md-progress-circular {
   vertical-align: middle;
   margin: 0 4px;
 }
+
+.loading-panel {
+  md-card {
+    margin-top: $topbarHeight + 10px;
+    height: 300px;
+  }
+  md-progress-circular {
+    margin: 10px;
+  }
+}

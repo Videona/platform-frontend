@@ -43,6 +43,8 @@
     "run-sequence": "^2.2.1"
   },
   "dependencies": {
+    "angular-auth0": "^3.0.0",
+    "auth0-js": "^9.6.1",
     "buffer-to-vinyl": "^1.1.0",
     "gulp": "^3.9.1",
     "gulp-ng-config": "^1.5.0",

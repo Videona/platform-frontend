@@ -1,14 +1,13 @@
 angular.module('app')
-	.controller('UploadController', ['api', 'session', '$state', '$translate', 'productType', 'page', UploadController]);
+	.controller('UploadController', ['api', 'session', '$state', '$translate', 'productType', 'page', 'authService',
+		UploadController]);
 
-function UploadController(api, session, $state, $translate, productType, page) {
-	var self = this;
+function UploadController(api, session, $state, $translate, productType, page, authService) {
+	const self = this;
 
-	// On Run...
-	if (session.id <= 0) {
-		console.log('Session not found! Redirecting...');
-		$state.go('signin');
-	}
+	this.$onInit = function () {
+		authService.requireLoggedUser();
+	};
 
 	self.error = null;
 	self.progress = null;
@@ -25,7 +24,7 @@ function UploadController(api, session, $state, $translate, productType, page) {
 	function send() {
 		console.log('sending...');
 
-		var data = {};
+		const data = {};
 
 		if (canUpload()) {
 			self.error = null;
@@ -34,8 +33,8 @@ function UploadController(api, session, $state, $translate, productType, page) {
 			data.productType = [];
 			
 			if (self.data.productType) {
-				for (var type in self.data.productType) {
-					if(self.data.productType[type]) {
+				for (const type in self.data.productType) {
+					if (self.data.productType[type]) {
 						data.productType.push(type);
 					}
 				}

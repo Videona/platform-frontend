@@ -1,17 +1,19 @@
 (function () {
 	// App
-	angular.module('app', ['app.config', 'app.flavour', 'ui.router', 'pascalprecht.translate', 'infinite-scroll',
-		'ngFileUpload', 'angularMoment', 'ngMaterial', 'ngMap', 'ngSanitize', 'com.2fdevs.videogular',
+	angular.module('app', ['auth0.auth0', 'app.config', 'app.flavour', 'ui.router', 'pascalprecht.translate',
+		'infinite-scroll', 'ngFileUpload', 'angularMoment', 'ngMaterial', 'ngMap', 'ngSanitize', 'com.2fdevs.videogular',
 		'com.2fdevs.videogular.plugins.controls', 'com.2fdevs.videogular.plugins.overlayplay',
 		'com.2fdevs.videogular.plugins.poster'])
 		.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$translateProvider', '$mdThemingProvider',
-			'$mdDateLocaleProvider', conf]);
+			'$mdDateLocaleProvider', 'angularAuth0Provider', 'auth0ClientId', 'auth0Domain', 'auth0Audience',
+			'auth0Redirect_uri', 'auth0Scope', conf]);
 
 	function conf($locationProvider, $stateProvider, $urlRouterProvider, $translateProvider, $mdThemingProvider,
-	              $mdDateLocaleProvider) {
+	              $mdDateLocaleProvider, angularAuth0Provider, auth0ClientId, auth0Domain, auth0Audience,
+	              auth0Redirect_uri, auth0Scope) {
 		// Get browser lang and set this var
-		var shortLang = navigator.language.split('-')[0];
-		var lang;
+		const shortLang = navigator.language.split('-')[0];
+		let lang;
 
 		switch (shortLang) {
 		case 'es':
@@ -51,6 +53,11 @@
 				controller: ['$state', function ($state) { 
 					$state.go('gallery'); 
 				}],
+			})
+			.state('authCallback', {
+				url: '/authcallback',
+				controller: 'AuthCallbackController',
+				templateUrl: './pages/auth-callback/auth-callback.view.html',
 			})
 			.state('signin', {
 				url: '/sign-in',
@@ -111,6 +118,17 @@
 				parent: 'root',
 				templateUrl: 'pages/video-detail-edit/video-detail-edit.view.html',
 			});
+
+		// Initialization for the angular-auth0 library
+		angularAuth0Provider.init({
+			clientID: auth0ClientId,
+			domain: auth0Domain,
+			responseType: 'token id_token',
+			audience: auth0Audience,
+			redirectUri: auth0Redirect_uri,
+			scope: auth0Scope
+		});
+
 	}
 
 	function setupMaterialTheming($mdThemingProvider) {
@@ -156,7 +174,7 @@
 		};
 
 		$mdDateLocaleProvider.parseDate = function(dateString) {
-			var m = moment(dateString, 'DD/MM/YYYY', true);
+			const m = moment(dateString, 'DD/MM/YYYY', true);
 			return m.isValid() ? m.toDate() : new Date(NaN);
 		};
 

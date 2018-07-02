@@ -42,6 +42,11 @@ gulp.task('make-config', function () {
 		backendApiUrl: process.env.BACKEND_API_URL || 'http://localhost:3000',
 		gmapsApiKey: process.env.GMAPS_API_KEY || 'provideGmapsApiKey',
 		maxVideoUploadByteSize: process.env.MAX_VIDEO_UPLOAD_BYTE_SIZE || '1500000',
+		auth0ClientId: process.env.AUTH0_CLIENT_ID || 'setup_auth0_credentials!',
+		auth0Domain: process.env.AUTH0_DOMAIN,
+		auth0Audience: process.env.AUTH0_AUDIENCE,
+		auth0Redirect_uri: process.env.AUTH0_REDIRECT_URI,
+		auth0Scope: process.env.AUTH0_SCOPE,
 	});
 
 	return b2v.stream(new Buffer(json), 'config.js')
@@ -70,6 +75,8 @@ var sourceDeps = [
 	'../node_modules/videogular-controls/vg-controls.min.js',
 	'../node_modules/videogular-overlay-play/vg-overlay-play.min.js',
 	'./js/custom-vg-poster.js',
+	'../node_modules/auth0-js/build/auth0.js',
+	'../node_modules/angular-auth0/dist/angular-auth0.min.js',
 ];
 gulp.task('join-dependencies', ['make-config', 'flavour'], function () {
 	return gulp.src(sourceDeps)

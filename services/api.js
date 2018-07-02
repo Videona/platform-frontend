@@ -107,14 +107,14 @@
 		}
 
 		function upload(url, file, data, callback, progress) {
-			if(!url || !file) {
+			if (!url || !file) {
 				console.error('API Upload error: file or url was not provided.');
 				return false;
 			}
 
-			var formData = data;
+			let formData = data;
 
-			if(!callback && typeof data === 'function') {
+			if (!callback && typeof data === 'function') {
 				callback = data;
 				formData = null;
 			}

@@ -58,6 +58,9 @@
 		<!-- Videogular -->
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/videogular/1.4.4/videogular.min.js"></script>
 
+		<!-- Auth0 -->
+		<script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
+
 		<!-- No CDN avaliable modules -->
 		<script src="modules/modules.js"></script>
 		
@@ -71,7 +74,8 @@
 -->
 
 		<!-- App -->
-		<script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/app.run.js"></script>
 		<!-- Main controller -->
 		<script type="text/javascript" src="js/main.controller.js"></script>
 		<!-- Load environment variables -->
@@ -104,6 +108,7 @@
 		<script type="text/javascript" src="services/page.js"></script>
 		<script type="text/javascript" src="services/search.js"></script>
 		<script type="text/javascript" src="services/product-type.js"></script>
+		<script type="text/javascript" src="services/auth.service.js"></script>
 
 		<!-- Components -->
 		<script type="text/javascript" src="components/404/error404.js"></script>
@@ -141,5 +146,6 @@
 		<script type="text/javascript" src="pages/gallery/gallery.controller.js"></script>
 		<script type="text/javascript" src="pages/user-gallery/user-gallery.controller.js"></script>
 		<script type="text/javascript" src="pages/upload/upload.controller.js"></script>
+		<script type="text/javascript" src="pages/auth-callback/auth-callback.controller.js"></script>
 	</body>
 </html>

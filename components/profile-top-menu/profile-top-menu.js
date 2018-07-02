@@ -5,6 +5,8 @@ function profileTopMenuDirective(session) {
 	return {
 		templateUrl: 'components/profile-top-menu/profile-top-menu.view.html',
 		replace: true,
+		controller: profileTopMenuController,
+		controllerAs: 'profileCtrl',
 		link: {
 			pre: function (scope) {
 				// TODO:(jliarte) remove this, but can be used to test user img
@@ -18,6 +20,13 @@ function profileTopMenuDirective(session) {
 
 	function openMenu($mdMenu, ev) {
 		$mdMenu.open(ev);
+	}
+
+	profileTopMenuController.$inject = ['authService'];
+
+	function profileTopMenuController(authService) {
+		const self = this;
+		self.auth = authService;
 	}
 
 }
