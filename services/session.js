@@ -1,8 +1,8 @@
 (function () {
 	angular.module('app')
-		.factory('session', ['api', '$translate', sessionService]);
+		.factory('session', ['api', '$translate', 'auth0MetadataNS', sessionService]);
 
-	function sessionService(api, $translate) {
+	function sessionService(api, $translate, auth0MetadataNS) {
 		const session = {
 			id: -1,
 			name: '',
@@ -58,9 +58,9 @@
 			console.log("set session with session: ", profileData);
 			session.authId = profileData.sub || -1;
 			session.name = profileData.name || '';
-			session.username = profileData.nickname || profileData.name || '';
+			session.username = profileData.name || profileData.nickname || '';
 			session.email = profileData.email || '';
-			session.role = profileData.role || '';
+			session.role = profileData[auth0MetadataNS + "role"] || '';
 			session.pic = profileData.picture || '';
 			session.verified = profileData.email_verified || false;
 

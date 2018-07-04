@@ -47,6 +47,7 @@ gulp.task('make-config', function () {
 		auth0Audience: process.env.AUTH0_AUDIENCE,
 		auth0Redirect_uri: process.env.AUTH0_REDIRECT_URI,
 		auth0Scope: process.env.AUTH0_SCOPE,
+		auth0MetadataNS: process.env.AUTH0_METADATA_NS,
 	});
 
 	return b2v.stream(new Buffer(json), 'config.js')
