@@ -98,3 +98,9 @@ button md-progress-circular {
     margin: 10px;
   }
 }
+
+md-toast, .mojofy-toast {
+  z-index: 100000;
+  position: fixed;
+  top: $topbarHeight + 4px;
+}
