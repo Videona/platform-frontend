@@ -48,6 +48,8 @@ gulp.task('make-config', function () {
 		auth0Redirect_uri: process.env.AUTH0_REDIRECT_URI,
 		auth0Scope: process.env.AUTH0_SCOPE,
 		auth0MetadataNS: process.env.AUTH0_METADATA_NS,
+		flavour: process.env.FLAVOUR || 'vimojo',
+		mainColor: process.env.MAIN_COLOR || '#f14b51',
 	});
 
 	return b2v.stream(new Buffer(json), 'config.js')
@@ -56,10 +58,14 @@ gulp.task('make-config', function () {
 });
 
 gulp.task('flavour', function () {
-	var flavour = process.env.FLAVOUR || 'vimojo';
+	let flavour = process.env.FLAVOUR || 'vimojo';
 	console.log('##############################################');
 	console.log('### Building flavour ' + flavour);
 	console.log('##############################################');
+
+	gulp.src('./flavour/**/**')
+		.pipe(debug({ title: 'Move all flavour files'}))
+		.pipe(gulp.dest('./'));
 
 	return gulp.src('./flavour/' + flavour + '/**/**')
 		.pipe(debug({ title: 'Move flavour files (' + flavour + '):' }))

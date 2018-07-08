@@ -20,7 +20,7 @@
 			};
 		});
 
-	authService.$inject = ['$state', 'angularAuth0', '$timeout', 'session', '$mdToast'];
+	authService.$inject = ['$state', 'angularAuth0', '$timeout', 'session', '$mdToast', 'flavour', 'mainColor'];
 
 	function showSessionExpiredToast($mdToast) {
 // TODO(jliarte): 5/07/18 show info about third party cookies?
@@ -33,11 +33,11 @@
 		});
 	}
 
-	function authService($state, angularAuth0, $timeout, session, $mdToast) {
+	function authService($state, angularAuth0, $timeout, session, $mdToast, flavour, mainColor) {
 
 		function login() {
 			// angularAuth0.crossOriginVerification();
-			angularAuth0.authorize();
+			angularAuth0.authorize({ flavour: flavour, mainColor: mainColor });
 		}
 
 		function handleAuthentication() {
