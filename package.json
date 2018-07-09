@@ -1,11 +1,18 @@
 {
   "name": "vimojo-platform-frontend",
-  "version": "0.0.2",
+  "version": "0.14.1",
   "description": "Frontend for Vimojo Platform",
   "main": "gulpfile.js",
   "scripts": {
-    "start": "gulp serve",
+    "start": "gulp serve --gulpfile src/gulpfile.js",
+    "start-local": "gulp serve",
+    "dev": "NODE_ENV=development gulp dev --gulpfile src/gulpfile.js",
+    "dev-local": "NODE_ENV=development gulp dev",
     "test": "karma start"
+  },
+  "engines": {
+    "node": "6.9.5",
+    "npm": "4.2.0"
   },
   "author": "",
   "license": "GPLv3",
@@ -14,16 +21,38 @@
     "angular": "1.6.5",
     "angular-mocks": "1.6.5",
     "angular-translate": "2.17.0",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.7.0",
     "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.9.2",
     "gulp-concat": "^2.6.1",
     "gulp-debug": "^3.1.0",
+    "gulp-eslint": "^4.0.1",
     "gulp-minify": "^1.0.0",
+    "gulp-sass": "^3.1.0",
     "gulp-watch": "^4.3.11",
     "gulp-webserver": "^0.9.1",
     "jasmine-core": "^2.4.1",
     "karma": "^0.13.22",
     "karma-chrome-launcher": "^1.0.1",
     "karma-jasmine": "^1.0.2",
-    "karma-spec-reporter": "0.0.26"
+    "karma-junit-reporter": "^1.2.0",
+    "karma-spec-reporter": "0.0.26",
+    "ng-infinite-scroll": "1.3.0",
+    "run-sequence": "^2.2.1"
+  },
+  "dependencies": {
+    "buffer-to-vinyl": "^1.1.0",
+    "gulp": "^3.9.1",
+    "gulp-ng-config": "^1.5.0",
+    "ng-file-upload": "^12.2.13",
+    "ngmap": "^1.18.4",
+    "npm": "^5.6.0",
+    "videogular": "^2.2.1",
+    "videogular-buffering": "^1.4.4",
+    "videogular-controls": "^1.4.4",
+    "videogular-overlay-play": "^1.4.4",
+    "videogular-themes-default": "^1.4.4"
   }
 }

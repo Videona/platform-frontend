@@ -1,0 +1,66 @@
+<md-card layout-wrap="auto" layout="column" class="video-edit-page__basic-details">
+	<md-input-container flex>
+		<label>{{ 'VIDEO_DETAIL_TITLE' | translate }}</label>
+		<input ng-model="EditCtrl.video.title" required>
+	</md-input-container>
+	<md-input-container flex>
+		<label>{{ 'VIDEO_DETAIL_SUMMARY' | translate }}</label>
+		<textarea ng-model="EditCtrl.video.description" max-rows="8" required></textarea>
+	</md-input-container>
+	<md-input-container flex>
+		<label>{{ 'VIDEO_DETAIL_CATEGORIES' | translate }}</label>
+		<md-select ng-model="EditCtrl.category" multiple="true">
+			<md-option ng-repeat="category in EditCtrl.categories" value="{{category.category}}">
+				{{ "VIDEO_CATEGORY_" + category.category | translate }}
+			</md-option>
+		</md-select>
+	</md-input-container>
+	<!-- <md-input-container flex>
+		<md-tooltip md-direction="top">{{ 'VIDEO_EDIT_LOCATION_HINT' | translate }}</md-tooltip>
+		<label>{{ 'VIDEO_DETAIL_LOCATION' | translate }}</label>
+		<input ng-model="EditCtrl.video.locationName" disabled>
+	</md-input-container> -->
+	<md-input-container flex>
+		<label>{{ 'VIDEO_EDIT_PICK_DATE' | translate }}</label>
+		<md-datepicker ng-model="EditCtrl.video.date" md-max-date="EditCtrl.maxVideoDate"></md-datepicker>
+	</md-input-container>
+	<!-- TODO: add time picker -->
+	<md-input-container flex>
+		<label>{{ 'VIDEO_DETAIL_NOTES' | translate }}</label>
+		<textarea ng-model="EditCtrl.video.notes" max-rows="8"></textarea>
+	</md-input-container>
+
+	<div flex-gt-sm="50" flex="100">
+		<div>
+			<md-input-container class="md-inline">
+				<label>{{ 'VIDEO_DETAIL_LANGUAGE' | translate }}</label>
+				<md-select ng-model="EditCtrl.video.language">
+					<md-option ng-repeat="lang in EditCtrl.langs" value="{{lang.lang}}">
+						{{ "VIDEO_LANG_" + lang.lang | translate }}
+					</md-option>
+				</md-select>
+			</md-input-container>
+		</div>
+		<div>
+			<md-input-container class="md-inline">
+				<label>{{ 'VIDEO_DETAIL_PRODUCT_TYPE_LONG' | translate }}</label>
+				<md-select ng-model="EditCtrl.productType" multiple="true">
+					<md-option ng-repeat="productType in EditCtrl.productTypes" value="{{productType.productType}}">
+						{{ "PRODUCT_TYPE_" + productType.productType | translate }}
+					</md-option>
+				</md-select>
+			</md-input-container>
+		</div>
+		<div>
+			<md-input-container class="md-inline">
+			<!--<label>Etiquetas</label>-->
+			<md-chips class="md-inline"
+					ng-model="EditCtrl.tags"
+					md-separator-keys="EditCtrl.tagsKeys"
+					placeholder="{{ 'VIDEO_EDIT_TAG_HINT' | translate }}"
+					secondary-placeholder="{{ 'VIDEO_EDIT_TAG_HINT_SECONDARY' | translate }}"></md-chips>
+			</md-input-container>
+		</div>
+	</div>
+
+</md-card> <!-- // .basic-details md-card -->

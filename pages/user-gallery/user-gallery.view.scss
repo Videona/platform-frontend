@@ -1,0 +1,14 @@
+.user-gallery {
+	width: 100%;
+	background-color: $background;
+	margin-top: $topbarHeight;
+	> article {
+		@extend %display-flex;
+		@extend %flex-direction-column;
+		
+	}
+}
+
+.gallery-section-nonFeatured {
+	margin: $cardMargin;
+}

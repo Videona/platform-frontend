@@ -1,0 +1,92 @@
+.gallery {
+	width: 100%;
+	background-color: $background;
+	> article {
+		@extend %display-flex;
+		@extend %flex-direction-column;
+		overflow-x: hidden;
+	}
+}
+
+.gallery-section-featured {
+	@extend %display-flex;
+	@extend %flex-direction-column;
+	margin-top: $topbarHeight;
+	margin-left: $cardMargin;
+	> div {
+		@extend %display-flex;
+		@extend %justify-content-space-between;
+		@extend %align-items-center;
+		margin: 18px $cardMargin $cardMargin 0;
+		h1 {
+			font-size: 20px;
+			color: $text;
+		}
+		a:hover {
+			text-decoration: none;
+		}
+		p {
+			font-size: 12px;
+			color: #f14b51;
+		}
+	}
+	video-list {
+		overflow-x: scroll;
+		-webkit-overflow-scrolling: touch;
+		@include desktop {
+			overflow-x: hidden;
+		}
+	}
+}
+
+.gallery-filter,
+.gallery-section-nonFeatured {
+	margin: $cardMargin $cardMargin 0 $cardMargin;
+}
+
+.gallery-filter {
+	@extend %display-flex;
+	@extend %justify-content-space-between;
+	@include border-radius($cardRadius);
+	background-color: white;
+	img {
+		width: 25px;
+		height: 25px;
+		padding: 10px 0 10px 15px;
+	}
+	div {
+		margin-right: 15px;
+		@extend %display-flex;
+		@extend %align-items-center;
+		label {
+			font-size: 12px;
+			color: $text;
+			position: relative;
+		}
+		span {
+			margin-right: 5px;
+		}
+		label:after {
+			background-image: url('../../img/down-arrow.svg');
+			background-size: 17px 12px;
+			width: 17px;
+			height: 12px;
+			content: "";
+			right: 8px;
+			top: 6px;
+			position: absolute;
+			pointer-events: none;
+		}
+		select {
+			margin-left: 5px;
+			padding: 3px 15px;
+			border: 1px solid $text;
+			color: $text;
+			@include border-radius($cardRadius);
+			width: 100px;
+			margin: 0;
+			outline: none;
+			cursor: pointer;
+		}
+	}
+}

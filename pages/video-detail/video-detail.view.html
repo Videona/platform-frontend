@@ -1,0 +1,148 @@
+<div ng-controller="VideoDetailController as Video" class="video-page">
+
+	<topbar transparent="null"></topbar>
+	<!-- Screen loading directive -->
+	<div ng-if="!Video.video.data && Video.loading" class="loading">
+		<loading></loading>
+	</div>
+
+	<error404 ng-if="Video.video.data.error && !Video.loading" ></error404>
+
+	<article ng-if="Video.video.data && !Video.video.data.error">
+		<section class="card-video-detail">
+			<div>
+				<player video="Video.video.data.video" poster="Video.video.data.poster"></player>
+
+				<div class="video-detail-map only-desktop">
+					<ng-map default-style="false" center="Video.mapMarker" ng-if="Video.mapMarker.length > 0">
+						<marker ng-if="Video.video.data.location" position="{{ Video.mapMarker }}"
+								title="{{ Video.video.data.locationName }}" centered="true"></marker>
+					</ng-map>
+					<div ng-if="Video.mapMarker.length === 0" class="no-map">
+						No location selected
+					</div>
+				</div>
+
+			</div>
+			<section class="card-video-info">
+				<div>
+					<h1>
+						{{ ::Video.video.data.title }}
+						<md-icon ng-if="Video.video.data.verified == true || Video.video.data.verified == 'true'">
+							<md-tooltip md-delay="1000">{{ 'VIDEO_VERIFIED' | translate }}</md-tooltip>
+							check_circle
+						</md-icon>
+						<md-icon ng-if="Video.video.data.featured == true || Video.video.data.featured == 'true'">
+							<md-tooltip md-delay="1000">{{ 'VIDEO_FEATURED' | translate }}</md-tooltip>
+							star
+						</md-icon>
+					</h1>
+				</div>
+				
+				<div class="padding video-detail-date">
+					<span ng-if="Video.video.data.locationName">{{Video.video.data.locationName}}, </span>{{Video.video.data.date | localeDate}}
+				</div>
+				
+				<div class="padding">
+					<p ng-class="{'block-ellipsis': !readMore}" ng-bind="Video.video.data.description" id="video-description"></p>
+					
+					<div class="padding view-all" ng-show="Video.showMore">
+						<a ng-click="readMore = !readMore" class="read-more">
+							<span ng-hide="readMore">{{'BUTTON_READ_ALL' | translate}} +</span>
+							<span ng-show="readMore">{{'BUTTON_READ_LESS' | translate}} -</span>
+						</a>
+					</div>
+					<div class="padding view-all" ng-hide="Video.showMore">&nbsp;</div>
+
+					<div class="published-icon" ng-if="Video.showPublishedIcon"> 
+						<md-icon>cloud_done</md-icon>
+						<span> {{'VIDEO_PUBLISHED_CAPTION' | translate}}</span>
+					</div>
+
+					<p class="star-container" layout="row" layout-align="space-between center">
+						<span class="star-label">{{'VIDEO_DETAIL_QUALITY' | translate}}:</span> <stars value="{{Video.video.data.quality}}"></stars>
+					</p>
+					<p class="star-container" layout="row" layout-align="space-between center">
+						<span>{{'VIDEO_DETAIL_CREDIBILITY' | translate}}:</span> <stars value="{{Video.video.data.credibility}}"></stars>
+					</p>
+				
+					<user-card user="Video.user.data"></user-card>
+					
+					<div class="video-detail-show-info" ng-click="showDetails = !showDetails" ng-init="showDetails = false">
+						<span ng-show="showDetails">{{'HIDE_VIDEO_DETAILS' | translate}}</span>
+						<span ng-hide="showDetails">{{'SHOW_VIDEO_DETAILS' | translate}}</span>
+						<i ng-show="showDetails" class="material-icons">keyboard_arrow_up</i>
+						<i ng-hide="showDetails" class="material-icons">keyboard_arrow_down</i>
+					</div> 
+
+					<div class="video-detail-info" ng-show="showDetails">
+						<p>
+							<strong>{{'VIDEO_DETAIL_CATEGORIES' | translate}}:</strong> {{Video.video.data.categories | commaSeparated:'-':'VIDEO_CATEGORY_'}}
+						</p>
+						<p>
+							<strong>{{'VIDEO_DETAIL_PRODUCT_TYPE' | translate}}:</strong> {{Video.video.data.productType | productType}}
+						</p>
+						<p>
+							<strong>{{'VIDEO_DETAIL_LENGTH' | translate}}:</strong> {{Video.video.data.length | time}}
+						</p>
+						<p>
+							<strong>{{'VIDEO_DETAIL_LANGUAGE' | translate}}:</strong> 
+							<span ng-if="Video.video.data.language">{{ "VIDEO_LANG_" + Video.video.data.language | translate }}</span>
+							<span ng-if="!Video.video.data.language"> - </span>
+						</p>
+						<p>
+							<strong>{{'VIDEO_DETAIL_TECHNICAL_DETAILS' | translate}}:</strong> {{Video.video.data.size | toMB }} MB | {{Video.video.data.format}} | {{Video.video.data.dimensions}} | {{Video.video.data.ratio}}
+						</p>
+						<p>
+							<strong>{{'VIDEO_DETAIL_TAGS' | translate}}:</strong> {{Video.video.data.tag | commaSeparated:'-'}}
+						</p>
+						<p>
+							<strong>{{'VIDEO_DETAIL_NOTES' | translate}}:</strong> {{Video.video.data.notes || ' - '}}
+						</p>
+					</div>
+
+					<div ng-if="Video.session.role == 'editor'"> 
+						<distribute on-distribute="Video.refreshDistributionList"></distribute>
+						
+						<div class="video-detail-show-info" ng-click="showDistribution = !showDistribution" ng-init="showDistribution = false">
+							<span ng-show="showDistribution">{{'HIDE_VIDEO_DISTRIBUTION' | translate}}</span>
+							<span ng-hide="showDistribution">{{'SHOW_VIDEO_DISTRIBUTION' | translate}}</span>
+							<i ng-show="showDistribution" class="material-icons">keyboard_arrow_up</i>
+							<i ng-hide="showDistribution" class="material-icons">keyboard_arrow_down</i>
+						</div> 
+						<distribution-list ng-if="Video.loadDistributionList" ng-show="showDistribution"></distribution-list>
+					</div>
+				</div>
+
+				<div class="video-detail-map only-mobile">
+					<ng-map default-style="false" center="Video.mapMarker" ng-if="Video.mapMarker.length > 0">
+						<marker ng-if="Video.video.data.location" position="{{ Video.mapMarker }}"
+								title="{{ Video.video.data.locationName }}" centered="true"></marker>
+					</ng-map>
+					<div ng-if="Video.mapMarker.length === 0" class="no-map">
+						No location selected
+					</div>
+				</div>
+				
+				<section ui-view="download" class="video-download-view"></section>
+
+				<section class="navigate button-bar">
+					<md-button class="button md-raised"
+							   ng-if="Video.session.id == Video.video.data.owner || Video.session.role == 'editor'"
+							   ui-sref="videoDetailEdit({id: Video.video.data._id})">
+						<md-icon>edit</md-icon>
+						<span>{{'BUTTON_EDIT' | translate}}</span>
+					</md-button>
+					<md-button
+							ng-hide="Video.state.current.name === 'videoDownload' && Video.stateParams.autoDownload !== 'true'"
+							class="button md-raised md-primary video-detail-download-button"
+							ng-click="Video.videoDownload({id: Video.video.data._id, autoDownload: Video.session.id == Video.video.data.owner || Video.session.role === 'editor'})">
+						<md-progress-circular ng-show="Video.downloading" class="md-hue-3 md-inline" md-diameter="20px"></md-progress-circular>
+						<span>{{'DOWNLOAD_VIDEO' | translate}}</span>
+					</md-button>
+				</section>
+			</section>
+		</section>		
+	</article>
+	
+</div>

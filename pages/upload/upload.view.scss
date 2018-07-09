@@ -1,0 +1,180 @@
+.upload-page {
+	@extend %display-flex;
+	@extend %align-items-flex-start;
+	background-color: $background;
+	font-size: 1.3em;
+    height: 100%;
+	margin-top: $topbarHeight;
+	width: 100%;
+	@include desktop {
+		box-sizing: border-box;
+    	padding: 16px;
+    }
+
+	.container {
+		@extend %display-flex;
+	    @extend %flex-direction-column;
+    	margin: 0 auto;
+    	min-height: 25vw;
+    	max-width: 1200px;
+		width: 100%;
+
+		@include desktop {
+    		margin: 16px auto;
+		    border-radius: 5px;
+		    padding: 8px;
+		    background-color: $backgroundLight;
+	    	flex-direction: row;
+			margin-top: 0;
+		}
+	}
+
+	.left-preview {	
+	  height: 56vw;
+	  width: 100%;
+		@include desktop {
+			max-height: 287.6px;
+	    height: 22.5vw;
+			width: 50%;
+		}
+	
+		.upload-form-file {
+			width: 100%;
+			height: 100%;
+			box-sizing: border-box;
+			padding: 16px;
+		}
+
+		.upload-drop-icon {
+			width: 32px;
+			display: inline-block;
+			margin-bottom: 16px;
+		}
+	
+		video {
+			width: 100%;
+			height: 100%;
+		}
+
+		.file-uploading {
+			margin-left: 18px;
+		}
+	}
+
+	.right-form {
+	    background-color: $backgroundLight;
+	    box-sizing: border-box;
+	    padding: 16px;
+	    -webkit-border-radius: 4px;
+	    -moz-border-radius: 4px;
+	    -ms-border-radius: 4px;
+	    border-radius: 4px;
+		width: 100%;
+		margin-top: 24px;
+
+		@include desktop {
+			margin-top: 0;
+			width: 50%;
+		}
+		
+		.upload-form-title,
+		.upload-form-description {
+			border: 1px solid $lightGrey;
+			box-sizing: border-box;
+			font-family: Arial;
+			margin: 4px 0;
+			padding: 8px 16px;
+			width: 100%;
+		}
+		
+		.upload-form-title::placeholder,
+		.upload-form-description::placeholder {
+			color: $lightGrey;
+		}
+
+		.product-type {
+			color: $grey;
+			box-sizing: border-box;
+			display: inline-block;
+			padding: 8px 16px;
+			width: 50%;
+		}
+
+		.form-send-button {
+			margin-top: 16px;
+			text-align: center;
+			width: 100%;
+			@include desktop {
+				text-align: right;
+			}
+
+			md-progress-circular {
+				margin: 0 4px;
+				display: inline-block;
+				vertical-align: middle;
+			}
+
+			a.btn-send {
+				background-color: $mainColor;
+				border: 1px solid $mainColor;
+				box-sizing: border-box;
+				cursor: pointer;
+				color: $backgroundLight;
+				display: inline-block;
+				margin: 16px 4px;
+				padding: 8px 32px;
+				width: 100%;
+				@include border-radius($cardRadius);
+				@include desktop {
+					width: auto;
+				}
+			}
+			a.btn-send:hover {
+				background: transparent;
+				color: $mainColor;
+				text-decoration: none;
+			}
+			a.btn-send:active {
+				background-color: $mainColorLight;
+				color: $backgroundLight;
+				text-decoration: none;
+			}
+			a.btn-send.disabled {
+				background-color: $mainColorDisabled;
+				border-color: $mainColorDisabled;
+				color: $lightGrey;
+			}
+
+		}
+
+		.upload-progress {
+			margin-top: 8px;
+		}
+
+		.upload-error {
+			color: red;
+			padding: 16px 0 8px;
+			text-align: center;
+			width: 100%;
+		}
+	}
+
+	/* Upload drop box */
+	.drop-box {
+	    background: $ultraLightGray;
+	    border-radius: 5px;
+		box-sizing: border-box;
+		color: #8b8b8b;
+		cursor: pointer;
+	    height: 100%;
+	    padding-top: 18%;
+	    text-align: center;
+	    width: 100%;
+	}
+	.drop-box * {
+		box-sizing: border-box;
+	}
+	.dragover {
+	    border: 2px dashed $mainColor;
+	}
+}

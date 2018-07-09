@@ -1,0 +1,24 @@
+$FontPath: "../../../fonts/Helvetica" !default;
+$FontName: "Helvetica" !default;
+$FontVersion: "1.0" !default;
+$FontFamily: 'Helvetica Neue LT Std 45 Light';
+
+//data
+@mixin fontdef-woff-helvetica($FontPath, $FontName, $FontVersion:"1.0.", $FontType:"Regular") {
+  src:
+    url('#{$FontPath}/#{$FontType}/#{$FontName}-#{$FontType}.woff?v=#{$FontVersion}') format('woff'),
+    url('#{$FontPath}/#{$FontType}/#{$FontName}-#{$FontType}.ttf?v=#{$FontVersion}') format('truetype');
+}
+
+@font-face {
+  font-family: $FontFamily;
+  @include fontdef-woff-helvetica($FontPath, $FontName, $FontVersion, "Regular");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: $FontFamily;
+  @include fontdef-woff-helvetica($FontPath, $FontName, $FontVersion, "Regular");
+  font-weight: normal;
+  font-style: normal;
+}

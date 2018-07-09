@@ -1,0 +1,39 @@
+<div ng-controller="GalleryController as Gallery" class="gallery">
+	<topbar transparent="Gallery.topbarTransparent"></topbar>
+
+	<header-box ng-if="Gallery.feature.header"></header-box>
+
+	<article>
+		<section class="gallery-section-featured">
+			<div>
+				<h1>{{'GALLERY_FEATURED_VIDEOS' | translate}}</h1>
+<!--
+				<a href="#">
+					<p>{{'GALLERY_VIEW_ALL' | translate}}</p>
+				</a>
+-->
+			</div>
+			<video-list section-class="gallery-featured" featured="true"></video-list>
+		</section>
+<!--
+		<section class="gallery-filter">
+			<img src="../../img/funnel.svg" alt="img_funnel">
+			<div>
+				<label class="gallery-label-select">
+					<span>{{'GALLERY_ORDER_BY' | translate}}</span>
+					<select>
+						<option selected>{{'GALLERY_ORDER_BY_SELECTOR_RELEVANCE' | translate}}</option>
+					</select>
+				</label>
+			</div>
+		</section>
+-->
+		<section class="gallery-section-nonFeatured">
+			<video-list section-class="gallery-nonFeatured" featured="false"
+						infinite-scroll-enabled="true"></video-list>
+		</section>
+	</article>
+	<div ng-if='Gallery.loading'>
+		<loading></loading>
+	</div>
+</div>

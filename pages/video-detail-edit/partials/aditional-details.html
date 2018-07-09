@@ -1,0 +1,51 @@
+<md-card layout="column" class="video-edit-page__aditional-details">
+	<div flex class="first-row">
+		<md-checkbox class="md-primary" ng-model="EditCtrl.video.featured" ng-disabled="!EditCtrl.editorRole">
+			<span class="vertical-middle">
+			{{ 'VIDEO_EDIT_FEATURE' | translate }}
+			</span>
+		</md-checkbox>
+		<md-checkbox class="md-primary" ng-model="EditCtrl.video.verified" ng-disabled="!EditCtrl.editorRole">
+			<span class="vertical-middle">
+			{{ 'VIDEO_EDIT_VERIFY' | translate }}
+			</span>
+		</md-checkbox>
+		<md-checkbox class="md-primary" ng-model="EditCtrl.video.published" ng-disabled="!EditCtrl.editorRole">
+			<span class="vertical-middle">
+			{{ 'VIDEO_EDIT_PUBLISH' | translate }}
+			</span>
+		</md-checkbox>
+	</div>
+	<div flex layout="row" layout-wrap>
+			<div class="inline-block">
+				<md-input-container class="md-inline small-sized-input margin">
+					<label>{{ 'VIDEO_DETAIL_CREDIBILITY' | translate }}</label>
+					<input ng-model="EditCtrl.video.credibility" type="number" min="1" max="5" step="1" ng-disabled="!EditCtrl.editorRole">
+				</md-input-container>
+				<md-input-container class="md-inline small-sized-input margin">
+					<label>{{ 'VIDEO_DETAIL_QUALITY' | translate }}</label>
+					<input ng-model="EditCtrl.video.quality" type="number" min="1" max="5" step="1" ng-disabled="!EditCtrl.editorRole">
+				</md-input-container>
+			</div>
+			<div class="inline-block">
+				<md-input-container class="md-inline small-sized-input margin">
+					<label>{{ 'VIDEO_DETAIL_PRICE_STD' | translate }}</label>
+					<input ng-model="EditCtrl.video.priceStd" type="number" min="0"  step="1" ng-disabled="!EditCtrl.editorRole">
+				</md-input-container>
+				<md-input-container class="md-inline small-sized-input margin">
+					<label>{{ 'VIDEO_DETAIL_PRICE_COUNTRY' | translate }}</label>
+					<input ng-model="EditCtrl.video.priceCountry" type="number" min="0"  step="1" ng-disabled="!EditCtrl.editorRole">
+				</md-input-container>
+			</div>
+			<div class="inline-block">
+				<md-input-container class="md-inline small-sized-input margin">
+					<label>{{ 'VIDEO_DETAIL_PRICE_CONTINENT' | translate }}</label>
+					<input ng-model="EditCtrl.video.priceContinent" type="number" min="0"  step="1" ng-disabled="!EditCtrl.editorRole">
+				</md-input-container>
+				<md-input-container class="md-inline small-sized-input margin">
+					<label>{{ 'VIDEO_DETAIL_PRICE_WORLD' | translate }}</label>
+					<input ng-model="EditCtrl.video.priceWorld" type="number" min="0"  step="1" ng-disabled="!EditCtrl.editorRole">
+				</md-input-container>
+			</div>
+	</div>
+</md-card> <!-- // .aditional-details md-card -->

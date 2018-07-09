@@ -1,0 +1,25 @@
+<div ng-controller="HomeController as Home" class="register-page">	
+	<article>
+		<div class="register-logo">
+			<img src="../../img/brand/logo_white.png" alt="logo" />
+			<h2><pre>{{'REGISTER_SLOGAN' | translate}}</pre></h2>	
+		</div>
+
+		<section class="register-form">
+			<div class="home-buttons">
+				<button ui-sref="login">{{'LOGIN' | translate}}</button>
+				<button ui-sref="register">{{'REGISTER' | translate}}</button>
+			</div>
+		</section>
+
+		<section class="mobile-apps">
+			<a href="{{Home.flavour.ANDROID_APP}}" target="_blank">
+				<img alt='Get it on Google Play' src='../../img/googlePlay-bg.svg' />
+			</a>
+			<a href="{{Home.flavour.IOS_APP}}" target="_blank">
+				<img alt="itunes_logo" src="../../img/iTunes-bg.png" />
+			</a>
+		</section>
+	</article>
+
+</div>

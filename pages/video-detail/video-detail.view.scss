@@ -1,0 +1,314 @@
+.video-page {
+	background-color: $background;
+	margin-top: $topbarHeight;
+	min-height: 100%;
+	/* video, */
+	.video-player {
+		width: 100%;
+		height: 56.25vw;
+		@include desktop {
+			width: 500px;
+			height: 281.25px;
+			margin: $cardMargin;
+		}
+	}
+	@include desktop {
+		article {
+			background-color: $backgroundLight;
+			width: 1024px;
+			margin: 0 auto;
+			> section {
+				display: flex;
+			}
+		}
+	}
+
+	.md-button {
+		padding: 0px 24px;
+
+		md-icon {
+			font-size: 16px;
+			line-height: 24px;
+		}
+	}
+
+	.md-button * {
+		vertical-align: middle;
+	}
+
+	.md-button.btn-border {
+		border: 1px solid $mainColor;
+		color: $mainColor;
+	}
+
+	.video-detail-map {
+		box-sizing: border-box;
+		width: 100%;
+		@include desktop {
+			padding: $cardMargin;
+		}
+
+		ng-map {
+			height: 200px;
+		}
+
+		.no-map {
+		    background: $ultraLightGray;
+			color: $textLight;
+			height: 200px;
+			display: inline-block;
+			width: 100%;
+			text-align: center;
+			line-height: 200px;
+		}
+	}
+
+	.only-desktop {
+		display: none;
+		@include desktop {
+			display: block;
+		}
+	}
+
+	.only-mobile {
+		display: block;
+		@include desktop {
+			display: none;
+		}
+	}
+
+	.button-bar {
+		background: $backgroundLight;
+		bottom: 0;
+		left: 0;
+		padding: 4px 0;
+		position: fixed;
+		width: 100%;
+
+		@include desktop {
+			background: transparent;
+			position: static;
+			margin-top: 24px;
+		}
+	}
+}
+
+.card-video-detail {
+	margin-bottom: 72px;
+
+	@include desktop {
+		padding: $cardMargin;
+		margin-bottom: 0;
+	}
+}
+
+.card-video-info {
+	@extend %display-flex;
+	@extend %flex-direction-column;
+	background-color: $backgroundLight;
+	box-sizing: border-box;
+	color: $textLight;
+	margin: 16px $cardMargin $cardMargin $cardMargin;
+	padding: 7px 24px;
+	width: 100%;
+	@include border-radius($cardRadius);
+	@include desktop {
+		flex-direction: row;
+		flex-direction: column;
+		margin: 16px 0 0 0;
+		max-width: 50%;
+	}
+
+	.card-user-info {
+		color: $textLight;
+
+		strong {
+			color: $textLight;
+		}
+	}
+
+	> div:first-child {
+		margin: $cardMargin $cardMargin 0 0;
+		h1 {
+			color: $text;
+			font-size: 28px;
+
+			md-icon {
+				font-size: 20px;
+			}
+		}
+		p {
+			color: $text; 
+			font-size: 18px;
+			margin: 10px 15px 0 5px;
+			line-height: 1.2;
+		}
+		> div {
+			text-align: right;
+			input {
+				margin-top: 15px;
+			}
+		}
+
+	}
+	
+	.video-detail-date {
+		color: $textLight;
+	}
+
+	hr {
+		border: 0.5px solid $backgroundDark;
+		margin: 5px 13px;
+	}
+	> div:last-child {
+		margin: 8px $cardMargin 0 $cardMargin;
+	}
+
+	.padding {
+		padding: 6px 0;
+	}
+
+	#video-description {
+		font-size: 20px;
+		line-height: 1.2;
+		color: $textLight;
+	}
+
+	.block-ellipsis {
+		display: block;
+		display: -webkit-box;
+		max-width: 100%;
+		height: 72px;
+		margin: 0 auto;
+		font-size: 20px;
+		line-height: 1.2;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.view-all {
+		margin-top: 8px;
+		margin-bottom: 47px;
+		text-align: right;
+	}
+
+	.read-more {
+		color: $textLight;
+		cursor: pointer;
+	}
+	.read-more:hover {
+		color: $textDark;
+		text-decoration: none;
+	}
+
+	.video-download-view {
+		width: 100%;
+	}
+}
+
+.video-detail-verified {
+	@extend %display-flex;
+	@extend %align-items-center;
+	img {
+		width: 30px;
+		height: 30px;
+		margin-right: 7px;
+	}
+}
+
+.video-detail-show-info {
+	cursor: pointer;
+	margin: $cardMargin 0;
+	span {
+		font-size: 18px;
+	}
+	i {
+		vertical-align: middle;
+	}
+}
+.video-detail-show-info:hover {
+	color: $textDark;
+}
+
+.video-detail-info {
+	margin: 0 0 $cardMargin $cardMargin;
+	p {
+		line-height: 1.5;
+		color: $text;
+	}
+}
+
+strong {
+	color: $textDark;
+	font-weight: 500;
+	padding-right: 7px;
+}
+
+.navigate {
+	text-align: center;
+	@include desktop {
+		text-align: right;
+	}
+}
+
+.video-detail-edit-info {
+	margin: 5px 0;
+	text-align: right;
+	padding: 11px 40px;
+	display: inline-block;
+	@include border-radius(4px);
+	background-color: $mainColor;
+	border: 1px solid $mainColor;
+	a {
+		color: $backgroundLight;
+		cursor: pointer;
+	}
+}
+.video-detail-edit-info.button-empty {
+	background-color: $backgroundLight;
+	border: 1px solid $mainColor;
+	color: $mainColor;
+	a {
+		color: $mainColor;
+	}
+}
+
+.headers-info-videoDetail {
+	h1 {
+		font-weight: 500;
+		font-size: 24px;
+		color: $textDark;
+		@include desktop {
+			font-size: 36px;
+		}
+	}
+	h2 {
+		color: $text; 
+		font-size: 20px;
+		margin: 10px 0;
+		@include desktop {
+			font-size: 20px;
+		}
+	}
+}
+
+.star-container {
+	margin-bottom: 4px;
+	width: 220px;
+	.star-label {
+		vertical-align: middle;
+	}
+}
+
+.published-icon > md-icon {
+	font-size: 36px;
+	height: 46px;
+	margin-right: 15px;
+	color: $grey;
+}
+
+.video-detail-download-button {
+	@extend %display-inline-flex;
+}

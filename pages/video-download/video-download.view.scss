@@ -1,0 +1,70 @@
+a {
+	color: $textDark;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+
+.download-page {
+	width: 100%;
+	@extend %display-flex;
+	@extend %flex-direction-column;
+	margin-top: 16px;
+
+	.md-button * {
+		vertical-align: middle;
+	}
+
+	.md-button {
+		md-progress-circular {
+			display: inline-block;
+			margin-right: 12px;
+		}
+	}
+
+	.md-button.btn-border {
+		border: 1px solid $mainColor;
+		color: $mainColor;
+	}
+
+	.download-button {
+	    margin: 24px 0px;
+	    text-align: center;
+
+		.md-button {
+		    padding: 4px 32px;
+			@include desktop {
+				font-size: 21px;
+			}
+		}
+	}
+}
+
+.download-video-code {
+	color: $grey;
+	text-align: center;
+	input {
+		margin-top: 8px;
+		width: 75%;
+		max-width: 300px;
+		height: 32px;
+		background-color: #f3f3f3;
+		@include border-radius(4px);
+		padding-left: 10px;
+	}
+}
+
+.download-button .button {
+	@include desktop {
+		line-height: 32px;
+		font-size: 24px;
+	}
+}
+
+.code-error {
+	padding: 8px;
+	display: inline-block;
+	width: 50%;
+	color: $error;
+}

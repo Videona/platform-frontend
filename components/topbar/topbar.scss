@@ -1,0 +1,137 @@
+.topbar.transparent {
+	background: transparent;
+	box-shadow: none;	
+	
+	* {
+		color: #fff;
+	}
+}
+
+.topbar {
+	top: 0;
+	left: 0;
+	height: $topbarHeight;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	@extend %display-flex;
+	@extend %justify-content-space-between;
+	@extend %align-items-center;
+	background-color: $topbarBackground;
+	box-shadow: 0px 0px 1px 1px #e8e8e8;
+	z-index: 50;
+	transition: all .2s ease;
+
+	.items-container {
+		width: 100%;
+		text-align: right;
+	}
+	
+	img, svg {
+		cursor: pointer;
+		fill: $textLight;
+		/*height: $topbarImgHeight;*/
+		height: auto;
+		margin: $cardMargin;
+		max-width: 100px;
+		vertical-align: middle;
+		@include tablet {
+			max-width: 137px;
+		}
+	}
+
+	i, md-icon {
+		color: $topbarColor;
+		cursor: pointer;
+		font-size: 24px;
+		margin: 8px;
+		vertical-align: middle;
+	}
+	
+	.md-button {
+		color: $topbarColor;
+	}
+
+	md-menu .md-button.md-icon-button {
+	    margin: 0 6px 0 0px;
+	    padding: 6px;
+	}
+
+	.desktop-right-icons {
+		display: none;
+	}
+
+	.search-bar {
+		background: #fff;
+		box-sizing: border-box;
+		display: flex;
+		height: 52px;
+		justify-content: center;
+		left: 0;
+		position: absolute;
+		text-align: right;
+		top: 0;
+		width: 100%;
+		z-index: 1;
+		@include desktop {
+			background: transparent;
+		}
+
+		md-icon {
+			color: $textLight;
+		}
+
+		.close-bar {
+			line-height: $topbarHeight;
+		}
+
+		* {
+			vertical-align: middle;
+		}
+		input {
+			width: 100%;
+			color: $textLight;
+		}
+	}
+
+	@include desktop {
+		.mobile-menu,
+		.mobile-icons {
+			display: none;
+		}
+
+		.desktop-right-icons {
+			display: inline;
+		}
+
+		.logo {
+			width: 25vw;
+		}
+
+		.search-bar {
+			display: inline-block !important;
+			margin-right: 8px;
+			position: static;	
+			width: auto;
+
+			.close-search {
+				display: none !important;
+			}
+
+			input {
+				border: 1px solid $lightGrey;
+				border-radius: 5px;
+				height: 2em;
+				padding: 0 8px;
+				margin-top: 2px;
+				width: 30vw;
+			}
+
+			.search-button {
+				margin-left: -46px;
+    			height: 24px;
+			}
+		}
+	}
+}

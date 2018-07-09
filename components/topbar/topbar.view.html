@@ -1,0 +1,45 @@
+<header class="topbar" ng-class="{'transparent': transparent}">
+	<!--<span class="mobile-menu">
+		<ng-include src="'/img/menu.svg'" alt="img_menu"></ng-include>
+	</span> -->
+	<span class="logo">
+		<img ui-sref="gallery" src="/img/brand/logo_topbar.png" alt="logo">
+	</span>
+	<span class="items-container">
+		<span class="search-bar" ng-show="searching">
+			<span class="close-bar" ng-click="searching = !searching">
+				<md-icon class="close-search">close</md-icon>
+			</span>
+			<input id="searchField" type="text" name="searchBox" ng-model="search.searchBox" on-enter="search.search()">
+			<ng-include src="'/img/search.svg'" alt="img_menu" ng-click="search.search()" class="search-button"></ng-include>
+		</span>
+		
+		<span class="mobile-icons">
+			<span ng-click="searching = !searching; focus();">
+				<md-icon>search</md-icon>
+			</span>
+			<span ng-if="session.id !== -1" ui-sref="upload">
+				<md-icon>file_upload</md-icon>
+			</span>
+			<profile-top-menu></profile-top-menu>
+		</span>
+		
+		<span class="desktop-right-icons">
+			<span ui-sref="upload">
+				<md-icon>file_upload</md-icon>
+			</span>
+			<profile-top-menu></profile-top-menu>
+		</span>
+	</span>
+</header>
+<!--
+<div class="topbar-margin"></div>
+<section class="gallery-search">
+	<input type="text" placeholder="{{'SEARCH' | translate }}" ng-model="Gallery.search">
+	<div>
+		<label>Order by</label>
+		<select>
+			<option value="Relevance"></option>
+		</select>
+	</div>
+</section>-->

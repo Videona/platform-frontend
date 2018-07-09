@@ -1,0 +1,90 @@
+@import
+'base/variables',
+'base/medias';
+
+@import
+'helpers/mixins',
+'helpers/animations',
+'helpers/placeholders';
+
+// COMPONENTS
+
+@import
+'../components/404/error404.view',
+'../components/profile-top-menu/profile-top-menu.view',
+'../components/header-box/header-box.view',
+'../components/player/player.view',
+'../components/stars/stars.view',
+'../components/topbar/topbar',
+'../components/user-card/user-card.view',
+'../components/video-card/video-card',
+'../components/video-list/video-list',
+'../components/client-list/client-list.view';
+
+@import
+'base/reset',
+'../pages/register/register.view',
+'../pages/login/login.view',
+'../pages/video-detail/video-detail.view',
+'../pages/video-detail-edit/video-detail-edit.view',
+'../pages/video-download/video-download.view',
+'../pages/gallery/gallery.view',
+'../pages/search/search.view',
+'../pages/upload/upload.view',
+'../pages/user-gallery/user-gallery.view';
+
+@import 'base/flavour';
+
+
+// TODO: extract these directives to a common style file
+.background-wrapper {
+	background-color: $background;
+}
+
+/* Videogular custom poster*/
+.vg-poster-fill {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+videogular vg-poster .vg-poster-fill.pause,
+videogular vg-poster .vg-poster-fill.play, 
+[videogular] vg-poster .vg-poster-fill.pause,
+[videogular] vg-poster .vg-poster-fill.play {
+	display: none;
+}
+videogular vg-poster .vg-poster-fill.stop, 
+[videogular] vg-poster .vg-poster-fill.stop {
+	display: block;
+}
+
+.panoramic {
+  background: $ultraLightGray;
+  display: inline-block;
+  margin: 0 4px;
+  height: 8.4375vw;
+  width: 15vw;
+  vertical-align: middle;
+  // TODO:(jliarte) check with design
+  overflow: hidden;
+
+
+  @media screen and (max-width: 959px) {
+    height: 19.6875vw;
+    width: 35vw;
+  }
+  @media screen and (max-width: 520px) {
+    margin-top: 8px;
+  }
+}
+
+// Modal position fixes
+.md-dialog-is-showing {
+  overflow: initial;
+}
+
+button md-progress-circular {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 4px;
+}
