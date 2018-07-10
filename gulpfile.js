@@ -63,17 +63,13 @@ gulp.task('flavour', function () {
 	console.log('### Building flavour ' + flavour);
 	console.log('##############################################');
 
-	gulp.src('./flavour/**/**')
-		.pipe(debug({ title: 'Move all flavour files'}))
-		.pipe(gulp.dest('./'));
-
 	return gulp.src('./flavour/' + flavour + '/**/**')
 		.pipe(debug({ title: 'Move flavour files (' + flavour + '):' }))
 		.pipe(gulp.dest('./'));
 });
 
 
-// Build dependincies
+// Build dependencies
 var sourceDeps = [
 	'../node_modules/ng-file-upload/dist/ng-file-upload.min.js',
 	'../node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js',
