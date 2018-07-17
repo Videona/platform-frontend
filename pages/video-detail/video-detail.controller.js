@@ -50,13 +50,13 @@ function VideoDetail($timeout, $stateParams, $state, session, video, videoDownlo
 		);
 	}
 
-	let deletionConfirm = $mdDialog.confirm()
-		.title('Would you like to delete this video?')
-		.textContent('This action is permanent. Your video and all associated data will be deleted forever!')
+	let deletionConfirm = $mdDialog.confirm(event)
+		.title($translate.instant('VIDEO_DELETE_CONFIRM_TITLE'))
+		.textContent($translate.instant('VIDEO_DELETE_CONFIRM_TEXT'))
 		.ariaLabel('delete video confirm')
-		// .targetEvent(ev)
-		.ok('Delete!')
-		.cancel('Cancel');
+		.targetEvent(event)
+		.ok($translate.instant('VIDEO_DELETE_CONFIRM_BUTTON_OK'))
+		.cancel($translate.instant('VIDEO_DELETE_CONFIRM_BUTTON_CANCEL'));
 
 	function performVideoDelete() {
 		let data = {};
@@ -79,7 +79,7 @@ function VideoDetail($timeout, $stateParams, $state, session, video, videoDownlo
 
 		$mdDialog.show(deletionConfirm).then(function() {
 			console.log("confirms deletion");
-			performVideoDelete();
+			performVideoDelete($event);
 		}, function() {
 			console.log("rejects deletion");
 		});
