@@ -108,6 +108,8 @@
 			VIDEO_DELETE: 'Delete',
 			VIDEO_CANCEL: 'Cancel',
 			VIDEO_SAVE: 'Save',
+			VIDEO_DELETE_SUCCESS: 'Success deleting video',
+			VIDEO_DELETE_FAILURE: 'Error deleting video ',
 			VIDEO_EDIT_FEATURE: 'Feature',
 			VIDEO_EDIT_VERIFY: 'Verify',
 			VIDEO_EDIT_PUBLISH: 'Publish',
@@ -159,6 +161,7 @@
 			BUTTON_READ_ALL: 'Read all',
 			BUTTON_READ_LESS: 'Read less',
 			BUTTON_EDIT: 'Edit',
+			BUTTON_DELETE: 'Delete',
 
 			// Search page
 			SHOWING_RESULTS_FOR: 'Showing {{count}} results for',

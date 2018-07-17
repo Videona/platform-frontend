@@ -1,7 +1,9 @@
 angular.module('app')
-	.controller('VideoDetailController', ['$timeout', '$stateParams', '$state', 'session', 'video', 'videoDownload', 'user', '$timeout', 'NgMap', 'page', VideoDetail]);
+	.controller('VideoDetailController', ['$timeout', '$stateParams', '$state', 'session', 'video', 'videoDownload',
+		'user', '$timeout', 'NgMap', 'page', '$mdDialog', 'api', '$mdToast', '$translate', VideoDetail]);
 
-function VideoDetail($timeout, $stateParams, $state, session, video, videoDownload, user, $timeout, NgMap, page) {
+function VideoDetail($timeout, $stateParams, $state, session, video, videoDownload, user, $timeout, NgMap, page,
+                     $mdDialog, api, $mdToast, $translate) {
 	var self = this;
 
 	self.id = $stateParams.id;
@@ -27,9 +29,63 @@ function VideoDetail($timeout, $stateParams, $state, session, video, videoDownlo
 		$timeout(function () { 
 			self.loadDistributionList = true;
 		}, 0);
+	};
+
+	self.canEdit = function () {
+		return session.id == video.data.owner || session.role == 'editor';
+	};
+
+	self.canDelete = function () {
+		return session.id == video.data.owner || session.role == 'editor';
+	};
+
+	function showMessage(message) {
+		let toastParentElement = angular.element(document.getElementById("toast-container"));
+		$mdToast.show(
+			$mdToast.simple()
+				.textContent(message)
+				.parent(toastParentElement)
+				.toastClass("mojofy-toast")
+				.position("fixed-top right")
+		);
 	}
 
-	if(self.video && self.video.data && self.video.data.id !== self.id) {
+	let deletionConfirm = $mdDialog.confirm()
+		.title('Would you like to delete this video?')
+		.textContent('This action is permanent. Your video and all associated data will be deleted forever!')
+		.ariaLabel('delete video confirm')
+		// .targetEvent(ev)
+		.ok('Delete!')
+		.cancel('Cancel');
+
+	function performVideoDelete() {
+		let data = {};
+		api.del(api.url + '/video/' + video.data._id, data, function (data, status) {
+			if (status == 200) {
+				showMessage($translate.instant('VIDEO_DELETE_SUCCESS'));
+				setTimeout(function() {
+					$state.go('gallery');
+				}, 500);
+			} else {
+				console.log("res deleting video ", data);
+				console.log("status ", status);
+				showMessage($translate.instant('VIDEO_DELETE_FAILURE' + ' ' + data.error));
+			}
+		});
+	}
+
+	self.delete = function ($event) {
+		console.log("calling delete video action");
+
+		$mdDialog.show(deletionConfirm).then(function() {
+			console.log("confirms deletion");
+			performVideoDelete();
+		}, function() {
+			console.log("rejects deletion");
+		});
+	};
+
+	if (self.video && self.video.data && self.video.data.id !== self.id) {
 		self.video.reset();
 	}
 	

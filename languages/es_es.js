@@ -108,6 +108,8 @@
 			VIDEO_DELETE: 'Eliminar',
 			VIDEO_CANCEL: 'Cancelar',
 			VIDEO_SAVE: 'Guardar',
+			VIDEO_DELETE_SUCCESS: 'Vídeo borrado con éxito',
+			VIDEO_DELETE_FAILURE: 'Error borrando vídeo ',
 			VIDEO_EDIT_FEATURE: 'Destacar',
 			VIDEO_EDIT_VERIFY: 'Verificar',
 			VIDEO_EDIT_PUBLISH: 'Publicar',
@@ -159,6 +161,7 @@
 			BUTTON_READ_ALL: 'Leer todo',
 			BUTTON_READ_LESS: 'Leer menos',
 			BUTTON_EDIT: 'Editar',
+			BUTTON_DELETE: 'Borrar',
 
 			// Search page
 			SHOWING_RESULTS_FOR: 'Mostrando {{count}} resultados para',
