@@ -28,6 +28,6 @@
 		</md-menu-content>
 	</md-menu>
 
-	<md-button ng-if="!profileCtrl.auth.isAuthenticated()" ng-click="profileCtrl.auth.login()">
+	<md-button class="sign-in-button" ng-if="!profileCtrl.auth.isAuthenticated()" ng-click="profileCtrl.auth.login()">
 		{{ 'SIGN_IN' | translate }}</md-button>
 </span>
