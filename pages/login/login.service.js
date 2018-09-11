@@ -13,6 +13,7 @@
 		// Internal functions
 
 		function send(name, pass, cb) {
+			console.log("login service send!");
 			var body = {
 				// name: name,
 				email: name,

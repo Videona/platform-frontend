@@ -42,6 +42,14 @@ gulp.task('make-config', function () {
 		backendApiUrl: process.env.BACKEND_API_URL || 'http://localhost:3000',
 		gmapsApiKey: process.env.GMAPS_API_KEY || 'provideGmapsApiKey',
 		maxVideoUploadByteSize: process.env.MAX_VIDEO_UPLOAD_BYTE_SIZE || '1500000',
+		auth0ClientId: process.env.AUTH0_CLIENT_ID || 'setup_auth0_credentials!',
+		auth0Domain: process.env.AUTH0_DOMAIN,
+		auth0Audience: process.env.AUTH0_AUDIENCE,
+		auth0Redirect_uri: process.env.AUTH0_REDIRECT_URI,
+		auth0Scope: process.env.AUTH0_SCOPE,
+		auth0MetadataNS: process.env.AUTH0_METADATA_NS,
+		flavour: process.env.FLAVOUR || 'vimojo',
+		mainColor: process.env.MAIN_COLOR || '#f14b51',
 	});
 
 	return b2v.stream(new Buffer(json), 'config.js')
@@ -50,7 +58,7 @@ gulp.task('make-config', function () {
 });
 
 gulp.task('flavour', function () {
-	var flavour = process.env.FLAVOUR || 'vimojo';
+	let flavour = process.env.FLAVOUR || 'vimojo';
 	console.log('##############################################');
 	console.log('### Building flavour ' + flavour);
 	console.log('##############################################');
@@ -61,7 +69,7 @@ gulp.task('flavour', function () {
 });
 
 
-// Build dependincies
+// Build dependencies
 var sourceDeps = [
 	'../node_modules/ng-file-upload/dist/ng-file-upload.min.js',
 	'../node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js',
@@ -70,6 +78,8 @@ var sourceDeps = [
 	'../node_modules/videogular-controls/vg-controls.min.js',
 	'../node_modules/videogular-overlay-play/vg-overlay-play.min.js',
 	'./js/custom-vg-poster.js',
+	'../node_modules/auth0-js/build/auth0.js',
+	'../node_modules/angular-auth0/dist/angular-auth0.min.js',
 ];
 gulp.task('join-dependencies', ['make-config', 'flavour'], function () {
 	return gulp.src(sourceDeps)
