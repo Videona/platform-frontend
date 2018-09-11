@@ -127,8 +127,11 @@
 				<section ui-view="download" class="video-download-view"></section>
 
 				<section class="navigate button-bar">
-					<md-button class="button md-raised"
-							   ng-if="Video.session.id == Video.video.data.owner || Video.session.role == 'editor'"
+					<md-button class="button" ng-if="Video.canDelete()" ng-click="Video.delete($event)">
+						<md-icon>delete</md-icon>
+						<span>{{'BUTTON_DELETE' | translate}}</span>
+					</md-button>
+					<md-button class="button md-raised" ng-if="Video.canEdit()"
 							   ui-sref="videoDetailEdit({id: Video.video.data._id})">
 						<md-icon>edit</md-icon>
 						<span>{{'BUTTON_EDIT' | translate}}</span>
