@@ -80,12 +80,24 @@ var sourceDeps = [
 	'./js/custom-vg-poster.js',
 	'../node_modules/auth0-js/build/auth0.js',
 	'../node_modules/angular-auth0/dist/angular-auth0.min.js',
+  '../node_modules/angular-material-data-table/dist/md-data-table.min.js',
 ];
-gulp.task('join-dependencies', ['make-config', 'flavour'], function () {
+
+var styleDeps = [
+  '../node_modules/angular-material-data-table/dist/md-data-table.min.css',
+];
+gulp.task('join-dependencies', ['make-config', 'flavour', 'copy-style-dependencies'], function () {
 	return gulp.src(sourceDeps)
 		.pipe(debug({ title: 'Join js dependencies:' }))
 		.pipe(concat('modules.js'))
 		.pipe(gulp.dest('./modules'));
+});
+
+gulp.task('copy-style-dependencies', [], function () {
+  return gulp.src(styleDeps)
+    .pipe(debug({ title: 'Copy style dependencies:' }))
+    // .pipe(concat('modules.js'))
+    .pipe(gulp.dest('./modules/css'));
 });
 
 gulp.task('dependencies', ['join-dependencies'], function () {
