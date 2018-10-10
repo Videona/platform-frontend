@@ -1,55 +1,58 @@
-<div ng-controller="RegisterController as Register" class="register-page">
+<topbar></topbar>
+<div ng-controller="RegisterController as RegisterCtrl" class="register-page" layout="row" layout-align="center center">
 
-	<article>
-		<div class="register-logo">
-			<img src="../../img/brand/logo_white.png" alt="logo" />
-			<h2 ng-if="!Register.error"><pre>{{'REGISTER_SLOGAN' | translate}}</pre></h2>	
-		</div>
+	<!--<div class="page-title" flex="100">-->
+		<!--<h1>{{ 'REGISTER_PAGE_TITLE' | translate }}</h1>-->
+	<!--</div>-->
 
-		<section class="register-form">
+		<md-card class="register-card" flex="60">
+			<md-card-title>
+				<md-card-title-text>
+					<!--<md-icon class="plan-icon">{{ plan.icon }}</md-icon>-->
+					<span class="md-headline">{{ 'REGISTER_PAGE_TITLE' | translate }}</span>
+					<span class="md-subhead">{{ plan.headline | translate }}</span>
+				</md-card-title-text>
+			</md-card-title>
+			<md-card-content layout="row">
+				<div class="register-page__product-details" flex="40">
+					{{ 'REGISTER_PAGE_FEATURES_HEADLINE' | translate }} {{ RegisterCtrl.currentProductDetails.name }}.
+					<md-list class="md-dense feature-list" flex>
+						<md-list-item class="md-1-line" ng-repeat="feature in RegisterCtrl.currentProductDetails.features">
 
-			<form name="form" novalidate>
-
-				<div ng-show="Register.activeView.credentials">
-					<input type="text" placeholder="{{'USERNAME' | translate }}" ng-model="Register.username">
-					<input type="text" placeholder="{{'EMAIL' | translate }}" ng-model="Register.email">
-					<input type="password" placeholder="{{'PASSWORD' | translate }}" ng-model="Register.password">
+							<div class="md-list-item-text"><md-icon>{{ feature.icon }}</md-icon>{{ feature.featureLine | translate }}</div>
+						</md-list-item>
+					</md-list>
 				</div>
+				<div class="register-page__promotion-details" flex="60" layout="column" >
+					<div flex class="promotion-headline">{{ 'REGISTER_PAGE_PROMOTION_HEADLINE_START' | translate }}
+						{{ RegisterCtrl.currentProductDetails.name }}
+						{{ 'REGISTER_PAGE_PROMOTION_HEADLINE_END' | translate }}</div>
+					<div flex class="promotion-subhead">{{ 'REGISTER_PAGE_PROMOTION_SUBHEAD' | translate }}
+						{{ RegisterCtrl.endOfPromotion }}</div>
+					<div flex class="promotion-graphics" layout="row">
+						<div class="icon-wrapper" flex="33">
+							<span class="icon-holder"><md-icon>plus_one</md-icon></span>
+							<span class="text">{{ 'REGISTER_PAGE_PROMOTION_GRAPHICS_REGISTER' | translate }}</span>
+						</div>
+						<div class="icon-wrapper" flex="33">
+							<span class="icon-holder"><md-icon>phone_android</md-icon></span>
+							<span class="text">{{ 'REGISTER_PAGE_PROMOTION_GRAPHICS_INSTALL_APPS' | translate }}</span>
+						</div>
+						<div class="icon-wrapper" flex="33">
+							<span class="icon-holder"><md-icon>lock_open</md-icon></span>
+							<span class="text">{{ 'REGISTER_PAGE_PROMOTION_GRAPHICS_FREE_TRIAL' | translate }}</span>
+						</div>
+					</div>
+					<div flex="initial" class="register-link">
+						<md-button class="sign-in-button md-raised md-primary" ng-click="RegisterCtrl.auth.login()">
+							{{ 'SIGN_IN' | translate }}</md-button>
+						<span class="conditions">{{ 'REGISTER_PAGE_CONDITIONS' | translate }}</span>
+						<span class="terms">{{ 'REGISTER_PAGE_TERMS_AGREE' | translate }}
+							{{ 'TERMS_OF_SERVICE' | translate }} {{ 'AND' | translate }} {{ 'PRIVACY_POLICY' | translate }}</span>
+					</div>
 
-				<div ng-show="Register.activeView.terms">
-					<div id="recaptcha" ng-if="enableRecaptcha" class="g-recaptcha" data-sitekey="6LfKYUMUAAAAAHza4xAfzQ7FHCpKy1Nbz5TBj7GM" render="explicit"></div>
-					<span>
-						<input type="checkbox" id="signup" ng-model="Register.terms" required="required">
-						<label for="signup">{{'ACCEPT_CONDITIONS_1' | translate}}<span>
-							<a ui-sref="terms" target="_blank">{{'CONDITIONS' | translate}}</a>
-						</span>{{'ACCEPT_CONDITIONS_2' | translate}}</label>
-					</span>
-				</div>
-
-			</form>
-
-			<div ng-show="Register.loading" class="credentials-errors">{{'LOADING' | translate}}</div>
-			<ul class="credentials-errors" ng-show="Register.error.length > 0">
-				<li ng-repeat="err in Register.error"> {{err}} </li>
-			</ul>
-
-			<button ng-if="Register.activeView.credentials" ng-click="Register.validateRegister()">
-				<span>{{'REGISTER_ACTION' | translate }}</span>
-			</button>
-			<button ng-if="Register.activeView.terms" ng-click="Register.submit()">
-				<span >{{'COMPLETED' | translate }}</span>
-			</button>
-	
-		</section>
-
-		<section class="mobile-apps">
-			<a href="{{Register.flavour.ANDROID_APP}}" target="_blank">
-				<img alt='Get it on Google Play' src='../../img/googlePlay-bg.svg' />
-			</a>
-			<a href="{{Register.flavour.IOS_APP}}" target="_blank">
-				<img alt="itunes_logo" src="../../img/iTunes-bg.png" />
-			</a>
-		</section>
-	</article>
+			</md-card-content>
+		</md-card>
+	</div>
 
 </div>

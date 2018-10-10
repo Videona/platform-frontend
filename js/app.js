@@ -68,7 +68,7 @@
 				templateUrl: 'pages/login/login.view.html',
 			})
 			.state('register', {
-				url: '/register',
+				url: '/register?product=:productId',
 				templateUrl: 'pages/register/register.view.html',
 			})
       .state('pricing', {

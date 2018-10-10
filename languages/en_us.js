@@ -7,6 +7,8 @@
 			HELLO: 'Hello',
 			WORLD: 'world',
 
+			AND: 'and',
+
 			// 404 directive
 			DEFAULT404_ERROR_TITLE: 'Page not found',
 			DEFAULT404_ERROR_MESSAGE: 'This page could not be found, please check the url.',
@@ -14,6 +16,19 @@
 			LOADING: 'Loading...',
 			LOADING_WAIT: 'Loading your page, please wait',
 
+			// register page
+			REGISTER_PAGE_TITLE: 'Create a new Vimojo account!',
+			REGISTER_PAGE_FEATURES_HEADLINE: 'Empower your creativity and boost your storytelling with Vimojo',
+			REGISTER_PAGE_PROMOTION_HEADLINE_START: 'Your ViMoJo',
+			REGISTER_PAGE_PROMOTION_HEADLINE_END: 'is now Free!!',
+			REGISTER_PAGE_PROMOTION_SUBHEAD: 'Get a free month of subscription and don\'t pay anything until',
+			REGISTER_PAGE_PROMOTION_GRAPHICS_REGISTER: 'register',
+			REGISTER_PAGE_PROMOTION_GRAPHICS_INSTALL_APPS: 'install apps',
+			REGISTER_PAGE_PROMOTION_GRAPHICS_FREE_TRIAL: 'free trial',
+			REGISTER_PAGE_CONDITIONS: 'Easy set up &#9680; try free for a month &#9680; cancel anytime',
+			REGISTER_PAGE_TERMS_AGREE: 'By registering in ViMoJo you agree to our',
+			TERMS_OF_SERVICE: 'Terms of Service',
+			PRIVACY_POLICY: 'Privacy Policy',
 			SIGN_IN: 'Sign in',
 			LOGIN: 'Login',
 			REGISTER: 'Register',
@@ -200,6 +215,7 @@
 			TERMS: 'Terms & conditions',
 
 			// Pricing
+			PRICING_PAGE_WEB_TITLE: 'Plans - Boost your storytelling with Vimojo',
 			PRICING_PAGE_TITLE: 'Several plans and pricing to boost your storytelling',
 			PRICING_PAGE_SUBSCRIBE_NOW: 'Subscribe now',
 			PRICING_PAGE_REGISTER_FREE: 'Register Free',

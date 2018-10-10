@@ -1,29 +1,91 @@
 .register-page {
-	@extend %align-items-center;
+	font-family: 'Raleway', sans-serif;
+	div, span, h1, td, th {
+		font-family: 'Raleway', sans-serif;
+	}
+
 	background-color: $mainColor;
 	background-image: url('../../img/brand/register-bg.jpg');
 	background-size: cover;
 	background-position: right;
-	@extend %display-flex;
-	@extend %justify-content-center;
 	height: 100vh;
 	width: 100%;
 	@include mobile {
 		-webkit-animation: imageTranslation 10s both ease-in-out;
-  	-moz-animation: imageTranslation 10s both ease-in-out;
+		-moz-animation: imageTranslation 10s both ease-in-out;
 		animation: imageTranslation 10s both ease-in-out;
 	}
 	@include keyboard {
-    position: fixed;
+		position: fixed;
 	}
-	article {
-		@extend %align-items-center;
-		@extend %display-flex;
-		@extend %flex-direction-column;
-		@extend %justify-content-center;
-		min-height: 365px;
-		min-width: 290px;
-		width: 60%;
+
+	.feature-list {
+		md-icon {
+			font-size: 0.9em;
+			display: inline;
+			margin-top: 0;
+			margin-right: 8px;
+		}
+		md-list.md-dense md-list-item, md-list.md-dense md-list-item .md-list-item-inner {
+			font-size: 0.9em;
+			min-height: 14px;
+		}
+	}
+
+}
+
+.register-page__promotion-details {
+	padding-left: 80px;
+	.promotion-headline {
+		//display: block;
+		font-size: 1.5em;
+		font-weight: 400;
+	}
+
+	.promotion-subhead {
+		//margin: 14px 4px;
+		//display: block;
+		font-size: 1.0em;
+	}
+
+	.promotion-graphics {
+		.icon-wrapper {
+			text-align: center;
+			.icon-holder {
+				text-align: center;
+				display: block;
+				min-height: 3em;
+				md-icon {
+					font-size: 3em;
+				}
+			}
+			.text {
+				text-align: center;
+				display: block;
+
+			}
+		}
+	}
+
+	.register-link {
+		.md-button {
+			width: 100%;
+			margin: 10px 4px;
+			display: block;
+		}
+		.conditions {
+			text-align: center;
+			display: block;
+			font-size: 0.8em;
+			color: $lightGrey;
+			margin-bottom: 20px;
+		}
+		.terms {
+			text-align: center;
+			display: block;
+			color: $lightGrey;
+			font-size: 0.8em;
+		}
 	}
 }
 

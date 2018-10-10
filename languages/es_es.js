@@ -7,6 +7,8 @@
 			HELLO: 'Hola',
 			WORLD: 'mundo',
 
+			AND: 'y',
+
 			// 404 directive
 			DEFAULT404_ERROR_TITLE: 'Página no encontrada',
 			DEFAULT404_ERROR_MESSAGE: 'Esta página no ha podido ser encontrada, por favor comprueba la dirección de la página.',
@@ -14,6 +16,19 @@
 			LOADING: 'Cargando...',
 			LOADING_WAIT: 'Cargando la página. Por favor, espere',
 
+			// register page
+			REGISTER_PAGE_TITLE: 'Crea una nueva cuenta de Vimojo!',
+			REGISTER_PAGE_FEATURES_HEADLINE: 'Potencia tu creatividad y mejora tu storytelling con Vimojo',
+			REGISTER_PAGE_PROMOTION_HEADLINE_START: 'Tu ViMoJo',
+			REGISTER_PAGE_PROMOTION_HEADLINE_END: 'es ahora Gratis!!',
+			REGISTER_PAGE_PROMOTION_SUBHEAD: 'Consigue un mes de subscripción gratis y no pagues nada hasta',
+			REGISTER_PAGE_PROMOTION_GRAPHICS_REGISTER: 'regístrate',
+			REGISTER_PAGE_PROMOTION_GRAPHICS_INSTALL_APPS: 'instala las apps',
+			REGISTER_PAGE_PROMOTION_GRAPHICS_FREE_TRIAL: 'úsalo gratis',
+			REGISTER_PAGE_CONDITIONS: 'Fácil instalación º prueba gratis durante un mes º cancela en cualquier momento',
+			REGISTER_PAGE_TERMS_AGREE: 'Al registrarte en Vimojo aceptas nuestras ',
+			TERMS_OF_SERVICE: 'Condiciones de Servicio',
+			PRIVACY_POLICY: 'Política de Privacidad',
 			SIGN_IN: 'Iniciar sesión',
 			LOGIN: 'Acceder',
 			REGISTER: 'Registro',
@@ -200,6 +215,7 @@
 			TERMS: 'Términos y condiciones de uso',
 
 			// Pricing
+			PRICING_PAGE_WEB_TITLE: 'Plans - Potencia tu storytelling con Vimojo',
 			PRICING_PAGE_TITLE: 'Varios planes y precios para acelerar tu storytelling!',
 			PRICING_PAGE_SUBSCRIBE_NOW: 'Suscribirse ahora',
 			PRICING_PAGE_REGISTER_FREE: 'Registro gratuito',
