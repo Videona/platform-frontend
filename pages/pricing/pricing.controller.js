@@ -1,8 +1,8 @@
 angular.module('app')
 	.controller('PricingController', ['$mdToast', '$scope', '$translate', 'page', '$location', '$anchorScroll',
-		'pricing', '$state', PricingController]);
+		'pricing', '$state', '$analytics', PricingController]);
 
-function PricingController($mdToast, $scope, $translate, page, $location, $anchorScroll, pricing, $state) {
+function PricingController($mdToast, $scope, $translate, page, $location, $anchorScroll, pricing, $state, $analytics) {
 	var self = this;
 	page.setPageTitle($translate.instant('PRICING_PAGE_WEB_TITLE'));
 
@@ -12,10 +12,11 @@ function PricingController($mdToast, $scope, $translate, page, $location, $ancho
 	self.featureTableProducts = [ 'free', 'witness', 'journalist', 'hero', 'superHero' ];
 
 	// selfish Methods
-	self.expandPlanInfo = function (plan) {
-		console.log("request more info of plan ", plan);
-		selectedPlan = plan;
-		// TODO(jliarte): 4/10/18 register user event into event tracker
+	self.expandPlanInfo = function (productId) {
+		console.log("request more info of productId ", productId);
+		selectedPlan = productId;
+		$analytics.eventTrack('Product Detail', {  productId: productId });
+
 		$location.hash('feature-table-comparison');
 		$anchorScroll.yOffset = 20;
 		$anchorScroll();
@@ -28,10 +29,9 @@ function PricingController($mdToast, $scope, $translate, page, $location, $ancho
 	};
 
 	self.buyProduct = function (productId) {
-		// TODO(jliarte): 4/10/18 track event
+		$analytics.eventTrack('Product Subscription Click', {  productId: productId });
 		console.log("user product purchase ", productId);
 		pricing.setCurrentProduct(productId);
-		// TODO(jliarte): 4/10/18 redirect to register page
 		$state.go('register', { productId: productId });
 	}
 

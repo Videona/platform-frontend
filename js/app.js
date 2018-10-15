@@ -3,7 +3,8 @@
 	angular.module('app', ['auth0.auth0', 'app.config', 'app.flavour', 'ui.router', 'pascalprecht.translate',
 		'infinite-scroll', 'ngFileUpload', 'angularMoment', 'ngMaterial', 'ngMap', 'ngSanitize', 'com.2fdevs.videogular',
 		'com.2fdevs.videogular.plugins.controls', 'com.2fdevs.videogular.plugins.overlayplay',
-		'com.2fdevs.videogular.plugins.poster', 'md.data.table'])
+		'com.2fdevs.videogular.plugins.poster', 'md.data.table', 'angulartics', 'angulartics.google.analytics',
+		'angulartics.mixpanel'])
 		.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$translateProvider', '$mdThemingProvider',
 			'$mdDateLocaleProvider', 'angularAuth0Provider', 'auth0ClientId', 'auth0Domain', 'auth0Audience',
 			'auth0Redirect_uri', 'auth0Scope', conf]);
