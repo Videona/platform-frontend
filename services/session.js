@@ -1,8 +1,8 @@
 (function () {
 	angular.module('app')
-		.factory('session', ['api', '$translate', 'auth0MetadataNS', sessionService]);
+		.factory('session', ['api', '$translate', 'auth0MetadataNS', '$q', sessionService]);
 
-	function sessionService(api, $translate, auth0MetadataNS) {
+	function sessionService(api, $translate, auth0MetadataNS, $q) {
 		const session = {
 			id: -1,
 			name: '',
@@ -20,6 +20,8 @@
 			setUserId: setUserId,
 			setRedirectState: setRedirectState,
 			getRedirectState: getRedirectState,
+			setCurrentProduct: setCurrentProduct,
+			getCurrentProduct: getCurrentProduct,
 		};
 
 		getSession();
@@ -55,7 +57,7 @@
 		}
 
 		function setUserInfo(profileData) {
-			console.log("set session with session: ", profileData);
+			console.log("setUserInfo - set session with session: ", profileData);
 			session.authId = profileData.sub || -1;
 			session.name = profileData.name || '';
 			session.username = profileData.name || profileData.nickname || '';
@@ -72,6 +74,7 @@
 		}
 
 		function setToken(token) {
+			console.log("setToken");
 			session.token = token;
 			// TODO(jliarte): 27/06/18 let the api get the token from the session? revert dependency
 			api.setToken(token);
@@ -79,6 +82,7 @@
 		}
 
 		function setUserId() {
+			console.log("setUserId");
 			api.get(api.url + '/user/getId', function(user) {
 				if (user) {
 					console.log("retrieved user id from backend is", user);
@@ -134,5 +138,18 @@
 		function getRedirectState() {
 			return localStorage.getItem('stateRedirect');
 		}
+
+		function setCurrentProduct(productId) { // TODO(jliarte): 15/10/18 should have currentProduct and selectedProduct - just for purchase?
+			if (productId && productId != '') {
+				localStorage.setItem('currentProduct', productId);
+			} else {
+				localStorage.removeItem('currentProduct');
+			}
+		}
+
+		function getCurrentProduct() {
+			return localStorage.getItem('currentProduct');
+		}
+
 	}
 }());

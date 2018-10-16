@@ -1,8 +1,9 @@
 angular.module('app')
 	.controller('PricingController', ['$mdToast', '$scope', '$translate', 'page', '$location', '$anchorScroll',
-		'pricing', '$state', '$analytics', PricingController]);
+		'pricing', '$state', '$analytics', 'session', PricingController]);
 
-function PricingController($mdToast, $scope, $translate, page, $location, $anchorScroll, pricing, $state, $analytics) {
+function PricingController($mdToast, $scope, $translate, page, $location, $anchorScroll, pricing, $state, $analytics,
+                           session) {
 	var self = this;
 	page.setPageTitle($translate.instant('PRICING_PAGE_WEB_TITLE'));
 
@@ -31,7 +32,7 @@ function PricingController($mdToast, $scope, $translate, page, $location, $ancho
 	self.buyProduct = function (productId) {
 		$analytics.eventTrack('Product Subscription Click', {  productId: productId });
 		console.log("user product purchase ", productId);
-		pricing.setCurrentProduct(productId);
+		session.setCurrentProduct(productId);
 		$state.go('register', { productId: productId });
 	}
 

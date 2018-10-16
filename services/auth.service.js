@@ -20,38 +20,44 @@
 			};
 		});
 
-	authService.$inject = ['$state', 'angularAuth0', '$timeout', 'session', '$mdToast', 'flavour', 'mainColor'];
+	authService.$inject = ['$state', 'angularAuth0', '$timeout', 'session', '$mdToast', 'flavour', 'mainColor',
+		'billingService', '$q'];
 
-	function showSessionExpiredToast($mdToast) {
-// TODO(jliarte): 5/07/18 show info about third party cookies?
-		$mdToast.show({
-			hideDelay: 0,
-			position: 'fixed-top right',
-			controller: 'LoginToastController',
-			templateUrl: 'templates/login-toast.html',
-			controllerAs: 'ctrl'
-		});
-	}
+	function authService($state, angularAuth0, $timeout, session, $mdToast, flavour, mainColor, billing, $q) {
 
-	function authService($state, angularAuth0, $timeout, session, $mdToast, flavour, mainColor) {
+		function showSessionExpiredToast($mdToast) {
+			// TODO(jliarte): 5/07/18 show info about third party cookies?
+			$mdToast.show({
+				hideDelay: 0,
+				position: 'fixed-top right',
+				controller: 'LoginToastController',
+				templateUrl: 'templates/login-toast.html',
+				controllerAs: 'ctrl'
+			});
+		}
 
 		function login() {
 			// angularAuth0.crossOriginVerification();
 			angularAuth0.authorize({ flavour: flavour, mainColor: mainColor });
 		}
 
+		function handleCallbackRedirect(session, $state) {
+			const redirectState = session.getRedirectState();
+			if (redirectState && redirectState != '') {
+				session.setRedirectState();
+				$state.go(redirectState);
+			} else {
+				$state.go('home');
+			}
+		}
+
 		function handleAuthentication() {
 			angularAuth0.parseHash(function(err, authResult) {
 				console.log("auth result is ", authResult);
 				if (authResult && authResult.accessToken && authResult.idToken) {
-					setSession(authResult);
-					const redirectState = session.getRedirectState();
-					if (redirectState && redirectState != '') {
-						session.setRedirectState();
-						$state.go(redirectState);
-					} else {
-						$state.go('home');
-					}
+					setSession(authResult)
+						.then(billing.handleProductPurchase());
+					handleCallbackRedirect(session, $state);
 				} else if (err) {
 					$timeout(function() {
 						$state.go('home');
@@ -93,23 +99,27 @@
 		}
 
 		function setSession(authResult) {
-			// Set the time that the Access Token will expire at
-			let expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
-			localStorage.setItem('access_token', authResult.accessToken);
-			localStorage.setItem('id_token', authResult.idToken);
-			localStorage.setItem('expires_at', expiresAt);
+			return $q((resolve, reject) => {
+				// Set the time that the Access Token will expire at
+				let expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
+				localStorage.setItem('access_token', authResult.accessToken);
+				localStorage.setItem('id_token', authResult.idToken);
+				localStorage.setItem('expires_at', expiresAt);
 
-			// schedule a token renewal
-			scheduleRenewal();
+				// schedule a token renewal
+				scheduleRenewal();
 
-			getProfile(function (err, profile) {
-				console.log("Getting profile, err: ", err);
-				console.log("profile: ", profile);
-				if (!err) {
-					session.setUserInfo(profile);
-					session.setToken(authResult.accessToken);
-					session.setUserId();
-				}
+				getProfile(function (err, profile) {
+					console.log("Getting profile, err: ", err);
+					console.log("profile: ", profile);
+					if (!err) {
+						session.setToken(authResult.accessToken);
+						session.setUserInfo(profile);
+						session.setUserId();
+						resolve(profile);
+					}
+					resolve();
+				});
 			});
 		}
 

@@ -3,17 +3,13 @@
 		.factory('pricing', [pricingService]);
 
 	function pricingService() {
-		let currentProduct;
-
-		var service = {
+		var pricingService = {
 			getPlans: getPlans,
 			getFeatureTable: getFeatureTable,
-			setCurrentProduct: setCurrentProduct,
-			getCurrentProduct: getCurrentProduct,
 			getProductDetails: getProductDetails,
 		};
 
-		return service;
+		return pricingService;
 
 		function getPlans() {
 			return [
@@ -183,14 +179,6 @@
 				}
 			}
 			return [];
-		}
-
-		function setCurrentProduct(productId) {
-			currentProduct = productId;
-		}
-
-		function getCurrentProduct() {
-			return currentProduct;
 		}
 
 	}
