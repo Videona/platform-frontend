@@ -21,7 +21,7 @@
 					price: 4.79,
 					features: [
 						{ icon: 'videocam', featureLine: 'PLAN_FEATURE_RECORD_1080' },
-						{ icon: 'cloud', featureLine: 'PLAN_FEATURE_CLOUD_BACKUP_2GB' },
+						// { icon: 'cloud', featureLine: 'PLAN_FEATURE_CLOUD_BACKUP_2GB' },
 						{ icon: 'video_library', featureLine: 'PLAN_FEATURE_PRO_EDITOR' },
 						{ icon: 'music_video', featureLine: 'PLAN_FEATURE_MUSIC_TRACK' },
 						{ icon: 'branding_watermark', featureLine: 'PLAN_FEATURE_REMOVE_VIMOJO_BRANDING' },
@@ -36,11 +36,12 @@
 					price: 9.79,
 					features: [
 						{ icon: 'videocam', featureLine: 'PLAN_FEATURE_RECORD_4K' },
-						{ icon: 'cloud', featureLine: 'PLAN_FEATURE_CLOUD_BACKUP_20Gb_SYNC' },
+						// { icon: 'cloud', featureLine: 'PLAN_FEATURE_CLOUD_BACKUP_20Gb_SYNC' },
 						{ icon: 'video_library', featureLine: 'PLAN_FEATURE_PRO_EDITOR' },
 						{ icon: 'music_video', featureLine: 'PLAN_FEATURE_SOUND_MULTITRACK' },
 						{ icon: 'branding_watermark', featureLine: 'PLAN_FEATURE_REMOVE_VIMOJO_BRANDING' },
 						{ icon: 'question_answer', featureLine: 'PLAN_FEATURE_SUPPORT_247' },
+						{ icon: 'camera', featureLine: 'PLAN_FEATURE_PRO_CAMERA' },
 					]
 				},
 				{
@@ -51,7 +52,7 @@
 					price: 84,
 					features: [
 						{ icon: 'videocam', featureLine: 'PLAN_FEATURE_RECORD_4K' },
-						{ icon: 'cloud', featureLine: 'PLAN_FEATURE_CLOUD_BACKUP_UNLIMITED_SYNC' },
+						// { icon: 'cloud', featureLine: 'PLAN_FEATURE_CLOUD_BACKUP_UNLIMITED_SYNC' },
 						{ icon: 'video_library', featureLine: 'PLAN_FEATURE_PRO_EDITOR' },
 						{ icon: 'music_video', featureLine: 'PLAN_FEATURE_SOUND_MULTITRACK' },
 						{ icon: 'branding_watermark', featureLine: 'PLAN_FEATURE_CUSTOM_BRANDING' },
@@ -68,7 +69,7 @@
 					price: 149,
 					features: [
 						{ icon: 'videocam', featureLine: 'PLAN_FEATURE_RECORD_4K' },
-						{ icon: 'cloud', featureLine: 'PLAN_FEATURE_CLOUD_BACKUP_UNLIMITED_SYNC' },
+						// { icon: 'cloud', featureLine: 'PLAN_FEATURE_CLOUD_BACKUP_UNLIMITED_SYNC' },
 						{ icon: 'video_library', featureLine: 'PLAN_FEATURE_PRO_EDITOR' },
 						{ icon: 'music_video', featureLine: 'PLAN_FEATURE_SOUND_MULTITRACK' },
 						{ icon: 'branding_watermark', featureLine: 'PLAN_FEATURE_CUSTOM_BRANDING' },
@@ -95,10 +96,10 @@
 					featureHint: 'FEATURE_HINT_DISTRIBUTION',
 					featureStatus: { free: { text: 'FEATURE_VALUE_NONE' }, witness: { text: 'FEATURE_VALUE_NONE' }, journalist: { text: 'FEATURE_VALUE_DOWNLOAD_CODES' }, hero: { text: 'FEATURE_VALUE_PLUS_FTP' }, superHero: { text: 'FEATURE_VALUE_PLUS_AUTO' } }
 				},
-				{ featureName: 'FEATURE_NAME_CLOUD_STORAGE',
-					featureHint: 'FEATURE_HINT_CLOUD_STORAGE',
-					featureStatus: { free: { text: 'FEATURE_VALUE_NONE' }, witness: { text: 'FEATURE_VALUE_2GB' }, journalist: { text: 'FEATURE_VALUE_20GB' }, hero: { text: 'FEATURE_VALUE_UNLIMITED' }, superHero: { text: 'FEATURE_VALUE_UNLIMITED' } }
-				},
+				// { featureName: 'FEATURE_NAME_CLOUD_STORAGE',
+				// 	featureHint: 'FEATURE_HINT_CLOUD_STORAGE',
+				// 	featureStatus: { free: { text: 'FEATURE_VALUE_NONE' }, witness: { text: 'FEATURE_VALUE_2GB' }, journalist: { text: 'FEATURE_VALUE_20GB' }, hero: { text: 'FEATURE_VALUE_UNLIMITED' }, superHero: { text: 'FEATURE_VALUE_UNLIMITED' } }
+				// },
 				{ featureName: 'FEATURE_NAME_PRO_EDITOR',
 					featureHint: 'FEATURE_HINT_PRO_EDITOR',
 					featureStatus: { free: { enabled: true }, witness: { enabled: true }, journalist: { enabled: true }, hero: { enabled: true }, superHero: { enabled: true } }
@@ -126,10 +127,10 @@
 					featureHint: 'FEATURE_HINT_SOUND_MULTITRACK',
 					featureStatus: { free: { enabled: false }, witness: { enabled: false }, journalist: { enabled: true }, hero: { enabled: true }, superHero: { enabled: true } }
 				},
-				{ featureName: 'FEATURE_NAME_SYNC_COMPOSITIONS',
-					featureHint: 'FEATURE_HINT_SYNC_COMPOSITIONS',
-					featureStatus: { free: { enabled: false }, witness: { enabled: false }, journalist: { enabled: true }, hero: { enabled: true }, superHero: { enabled: true } }
-				},
+				// { featureName: 'FEATURE_NAME_SYNC_COMPOSITIONS',
+				// 	featureHint: 'FEATURE_HINT_SYNC_COMPOSITIONS',
+				// 	featureStatus: { free: { enabled: false }, witness: { enabled: false }, journalist: { enabled: true }, hero: { enabled: true }, superHero: { enabled: true } }
+				// },
 				{ featureName: 'FEATURE_NAME_CUSTOM_BRANDING',
 					featureHint: 'FEATURE_HINT_CUSTOM_BRANDING',
 					featureStatus: { free: { enabled: false }, witness: { enabled: false }, journalist: { enabled: false }, hero: { enabled: true }, superHero: { enabled: true } }
