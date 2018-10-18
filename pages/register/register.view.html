@@ -5,7 +5,7 @@
 		<!--<h1>{{ 'REGISTER_PAGE_TITLE' | translate }}</h1>-->
 	<!--</div>-->
 
-		<md-card class="register-card" flex="60">
+		<md-card class="register-card" flex="100" flex-gt-sm="80" flex-gt-md="60" flex-offset-gt-md="10">
 			<md-card-title>
 				<md-card-title-text>
 					<!--<md-icon class="plan-icon">{{ plan.icon }}</md-icon>-->
@@ -13,8 +13,8 @@
 					<span class="md-subhead">{{ plan.headline | translate }}</span>
 				</md-card-title-text>
 			</md-card-title>
-			<md-card-content layout="row">
-				<div class="register-page__product-details" flex="40">
+			<md-card-content layout="row" layout-wrap>
+				<div class="register-page__product-details" flex-gt-sm="40" flex="100" flex-order-gt-sm="1" flex-order="2">
 					{{ 'REGISTER_PAGE_FEATURES_HEADLINE' | translate }} {{ RegisterCtrl.currentProductDetails.name }}.
 					<md-list class="md-dense feature-list" flex>
 						<md-list-item class="md-1-line" ng-repeat="feature in RegisterCtrl.currentProductDetails.features">
@@ -23,13 +23,13 @@
 						</md-list-item>
 					</md-list>
 				</div>
-				<div class="register-page__promotion-details" flex="60" layout="column" >
-					<div flex class="promotion-headline">{{ 'REGISTER_PAGE_PROMOTION_HEADLINE_START' | translate }}
+				<div class="register-page__promotion-details" flex-gt-sm="60" flex="100" flex-order-gt-sm="2" flex-order="1" layout="column" layout-align="space-between center">
+					<div class="promotion-headline">{{ 'REGISTER_PAGE_PROMOTION_HEADLINE_START' | translate }}
 						{{ RegisterCtrl.currentProductDetails.name }}
 						{{ 'REGISTER_PAGE_PROMOTION_HEADLINE_END' | translate }}</div>
-					<div flex class="promotion-subhead">{{ 'REGISTER_PAGE_PROMOTION_SUBHEAD' | translate }}
+					<div class="promotion-subhead">{{ 'REGISTER_PAGE_PROMOTION_SUBHEAD' | translate }}
 						{{ RegisterCtrl.endOfPromotion }}</div>
-					<div flex class="promotion-graphics" layout="row">
+					<div class="promotion-graphics" layout="row">
 						<div class="icon-wrapper" flex="33">
 							<span class="icon-holder"><md-icon>plus_one</md-icon></span>
 							<span class="text">{{ 'REGISTER_PAGE_PROMOTION_GRAPHICS_REGISTER' | translate }}</span>
@@ -43,7 +43,7 @@
 							<span class="text">{{ 'REGISTER_PAGE_PROMOTION_GRAPHICS_FREE_TRIAL' | translate }}</span>
 						</div>
 					</div>
-					<div flex="initial" class="register-link">
+					<div class="register-link">
 						<md-button class="sign-in-button md-raised md-primary" ng-click="RegisterCtrl.createAccount()">
 							{{ 'SIGN_IN' | translate }}</md-button>
 						<span class="conditions">{{ 'REGISTER_PAGE_CONDITIONS' | translate }}</span>

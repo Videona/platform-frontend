@@ -26,16 +26,30 @@
 			margin-top: 0;
 			margin-right: 8px;
 		}
-		md-list.md-dense md-list-item, md-list.md-dense md-list-item .md-list-item-inner {
-			font-size: 0.9em;
+	}
+	md-list.md-dense md-list-item, md-list.md-dense md-list-item .md-list-item-inner {
+		font-size: 0.9em;
+		min-height: 14px;
+		@include mobile {
 			min-height: 14px;
 		}
 	}
 
+	.register-card {
+		@include mobile {
+			margin-top: $topbarHeight + 8px;
+		}
+	}
 }
 
 .register-page__promotion-details {
-	padding-left: 80px;
+	padding-left: 8px;
+	padding: 8px;
+	margin-bottom: 16px;
+	@include desktop {
+		padding-left: 80px;
+	}
+
 	.promotion-headline {
 		//display: block;
 		font-size: 1.5em;
@@ -62,7 +76,6 @@
 			.text {
 				text-align: center;
 				display: block;
-
 			}
 		}
 	}
