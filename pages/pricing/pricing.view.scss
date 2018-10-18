@@ -117,6 +117,28 @@ md-card-title-text span.md-subhead {
       text-align: center;
     }
   }
+  md-card-content {
+    width: 100%;
+  }
+  .product-button-container {
+    margin-bottom: 8px;
+  }
+  .product-button {
+    display: inline;
+    margin: 0;
+    border: 1px solid $lightGrey;
+    padding: 8px;
+    text-align: center;
+    &.product-selected {
+      background-color: $background;
+      color: #000;
+      font-weight: 600;
+    }
+    @include mobile {
+      padding: 8px 2px;
+      font-size: 0.8em;
+    }
+  }
   .md-button {
       font-size: 0.75em;
   }

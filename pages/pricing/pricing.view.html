@@ -1,6 +1,6 @@
 <topbar></topbar>
 
-<div ng-controller="PricingController as PricingCtrl" class="pricing-page" layout="column" flex layout-fill id="toast-container">
+<div ng-controller="PricingController as PricingCtrl" class="pricing-page" layout flex layout-fill layout-wrap id="toast-container" flex-gt-md="80" flex-offset-gt-md="10">
   <!--<error404 ng-if="!EditCtrl.video && !EditCtrl.loading" title="{{'VIDEO_ERROR' | translate}}" message="{{'VIDEO_NOT_FOUND' | translate}}"></error404>-->
 
   <!--<loading-card ng-if="!EditCtrl.video && EditCtrl.loading"></loading-card>-->
@@ -8,46 +8,52 @@
     <h1>{{ 'PRICING_PAGE_TITLE' | translate }}</h1>
   </div>
 
-  <div class="pricing-page__plans" layout="row" flex="100" layout-align="center start">
-    <md-card ng-repeat="plan in PricingCtrl.plans" class="plan-card witness-plan" flex="25">
-      <md-card-title>
-        <md-card-title-text>
-          <md-icon class="plan-icon">{{ plan.icon }}</md-icon>
-          <span class="md-headline">{{ plan.name }}</span>
-          <span class="md-subhead">{{ plan.headline | translate }}</span>
-        </md-card-title-text>
-      </md-card-title>
-      <md-card-content>
-        <md-divider></md-divider>
-        <div class="price">
-          <span class="plan-price">{{ plan.price }}</span><span class="currency">€/m</span><br/>
-        </div>
-        <md-button class="md-raised {{ PricingCtrl.buttonClassForPlanPlan(plan.productId) }}" ng-click="PricingCtrl.buyProduct(plan.productId)">{{ 'PRICING_PAGE_SUBSCRIBE_NOW' | translate }}</md-button>
-        <md-divider></md-divider>
-        <div class="feature-lines-container">
-          <div ng-repeat="feature in plan.features" class="feature-line"><md-icon>{{ feature.icon }}</md-icon><span>{{ feature.featureLine | translate }}</span></div>
-        </div>
-        <md-button class="more-info" ng-click="PricingCtrl.expandPlanInfo(plan.name)">{{ 'PRICING_PAGE_MORE_INFO' | translate }}</md-button>
-      </md-card-content>
-    </md-card>
+  <div class="pricing-page__plans" layout="row" flex="100" layout-align="center start" layout-wrap>
+    <div ng-repeat="plan in PricingCtrl.plans" flex-gt-sm="25" flex="90">
+      <md-card class="plan-card witness-plan">
+        <md-card-title>
+          <md-card-title-text>
+            <md-icon class="plan-icon">{{ plan.icon }}</md-icon>
+            <span class="md-headline">{{ plan.name }}</span>
+            <span class="md-subhead">{{ plan.headline | translate }}</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <md-divider></md-divider>
+          <div class="price">
+            <span class="plan-price">{{ plan.price }}</span><span class="currency">€/m</span><br/>
+          </div>
+          <md-button class="md-raised {{ PricingCtrl.buttonClassForPlanPlan(plan.productId) }}"
+                     ng-click="PricingCtrl.buyProduct(plan.productId)">
+            {{ 'PRICING_PAGE_SUBSCRIBE_NOW' | translate }}</md-button>
+          <md-divider></md-divider>
+          <div class="feature-lines-container">
+            <div ng-repeat="feature in plan.features" class="feature-line">
+              <md-icon>{{ feature.icon }}</md-icon><span>{{ feature.featureLine | translate }}</span></div>
+          </div>
+          <md-button class="more-info" ng-click="PricingCtrl.expandPlanInfo(plan.name)">
+            {{ 'PRICING_PAGE_MORE_INFO' | translate }}</md-button>
+        </md-card-content>
+      </md-card>
+    </div>
   </div>
 
-  <div class="pricing-page__features-preview" layout="row">
-    <div flex="33" layout="row" class="feature-desc">
+  <div class="pricing-page__features-preview" layout="row" flex="100" layout-wrap>
+    <div flex-gt-sm="33" flex="80" layout="row" class="feature-desc">
       <span class="icon-holder"><i class="lba lba-basic-webpage-img-txt" style="color: rgb(183, 183, 183);"></i></span>
       <div class="feature-text"><span class="feature-title">Customized System</span>
         Customize ViMoJo System with your media business needs (design, different app name or any other functionalities)
       </div>
     </div>
 
-    <div flex="33" layout="row" class="feature-desc">
+    <div flex-gt-sm="33" flex="80" layout="row" class="feature-desc">
       <div class="icon-holder"><i class="lba lba-basic-webpage" style="color: rgb(183, 183, 183);"></i></div>
       <div class="feature-text"><span class="feature-title">Support</span>
         Dedicated support, developer team and all the help you will need to implement this technology into your daily routine.
       </div>
     </div>
 
-    <div flex="33" layout="row" class="feature-desc">
+    <div flex-gt-sm="33" flex="80" class="feature-desc">
       <div class="icon-holder"><i class="lba lba-basic-lightbulb" style="color: rgb(183, 183, 183);"></i></div>
       <div class="feature-text"><span class="feature-title">One app</span>
         All in one solution: One app can do four people's work (Journalist, Video operator, Video editor, Sound operator and much more).
@@ -61,26 +67,40 @@
     <md-card-title>
       <md-card-title-text>{{ 'PRICING_PAGE_FEATURE_TABLE_TITLE' | translate }}</md-card-title-text>
     </md-card-title>
-    <md-card-content layout="row" layout-align="center start">
-      <div flex="10"></div>
-      <md-table-container flex="80">
+    <md-card-content layout="row" layout-align="center center">
+      <md-table-container flex-gt-sm="80" flex="100">
+        <div class="product-button-container" ng-if="smallScreen" layout="row" flex>
+          <div class="product-button {{ PricingCtrl.getClassForProductButton(productId) }}" flex
+               ng-repeat="productId in PricingCtrl.featureTableProducts"
+               ng-click="PricingCtrl.showTableProduct(productId)" >{{ productId }}</div>
+        </div>
         <table md-table md-row-select multiple ng-model="selected" md-progress="promise">
           <thead md-head md-order="query.order" md-on-reorder="getDesserts">
-          <tr md-row>
+          <tr md-row ng-if="PricingCtrl.showTableHeader">
             <th md-column><span></span></th>
-            <th md-column class="plan-name">Free</th>
-            <th md-column class="plan-name">Witness</th>
-            <th md-column class="plan-name">Journalist</th>
-            <th md-column class="plan-name">Hero</th>
-            <th md-column class="plan-name">Super Hero</th>
+            <th md-column ng-if="PricingCtrl.showTableColumn.free" class="plan-name">Free</th>
+            <th md-column ng-if="PricingCtrl.showTableColumn.witness" class="plan-name">Witness</th>
+            <th md-column ng-if="PricingCtrl.showTableColumn.journalist" class="plan-name">Journalist</th>
+            <th md-column ng-if="PricingCtrl.showTableColumn.hero" class="plan-name">Hero</th>
+            <th md-column ng-if="PricingCtrl.showTableColumn.superHero" class="plan-name">Super Hero</th>
           </tr>
           <tr>
             <th md-column></th>
-            <th md-column><md-button class="md-raised" ng-click="PricingCtrl.buyProduct('free')">{{ 'PRICING_PAGE_REGISTER_FREE' | translate }}</md-button></th>
-            <th md-column><md-button class="md-raised" ng-click="PricingCtrl.buyProduct('witness')">{{ 'PRICING_PAGE_SUBSCRIBE_NOW' | translate }}</md-button></th>
-            <th md-column><md-button class="md-raised" ng-click="PricingCtrl.buyProduct('journalist')">{{ 'PRICING_PAGE_SUBSCRIBE_NOW' | translate }}</md-button></th>
-            <th md-column><md-button class="md-raised" ng-click="PricingCtrl.buyProduct('hero')">{{ 'PRICING_PAGE_SUBSCRIBE_NOW' | translate }}</md-button></th>
-            <th md-column><md-button class="md-raised" ng-click="PricingCtrl.buyProduct('superHero')">{{ 'PRICING_PAGE_SUBSCRIBE_NOW' | translate }}</md-button></th>
+            <th md-column ng-if="PricingCtrl.showTableColumn.free">
+              <md-button class="md-raised" ng-click="PricingCtrl.buyProduct('free')">
+                {{ 'PRICING_PAGE_REGISTER_FREE' | translate }}</md-button></th>
+            <th md-column ng-if="PricingCtrl.showTableColumn.witness">
+              <md-button class="md-raised" ng-click="PricingCtrl.buyProduct('witness')">
+                {{ 'PRICING_PAGE_SUBSCRIBE_NOW' | translate }}</md-button></th>
+            <th md-column ng-if="PricingCtrl.showTableColumn.journalist">
+              <md-button class="md-raised" ng-click="PricingCtrl.buyProduct('journalist')">
+                {{ 'PRICING_PAGE_SUBSCRIBE_NOW' | translate }}</md-button></th>
+            <th md-column ng-if="PricingCtrl.showTableColumn.hero">
+              <md-button class="md-raised" ng-click="PricingCtrl.buyProduct('hero')">
+                {{ 'PRICING_PAGE_SUBSCRIBE_NOW' | translate }}</md-button></th>
+            <th md-column ng-if="PricingCtrl.showTableColumn.superHero">
+              <md-button class="md-raised" ng-click="PricingCtrl.buyProduct('superHero')">
+                {{ 'PRICING_PAGE_SUBSCRIBE_NOW' | translate }}</md-button></th>
           </tr>
           </thead>
           <tbody md-body>
@@ -89,7 +109,7 @@
               <md-tooltip md-direction="right" md-delay="100" ng-if="feature.featureHint">{{ feature.featureHint | translate }}</md-tooltip>
               {{ feature.featureName | translate }}<md-icon ng-if="feature.featureHint" class="feature-hint">help_outline</md-icon>
             </td>
-            <td md-cell class="feature-value" ng-repeat="productId in PricingCtrl.featureTableProducts">
+            <td md-cell class="feature-value" ng-repeat="productId in PricingCtrl.featureTableProducts" ng-if="PricingCtrl.showTableColumn[productId]" >
               <span ng-if="feature.featureStatus[productId].text">{{ feature.featureStatus[productId].text | translate }}</span>
               <md-icon ng-if="feature.featureStatus[productId].enabled">check_circle_outline</md-icon>
             </td>
@@ -98,7 +118,6 @@
           </tbody>
         </table>
       </md-table-container>
-      <div flex="10"></div>
     </md-card-content>
 
   </md-card>
