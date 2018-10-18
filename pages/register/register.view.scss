@@ -36,9 +36,7 @@
 	}
 
 	.register-card {
-		@include mobile {
-			margin-top: $topbarHeight + 8px;
-		}
+		margin-top: $topbarHeight + 8px;
 	}
 }
 
@@ -98,6 +96,9 @@
 			display: block;
 			color: $lightGrey;
 			font-size: 0.8em;
+			a {
+				color: $grey;
+			}
 		}
 	}
 }
