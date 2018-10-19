@@ -217,6 +217,7 @@
 			// Pricing
 			PRICING_PAGE_WEB_TITLE: 'Plans - Boost your storytelling with Vimojo',
 			PRICING_PAGE_TITLE: 'Several plans and pricing to boost your storytelling',
+			PRICING_PAGE_PLAN_CONDITIONS: 'Billed annually, taxes included',
 			PRICING_PAGE_SUBSCRIBE_NOW: 'Subscribe now',
 			PRICING_PAGE_REGISTER_FREE: 'Register Free',
 			PRICING_PAGE_MORE_INFO: '+ More info',

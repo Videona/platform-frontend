@@ -22,6 +22,7 @@
           <md-divider></md-divider>
           <div class="price">
             <span class="plan-price">{{ plan.price }}</span><span class="currency">€/m</span><br/>
+            <span class="plan-conditions">{{ 'PRICING_PAGE_PLAN_CONDITIONS' | translate }}</span><br/>
           </div>
           <md-button class="md-raised {{ PricingCtrl.buttonClassForPlanPlan(plan.productId) }}"
                      ng-click="PricingCtrl.buyProduct(plan.productId)">

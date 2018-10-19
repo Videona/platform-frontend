@@ -16,28 +16,33 @@
       color: #303030;
     }
   }
-}
 
-md-content {
-  color: $grey;
-}
+  md-content {
+    color: $grey;
+  }
 
-md-card-title-text span.md-headline, span.plan-price {
-  color: #000;
-  font-size: 2em;
-  font-weight: bolder;
-}
+  md-card-title-text span.md-headline, span.plan-price {
+    color: #000;
+    font-size: 2em;
+    font-weight: bolder;
+  }
 
-span.plan-currency {
-  color: #000;
-  margin-left: 5px;
-  font-size: 0.8em;
-  font-weight: bolder;
-}
+  .price span.plan-conditions {
+    font-size: 0.7em;
+    color: $grey;
+  }
 
-md-card-title-text span.md-subhead {
-  color: $grey;
-  height: 30px;
+  span.plan-currency {
+    color: #000;
+    margin-left: 5px;
+    font-size: 0.8em;
+    font-weight: bolder;
+  }
+
+  md-card-title-text span.md-subhead {
+    color: $grey;
+    height: 30px;
+  }
 }
 
 .plan-card {
