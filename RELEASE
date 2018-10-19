@@ -1,2 +1,4 @@
-v0.14.1
-- Set fallback location on video edit map
+v0.15.0
+- Add pricing page
+- Update register page to summarize selected product to purchase and show promotions before sending to auth0
+- Add tracking support
