@@ -1,3 +1,6 @@
+v0.14.1
+- Set fallback location on video edit map
+
 v0.14.0
 - Add upload progress bar
 - Update edit player from native video to <player> directive
