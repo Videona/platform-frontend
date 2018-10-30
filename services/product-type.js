@@ -31,7 +31,11 @@
 				{
 					id: 'PIECE',
 					name: $translate.instant('PRODUCT_TYPE_PIECE')
-				}
+				},
+			{
+				id: 'MOJOMASTERS_COMPETITION',
+				name: $translate.instant('PRODUCT_TYPE_MOJOMASTERS_COMPETITION')
+			}
 		//	]
 		//};
 		];

@@ -176,6 +176,7 @@
 			PRODUCT_TYPE_INTERVIEW: 'Total',
 			PRODUCT_TYPE_GRAPHICS: 'Gráfico',
 			PRODUCT_TYPE_PIECE: 'Pieza',
+			PRODUCT_TYPE_MOJOMASTERS_COMPETITION: 'Competición Mojo Masters',
 			
 			BUTTON_READ_ALL: 'Leer todo',
 			BUTTON_READ_LESS: 'Leer menos',

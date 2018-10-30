@@ -55,18 +55,11 @@
 	}
 	
 	.header-actions {
-		@extend %display-flex;
-		margin-top: 20px;
-		font-size: 21px;
-		background-color: white;
-		padding: 7px;
-		cursor: pointer;
-		@include border-radius(4px);
-		a {
-			text-decoration: none;
-		}
-		div {
+		a, a:visited {
+			text-transform: none;
+			margin-top: 20px;
 			color: #354f8a;
+			font-size: 21px;
 		}
 	}
 }
