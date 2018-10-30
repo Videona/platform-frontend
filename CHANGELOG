@@ -1,3 +1,6 @@
+v0.14.2
+- Allow video deletion for users (own) and editors (all)
+
 v0.14.1
 - Set fallback location on video edit map
 
