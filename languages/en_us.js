@@ -161,6 +161,7 @@
 			PRODUCT_TYPE_INTERVIEW: 'Interview',
 			PRODUCT_TYPE_GRAPHICS: 'Graphics',
 			PRODUCT_TYPE_PIECE: 'Piece',
+			PRODUCT_TYPE_MOJOMASTERS_COMPETITION: 'Mojo Masters Competition',
 			
 			BUTTON_READ_ALL: 'Read all',
 			BUTTON_READ_LESS: 'Read less',
