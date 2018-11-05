@@ -1,4 +1,10 @@
 v0.15.0
 - Add pricing page
+- Add responsive design to pricing page
 - Update register page to summarize selected product to purchase and show promotions before sending to auth0
+- Add responsive design to register page
+- Add terms and privacy policy links to register view
 - Add tracking support
+- Add setAlias call after successful login for identifying users into tracking services. Send user info to tracking services
+- Add product free-trial handling after user register (or login)
+- Add MOJOMASTERS_COMPETITION product type
