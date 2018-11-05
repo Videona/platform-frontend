@@ -21,9 +21,10 @@
 		});
 
 	authService.$inject = ['$state', 'angularAuth0', '$timeout', 'session', '$mdToast', 'flavour', 'mainColor',
-		'billingService', '$q'];
+		'billingService', '$q', 'userTrackingService'];
 
-	function authService($state, angularAuth0, $timeout, session, $mdToast, flavour, mainColor, billing, $q) {
+	function authService($state, angularAuth0, $timeout, session, $mdToast, flavour, mainColor, billing, $q,
+	                     userTrackingService) {
 
 		function showSessionExpiredToast($mdToast) {
 			// TODO(jliarte): 5/07/18 show info about third party cookies?
@@ -116,6 +117,7 @@
 						session.setToken(authResult.accessToken);
 						session.setUserInfo(profile);
 						session.setUserId();
+						userTrackingService.setUserProperties(profile);
 						resolve(profile);
 					}
 					resolve();

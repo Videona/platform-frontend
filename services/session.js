@@ -1,8 +1,8 @@
 (function () {
 	angular.module('app')
-		.factory('session', ['api', '$translate', 'auth0MetadataNS', '$q', sessionService]);
+		.factory('session', ['api', '$translate', 'auth0MetadataNS', '$q', 'userTrackingService', sessionService]);
 
-	function sessionService(api, $translate, auth0MetadataNS, $q) {
+	function sessionService(api, $translate, auth0MetadataNS, $q, userTrackingService) {
 		const session = {
 			id: -1,
 			name: '',
@@ -85,6 +85,7 @@
 			console.log("setUserId");
 			api.get(api.url + '/user/getId', function(user) {
 				if (user) {
+					userTrackingService.setAliasUserTracking(user);
 					console.log("retrieved user id from backend is", user);
 					session.id = user.id || -1;
 					save();
