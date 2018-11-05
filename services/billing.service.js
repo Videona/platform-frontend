@@ -37,7 +37,7 @@
 					.then(res => {
 						if (res) {
 							console.log("remove current product");
-							// session.setCurrentProduct();
+							session.setCurrentProduct();
 						}
 					});
 			}
