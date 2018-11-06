@@ -41,6 +41,7 @@ gulp.task('make-config', function () {
 		nodeEnv: process.env.NODE_ENV || 'development',
 		backendApiUrl: process.env.BACKEND_API_URL || 'http://localhost:3000',
 		gmapsApiKey: process.env.GMAPS_API_KEY || 'provideGmapsApiKey',
+		mixpanelApiKey: process.env.MIXPANEL_API_KEY || 'provideMixpanelApiKey',
 		maxVideoUploadByteSize: process.env.MAX_VIDEO_UPLOAD_BYTE_SIZE || '1500000',
 		auth0ClientId: process.env.AUTH0_CLIENT_ID || 'setup_auth0_credentials!',
 		auth0Domain: process.env.AUTH0_DOMAIN,
@@ -80,12 +81,27 @@ var sourceDeps = [
 	'./js/custom-vg-poster.js',
 	'../node_modules/auth0-js/build/auth0.js',
 	'../node_modules/angular-auth0/dist/angular-auth0.min.js',
+  '../node_modules/angular-material-data-table/dist/md-data-table.min.js',
+	'../node_modules/angulartics/dist/angulartics.min.js',
+	'../node_modules/angulartics-google-analytics/dist/angulartics-ga.min.js',
+	'../node_modules/angulartics-mixpanel/dist/angulartics-mixpanel.min.js',
 ];
-gulp.task('join-dependencies', ['make-config', 'flavour'], function () {
+
+var styleDeps = [
+  '../node_modules/angular-material-data-table/dist/md-data-table.min.css',
+];
+gulp.task('join-dependencies', ['make-config', 'flavour', 'copy-style-dependencies'], function () {
 	return gulp.src(sourceDeps)
 		.pipe(debug({ title: 'Join js dependencies:' }))
 		.pipe(concat('modules.js'))
 		.pipe(gulp.dest('./modules'));
+});
+
+gulp.task('copy-style-dependencies', [], function () {
+  return gulp.src(styleDeps)
+    .pipe(debug({ title: 'Copy style dependencies:' }))
+    // .pipe(concat('modules.js'))
+    .pipe(gulp.dest('./modules/css'));
 });
 
 gulp.task('dependencies', ['join-dependencies'], function () {
