@@ -1,4 +1,5 @@
 <span class="toolbar-user-menu">
+	<md-button ng-href="{{wordpressURL}}">{{ 'PROFILE_MENU_HOW_IT_WORKS' | translate }}</md-button>
 	<md-menu ng-if="profileCtrl.auth.isAuthenticated()" md-offset="-28px 64px" md-position-mode="target-right target">
 		<md-button aria-label="{{ 'PROFILE_MENU_ARIA_HINT' | translate }}" class="md-icon-button"
 				   ng-click="openMenu($mdMenu, $event)">

@@ -57,8 +57,10 @@
 				console.log("auth result is ", authResult);
 				if (authResult && authResult.accessToken && authResult.idToken) {
 					setSession(authResult)
-						.then(billing.handleProductPurchase());
-					handleCallbackRedirect(session, $state);
+						.then(() => {
+							billing.handleProductPurchase();
+							handleCallbackRedirect(session, $state);
+						});
 				} else if (err) {
 					$timeout(function() {
 						$state.go('home');
@@ -109,14 +111,15 @@
 
 				// schedule a token renewal
 				scheduleRenewal();
+				session.setToken(authResult.accessToken);
+				session.setUserId(); // (jliarte): 16/11/18 async -> api.get
+				session.setUserFeatures(); // (jliarte): 16/11/18 async -> api.get
 
 				getProfile(function (err, profile) {
 					console.log("Getting profile, err: ", err);
 					console.log("profile: ", profile);
 					if (!err) {
-						session.setToken(authResult.accessToken);
 						session.setUserInfo(profile);
-						session.setUserId();
 						userTrackingService.setUserProperties(profile);
 						resolve(profile);
 					}
@@ -133,6 +136,9 @@
 			session.remove();
 			clearTimeout(tokenRenewalTimeout);
 			// TODO(jliarte): 4/07/18 state.go('home')?
+			$timeout(function() {
+				$state.reload();
+			});
 		}
 
 		function isAuthenticated() {
@@ -169,7 +175,7 @@
 			console.log('User is required for state: ', $state.current.name);
 			if (!isAuthenticated()) {
 				console.log('No user logged in. Redirecting...');
-				session.setRedirectState('upload');
+				session.setRedirectState('upload'); // TODO(jliarte): 16/11/18 extract redirect parameter
 				// $state.go('signin');
 				login();
 			}

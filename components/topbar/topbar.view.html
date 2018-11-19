@@ -6,7 +6,7 @@
 		<img ui-sref="gallery" src="/img/brand/logo_topbar.png" alt="logo">
 	</span>
 	<span class="items-container">
-		<span class="search-bar" ng-show="searching">
+		<span class="search-bar" ng-if="decisions.topbarSearchIsEnabled" ng-show="searching">
 			<span class="close-bar" ng-click="searching = !searching">
 				<md-icon class="close-search">close</md-icon>
 			</span>
@@ -16,17 +16,17 @@
 		
 		<span class="mobile-icons">
 			<span ng-click="searching = !searching; focus();">
-				<md-icon>search</md-icon>
+				<md-icon class="material-icons">search</md-icon>
 			</span>
-			<span ui-sref="upload">
-				<md-icon>file_upload</md-icon>
+			<span ui-sref="upload" ng-if="decisions.topbarSearchIsEnabled">
+				<md-icon class="material-icons">file_upload</md-icon>
 			</span>
 			<profile-top-menu></profile-top-menu>
 		</span>
 		
 		<span class="desktop-right-icons">
-			<span ui-sref="upload">
-				<md-icon>file_upload</md-icon>
+			<span ui-sref="upload" ng-if="decisions.topbarSearchIsEnabled">
+				<md-icon class="material-icons">file_upload</md-icon>
 			</span>
 			<profile-top-menu></profile-top-menu>
 		</span>

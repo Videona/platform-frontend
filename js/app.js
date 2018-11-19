@@ -7,11 +7,11 @@
 		'angulartics.mixpanel'])
 		.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$translateProvider', '$mdThemingProvider',
 			'$mdDateLocaleProvider', 'angularAuth0Provider', 'auth0ClientId', 'auth0Domain', 'auth0Audience',
-			'auth0Redirect_uri', 'auth0Scope', conf]);
+			'auth0Redirect_uri', 'auth0Scope', '$mdIconProvider', conf]);
 
 	function conf($locationProvider, $stateProvider, $urlRouterProvider, $translateProvider, $mdThemingProvider,
 	              $mdDateLocaleProvider, angularAuth0Provider, auth0ClientId, auth0Domain, auth0Audience,
-	              auth0Redirect_uri, auth0Scope) {
+	              auth0Redirect_uri, auth0Scope, $mdIconProvider) {
 		// Get browser lang and set this var
 		const shortLang = navigator.language.split('-')[0];
 		let lang;
@@ -32,6 +32,7 @@
 		moment.locale(navigator.language);
 		setupDateLocale(shortLang, $mdDateLocaleProvider);
 		setupMaterialTheming($mdThemingProvider);
+		$mdIconProvider.fontSet('fa', 'FontAwesome');
 
 		$translateProvider.useSanitizeValueStrategy('escape');
 		$translateProvider.preferredLanguage(lang);
@@ -51,23 +52,25 @@
 			})
 			.state('home', {
 				url: '/',
-				controller: ['$state', function ($state) { 
-					$state.go('gallery'); 
-				}],
+				templateUrl: './pages/home/home.view.html',
+				controller: 'HomeController',
+				// controller: ['$state', function ($state) {
+				// 	$state.go('gallery');
+				// }],
 			})
 			.state('authCallback', {
 				url: '/authcallback',
 				controller: 'AuthCallbackController',
 				templateUrl: './pages/auth-callback/auth-callback.view.html',
 			})
-			.state('signin', {
-				url: '/sign-in',
-				templateUrl: './pages/home/home.view.html',
-			})
-			.state('login', {
-				url: '/login?:redirect',
-				templateUrl: 'pages/login/login.view.html',
-			})
+			// .state('signin', {
+			// 	url: '/sign-in',
+			// 	templateUrl: './pages/home/home.view.html',
+			// })
+			// .state('login', {
+			// 	url: '/login?:redirect',
+			// 	templateUrl: 'pages/login/login.view.html',
+			// })
 			.state('register', {
 				url: '/register?product=:productId',
 				templateUrl: 'pages/register/register.view.html',

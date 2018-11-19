@@ -1,25 +1,50 @@
-<div ng-controller="HomeController as Home" class="register-page">	
-	<article>
-		<div class="register-logo">
-			<img src="../../img/brand/logo_white.png" alt="logo" />
-			<h2><pre>{{'REGISTER_SLOGAN' | translate}}</pre></h2>	
-		</div>
+<topbar></topbar>
 
-		<section class="register-form">
-			<div class="home-buttons">
-				<button ui-sref="login">{{'LOGIN' | translate}}</button>
-				<button ui-sref="register">{{'REGISTER' | translate}}</button>
+<div ng-controller="HomeController as HomeCtlr" class="home-page" layout="row" layout-wrap layout-align="center center">
+
+	<!--<div class="page-title" flex="100">-->
+	<!--<h1>{{ 'REGISTER_PAGE_TITLE' | translate }}</h1>-->
+	<!--</div>-->
+
+	<div class="video-container" flex="100">
+
+		<video class="video" poster="http://vimojo.co/wp-content/uploads/2018/05/head-mobile-2.jpg.pagespeed.ce.jKmpuc2He-.jpg" preload="auto" loop="" autoplay="" muted="" src="http://vimojo.co/wp-content/uploads/2017/10/682414183.mp4">
+			<source type="video/mp4" src="http://vimojo.co/wp-content/uploads/2017/10/682414183.mp4">
+			<object type="application/x-shockwave-flash" data="http://vimojo.co/wp-content/themes/bridge/js/flashmediaelement.swf" class="skrollable skrollable-between">
+			<param name="movie" value="http://vimojo.co/wp-content/themes/bridge/js/flashmediaelement.swf">
+			<param name="flashvars" value="controls=true&amp;file=http://vimojo.co/wp-content/uploads/2017/10/682414183.mp4">
+			<img itemprop="image" src="http://vimojo.co/wp-content/uploads/2018/05/1920x800xhead-mobile-2.jpg.pagespeed.ic.wpI5MsQ-jQ.webp" title="No video playback capabilities" alt="Video thumb" pagespeed_url_hash="196475069" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+		</object>
+		</video>
+
+		<div class="slider_content_outer">
+			<div class="slider_content center" style="">
+				<div class="slider_content_inner all_at_once subtitle_bellow_title no_separator ">
+					<div>
+						<div class="thumb fade">
+							<img itemprop="image" data-width="" data-height="" src="http://vimojo.co/wp-content/uploads/2018/05/xhead-vimojo-copia-3-e1527070243921.png.pagespeed.ic.aC_SMXL7PU.png" alt="Suite for Mobile Journalism and Content Creators" pagespeed_url_hash="3918866160" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+						</div>
+					</div>
+					<div class="text all_at_once subtitle_bellow_title no_separator">
+						<div>
+							<h2 class="q_slide_title">
+								<span>{{ 'LANDING_HEADER' | translate }}</span>
+							</h2>
+						</div>
+						<!-- TODO: /pricing link should be maintenable link -->
+						<div><h4 class="q_slide_subtitle"><span><a href="/pricing">{{ 'LANDING_TRY_IT' | translate }}</a> {{ 'LANDING_FOR_FREE' | translate }}</span></h4></div>
+						<p class="q_slide_text"><span></span></p>
+						<md-button class="app-market-link md-raised" ng-href="https://goo.gl/NmCe7M">
+							Vimojo for Android <md-icon md-font-set="fa" class="fa fa-android" aria-hidden="true"></md-icon>
+						</md-button>
+						<md-button class="app-market-link md-raised" ng-href="https://itunes.apple.com/us/app/vimojo/id1155451148?mt=8">
+							Vimojo for iOS <md-icon md-font-set="fa" class="fa fa-apple" aria-hidden="true"></md-icon>
+						</md-button>
+
+					</div>
+				</div>
 			</div>
-		</section>
-
-		<section class="mobile-apps">
-			<a href="{{Home.flavour.ANDROID_APP}}" target="_blank">
-				<img alt='Get it on Google Play' src='../../img/googlePlay-bg.svg' />
-			</a>
-			<a href="{{Home.flavour.IOS_APP}}" target="_blank">
-				<img alt="itunes_logo" src="../../img/iTunes-bg.png" />
-			</a>
-		</section>
-	</article>
+		</div>
+	</div>
 
 </div>

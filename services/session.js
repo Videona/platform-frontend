@@ -1,8 +1,10 @@
 (function () {
 	angular.module('app')
-		.factory('session', ['api', '$translate', 'auth0MetadataNS', '$q', 'userTrackingService', sessionService]);
+		.service('session', ['api', '$translate', 'auth0MetadataNS', '$q', 'userTrackingService', 'decisionsService',
+			'userFeatureService', sessionService]);
 
-	function sessionService(api, $translate, auth0MetadataNS, $q, userTrackingService) {
+	function sessionService(api, $translate, auth0MetadataNS, $q, userTrackingService, decisionsService,
+	                        userFeatureService) {
 		const session = {
 			id: -1,
 			name: '',
@@ -18,6 +20,7 @@
 			remove: remove,
 			setToken: setToken,
 			setUserId: setUserId,
+			setUserFeatures: setUserFeatures,
 			setRedirectState: setRedirectState,
 			getRedirectState: getRedirectState,
 			setCurrentProduct: setCurrentProduct,
@@ -30,6 +33,7 @@
 
 		function getSession() {
 			const localSession = JSON.parse(localStorage.getItem('session'));
+			// TODO(jliarte): 13/11/18 recover features
 			console.log("session get with local storage session ", localSession);
 
 			if (localSession !== null) {
@@ -48,6 +52,7 @@
 			session.role = sessionData.role || '';
 			session.pic = sessionData.pic || '';
 			session.verified = sessionData.verified || false;
+			session.features = sessionData.features || {};
 
 			if (sessionData.token) {
 				setToken(sessionData.token, sessionData);
@@ -93,6 +98,25 @@
 			});
 		}
 
+		function setUserFeatures() {
+			console.log("setUserId");
+			api.setToken(session.token);
+			api.get(api.url + '/user/' + session.id + '/userFeature', function(features) {
+				if (features) {
+					console.log("retrieved user features from backend ", features);
+					// session.features = features;
+					if (!session.features) {
+						session.features = {};
+					}
+					features.forEach(f=> { session.features[f.name] = f.enabled });
+					userFeatureService.setFeatures(session.features);
+					console.log("setting user features service features to ", session.features);
+					save();
+					decisionsService.reEvaluate();
+				}
+			});
+		}
+
 		function save(newSession) {
 			console.log("saving sesssion ", newSession);
 			let saveSession = newSession;
@@ -124,8 +148,11 @@
 			session.role = '';
 			session.pic = '';
 			session.verified = false;
+			session.features = {};
 
 			localStorage.removeItem('session');
+			userFeatureService.setFeatures({});
+			decisionsService.reEvaluate();
 		}
 
 		function setRedirectState(state) {

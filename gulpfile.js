@@ -51,6 +51,7 @@ gulp.task('make-config', function () {
 		auth0MetadataNS: process.env.AUTH0_METADATA_NS,
 		flavour: process.env.FLAVOUR || 'vimojo',
 		mainColor: process.env.MAIN_COLOR || '#f14b51',
+		openGallery: process.env.OPEN_GALLERY === "true" || false,
 	});
 
 	return b2v.stream(new Buffer(json), 'config.js')

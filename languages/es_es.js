@@ -16,6 +16,10 @@
 			LOADING: 'Cargando...',
 			LOADING_WAIT: 'Cargando la página. Por favor, espere',
 
+			// home page
+			LANDING_HEADER: 'Suite para Periodismo Móvil y Creadores de Contenido',
+			LANDING_TRY_IT: 'Pruébalo',
+			LANDING_FOR_FREE: 'gratis',
 			// register page
 			REGISTER_PAGE_TITLE: 'Crea una nueva cuenta de Vimojo!',
 			REGISTER_PAGE_FEATURES_HEADLINE: 'Potencia tu creatividad y mejora tu storytelling con Vimojo',
@@ -68,6 +72,7 @@
 			PROFILE_MENU_ARIA_HINT: 'Abrir menú de usuario',
 			PROFILE_MENU_MY_VIDEOS: 'Mis videos',
 			PROFILE_MENU_LOGOUT: 'Cerrar sesión',
+			PROFILE_MENU_HOW_IT_WORKS: 'Cómo funciona',
 
 			GALLERY_FEATURED_VIDEOS: 'Vídeos destacados',
 			GALLERY_VIEW_ALL: 'Ver todo',

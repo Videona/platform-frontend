@@ -1,8 +1,8 @@
 angular.module('app')
 	.controller('VideoDetailController', ['$timeout', '$stateParams', '$state', 'session', 'video', 'videoDownload',
-		'user', '$timeout', 'NgMap', 'page', '$mdDialog', 'api', '$mdToast', '$translate', VideoDetail]);
+		'userService', '$timeout', 'NgMap', 'page', '$mdDialog', 'api', '$mdToast', '$translate', VideoDetail]);
 
-function VideoDetail($timeout, $stateParams, $state, session, video, videoDownload, user, $timeout, NgMap, page,
+function VideoDetail($timeout, $stateParams, $state, session, videoService, videoDownload, userService, $timeout, NgMap, page,
                      $mdDialog, api, $mdToast, $translate) {
 	var self = this;
 
@@ -15,9 +15,6 @@ function VideoDetail($timeout, $stateParams, $state, session, video, videoDownlo
 	self.state = $state; 
 	self.stateParams = $stateParams;
 	self.loadDistributionList = true;
-
-	self.video = video;
-	self.user = user;
 
 	self.videoDownloadService = videoDownload;
 	self.videoDownload = goVideoDownload;
@@ -32,11 +29,11 @@ function VideoDetail($timeout, $stateParams, $state, session, video, videoDownlo
 	};
 
 	self.canEdit = function () {
-		return session.id == video.data.owner || session.role == 'editor';
+		return session.id == self.video.owner || session.role == 'editor';
 	};
 
 	self.canDelete = function () {
-		return session.id == video.data.owner || session.role == 'editor';
+		return session.id == self.video.owner || session.role == 'editor';
 	};
 
 	function showMessage(message) {
@@ -85,24 +82,26 @@ function VideoDetail($timeout, $stateParams, $state, session, video, videoDownlo
 		});
 	};
 
-	if (self.video && self.video.data && self.video.data.id !== self.id) {
-		self.video.reset();
+	if (self.video && self.video.id !== self.id) {
+		videoService.reset(); // TODO(jliarte): 12/11/18 refactor this!!! remove cached video instance
 	}
 	
-	self.video.get(self.id, function() {
+	videoService.get(self.id, function() {
 		self.loading = false;
-		if (self.video.data != undefined) {
-			page.setPageTitle(self.video.data.title);
+		self.video = videoService.data; // TODO(jliarte): 12/11/18 refactor this to return video data in get result
+		if (self.video != undefined) {
+			page.setPageTitle(self.video.title);
 			self.showPublishedIcon = showPublishedIcon();
-			self.user.get(self.video.data.owner, function() {
+			userService.get(self.video.owner, function(data) {
+				self.video.user = data;
 				self.loadingAuthor = false;
 			});
 			$timeout(function() {
 				self.showMore = showMore();
 			}, 100);
 
-			if (self.video.data.location) {
-				self.mapMarker = [self.video.data.location.lat, self.video.data.location.lng];
+			if (self.video.location) {
+				self.mapMarker = [self.video.location.lat, self.video.location.lng];
 				NgMap.getMap().then(function (map) {
 					map.setZoom(6);
 				});
@@ -126,8 +125,8 @@ function VideoDetail($timeout, $stateParams, $state, session, video, videoDownlo
 	}
 
 	function showPublishedIcon() {
-		if ((self.session.role == 'editor') || (self.video.data.owner == self.session.id) ) {
-			return (self.video.data.published == true || self.video.data.published == 'true');
+		if ((self.session.role == 'editor') || (self.video.owner == self.session.id) ) {
+			return (self.video.published == true || self.video.published == 'true');
 		} 
 		return false;
 	}
