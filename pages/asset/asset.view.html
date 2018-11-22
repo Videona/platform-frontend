@@ -1,0 +1,42 @@
+<topbar transparent="AssetCtrl.topbarTransparent"></topbar>
+
+<div ng-controller="AssetController as AssetCtrl" class="asset-page">
+	<loading-card ng-if="AssetCtrl.loading"></loading-card>
+
+	<header-box ng-if="AssetCtrl.feature.header"></header-box>
+
+	<article>
+		<section class="gallery-section-nonFeatured" layout="row" layout-wrap>
+			<!--<video-card flex="20" ng-repeat="asset in AssetCtrl.assets" video="asset"-->
+			<!--&gt;-->
+				<!--&lt;!&ndash;ui-sref="videoDetail({ id: video._id })"&ndash;&gt;-->
+			<!--</video-card>-->
+
+			<md-card flex="100" flex-gt-sm="20"  class="asset-card" ng-repeat="asset in AssetCtrl.assets">
+				<article>
+					<!--<span class="video-timer">{{::asset.time | asset.time : false}}</span>-->
+					<span class="asset-name">{{ ::asset.name }}</span>
+					<img ng-src="{{asset.thumbnail}}" onerror="this.src = 'url(\'/img/no-video.svg\')'" ng-click="AssetCtrl.showPlayerDialog(asset, $event)"/>
+				</article>
+				<section class="asset-info">
+					<h2>file: {{::asset.filename}}</h2>
+					<a ui-sref="userGallery({userId: asset.created_by})" ng-click="$event.stopPropagation()"><h3 ng-bind="asset.author"></h3></a>
+					<h4 class="capital_first_letter"><span ng-if="locationName">{{asset.locationName}}, </span><span am-time-ago="asset.date"></span></h4>
+					<!--		<h3>{{productType | productType}}</h3>-->
+					<h3>
+						<span>type: {{::asset.type}} - {{::asset.mimetype}}</span><br/>
+						<span>project: {{::asset.projectId}}</span><br/>
+						<!--<span>type: {{::asset.type}}</span><br/>-->
+						<!--<span ng-if="!asset.categories">&nbsp;</span><br/>-->
+					</h3>
+				</section>
+			</md-card>
+
+
+
+
+			<!--<video-list section-class="gallery-nonFeatured" featured="false"-->
+						<!--infinite-scroll-enabled="true"></video-list>-->
+		</section>
+	</article>
+</div>

@@ -8,8 +8,8 @@ function playerCardDirective($rootScope) {
 			poster: '='
 		},
 		link: function(scope) {
-			scope.onVgError = function () {
-				console.error('Videogular error!');
+			scope.onVgError = function (event) {
+				console.error('Videogular error!', event);
 				scope.poster = '/img/no-video.svg';
 				scope.error = true;
 				$rootScope.$apply();

@@ -1,0 +1,17 @@
+<div role="dialog" aria-label="Eat me!" layout="column" layout-align="center center">
+    <md-toolbar class="md-accent">
+        <div class="md-toolbar-tools">
+            <h2>{{ ctrl.videoToPlay.filename }}</h2>
+        </div>
+    </md-toolbar>
+
+    <div class="player-dialog-content">
+        <player video="ctrl.videoToPlay.uri" poster="ctrl.videoToPlay.thumbnail"></player>
+    </div>
+
+    <div layout="row" class="player-dialog-close-button">
+        <md-button md-autofocus flex class="md-primary" ng-click="ctrl.closeDialog()">
+            {{ 'CLOSE' | translate }}
+        </md-button>
+    </div>
+</div>

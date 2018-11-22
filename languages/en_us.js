@@ -8,6 +8,7 @@
 			WORLD: 'world',
 
 			AND: 'and',
+			CLOSE: 'Close',
 
 			// 404 directive
 			DEFAULT404_ERROR_TITLE: 'Page not found',
@@ -15,6 +16,9 @@
 
 			LOADING: 'Loading...',
 			LOADING_WAIT: 'Loading your page, please wait',
+
+			SESSION_EXPIRED: 'Your session has expired!',
+			LOG_IN_AGAIN: 'Log in again',
 
 			// home page
 			LANDING_HEADER: 'Suite for Mobile Journalism and Content Creators',

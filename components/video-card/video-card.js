@@ -9,8 +9,10 @@ function videoCardDirective(session, $state) {
 		scope.poster = scope.video.poster;
 		scope.published = scope.video.published;
 		scope.time = scope.video.length;
-		scope.author = scope.video.ownerData.username;
-		scope.authorId = scope.video.ownerData._id;
+		if (scope.video.ownerData) {
+			scope.author = scope.video.ownerData.username;
+			scope.authorId = scope.video.ownerData._id;
+		}
 		scope.date = scope.video.date;
 		scope.tag = scope.video.tag;
 		scope.locationName = scope.video.locationName;

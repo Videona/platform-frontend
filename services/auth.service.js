@@ -8,7 +8,7 @@
 		.module('app')
 		.service('authService', authService)
 		// TODO(jliarte): 5/07/18 extract to other file?
-		.controller('LoginToastController', function ($scope, $mdToast, $mdDialog, authService) {
+		.controller('LoginToastController', function ($mdToast, authService, session, $state) {
 			const self = this;
 			this.closeToast = function () {
 				$mdToast
@@ -16,6 +16,7 @@
 			};
 
 			this.reLogIn = function () {
+				session.setRedirectState($state.current.name);
 				authService.login();
 			};
 		});

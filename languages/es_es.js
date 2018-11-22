@@ -8,6 +8,7 @@
 			WORLD: 'mundo',
 
 			AND: 'y',
+			CLOSE: 'Cerrar',
 
 			// 404 directive
 			DEFAULT404_ERROR_TITLE: 'Página no encontrada',
@@ -15,6 +16,9 @@
 
 			LOADING: 'Cargando...',
 			LOADING_WAIT: 'Cargando la página. Por favor, espere',
+
+			SESSION_EXPIRED: 'Tu sesión ha caducado!',
+			LOG_IN_AGAIN: 'Volver a entrar',
 
 			// home page
 			LANDING_HEADER: 'Suite para Periodismo Móvil y Creadores de Contenido',

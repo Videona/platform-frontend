@@ -125,7 +125,11 @@
 				url: '/video/:id/edit',
 				parent: 'root',
 				templateUrl: 'pages/video-detail-edit/video-detail-edit.view.html',
-			});
+			})
+			.state('asset', {
+			url: '/asset',
+			templateUrl: 'pages/asset/asset.view.html',
+		});
 
 		// Initialization for the angular-auth0 library
 		angularAuth0Provider.init({

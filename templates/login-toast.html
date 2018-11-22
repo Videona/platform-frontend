@@ -1,9 +1,9 @@
 <md-toast class="mojofy-toast">
-    <span class="md-toast-text" flex>Your session has expired!</span>
+    <span class="md-toast-text" flex>{{ 'SESSION_EXPIRED' | translate }}</span>
     <md-button class="md-highlight" ng-click="ctrl.reLogIn($event)">
-        Log in again
+        {{ 'LOG_IN_AGAIN' | translate }}
     </md-button>
     <md-button ng-click="ctrl.closeToast()">
-        Close
+        {{ 'CLOSE' | translate }}
     </md-button>
 </md-toast>
