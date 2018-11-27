@@ -226,6 +226,7 @@
 			PRICING_PAGE_PLAN_CONDITIONS: 'Pago anual, impuestos incluidos',
 			PRICING_PAGE_SUBSCRIBE_NOW: 'Suscribirse ahora',
 			PRICING_PAGE_REGISTER_FREE: 'Registro gratuito',
+			PRICING_PAGE_FREE_TRIAL: 'Pruébalo gratis',
 			PRICING_PAGE_MORE_INFO: '+ Más info',
 			PRICING_PAGE_FEATURE_TABLE_TITLE: 'Comparación detallada de las características de la suite de Vimojo',
 			PLAN_HEADLINE_WITNESS: 'Creadores de vídeo ocasionales',

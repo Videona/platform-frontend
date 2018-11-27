@@ -226,6 +226,7 @@
 			PRICING_PAGE_PLAN_CONDITIONS: 'Billed annually, taxes included',
 			PRICING_PAGE_SUBSCRIBE_NOW: 'Subscribe now',
 			PRICING_PAGE_REGISTER_FREE: 'Register Free',
+			PRICING_PAGE_FREE_TRIAL: 'Free Trial',
 			PRICING_PAGE_MORE_INFO: '+ More info',
 			PRICING_PAGE_FEATURE_TABLE_TITLE: 'Compare all Vimojo suite detailed features',
 			PLAN_HEADLINE_WITNESS: 'Occasionally video makers',

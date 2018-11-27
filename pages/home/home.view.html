@@ -18,11 +18,12 @@
 		</video>
 
 		<div class="slider_content_outer">
-			<div class="slider_content center" style="">
+			<div class="slider_content center">
 				<div class="slider_content_inner all_at_once subtitle_bellow_title no_separator ">
 					<div>
 						<div class="thumb fade">
-							<img itemprop="image" data-width="" data-height="" src="http://vimojo.co/wp-content/uploads/2018/05/xhead-vimojo-copia-3-e1527070243921.png.pagespeed.ic.aC_SMXL7PU.png" alt="Suite for Mobile Journalism and Content Creators" pagespeed_url_hash="3918866160" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+							<img itemprop="image"
+								 src="http://vimojo.co/wp-content/uploads/2018/05/xhead-vimojo-copia-3-e1527070243921.png.pagespeed.ic.aC_SMXL7PU.png" alt="Suite for Mobile Journalism and Content Creators">
 						</div>
 					</div>
 					<div class="text all_at_once subtitle_bellow_title no_separator">
@@ -32,14 +33,19 @@
 							</h2>
 						</div>
 						<!-- TODO: /pricing link should be maintenable link -->
-						<div><h4 class="q_slide_subtitle"><span><a href="/pricing">{{ 'LANDING_TRY_IT' | translate }}</a> {{ 'LANDING_FOR_FREE' | translate }}</span></h4></div>
+						<div><h4 class="q_slide_subtitle">
+							<md-button class="md-raised" ng-href="http://vimojo.co/#app">{{ 'PROFILE_MENU_HOW_IT_WORKS' | translate }}</md-button>
+							<md-button class="md-raised md-primary cta" ng-href="/pricing">{{ 'LANDING_TRY_IT' | translate }} {{ 'LANDING_FOR_FREE' | translate }}</md-button>
+						</h4></div>
 						<p class="q_slide_text"><span></span></p>
-						<md-button class="app-market-link md-raised" ng-href="https://goo.gl/NmCe7M">
-							Vimojo for Android <md-icon md-font-set="fa" class="fa fa-android" aria-hidden="true"></md-icon>
-						</md-button>
-						<md-button class="app-market-link md-raised" ng-href="https://itunes.apple.com/us/app/vimojo/id1155451148?mt=8">
-							Vimojo for iOS <md-icon md-font-set="fa" class="fa fa-apple" aria-hidden="true"></md-icon>
-						</md-button>
+						<div class="market-links">
+							<a href="https://goo.gl/NmCe7M" target="_blank">
+								<img class="market-icon" alt="Get it on Google Play" src="https://platform.vimojo.co/img/googlePlay-bg.svg">
+							</a>
+							<a href="https://itunes.apple.com/us/app/vimojo/id1155451148?mt=8" target="_blank">
+								<img class="market-icon" alt="itunes_logo" src="https://platform.vimojo.co/img/iTunes-bg.png">
+							</a>
+						</div>
 
 					</div>
 				</div>

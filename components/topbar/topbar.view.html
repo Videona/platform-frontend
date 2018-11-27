@@ -15,17 +15,17 @@
 		</span>
 		
 		<span class="mobile-icons">
-			<span ng-click="searching = !searching; focus();">
+			<span ng-if="decisions.topbarSearchIsEnabled" ng-click="searching = !searching; focus();">
 				<md-icon class="material-icons">search</md-icon>
 			</span>
-			<span ui-sref="upload" ng-if="decisions.topbarSearchIsEnabled">
+			<span ui-sref="upload" ng-if="decisions.userHasAccessToGallery">
 				<md-icon class="material-icons">file_upload</md-icon>
 			</span>
 			<profile-top-menu></profile-top-menu>
 		</span>
 		
 		<span class="desktop-right-icons">
-			<span ui-sref="upload" ng-if="decisions.topbarSearchIsEnabled">
+			<span ui-sref="upload" ng-if="decisions.userHasAccessToGallery">
 				<md-icon class="material-icons">file_upload</md-icon>
 			</span>
 			<profile-top-menu></profile-top-menu>
