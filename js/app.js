@@ -1,17 +1,20 @@
+// js/app.js
+
 (function () {
 	// App
 	angular.module('app', ['auth0.auth0', 'app.config', 'app.flavour', 'ui.router', 'pascalprecht.translate',
 		'infinite-scroll', 'ngFileUpload', 'angularMoment', 'ngMaterial', 'ngMap', 'ngSanitize', 'com.2fdevs.videogular',
 		'com.2fdevs.videogular.plugins.controls', 'com.2fdevs.videogular.plugins.overlayplay',
 		'com.2fdevs.videogular.plugins.poster', 'md.data.table', 'angulartics', 'angulartics.google.analytics',
-		'angulartics.mixpanel'])
+		'angulartics.mixpanel', 'ng-drift'])
 		.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$translateProvider', '$mdThemingProvider',
 			'$mdDateLocaleProvider', 'angularAuth0Provider', 'auth0ClientId', 'auth0Domain', 'auth0Audience',
-			'auth0Redirect_uri', 'auth0Scope', '$mdIconProvider', conf]);
+			'auth0Redirect_uri', 'auth0Scope', '$mdIconProvider', 'ngDriftProvider', 'driftKey', 'driftSnippetVersion',
+			conf]);
 
 	function conf($locationProvider, $stateProvider, $urlRouterProvider, $translateProvider, $mdThemingProvider,
 	              $mdDateLocaleProvider, angularAuth0Provider, auth0ClientId, auth0Domain, auth0Audience,
-	              auth0Redirect_uri, auth0Scope, $mdIconProvider) {
+	              auth0Redirect_uri, auth0Scope, $mdIconProvider, ngDriftProvider, driftKey, driftSnippetVersion) {
 		// Get browser lang and set this var
 		const shortLang = navigator.language.split('-')[0];
 		let lang;
@@ -33,6 +36,7 @@
 		setupDateLocale(shortLang, $mdDateLocaleProvider);
 		setupMaterialTheming($mdThemingProvider);
 		$mdIconProvider.fontSet('fa', 'FontAwesome');
+		setupDrift(ngDriftProvider, driftKey, driftSnippetVersion);
 
 		$translateProvider.useSanitizeValueStrategy('escape');
 		$translateProvider.preferredLanguage(lang);
@@ -189,6 +193,14 @@
 		// TODO(jliarte): translation cannot be injected in config phase
 		// $mdDateLocaleProvider.msgCalendar = $translate.instant('MSG_CALENDAR');
 		// $mdDateLocaleProvider.msgOpenCalendar = $translate.instant('MSG_OPEN_CALENDAR');
+	}
+
+	function setupDrift(ngDriftProvider, driftKey, driftSnippetVersion) {
+		if (driftKey) {
+			console.log("setting up drift");
+			ngDriftProvider.setKey(driftKey);
+			ngDriftProvider.setSnippetVersion(driftSnippetVersion);
+		}
 	}
 
 }());
