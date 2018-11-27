@@ -26,7 +26,7 @@
           </div>
           <md-button class="md-raised {{ PricingCtrl.buttonClassForPlanPlan(plan.productId) }}"
                      ng-click="PricingCtrl.buyProduct(plan.productId)">
-            {{ 'PRICING_PAGE_SUBSCRIBE_NOW' | translate }}</md-button>
+            {{ 'PRICING_PAGE_FREE_TRIAL' | translate }}</md-button>
           <md-divider></md-divider>
           <div class="feature-lines-container">
             <div ng-repeat="feature in plan.features" class="feature-line">
@@ -69,7 +69,7 @@
       <md-card-title-text>{{ 'PRICING_PAGE_FEATURE_TABLE_TITLE' | translate }}</md-card-title-text>
     </md-card-title>
     <md-card-content layout="row" layout-align="center center">
-      <md-table-container flex-gt-sm="80" flex="100">
+      <md-table-container flex-gt-sm="95" layout-align-gt-md="80" flex="100">
         <div class="product-button-container" ng-if="smallScreen" layout="row" flex>
           <div class="product-button {{ PricingCtrl.getClassForProductButton(productId) }}" flex
                ng-repeat="productId in PricingCtrl.featureTableProducts"

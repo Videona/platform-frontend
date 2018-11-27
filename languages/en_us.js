@@ -16,6 +16,10 @@
 			LOADING: 'Loading...',
 			LOADING_WAIT: 'Loading your page, please wait',
 
+			// home page
+			LANDING_HEADER: 'Suite for Mobile Journalism and Content Creators',
+			LANDING_TRY_IT: 'Try it',
+			LANDING_FOR_FREE: 'for free',
 			// register page
 			REGISTER_PAGE_TITLE: 'Create a new Vimojo account!',
 			REGISTER_PAGE_FEATURES_HEADLINE: 'Empower your creativity and boost your storytelling with Vimojo',
@@ -68,6 +72,7 @@
 			PROFILE_MENU_ARIA_HINT: 'Open user menu',
 			PROFILE_MENU_MY_VIDEOS: 'My videos',
 			PROFILE_MENU_LOGOUT: 'Logout',
+			PROFILE_MENU_HOW_IT_WORKS: 'How it works',
 
 			GALLERY_FEATURED_VIDEOS: 'Featured videos',
 			GALLERY_VIEW_ALL: 'View all',
@@ -221,6 +226,7 @@
 			PRICING_PAGE_PLAN_CONDITIONS: 'Billed annually, taxes included',
 			PRICING_PAGE_SUBSCRIBE_NOW: 'Subscribe now',
 			PRICING_PAGE_REGISTER_FREE: 'Register Free',
+			PRICING_PAGE_FREE_TRIAL: 'Free Trial',
 			PRICING_PAGE_MORE_INFO: '+ More info',
 			PRICING_PAGE_FEATURE_TABLE_TITLE: 'Compare all Vimojo suite detailed features',
 			PLAN_HEADLINE_WITNESS: 'Occasionally video makers',

@@ -12,6 +12,7 @@ function profileTopMenuDirective(session) {
 				// TODO:(jliarte) remove this, but can be used to test user img
 				// session.pic = "https://avatars0.githubusercontent.com/u/2227736?s=88&v=4";
 				scope.session = session;
+				scope.wordpressURL = 'http://vimojo.co/#app';
 
 				scope.openMenu = openMenu;
 			}

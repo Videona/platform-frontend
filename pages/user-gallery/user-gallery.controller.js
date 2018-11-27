@@ -2,13 +2,13 @@
 	angular.module('app')
 		.controller(
 			'UserGalleryController',
-			['$stateParams', '$translate', 'user', 'page', UserGallery],
+			['$stateParams', '$translate', 'userService', 'page', UserGallery],
 		);
 
-	function UserGallery($stateParams, $translate, user, page) {
+	function UserGallery($stateParams, $translate, userService, page) {
 		var self = this;
 
-		self.userService = user;
+		self.userService = userService;
 		self.userId = $stateParams.userId;
 		self.user = {};
 

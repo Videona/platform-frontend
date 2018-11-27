@@ -1,13 +1,18 @@
 angular.module('app')
-	.controller('GalleryController', ['$scope', '$document', '$translate', 'flavourFeature', 'page', Gallery]);
+	.controller('GalleryController', ['$scope', '$document', '$translate', 'flavourFeature', 'page', 'decisionsService',
+		'$state', Gallery]);
 
-function Gallery($scope, $document, $translate, flavourFeature, page) {
+function Gallery($scope, $document, $translate, flavourFeature, page, decisionsService, $state) {
 	var self = this;
+
+	if (!decisionsService.userHasAccessToGallery) {
+		$state.go('home');
+	}
 
 	self.search = '';
 	self.topbarTransparent = flavourFeature.header;
 	self.feature = flavourFeature;
-	
+
 	// Setup page title
 	page.setPageTitle();
 
@@ -23,9 +28,9 @@ function Gallery($scope, $document, $translate, flavourFeature, page) {
 	});
 
 	function scrolling() {
-		var offset = 56;
-		var header = document.getElementsByClassName('header-box')[0];
-		if(!header) {
+		let offset = 56;
+		let header = document.getElementsByClassName('header-box')[0];
+		if (!header) {
 			self.topbarTransparent = false;
 		} else {
 			self.topbarTransparent = window.scrollY < (header.scrollHeight - offset);

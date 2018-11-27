@@ -51,6 +51,9 @@ gulp.task('make-config', function () {
 		auth0MetadataNS: process.env.AUTH0_METADATA_NS,
 		flavour: process.env.FLAVOUR || 'vimojo',
 		mainColor: process.env.MAIN_COLOR || '#f14b51',
+		openGallery: process.env.OPEN_GALLERY === "true" || false,
+		driftKey: process.env.DRIFT_KEY || false,
+		driftSnippetVersion: process.env.DRIFT_SNIPPET_VERSION || '0.3.1',
 	});
 
 	return b2v.stream(new Buffer(json), 'config.js')
@@ -85,6 +88,7 @@ var sourceDeps = [
 	'../node_modules/angulartics/dist/angulartics.min.js',
 	'../node_modules/angulartics-google-analytics/dist/angulartics-ga.min.js',
 	'../node_modules/angulartics-mixpanel/dist/angulartics-mixpanel.min.js',
+	'../node_modules/ng-drift/lib/ng-drift.js',
 ];
 
 var styleDeps = [
