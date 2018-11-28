@@ -2,7 +2,7 @@ angular.module('app')
 	.directive('profileTopMenu', ['session', profileTopMenuDirective]);
 
 function profileTopMenuDirective(session) {
-	return {
+	const profileTopMenu = {
 		templateUrl: 'components/profile-top-menu/profile-top-menu.view.html',
 		replace: true,
 		controller: profileTopMenuController,
@@ -29,5 +29,7 @@ function profileTopMenuDirective(session) {
 		const self = this;
 		self.auth = authService;
 	}
+
+	return profileTopMenu;
 
 }

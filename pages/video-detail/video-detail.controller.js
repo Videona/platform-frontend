@@ -2,8 +2,8 @@ angular.module('app')
 	.controller('VideoDetailController', ['$timeout', '$stateParams', '$state', 'session', 'video', 'videoDownload',
 		'userService', '$timeout', 'NgMap', 'page', '$mdDialog', 'api', '$mdToast', '$translate', VideoDetail]);
 
-function VideoDetail($timeout, $stateParams, $state, session, videoService, videoDownload, userService, $timeout, NgMap, page,
-                     $mdDialog, api, $mdToast, $translate) {
+function VideoDetail($timeout, $stateParams, $state, session, videoService, videoDownload, userService, $timeout, NgMap,
+                     page, $mdDialog, api, $mdToast, $translate) {
 	var self = this;
 
 	self.id = $stateParams.id;
@@ -47,17 +47,17 @@ function VideoDetail($timeout, $stateParams, $state, session, videoService, vide
 		);
 	}
 
-	let deletionConfirm = $mdDialog.confirm(event)
+	let deletionConfirm = $mdDialog.confirm()
 		.title($translate.instant('VIDEO_DELETE_CONFIRM_TITLE'))
 		.textContent($translate.instant('VIDEO_DELETE_CONFIRM_TEXT'))
 		.ariaLabel('delete video confirm')
-		.targetEvent(event)
+		// .targetEvent(event)
 		.ok($translate.instant('VIDEO_DELETE_CONFIRM_BUTTON_OK'))
 		.cancel($translate.instant('VIDEO_DELETE_CONFIRM_BUTTON_CANCEL'));
 
 	function performVideoDelete() {
 		let data = {};
-		api.del(api.url + '/video/' + video.data._id, data, function (data, status) {
+		api.del(api.url + '/video/' + self.video._id, data, function (data, status) {
 			if (status == 200) {
 				showMessage($translate.instant('VIDEO_DELETE_SUCCESS'));
 				setTimeout(function() {
