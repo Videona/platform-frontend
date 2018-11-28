@@ -1,6 +1,2 @@
-v0.16.0
-- Add new landing page and user-features and decisions service to handle user permissions
-- Update pricing view plan CTA button text to free trial
-- Update topbar view to hide search icon in mobile views based on decisions
-- Update profile top menu view and style to fix responsive mobile views
-- Add drift set up
+v0.16.1
+- Fix FF render error in video detail view
